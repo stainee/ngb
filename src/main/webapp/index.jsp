@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2>Hello NGBs!</h2>
+	testCommit!
 </body>
 </html>
