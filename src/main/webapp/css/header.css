@@ -3,7 +3,7 @@ body{
     background-color: rgb(50, 50, 50);
 }
 
-a{
+.header a{
     color:white;
 
 }
@@ -127,6 +127,6 @@ a{
 }
 
 .content-wrap{
-	margin-left:10vw;
-	margin-top:5vw;
+	margin-left:100px;
+	margin-top:80px;
 }

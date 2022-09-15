@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel = "stylesheet" href = "/css/header.css">
 <link rel="stylesheet" href = "/css/notosans.css">
+<script src="/js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <div class = "header-wrap">
