@@ -9,5 +9,7 @@
 <body>
 	<h2>Hello NGBs!</h2>
 	<a href="reserveManage.do">manage</a>
+	<a href="reserveFrm.do">reserve</a>
+	<a href="editReserveFrm.do">editReserve</a>
 </body>
 </html>
