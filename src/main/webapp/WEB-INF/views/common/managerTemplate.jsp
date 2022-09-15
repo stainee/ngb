@@ -11,7 +11,7 @@
 <body>
 	<div class="header-wrap">
 		<div class="header">
-			<div id="logo"><a href="#"><img src="/img/logo.PNG"></a></div>
+			<div id="logo"><a href="#"><img src="/img/logo.png"></a></div>
 		</div>
 	</div>
 	<div class="menu-wrap">
@@ -29,9 +29,6 @@
 		</ul>
 	</div>
 	<div class="content-wrap">
-		<div>
-		content
-		</div>
 	</div>
 	<script>
 	$(".menu a").on("click",function(){

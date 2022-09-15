@@ -54,9 +54,6 @@
 
 	
 .content-wrap{
-	/*content 영역구분을 위해 만들어놓은 색깔입니다*/
-	background-color:rgb(128,128,128);
-	
 	margin-left:20vw;
 	margin-top:3vw;
 }
@@ -66,4 +63,3 @@
 	font-weight:700;
 	color : white;
 }
-/*관리자페이지 css 끝*/
