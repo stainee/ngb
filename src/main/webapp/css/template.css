@@ -1,0 +1,329 @@
+/* table 테이블  */
+
+
+/* tbl1 양식 */
+.tbl1{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+
+.tbl1 th{ 
+    text-align: center;
+    background-color: #dcdcdc;
+    width:120px;
+    border-right : 1px solid gray;
+    border-bottom: 2px solid black;
+}
+
+.tbl1 td{
+    text-align: center;
+    border-bottom: 1px solid gray;
+    border-right : 1px solid gray;
+}
+
+/* 마지막 요소의 값은 지정하지 않는다 */
+
+.tbl1 th:last-of-type{
+    border-right: none;
+}
+.tbl1 td:last-of-type{
+    border-right: none;
+}
+
+.tbl1{
+    margin-bottom: 100px;
+}
+/* tbl2양식 */
+
+.tbl2{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.tbl2 th{
+    text-align: center;
+    background-color: rgb(220, 220, 220);
+    width:120px;
+    border-left:2px solid gray ;
+    border-right:2px solid gray;
+    border-bottom: 1px solid black;
+}
+
+.tbl2 td{
+    text-align: center;
+    width:200px;
+    border-bottom: 1px solid gray;
+}
+
+
+/* input 인풋폼 */
+
+.input-form {
+    width: 100%;
+    height: 40px;
+    display: block;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid rgb(220,220,220);
+    box-sizing: border-box;
+}
+.input-form:focus {
+    box-shadow: 0 0 0 0.1rem rgb(220,220,220);
+}
+.textarea-form {
+    width: 100%;
+    resize: none;
+    min-height: 300px;
+    outline: none;
+}
+.textarea-form:focus {
+    box-shadow: 0 0 0 0.1rem rgb(220,220,220);
+}
+.input-form:disabled {
+    background-color: rgb(220,220,220);
+}
+
+/* button 버튼폼 */
+ .btn1{
+    width:100px;
+    height:50px;
+    background-color: white;
+    border-radius:10px;
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn1:active{
+    width:100px;
+    height:50px;
+    background-color: white;
+    border:1px solid black;
+    box-shadow: none;
+}
+.btn2{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn2:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    border:1px solid black;
+    box-shadow: none;
+}
+
+.btn3{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    box-shadow: 1px 1px 1px 1px black;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn3:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    border:1px solid gray;
+    box-shadow: none;
+}
+.btn4{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    box-shadow: 1px 1px gray;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn4:hover{
+    transform: scale(1.05,1.05);
+}
+.btn4:active{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    border:1px solid rgb(55,55,55);
+    box-shadow: none;
+    transform: scale(1,1);
+}
+.btn5{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    cursor: pointer;
+    font-size:20px;
+}
+.btn5:active{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    border:1px solid black;
+}
+.btn6{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    box-shadow: 0px 1px 1px 1px black;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn6:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    border:1px solid black;
+    box-shadow: none;
+    font-size: 19px;
+}
+.btn7{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size:20px;
+    border:1px solid black;
+}
+.btn7:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    box-shadow: none;
+    box-shadow: 0px 0px 0px 1px black inset;
+    font-size: 19px;
+    transform:scale(0.95,0.95);
+}
+.btn8{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size:20px;
+    border:1px solid black;
+}
+.btn8:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(230,230,230);
+    box-shadow: none;
+    box-shadow: 0px 0px 0px 1px black inset;
+    font-size: 19px;
+    transform:scale(0.95,0.95);
+}
+
+
+/* page-navi , 페이지네비 폼 */
+#pageNavi1{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    line-height:30px;
+    text-align: center;
+    background-color: rgb(255,193,7);
+}
+#pageNavi2{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+    text-align: center;
+    background-color: rgb(255,193,7);
+}
+#pageNavi3{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+    text-align: center;
+    background-color: black;
+    color:#fff;
+}
+
+/*list style*/
+.tbl3 {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.tbl3 th,.tbl td {
+    padding: 1rem;
+    text-align: center;
+}
+.tbl3 td>a {
+    text-decoration: none;
+    color : black;
+}
+
+.notice-tbl a:hover{
+    text-decoration : underline;
+}
+.notice-tbl tr{
+    border-bottom : 1px solid rgb(220,220,220);
+}
+.notice-tbl tr>td:nth-child(2){
+    text-align : left;
+}
+
+.tbl .tr-1 {
+    background-color: rgb(255,193,7);
+}
+.tbl .tr-2 {
+    background-color: rgb(55,55,55, 0.1);
+}
+.tbl .tr-3 {
+    background-color: rgba(255, 255, 255, 1);
+}
+.tbl .tr-4 {
+    background-color: rgb(102, 77, 2);
+}
+.tbl.tbl-hover .tr-3:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/*탭 메뉴*/
+.tab-wrap>ul{ 
+    overflow: hidden; 
+    list-style-type: none; 
+}
+.tabstep{ 
+    margin: 25px;
+    float: left; 
+    width: 180px; 
+    height: 70px; 
+    line-height: 70px; 
+    padding-left: 0px;
+    text-align: center; 
+    border-top-right-radius : 35px; 
+    border-bottom-right-radius : 35px; 
+    border: 3px solid rgba(255,193,7, 1); 
+    font-size: 23px; 
+    font-weight: 700; 
+    color: rgba(255,193,7, 0.7); 
+    display: flex; 
+    align-items: center; 
+}
+
+.tabstep-now{ 
+    background-color: rgba(255,193,7, 1); 
+    border: 1px solid rgba(255,193,7, 0.4); 
+    color: white; 
+    font-weight: 900; 
+} 
+.tabstep>img{ 
+    width: 40px; 
+    height: 40px; 
+    padding-right: 10px; 
+    padding-left: 15px; 
+}
+    
+    

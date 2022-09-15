@@ -7,17 +7,18 @@
 	display:block;
 	width:14vw;
 	text-align:center;
+	height:35px;
 }
 
 #logo img{
-	height:40px;
+	height:35px;
 }
 
 .header-wrap{
     width:100vw;
     margin: 0 auto;
     background-color: rgb(255,193,7);
-    height:40px;
+    height:35px;
 }
 
 .menu-wrap{

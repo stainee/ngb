@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/template.css">
+</head>
+<body>
+    <!-- 컬럼형 테이블 -->
+    <h2>테이블</h2>
+    <table class="tbl1">
+        <tr>
+            <th>테마코드</th>
+            <th>테마</th>
+            <th>테마명</th>
+            <th>가격</th>
+            <th>예약시간</th>
+        </tr>
+        <tr>
+            <td>A001</td>
+            <td>공포</td>
+            <td>시간의방</td>
+            <td>25000</td>
+            <td>200820</td>
+        </tr>
+    </table>
+
+    <table class="tbl2">
+        <tr>
+            <th>테마코드</th>
+            <td>A001</td>
+            <th>테마</th>
+            <td>공포</td>
+        </tr>
+        <tr>
+            <th>테마명</th>
+            <td>당산에서 살아남기</td>
+            <th>시간제한</th>
+            <td>60분</td>
+        </tr>
+        <tr>
+            <th>이미지첨부</th> 
+            <td colspan="3"></td>
+        </tr>
+    </table>
+
+    <hr>
+    <!-- 인풋박스 -->
+    <div>
+        <h2>INPUT</h2>
+        <input type="text" class="input-form" placeholder="input" />
+        <select class="input-form">
+            <option>value1</option>
+            <option>value2</option>
+            <option>value3</option>
+        </select>
+        <textarea class="textarea-form" placeholder="textarea"></textarea>
+        <input type="text" class="input-form" placeholder="disabled" disabled />
+    </div>
+
+    <hr>
+    <!-- 버튼박스 -->
+
+    <h2> 버튼디자인 (class btn#)</h2>
+    <br>
+    <button class="btn1">예약1</button>
+    <button class="btn2">관리1</button>
+    <br><br>
+    <button class="btn3">예약2</button>
+    <button class="btn4 btn-effect1">관리2</button>
+    <br><br>
+    <button class="btn5">관리3</button>
+    <button class="btn6">btn6</button>
+    <br><br>
+    <button class="btn7">btn7</button>
+    <button class="btn8">btn8</button>
+    <br><br>
+
+    <p class = "p-tag">페이지번호 디자인(id=pageNavi#)</p>
+    <div id="pageNavi1">1</div>
+    <br>
+    <div id="pageNavi2">1</div>
+    <div id="pageNavi2">2</div>
+    <br><br>
+    <div id="pageNavi3">1</div>
+    <div id="pageNavi3">2</div>
+    <div id="pageNavi3">3</div>
+
+
+    <h2>List style</h2>
+    <table class="tbl3 tbl-hover notice-tbl">
+        <tr class="tr-1">
+            <th style="width:10%;">번호</th>
+            <th style="width:45%;">제목</th>
+            <th style="width:15%;">작성자</th>
+            <th style="width:20%;">작성일</th>
+            <th style="width:10%;">조회수</th>		
+        </tr>
+        
+        <tr class="tr-3">
+            <td>1</td>
+            <td>
+                <a href="#"><p>공지사항입니다.</p></a>
+            </td>
+            <td>나가방</td>
+            <td>2022.09.15</td>
+            <td>2</td>
+        </tr>
+    </table>
+
+    <h2>탭 메뉴</h2>
+    <!-- 경로에 주의 -->
+    <div class="tab-wrap"> 
+        <ul class="tab-menu">
+            <li class="tabstep" id="tabstep1">
+                <img src=/img/tabstep1.png class="tabstep1-img"><span id="tabstep1-span">예약하기</span>
+            </li> 
+            <li class="tabstep tabstep-now" id="tabstep2">
+                <img src=/img/tabstep2.png class="tabstep2-img"><span id="tabstep2-span">결제하기</span>
+            </li>
+            <li class="tabstep" id="tabstep3">
+                <img src=/img/tabstep3.png class="tabstep3-img"><span id="tabstep3-span">STEP3</span>
+            </li> 
+        <ul> 
+    </div>
+    
+
+</body>
+</html>
