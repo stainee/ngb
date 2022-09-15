@@ -1,0 +1,68 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+#logo a{
+	display:block;
+	width:14vw;
+	text-align:center;
+}
+
+#logo img{
+	height:40px;
+}
+
+.header-wrap{
+    width:100vw;
+    margin: 0 auto;
+    background-color: rgb(255,193,7);
+    height:40px;
+}
+
+.menu-wrap{
+	width : 14vw;
+	height:100vw;
+	margin:0;
+	float:left;
+	text-align:center;
+	background-color:rgb(220,220,220);
+	list-style-type: none;
+
+}
+
+.menu-wrap ul:first-of-type a{
+	background-color: rgb(55,55,55);
+	color: white;
+}
+
+.menu-wrap ul a{
+	display:block;
+	margin: 0 auto;
+	color :black;
+	height: 40px;
+	line-height:40px;
+	border : 1px solid rgb(220,220,220);
+	background-color:white;
+	text-decoration: none;
+}
+
+.menu a:hover{
+	background-color:rgb(220,220,220);
+}
+
+	
+.content-wrap{
+	/*content 영역구분을 위해 만들어놓은 색깔입니다*/
+	background-color:rgb(128,128,128);
+	
+	margin-left:20vw;
+	margin-top:3vw;
+}
+
+.menu .index{
+	background-color: rgb(128,128,128);
+	font-weight:700;
+	color : white;
+}
+/*관리자페이지 css 끝*/
