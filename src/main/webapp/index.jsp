@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@include file = "/WEB-INF/views/reserve/editReserveFrm.jsp" %>
 	<h2>Hello NGBs!</h2>
 	<a href="reserveManage.do">manage</a>
 	<a href="reserveFrm.do">reserve</a>
