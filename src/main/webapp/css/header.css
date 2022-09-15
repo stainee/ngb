@@ -12,7 +12,7 @@ a{
     margin: 0 auto;
     
 }
-.content-wrap{
+.header{
     /* background-color: rgb(211, 84, 0); */
     background-color: rgba(33,33,33);
     display: flex;
@@ -22,7 +22,7 @@ a{
     text-align: center;
     margin-bottom: 20px;
 }
-.content-wrap>ul{
+.header>ul{
     height: 35px;
     width:150px;
     font-size : 15px;
@@ -30,7 +30,7 @@ a{
     line-height: 45px;
     cursor: pointer;
 }
-.content-wrap>li>img{
+.header>li>img{
     height:45px;
     cursor: pointer;
 }
@@ -124,4 +124,9 @@ a{
     line-height: 45px;
     font-size: 11px;
     font-family: ns-Medium;
+}
+
+.content-wrap{
+	margin-left:10vw;
+	margin-top:5vw;
 }

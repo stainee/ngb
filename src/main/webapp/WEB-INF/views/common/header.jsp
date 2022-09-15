@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class = "header-wrap">
-        <div class = "content-wrap">
+        <div class = "header">
             <li id = "logo-wrap"><img src="/img/logo.png"></li>
             <ul class = "notice menuwrap">
                 <div>
@@ -41,6 +41,9 @@
                 <a href="#" class="signin">회원가입</a>
             </div>
         </div>
+       </div>
+       
+       <div class="content-wrap">
        </div>
 </body>
 </html>
