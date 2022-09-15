@@ -8,7 +8,6 @@
 </head>
 <body>
 	<h2>Hello NGBs!</h2>
-	testCommit!
-	혜진테스트!!
+	<a href="reserveManage.do">manage</a>
 </body>
 </html>

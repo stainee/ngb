@@ -1,0 +1,32 @@
+.tbl1{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+
+.tbl1 th{ 
+    text-align: center;
+    background-color: #dcdcdc;
+    width:120px;
+    border-right : 1px solid gray;
+    border-bottom: 2px solid black;
+}
+
+.tbl1 td{
+    text-align: center;
+    border-bottom: 1px solid gray;
+    border-right : 1px solid gray;
+}
+
+/* 마지막 요소의 값은 지정하지 않는다 */
+
+.tbl1 th:last-of-type{
+    border-right: none;
+}
+.tbl1 td:last-of-type{
+    border-right: none;
+}
+
+.tbl1{
+    margin-bottom: 100px;
+}
