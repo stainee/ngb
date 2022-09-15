@@ -36,8 +36,10 @@
                 <li><a href = "#">MY PAGE</a></li>
             </div>
             </ul>
-            <a href="#" class="login">로그인</a>
-            <a href="#" class="signin">회원가입</a>
+            <div class="signwrap">
+                <a href="#" class="login">로그인</a>
+                <a href="#" class="signin">회원가입</a>
+            </div>
         </div>
        </div>
 </body>

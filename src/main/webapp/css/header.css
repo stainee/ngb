@@ -58,6 +58,13 @@ a{
 .menuwrap>div>li>a{
 	color:rgb(255,193,7);
 }
+
+.signwrap{
+    width: 150px;
+    height: 45px;
+    display: inline-block;
+}
+
 @keyframes ani1{
     0%{
         transform: translateY(0px);
