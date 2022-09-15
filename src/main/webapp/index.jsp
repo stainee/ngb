@@ -9,6 +9,6 @@
 <body>
 	<h2>Hello NGBs!</h2>
 	testCommit!
-	구원테스트
+	혜진테스트
 </body>
 </html>
