@@ -15,13 +15,15 @@ public class Reserve {
 	private String reserveEtc;
 	private String playDate;
 	private String time;
+	private int time_code;
+	
 	public Reserve() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Reserve(int reserveNo, String themaCode, String reserveDate, int reservePay, String reserveName,
 			String reserveMail, String reservephone, int reserveAmount, int reserveState, String reserveEtc,
-			String playDate, String time) {
+			String playDate, String time, int time_code) {
 		super();
 		this.reserveNo = reserveNo;
 		this.themaCode = themaCode;
@@ -35,6 +37,7 @@ public class Reserve {
 		this.reserveEtc = reserveEtc;
 		this.playDate = playDate;
 		this.time = time;
+		this.time_code = time_code;
 	}
 	public int getReserveNo() {
 		return reserveNo;
@@ -107,6 +110,12 @@ public class Reserve {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public int getTime_code() {
+		return time_code;
+	}
+	public void setTime_code(int time_code) {
+		this.time_code = time_code;
 	}
 	
 	
