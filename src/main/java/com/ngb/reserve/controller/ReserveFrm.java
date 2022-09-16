@@ -1,6 +1,7 @@
 package com.ngb.reserve.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.service.ThemaService;
 
 /**
  * Servlet implementation class Reserve
@@ -29,6 +33,9 @@ public class ReserveFrm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		ThemaService tservice = new ThemaService();
+		ArrayList<Thema> themaList = tservice.selectAllThema();
+		request.setAttribute("themaList", themaList);
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveFrm.jsp");
 		view.forward(request, response);
 	}
