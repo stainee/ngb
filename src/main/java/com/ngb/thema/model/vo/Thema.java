@@ -12,13 +12,13 @@ public class Thema {
 	private int themaLevel;
 	private int themaPrice;
 	private String themaFilepath;
-	
+	private int themaTime;
 	public Thema() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Thema(String themaCode, String category, String themaName, String themaContent, int devicePer, int lockPer,
-			int peopleMin, int peopleMax, int themaLevel, int themaPrice, String themaFilepath) {
+			int peopleMin, int peopleMax, int themaLevel, int themaPrice, String themaFilepath, int themaTime) {
 		super();
 		this.themaCode = themaCode;
 		this.category = category;
@@ -31,6 +31,7 @@ public class Thema {
 		this.themaLevel = themaLevel;
 		this.themaPrice = themaPrice;
 		this.themaFilepath = themaFilepath;
+		this.themaTime = themaTime;
 	}
 	public String getThemaCode() {
 		return themaCode;
@@ -98,6 +99,11 @@ public class Thema {
 	public void setThemaFilepath(String themaFilepath) {
 		this.themaFilepath = themaFilepath;
 	}
-	
-	
+	public int getThemaTime() {
+		return themaTime;
+	}
+	public void setThemaTime(int themaTime) {
+		this.themaTime = themaTime;
+	}
+
 }
