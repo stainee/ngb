@@ -41,18 +41,22 @@ public class ThemaWriteServlet extends HttpServlet {
 		int maxSize = 10*1024*1024;
 		MultipartRequest mRequest  = new MultipartRequest(request, saveDirectory, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		String themaCode = mRequest.getParameter("themaCode");
-		String thema  = mRequest.getParameter("thema");
-		String filepath = mRequest.getParameter("themaFilepath");
-		int devicePer = Integer.parseInt(request.getParameter("devicePer"));
-		int lockPer = Integer.parseInt(request.getParameter("lockPer"));
-		int peopleMin = Integer.parseInt(request.getParameter("peopleMin"));
-		int peopleMax = Integer.parseInt(request.getParameter("peopleMax"));
-		int themaLevel = Integer.parseInt(request.getParameter("themaLevel"));
-		int themaPrice = Integer.parseInt(request.getParameter("themaPrice"));
+		String category = mRequest.getParameter("category");
+		String thamaName = mRequest.getParameter("themaName");
+		String themaContent = mRequest.getParameter("themaContent");
+		int devicePer = Integer.parseInt(mRequest.getParameter("devicePer"));
+		int lockPer = Integer.parseInt(mRequest.getParameter("lockPer"));
+		int peopleMin = Integer.parseInt(mRequest.getParameter("peopleMin"));
+		int peopleMax = Integer.parseInt(mRequest.getParameter("peopleMax"));
+		int themaLevel = Integer.parseInt(mRequest.getParameter("themaLevel"));
+		int themaPrice = Integer.parseInt(mRequest.getParameter("themaPrice"));
+		String filepath = mRequest.getFilesystemName("themaFilepath");
 		
 		Thema t = new Thema();
 		t.setThemaCode(themaCode);
-		t.setThemaCode(thema);
+		t.setCategory(category);
+		t.setThemaName(thamaName);
+		t.setThemaContent(themaContent);
 		t.setThemaFilepath(filepath);
 		t.setDevicePer(devicePer);
 		t.setLockPer(lockPer);
@@ -66,9 +70,13 @@ public class ThemaWriteServlet extends HttpServlet {
 		//4. 결과처리
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
-			System.out.println("성공");
+			request.setAttribute("title", "성공");
+			request.setAttribute("msg", "공지사항이 등록되었습니다");
+			request.setAttribute("icon", "success");
 		}else {
-			System.out.println("실패");
+			request.setAttribute("title", "실패");
+			request.setAttribute("msg", "공지사항 등록 중 문제가 생겼습니다.");
+			request.setAttribute("icon", "error");
 		}
 		request.setAttribute("loc", "/");
 		view.forward(request, response);

@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import com.ngb.thema.model.vo.Thema;
 
+import common.JDBCTemplate;
+
 public class ThemaDao {
 
 	public int insertThema(Connection conn, Thema t) {
@@ -24,10 +26,13 @@ public class ThemaDao {
 			pstmt.setInt(8,t.getPeopleMax());
 			pstmt.setInt(9,t.getThemaLevel());
 			pstmt.setInt(10,t.getThemaPrice());
+			pstmt.setString(11, t.getThemaFilepath());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
 		return result;

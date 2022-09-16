@@ -135,16 +135,26 @@
 	                <td>
 	                    <input type="text" name="themaCode" class="input-form">
 	                </td>
-	                <th class="tr-1">테마</th>
+	                <th class="tr-1">테마 카테고리</th>
 	                <td><input type="text" name="category" class="input-form"></td>
 	            </tr>
 	            <tr>
+	                <th class="tr-1">테마명</th>
+	                 <td colspan="3"><input type="text" name="themaName" class="input-form"></td>
+	            </tr>
+	            <tr>
 	                <th class="tr-1">첨부파일</th>
-	                <td><input type="file" name="themaFilepath"></td>
+	                <td>
+	                	<input type="file" name="themaFilepath" accept=".jpg,.png,.jpeg" onchange="loadImg(this);">
+	                </td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">이미지 미리보기</th>
-	                <td></td>
+					<td colspan="3">
+						<div id="img-viewer">
+							<img id="img-view" width="500px">
+						</div>
+					</td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">잠금장치</th>
@@ -173,6 +183,24 @@
         
         </form>
     </div>
-	
+    
+    
+	<script>
+		function loadImg(f){
+			//첨부파일이 여러개일 수 있으므로 항상 배열 처리
+			console.log(f.files);//input에서 file을 선택하면 해당 파일이 들어있는 배열
+			if(f.files.length !=0 && f.files[0] != 0){
+				const reader = new FileReader(); //파일 정보를 읽어올 수 있는 객체
+				reader.readAsDataURL(f.files[0]); //선택한 파일 정보 읽어옴
+				//파일리더가 파일을 다 읽어오면 동작할 함수 작성
+				reader.onload = function(e){
+					$("#img-view").attr("src",e.target.result);
+				}
+			}else{
+				//이미지 교체되면 src 비움
+				$("#img-view").attr("src","");
+			}
+		}
+	</script>
 </body>
 </html>
