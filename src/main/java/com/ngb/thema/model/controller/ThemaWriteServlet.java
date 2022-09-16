@@ -51,6 +51,7 @@ public class ThemaWriteServlet extends HttpServlet {
 		int themaLevel = Integer.parseInt(mRequest.getParameter("themaLevel"));
 		int themaPrice = Integer.parseInt(mRequest.getParameter("themaPrice"));
 		String filepath = mRequest.getFilesystemName("themaFilepath");
+		int themaTime = Integer.parseInt(mRequest.getParameter("themaTime"));
 		
 		Thema t = new Thema();
 		t.setThemaCode(themaCode);
@@ -64,6 +65,7 @@ public class ThemaWriteServlet extends HttpServlet {
 		t.setPeopleMax(peopleMax);
 		t.setThemaLevel(themaLevel);
 		t.setThemaPrice(themaPrice);
+		t.setThemaTime(themaTime);
 		//3.비즈니스 로직
 		ThemaService service = new ThemaService();
 		int result = service.insertThema(t);

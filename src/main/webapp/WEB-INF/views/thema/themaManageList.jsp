@@ -1,5 +1,10 @@
+<%@page import="com.ngb.thema.model.vo.Thema"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    ArrayList<Thema> list =(ArrayList<Thema>)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,18 +125,20 @@
                 <th>최대인원</th>
                 <th>난이도</th>
             </tr>
+            <%for(Thema thema:list) {%>
             <tr class="tr-3">
-                <td>A001</td>
-                <td>공포</td>
-                <td>당산에서 살아남기</td>
-                <td>18000</td>
-                <td>120</td>
-                <td>70</td>
-                <td>30</td>
-                <td>2</td>
-                <td>4</td>
-                <td>3</td>
+                <td><%=thema.getThemaCode() %></td>
+                <td><%=thema.getCategory()%></td>
+                <td><%=thema.getThemaName() %></td>
+                <td><%=thema.getThemaPrice() %></td>
+                <td><%=thema.getThemaTime()%></td>
+                <td><%=thema.getDevicePer() %></td>
+                <td><%=thema.getLockPer() %></td>
+                <td><%=thema.getPeopleMin() %></td>
+                <td><%=thema.getPeopleMax() %></td>
+                <td><%=thema.getThemaLevel() %></td>
             </tr>
+            <%}%>
         </table>
 
        <button class="reserve-btn"><a href="/themaWriteFrm.do">등록</a></button>

@@ -140,7 +140,9 @@
 	            </tr>
 	            <tr>
 	                <th class="tr-1">테마명</th>
-	                 <td colspan="3"><input type="text" name="themaName" class="input-form"></td>
+	                 <td><input type="text" name="themaName" class="input-form"></td>
+	                 <th class="tr-1">시간제한</th>
+	                 <td><input type="text" name="themaTime" class="input-form"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">첨부파일</th>
