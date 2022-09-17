@@ -38,6 +38,8 @@ public class UpdateReserveServlet extends HttpServlet {
 		r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
 		ReserveService service = new ReserveService();
 		int result = service.updateReserve(r);
+		
+		
 	}
 
 	/**

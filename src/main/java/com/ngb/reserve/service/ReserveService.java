@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ngb.reserve.model.dao.ReserveDao;
 import com.ngb.reserve.model.vo.Reserve;
+import com.ngb.thema.model.vo.Thema;
 
 import common.JDBCTemplate;
 
@@ -36,5 +37,13 @@ public class ReserveService {
 		return result;
 	}
 
-	
+	public ArrayList<Reserve> selectReserveDate() {
+		// TODO Auto-generated method stub
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Reserve> dateList = dao.selectReserveDate(conn);
+		JDBCTemplate.close(conn);
+		
+		return dateList;
+	}
+
 }

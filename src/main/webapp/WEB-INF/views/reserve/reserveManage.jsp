@@ -1,9 +1,11 @@
+<%@page import="com.ngb.thema.model.vo.Thema"%>
 <%@page import="com.ngb.reserve.model.vo.Reserve"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
     	ArrayList<Reserve> list = (ArrayList<Reserve>)request.getAttribute("list");
+    	ArrayList<Reserve> dateList = (ArrayList<Reserve>)request.getAttribute("dateList");
     %>
 <!DOCTYPE html>
 <html>
@@ -18,14 +20,9 @@
 		<div>예약목록</div>
 		<div>
 			<select>
-				<option>월</option>
-				<option>화</option>
-				<option>수</option>
-			</select>
-			<select>
-				<option>수정</option>
-				<option>추가</option>
-				<option>삭제</option>
+				<%for(Reserve r : dateList) {%>
+				<option><%=r.getPlayDate() %></option>
+				<%} %>
 			</select>
 		</div>
 		<table class="tbl1">
@@ -74,9 +71,9 @@
 	        		<input type = "hidden" name = "playTime" value = "<%=r.getReserveDate() %>">
 	        	</td>
 	        	<td>
-	        		<%=0 %>
+	        		<%=r.getReserveAmount()+"/"+r.getPeopleMax()%>
 	        		<input type = "hidden" name = "reserveState" value = "<%=r.getReserveAmount()%>">
-	        	</td>
+	        	</td>0
 	        	<td>
 	        		<%="결제확인" %>
 	        		<input type = "hidden" name = "payState" value = "<%="결제확인" %>">
@@ -89,5 +86,9 @@
 	        <%} %>
 	    </table>
     </div>
+    <script>
+    
+    
+    </script>
 </body>
 </html>

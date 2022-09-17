@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ngb.reserve.model.vo.Reserve;
 import com.ngb.reserve.service.ReserveService;
+import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.service.ThemaService;
 
 /**
  * Servlet implementation class ReserveManage
@@ -38,6 +40,10 @@ public class ReserveManage extends HttpServlet {
 		
 		ArrayList<Reserve> list = service.selectAllReserve();
 		request.setAttribute("list", list);
+		ArrayList<Reserve> dateList = service.selectReserveDate();
+		request.setAttribute("dateList", dateList);
+		
+		
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveManage.jsp");
 		view.forward(request, response);
