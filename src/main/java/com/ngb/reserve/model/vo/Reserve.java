@@ -16,6 +16,8 @@ public class Reserve {
 	private String playDate;
 	private String time;
 	private int time_code;
+	private int peopleMin;
+	private int peopleMax;
 	
 	public Reserve() {
 		super();
@@ -117,6 +119,17 @@ public class Reserve {
 	public void setTime_code(int time_code) {
 		this.time_code = time_code;
 	}
-	
+	public int getPeopleMin() {
+		return peopleMin;
+	}
+	public void setPeopleMin(int peopleMin) {
+		this.peopleMin = peopleMin;
+	}
+	public int getPeopleMax() {
+		return peopleMax;
+	}
+	public void setPeopleMax(int peopleMax) {
+		this.peopleMax = peopleMax;
+	}
 	
 }
