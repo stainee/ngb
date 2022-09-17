@@ -1,5 +1,10 @@
+<%@page import="com.ngb.reserve.model.vo.Reserve"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	ArrayList<Reserve> list = (ArrayList<Reserve>)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,39 +41,41 @@
 	            <th>결제확인</th>
 	            <th>관리자모드</th>
 	        </tr>
+	        <%for(Reserve r : list) {%>
 	        <form action = "editReserveFrm.do" method = "post">
 	        <tr>
+	        	<input type = "hidden" name = "reserveNo" value = "<%=r.getReserveNo() %>">
 	        	<td>
-	        		<%="시간" %>
-	        		<input type = "hidden" name = "time" value = "<%="시간" %>">
+	        		<%=r.getTime() %>
+	        		<input type = "hidden" name = "time" value = "<%=r.getTime() %>">
 	        	</td>
 	        	<td>
-	        		<%="테마" %>
-	        		<input type = "hidden" name = "thema" value = "<%="테마" %>">
+	        		<%=r.getThemaCode() %>
+	        		<input type = "hidden" name = "thema" value = "<%=r.getThemaCode() %>">
 	        	</td>
 	        	<td>
-	        		<%="이름" %>
-	        		<input type = "hidden" name = "name" value = "<%="이름" %>">
+	        		<%=r.getReserveName() %>
+	        		<input type = "hidden" name = "name" value = "<%=r.getReserveName() %>">
 	        	</td>
 	        	<td>
-	        		<%="전화번호" %>
-	        		<input type = "hidden" name = "phone" value = "<%="전화번호" %>">
+	        		<%=r.getReservephone() %>
+	        		<input type = "hidden" name = "phone" value = "<%=r.getReservephone() %>">
 	        	</td>
 	        	<td>
-	        		<%="인원" %>
-	        		<input type = "hidden" name = "amount" value = "<%="인원" %>">
+	        		<%=r.getReserveAmount()+"명" %>
+	        		<input type = "hidden" name = "amount" value = "<%=r.getReserveAmount() %>">
 	        	</td>
 	        	<td>
-	        		<%="요금" %>
-	        		<input type = "hidden" name = "pay" value = "<%="요금" %>">
+	        		<%=r.getReservePay()+"원" %>
+	        		<input type = "hidden" name = "pay" value = "<%=r.getReservePay() %>">
 	        	</td>
 	        	<td>
-	        		<%="예약시간" %>
-	        		<input type = "hidden" name = "playTime" value = "<%="예약시간" %>">
+	        		<%=r.getReserveDate() %>
+	        		<input type = "hidden" name = "playTime" value = "<%=r.getReserveDate() %>">
 	        	</td>
 	        	<td>
-	        		<%="예약상태" %>
-	        		<input type = "hidden" name = "reserveState" value = "<%="예약상태" %>">
+	        		<%=0 %>
+	        		<input type = "hidden" name = "reserveState" value = "<%=r.getReserveAmount()%>">
 	        	</td>
 	        	<td>
 	        		<%="결제확인" %>
@@ -79,6 +86,7 @@
 	        	</td>
 	        </tr>
 	        </form>
+	        <%} %>
 	    </table>
     </div>
 </body>

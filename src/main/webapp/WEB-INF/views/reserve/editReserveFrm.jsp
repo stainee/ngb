@@ -30,20 +30,38 @@
 		            <th>결제확인</th>
 		            <th>관리자모드</th>
 		        </tr>
+		        <form action = "updateReserve.do" method = "get">
 		        <tr>
-		        	<td><%=r.getTime() %></td>
-		        	<td>테마명</td>
-		        	<td>예약자</td>
-		        	<td>전화번호</td>
-		        	<td>인원</td>
-		        	<td>요금</td>
-		        	<td>예약시간</td>
-		        	<td>예약상태</td>
-		        	<td>결제확인</td>
+		        	<input type ="hidden" name = "reserveNo" value = "<%=r.getReserveNo() %>">
+		        	<td>
+		        		<%=r.getTime() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getThemaCode() %>
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveName" value = "<%=r.getReserveName() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reservePhone" value = "<%=r.getReservephone() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveAmount" value = "<%=r.getReserveAmount() %>">
+		        	</td>
+		        	<td>
+		        		<%=r.getReservePay() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getReserveDate() %>
+		        	<td>
+		        		<%="1/6" %>
+		        	</td>
+		        	<td><%="어떻게하지" %></td>
 		        	<td>
 		        		<button>수정</button>
 		        	</td>
 		        </tr>
+		        </form>
 		    </table>
 		<table class="tbl1">
 		        <tr>
@@ -59,15 +77,31 @@
 		            <th>관리자모드</th>
 		        </tr>
 		        <tr>
-		        	<td><%=r.getTime() %></td>
-		        	<td>테마명</td>
-		        	<td>예약자</td>
-		        	<td>전화번호</td>
-		        	<td>인원</td>
-		        	<td>요금</td>
-		        	<td>예약시간</td>
-		        	<td>예약상태</td>
-		        	<td>결제확인</td>
+		        	<input type ="hidden" name = "reservNo" value = "<%=r.getReserveNo() %>">
+		        	<td>
+		        		<%=r.getTime() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getThemaCode() %>
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveName" value = "<%=r.getReserveName() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reservePhone" value = "<%=r.getReservephone() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveAmount" value = "<%=r.getReserveAmount() %>">
+		        	</td>
+		        	<td>
+		        		<%=r.getReservePay() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getReserveDate() %>
+		        	<td>
+		        		<%="1/6" %>
+		        	</td>
+		        	<td><%="어떻게하지" %></td>
 		        	<td>
 		        		<button>추가</button>
 		        	</td>
@@ -87,15 +121,31 @@
 		            <th>관리자모드</th>
 		        </tr>
 		        <tr>
-		        	<td><%=r.getTime() %></td>
-		        	<td>테마명</td>
-		        	<td>예약자</td>
-		        	<td>전화번호</td>
-		        	<td>인원</td>
-		        	<td>요금</td>
-		        	<td>예약시간</td>
-		        	<td>예약상태</td>
-		        	<td>결제확인</td>
+		       		<td>
+		       			<input type ="hidden" name = "reservNo" value = "<%=r.getReserveNo() %>">
+		        		<%=r.getTime() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getThemaCode() %>
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveName" value = "<%=r.getReserveName() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reservePhone" value = "<%=r.getReservephone() %>">
+		        	</td>
+		        	<td>
+		        		<input type = "text" name = "reserveAmount" value = "<%=r.getReserveAmount() %>">
+		        	</td>
+		        	<td>
+		        		<%=r.getReservePay() %>
+		        	</td>
+		        	<td>
+		        		<%=r.getReserveDate() %>
+		        	<td>
+		        		<%="1/6" %>
+		        	</td>
+		        	<td><%="어떻게하지" %></td>
 		        	<td>
 		        		<button>삭제</button>
 		        	</td>
