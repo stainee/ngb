@@ -99,6 +99,19 @@
 	font-size:20px;
     margin-left: 1150px;
 }
+
+.reserve-btn>a{
+	text-decoration: none;
+}
+
+.reserve-btn>a:link{
+	color:black;
+}
+
+.reserve-btn>a:visited{
+	color:black;
+}
+
 </style>
 </head>
 <body>
@@ -129,7 +142,9 @@
             <tr class="tr-3">
                 <td><%=thema.getThemaCode() %></td>
                 <td><%=thema.getCategory()%></td>
-                <td><%=thema.getThemaName() %></td>
+                <td>
+               		<a href="/themaManageView.do?themaCode=<%=thema.getThemaCode()%>"><%=thema.getThemaName() %></a>
+                </td>
                 <td><%=thema.getThemaPrice() %></td>
                 <td><%=thema.getThemaTime()%></td>
                 <td><%=thema.getDevicePer() %></td>

@@ -75,4 +75,40 @@ public class ThemaDao {
 		return list;
 	}
 
+	//관리자 - 테마 상세 보기
+	public Thema selectOneThema(Connection conn, String themaCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Thema t  = null;
+		String query = "select * from thema where thema_code=?";
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1,themaCode);
+			rset=pstmt.executeQuery();
+			if(rset.next()) {
+				t = new Thema();
+				t.setThemaCode(rset.getString("thema_code"));
+				t.setCategory(rset.getString("category"));
+				t.setThemaName(rset.getString("thema_name"));
+				t.setThemaContent(rset.getString("thema_content"));
+				t.setDevicePer(rset.getInt("device_per"));
+				t.setLockPer(rset.getInt("lock_per"));
+				t.setPeopleMin(rset.getInt("people_min"));
+				t.setPeopleMax(rset.getInt("people_max"));
+				t.setThemaLevel(rset.getInt("thema_level"));
+				t.setThemaPrice(rset.getInt("thema_price"));
+				t.setThemaFilepath(rset.getString("thema_filepath"));
+				t.setThemaTime(rset.getInt("thema_time"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return t;
+	}
+
 }

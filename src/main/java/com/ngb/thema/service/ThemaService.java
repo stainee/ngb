@@ -41,6 +41,14 @@ public class ThemaService {
 		return list;
 	}
 
+	//테마 상세 보기
+	public Thema selectOneThema(String themaCode) {
+		Connection conn = JDBCTemplate.getConnection();
+		Thema t = dao.selectOneThema(conn,themaCode);
+		JDBCTemplate.close(conn);
+		return t;
+	}
+
 
 
 
