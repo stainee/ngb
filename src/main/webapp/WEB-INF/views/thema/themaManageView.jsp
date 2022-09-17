@@ -156,10 +156,16 @@
             </tr>
             <tr>
                 <th class="tr-1">이미지 미리보기</th>
+                <!--  
 					<td colspan="3">
 						<div id="img-viewer">
 							<img id="img-view" width="500px">
 						</div>
+					</td>
+					<%=t.getThemaFilepath() %>
+					-->
+					<td>
+						<img src="/upload/thema/<%=t.getThemaFilepath() %>">
 					</td>
             </tr>
             <tr>
