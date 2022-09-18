@@ -31,7 +31,6 @@
 		</div>
 		<table class="tbl1" id ="table">
 			<thead>
-		        <th>
 		        	<th>시간</th>
 		        	<th>테마명</th>
 		            <th>예약자</th>
@@ -42,7 +41,6 @@
 		            <th>예약상태</th>
 		            <th>결제확인</th>
 		            <th>관리자모드</th>
-		        </th>
 	        </thead>
 	        <tbody id="tbody_reserve">
 	        </tbody>
@@ -58,9 +56,6 @@
     			type : "get",
     			data : {select:select},
     			success : function(data){
-    				console.log(data);
-    				const name = Object.keys(data[0]);
-    				console.log(name);
     				var html ="";
     				
     				$.each(data,function(idx,value){
@@ -73,6 +68,7 @@
     					html += "<td>"+ value.reservePay +"</td>";
     					html += "<td>"+ value.reserveDate +"</td>";
     					html += "<td>"+ value.reserveState +"</td>";
+    					html += "<td>"+ "-" +"</td>";
     					html += "<td><button onclick='go_managePage("+value.reserveNo+");'>관리</button></td>";
     					html +="</tr>";
     				});
