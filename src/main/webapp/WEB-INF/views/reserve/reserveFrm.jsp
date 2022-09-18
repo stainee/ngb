@@ -45,16 +45,16 @@
 					     <tr>
 					         <td><div id="datepicker"></div></td>
 					         <td>
-					         	<ul class="thema-list">
+					         	<ul class="themaList">
 					         		<%for(Thema t : tList){%>
 					         		<li><%= t.getThemaName()%> </li>
 					         		<% }%>
 					         		
 					         	</ul>
 					         </td>
-					         <td>20000</td>
+					         <td id="themaPrice"></td>
 					         <td>
-					         	<ul class="time-list">
+					         	<ul class="timeList">
 					         		
 					         	</ul>
 					         </td>
@@ -99,7 +99,7 @@
 				 		</tr>
 					     <tr>
 					     	<th>결제금액</th>
-					     	<td colspan="3">20000원</td>
+					     	<td colspan="3"></td>
 					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>
@@ -148,11 +148,13 @@
 		    	</div>
 		    </div>
 	    </div>
-	    
 	</div>
 	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<script src="/js/reserve.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>
+<script>
+
+</script>
 </html>

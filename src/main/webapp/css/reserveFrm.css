@@ -211,10 +211,15 @@
 
 
 /*기능단*/
-.time-list{
+
+#themaPrice{
+	background-color : rgb(255,255,255);
+}
+
+.timeList{
 	overflow:auto;
 }
-.time-list li{
+.timeList li{
 	background-color : rgb(255,255,255);
 	height:30px;
 	line-height:30px;
@@ -222,20 +227,20 @@
 	cursor:pointer;
 }
 
-.time-list .time-lock{
+.timeList .time-lock{
 	background-color : rgb(50,50,50);
 	color : white;
 	cursor : not-allowed;
 }
 
-.time-list .select{
+.timeList .select{
 	background-color : rgb(255,193,7);
 }
 
-.thema-list{
+.themaList{
 	overflow:auto;
 }
-.thema-list li{
+.themaList li{
 	background-color : rgb(255,255,255);
 	height:30px;
 	line-height:30px;
@@ -243,13 +248,13 @@
 	cursor:pointer;
 }
 
-.thema-list .thema-lock{
+.themaList .thema-lock{
 	background-color : rgb(50,50,50);
 	color : white;
 	cursor : not-allowed;
 }
 
-.thema-list .select{
+.themaList .select{
 	background-color : rgb(255,193,7);
 }
 

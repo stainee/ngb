@@ -16,5 +16,24 @@ public class Time {
 		this.themaCode = themaCode;
 		this.time = time;
 	}
+	public int getTimeCode() {
+		return timeCode;
+	}
+	public void setTimeCode(int timeCode) {
+		this.timeCode = timeCode;
+	}
+	public String getThemaCode() {
+		return themaCode;
+	}
+	public void setThemaCode(String themaCode) {
+		this.themaCode = themaCode;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
 	
 }

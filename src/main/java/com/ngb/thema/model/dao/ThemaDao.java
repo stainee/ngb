@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.time.model.vo.Time;
 
 import common.JDBCTemplate;
 
@@ -110,5 +111,32 @@ public class ThemaDao {
 		}
 		return t;
 	}
+
+	public Thema selectOneThemaPrice(Connection conn, int index) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Thema t = new Thema();
+		String query = "select thema_code, thema_price from (select rownum as num, thema_price, thema_code from thema) t where t.num=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, index+1);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				t.setThemaPrice(rset.getInt("thema_price"));
+				t.setThemaCode(rset.getString("thema_code"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return t;
+	}
+
 
 }

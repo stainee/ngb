@@ -49,6 +49,17 @@ public class ThemaService {
 		return t;
 	}
 
+	//테마 가격 조회
+	public Thema getThemaPrice(int index) {
+		Connection conn = JDBCTemplate.getConnection();
+		Thema t = dao.selectOneThemaPrice(conn, index);
+		JDBCTemplate.close(conn);
+		return t;
+	}
+
+
+	
+
 
 
 
