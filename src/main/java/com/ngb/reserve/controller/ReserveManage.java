@@ -38,7 +38,7 @@ public class ReserveManage extends HttpServlet {
 		Reserve r = new Reserve();
 		ReserveService service = new ReserveService();
 		
-		ArrayList<Reserve> list = service.selectAllReserve();
+		ArrayList<Reserve> list = service.selectAllReserve(null);
 		request.setAttribute("list", list);
 		ArrayList<Reserve> dateList = service.selectReserveDate();
 		request.setAttribute("dateList", dateList);

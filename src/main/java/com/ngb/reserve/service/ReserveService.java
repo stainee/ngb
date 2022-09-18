@@ -18,9 +18,9 @@ public class ReserveService {
 //		this.dao = dao;
 	}
 
-	public ArrayList<Reserve> selectAllReserve() {
+	public ArrayList<Reserve> selectAllReserve(String reserveNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Reserve> list = dao.selectAllReserve(conn);
+		ArrayList<Reserve> list = dao.selectAllReserve(conn,reserveNo);
 		
 		return list;
 	}
@@ -44,6 +44,14 @@ public class ReserveService {
 		JDBCTemplate.close(conn);
 		
 		return dateList;
+	}
+
+	public ArrayList<Reserve> selectDateReserveInfo(String selectDate) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Reserve> selectList = dao.selectDateReserveInfo(conn, selectDate);
+		JDBCTemplate.close(conn);
+		return selectList;
 	}
 
 }

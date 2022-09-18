@@ -13,13 +13,26 @@ import common.JDBCTemplate;
 
 public class ReserveDao {
 
-	public ArrayList<Reserve> selectAllReserve(Connection conn) {
+	public ArrayList<Reserve> selectAllReserve(Connection conn,String reserveNo) {
 		PreparedStatement pstmt=null;
 		ResultSet rset = null;
 		ArrayList<Reserve> list = new ArrayList<Reserve>();
-		String query = "select * from (select * from reserve join (select Time_code,time from time) using (time_code)) join thema using(thema_code)";
+		String query = "select * from (select * from reserve join (select Time_code,time from time) using (time_code)) join thema using(thema_code) where 1=1";
+		
+		if(reserveNo != null) {
+			query += " and RESERVE_NO = ?";
+		}
+		
+		System.out.println(query);
+		
 		try {
 			pstmt = conn.prepareStatement(query);
+			
+			if(reserveNo != null) {
+				System.out.println("reserveNo:::::::::"+reserveNo);
+				pstmt.setInt(1, Integer.parseInt(reserveNo));
+			}
+			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				Reserve r = new Reserve();
@@ -89,6 +102,39 @@ public class ReserveDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return dateList;
+	}
+
+	public ArrayList<Reserve> selectDateReserveInfo(Connection conn, String selectDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Reserve> selectList = new ArrayList<Reserve>();
+		String query = "select * from (select * from reserve join (select Time_code,time from time) using (time_code)) join thema using(thema_code) where play_date = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, selectDate);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Reserve r = new Reserve();
+				r.setReserveNo(rset.getInt("reserve_no"));
+				r.setThemaCode(rset.getString("thema_code"));
+				r.setReserveName(rset.getString("reserve_name"));
+				r.setReservephone(rset.getString("reserve_phone"));
+				r.setReserveAmount(rset.getInt("reserve_amount"));
+				r.setReservePay(rset.getInt("reserve_pay"));
+				r.setReserveDate(rset.getString("reserve_date"));
+				r.setPlayDate(rset.getString("play_date"));
+				r.setTime(rset.getString("time"));
+				r.setPeopleMax(rset.getInt("people_max"));
+				selectList.add(r);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return selectList;
 	}
 
 }

@@ -132,4 +132,16 @@ public class Reserve {
 		this.peopleMax = peopleMax;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Reserve [reserveNo=" + reserveNo + ", themaCode=" + themaCode + ", reserveDate=" + reserveDate
+				+ ", reservePay=" + reservePay + ", reserveName=" + reserveName + ", reserveMail=" + reserveMail
+				+ ", reservephone=" + reservephone + ", reserveAmount=" + reserveAmount + ", reserveState="
+				+ reserveState + ", reserveEtc=" + reserveEtc + ", playDate=" + playDate + ", time=" + time
+				+ ", time_code=" + time_code + ", peopleMin=" + peopleMin + ", peopleMax=" + peopleMax + "]";
+	}
+	
+	
+	
 }
