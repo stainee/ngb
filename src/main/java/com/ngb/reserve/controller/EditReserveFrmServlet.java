@@ -43,10 +43,10 @@ public class EditReserveFrmServlet extends HttpServlet {
 		ArrayList<Reserve> list = service.selectAllReserve(r.getReserveNo()+"");
 		//select
 		
-		
+		System.out.println("dfdfd"+list);
 		Reserve result = null;
 		
-		if(list != null && list.isEmpty()) {
+		if(list != null && !list.isEmpty()) {
 			result = list.get(0);
 		}
 		
