@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.reserve.model.vo.Reserve;
+import com.ngb.reserve.model.vo.reserveMngr;
 import com.ngb.thema.model.vo.Thema;
 
 import common.JDBCTemplate;
@@ -29,13 +30,11 @@ public class ReserveDao {
 				r.setThemaCode(rset.getString("thema_code"));
 				r.setThemaName(rset.getString("thema_name"));
 				r.setReserveName(rset.getString("reserve_name"));
-				r.setReservephone(rset.getString("reserve_phone"));
+				r.setReservePhone(rset.getString("reserve_phone"));
 				r.setReserveAmount(rset.getInt("reserve_amount"));
 				r.setReservePay(rset.getInt("reserve_pay"));
 				r.setReserveDate(rset.getString("reserve_date"));
 				r.setPlayDate(rset.getString("play_date"));
-				r.setTime(rset.getString("time"));
-				r.setPeopleMax(rset.getInt("people_max"));
 				list.add(r);
 			}
 		} catch (SQLException e) {
@@ -56,7 +55,7 @@ public class ReserveDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, r.getReserveName());
-			pstmt.setString(2, r.getReservephone());
+			pstmt.setString(2, r.getReservePhone());
 			pstmt.setInt(3, r.getReserveAmount());
 			pstmt.setInt(4, r.getReserveNo());
 			result = pstmt.executeUpdate();
@@ -94,29 +93,69 @@ public class ReserveDao {
 		return dateList;
 	}
 
-	public ArrayList<Reserve> selectDateReserveInfo(Connection conn, String strDate) {
+	public ArrayList<reserveMngr> selectDateReserveInfo(Connection conn, String strDate) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<Reserve> selectList = new ArrayList<Reserve>();
-		String query = "select * from (select time_code, time, thema_name, people_max from thema left join time using(thema_code)) left join reserve using(time_code) where to_char(play_date,'yy-mm-dd') = ?";
+		ArrayList<reserveMngr> selectList = new ArrayList<reserveMngr>();
+		String query = "";
+		 query +=" SELECT * FROM"; 
+		 query +=" (SELECT "; 
+		 query +="     C.RESERVE_NO,";
+		 query +="     A.THEMA_CODE,"; 
+		 query +="     A.TIME_CODE,"; 
+		 query +="     A.TIME,"; 
+		 query +="     B.THEMA_NAME,"; 
+		 query +="     C.RESERVE_NAME,"; 
+		 query +="     C.RESERVE_PHONE,"; 
+		 query +="     to_char(C.RESERVE_AMOUNT) ||'/'|| to_char(people_max) AS RESERVE_AMOUNT,"; 
+		 query +="     to_char(C.RESERVE_PAY) AS RESERVE_PAY,"; 
+		 query +="     to_char(C.RESERVE_DATE,'yy-mm-dd HH24:SS') AS RESERVE_DATE,"; 
+		 query +="     to_char(C.PLAY_DATE) AS PLAY_DATE,"; 
+		 query +="     '예약 불가' AS RESERVE_STATE"; 
+		 query +="  FROM TIME A"; 
+		 query +="  INNER JOIN THEMA B ON (A.THEMA_CODE = B.THEMA_CODE)"; 
+		 query +="  LEFT OUTER JOIN RESERVE C ON (C.THEMA_CODE = C.THEMA_CODE AND A.TIME_CODE = C.TIME_CODE)"; 
+		 query +="  WHERE TO_CHAR(C.PLAY_DATE,'yy-mm-dd') = ?"; 
+		 query +="  "; 
+		 query +="  union "; 
+		 query +="  "; 
+		 query +="  SELECT "; 
+		 query +="     C.RESERVE_NO,";
+		 query +="     A.THEMA_CODE,"; 
+		 query +="     A.TIME_CODE,"; 
+		 query +="     A.TIME,"; 
+		 query +="     B.THEMA_NAME,"; 
+		 query +="     '-' as RESERVE_NAME,"; 
+		 query +="     '-' as RESERVE_PHONE,"; 
+		 query +="     '-' as RESERVE_AMOUNT,"; 
+		 query +="     '-' as RESERVE_PAY,"; 
+		 query +="     '-' as RESERVE_DATE,"; 
+		 query +="     '-' as PLAY_DATE,"; 
+		 query +="     '예약가능' as RESERVE_STATE"; 
+		 query +="  FROM TIME A"; 
+		 query +="  INNER JOIN THEMA B ON (A.THEMA_CODE = B.THEMA_CODE)"; 
+		 query +="  LEFT OUTER JOIN RESERVE C ON (C.THEMA_CODE = C.THEMA_CODE AND A.TIME_CODE = C.TIME_CODE)"; 
+		 query +="  WHERE TO_CHAR(C.PLAY_DATE,'yy-mm-dd') <> ? or C.PLAY_DATE is null)";
+		 query +="  order by 2, 4";
 		try {
 			pstmt = conn.prepareStatement(query);
+			System.out.println(query);
 			pstmt.setString(1, strDate);
+			pstmt.setString(2, strDate);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				Reserve r = new Reserve();
+				reserveMngr r = new reserveMngr();
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
 				r.setThemaName(rset.getString("thema_name"));
 				r.setReserveName(rset.getString("reserve_name"));
 				r.setReservephone(rset.getString("reserve_phone"));
-				r.setReserveAmount(rset.getInt("reserve_amount"));
-				r.setReservePay(rset.getInt("reserve_pay"));
+				r.setReserveAmount(rset.getString("reserve_amount"));
+				r.setReservePay(rset.getString("reserve_pay"));
 				r.setReserveDate(rset.getString("reserve_date"));
 				r.setPlayDate(rset.getString("play_date"));
 				r.setTimeCode(rset.getString("time_code"));
 				r.setTime(rset.getString("time"));
-				r.setPeopleMax(rset.getInt("people_max"));
 				selectList.add(r);
 			}
 		} catch (SQLException e) {
@@ -145,13 +184,11 @@ public class ReserveDao {
 				result.setThemaCode(rset.getString("thema_code"));
 				result.setThemaName(rset.getString("thema_name"));
 				result.setReserveName(rset.getString("reserve_name"));
-				result.setReservephone(rset.getString("reserve_phone"));
+				result.setReservePhone(rset.getString("reserve_phone"));
 				result.setReserveAmount(rset.getInt("reserve_amount"));
 				result.setReservePay(rset.getInt("reserve_pay"));
 				result.setReserveDate(rset.getString("reserve_date"));
 				result.setPlayDate(rset.getString("play_date"));
-				result.setTime(rset.getString("time"));
-				result.setPeopleMax(rset.getInt("people_max"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -191,6 +228,38 @@ public class ReserveDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return timeTable;
+	}
+
+	public Reserve selectOneReserve(Connection conn, String themaCode, int timeCode, String playDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from reserve where thema_code=? and time_code=? and to_char(play_date, 'yy-mm-dd')=?";
+		Reserve r = new Reserve();
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, themaCode);
+			pstmt.setInt(2, timeCode);
+			pstmt.setString(3, playDate);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				r.setReserveNo(rset.getInt("reserve_no"));
+				r.setThemaCode(rset.getString("thema_code"));
+				r.setThemaName(rset.getString("thema_name"));
+				r.setReserveName(rset.getString("reserve_name"));
+				r.setReservePhone(rset.getString("reserve_phone"));
+				r.setReserveAmount(rset.getInt("reserve_amount"));
+				r.setReservePay(rset.getInt("reserve_pay"));
+				r.setReserveDate(rset.getString("reserve_date"));
+				r.setPlayDate(rset.getString("play_date"));
+			}
+		}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return r;
 	}
 }
 
