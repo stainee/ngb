@@ -192,6 +192,38 @@ public class ReserveDao {
 		}
 		return timeTable;
 	}
+
+	public Reserve selectOneReserve(Connection conn, String themaCode, int timeCode, String playDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from reserve where thema_code=? and time_code=? and to_char(play_date, 'yy-mm-dd')=?";
+		Reserve r = new Reserve();
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, themaCode);
+			pstmt.setInt(2, timeCode);
+			pstmt.setString(3, playDate);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				r.setReserveNo(rset.getInt("reserve_no"));
+				r.setThemaCode(rset.getString("thema_code"));
+				r.setThemaName(rset.getString("thema_name"));
+				r.setReserveName(rset.getString("reserve_name"));
+				r.setReservePhone(rset.getString("reserve_phone"));
+				r.setReserveAmount(rset.getInt("reserve_amount"));
+				r.setReservePay(rset.getInt("reserve_pay"));
+				r.setReserveDate(rset.getString("reserve_date"));
+				r.setPlayDate(rset.getString("play_date"));
+			}
+		}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return r;
+	}
 }
 
 

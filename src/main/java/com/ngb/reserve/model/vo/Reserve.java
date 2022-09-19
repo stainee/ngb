@@ -10,15 +10,13 @@ public class Reserve {
 	private int reservePay;
 	private String reserveName;
 	private String reserveMail;
-	private String reservephone;
+	private String reservePhone;
 	private int reserveAmount;
 	private int reserveState;
 	private String reserveEtc;
 	private String playDate;
-	private String time;
 	private String timeCode;
-	private int peopleMin;
-	private int peopleMax;
+
 	
 	public Reserve() {
 		super();
@@ -34,12 +32,11 @@ public class Reserve {
 		this.reservePay = reservePay;
 		this.reserveName = reserveName;
 		this.reserveMail = reserveMail;
-		this.reservephone = reservephone;
+		this.reservePhone = reservephone;
 		this.reserveAmount = reserveAmount;
 		this.reserveState = reserveState;
 		this.reserveEtc = reserveEtc;
 		this.playDate = playDate;
-		this.time = time;
 		this.timeCode = timeCode;
 	}
 	public int getReserveNo() {
@@ -53,6 +50,12 @@ public class Reserve {
 	}
 	public void setThemaCode(String themaCode) {
 		this.themaCode = themaCode;
+	}
+	public String getThemaName() {
+		return themaName;
+	}
+	public void setThemaName(String themaName) {
+		this.themaName = themaName;
 	}
 	public String getReserveDate() {
 		return reserveDate;
@@ -78,11 +81,11 @@ public class Reserve {
 	public void setReserveMail(String reserveMail) {
 		this.reserveMail = reserveMail;
 	}
-	public String getReservephone() {
-		return reservephone;
+	public String getReservePhone() {
+		return reservePhone;
 	}
-	public void setReservephone(String reservephone) {
-		this.reservephone = reservephone;
+	public void setReservePhone(String reservePhone) {
+		this.reservePhone = reservePhone;
 	}
 	public int getReserveAmount() {
 		return reserveAmount;
@@ -108,47 +111,14 @@ public class Reserve {
 	public void setPlayDate(String playDate) {
 		this.playDate = playDate;
 	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
 	public String getTimeCode() {
 		return timeCode;
 	}
 	public void setTimeCode(String timeCode) {
 		this.timeCode = timeCode;
 	}
-	public int getPeopleMin() {
-		return peopleMin;
-	}
-	public void setPeopleMin(int peopleMin) {
-		this.peopleMin = peopleMin;
-	}
-	public int getPeopleMax() {
-		return peopleMax;
-	}
-	public void setPeopleMax(int peopleMax) {
-		this.peopleMax = peopleMax;
-	}
 	
-	public String getThemaName() {
-		return themaName;
-	}
-	public void setThemaName(String themaName) {
-		this.themaName = themaName;
-	}
-
 	
-	@Override
-	public String toString() {
-		return "Reserve [reserveNo=" + reserveNo + ", themaCode=" + themaCode + ", reserveDate=" + reserveDate
-				+ ", reservePay=" + reservePay + ", reserveName=" + reserveName + ", reserveMail=" + reserveMail
-				+ ", reservephone=" + reservephone + ", reserveAmount=" + reserveAmount + ", reserveState="
-				+ reserveState + ", reserveEtc=" + reserveEtc + ", playDate=" + playDate + ", time=" + time
-				+ ", time_code=" + timeCode + ", peopleMin=" + peopleMin + ", peopleMax=" + peopleMax + "]";
-	}
 	
 	
 	

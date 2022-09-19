@@ -67,4 +67,11 @@ public class ReserveService {
 		return timeTable;
 	}
 
+	public Reserve searchOneReserve(String themaCode, int timeCode, String playDate) {
+		Connection conn = JDBCTemplate.getConnection();
+		Reserve reserve = dao.selectOneReserve(conn,themaCode, timeCode, playDate);
+		JDBCTemplate.close(conn);
+		return reserve;
+	}
+
 }
