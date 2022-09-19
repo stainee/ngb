@@ -18,10 +18,10 @@ public class ReserveService {
 //		this.dao = dao;
 	}
 
-	public ArrayList<Reserve> selectAllReserve(String reserveNo) {
+	public ArrayList<Reserve> selectAllReserve() {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Reserve> list = dao.selectAllReserve(conn,reserveNo);
-		
+		ArrayList<Reserve> list = dao.selectAllReserve(conn);
+		JDBCTemplate.close(conn);
 		return list;
 	}
 
@@ -46,12 +46,25 @@ public class ReserveService {
 		return dateList;
 	}
 
-	public ArrayList<Reserve> selectDateReserveInfo(String selectDate) {
+	public ArrayList<Reserve> selectDateReserveInfo(String strDate) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Reserve> selectList = dao.selectDateReserveInfo(conn, selectDate);
+		ArrayList<Reserve> selectList = dao.selectDateReserveInfo(conn, strDate);
 		JDBCTemplate.close(conn);
 		return selectList;
+	}
+
+	public Reserve selectReserveEdit(int reserveNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Reserve result = dao.selectReserveEdit(conn, reserveNo);
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public ArrayList<Thema> timeTable() {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<Thema> timeTable = dao.timeTable(conn);
+		return timeTable;
 	}
 
 }

@@ -2,7 +2,10 @@ package com.ngb.reserve.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +37,22 @@ public class SelectDateReserveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
 		String selectDate = request.getParameter("select");
+		SimpleDateFormat dtFormat = new SimpleDateFormat("yy-mm-dd");
+		Date dateForm;
+		String strDate= "";
+		try {
+			
+			dateForm = dtFormat.parse(selectDate);
+			SimpleDateFormat newDtFormat = new SimpleDateFormat("yy-mm-dd");
+			strDate = newDtFormat.format(dateForm);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		ReserveService service = new ReserveService();
-		
-		ArrayList<Reserve> selectList = service.selectDateReserveInfo(selectDate);
+		ArrayList<Reserve> selectList = service.selectDateReserveInfo(strDate);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");

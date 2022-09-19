@@ -13,6 +13,8 @@ public class Thema {
 	private int themaPrice;
 	private String themaFilepath;
 	private int themaTime;
+	private String timeCode;
+	private String time;
 	public Thema() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -106,4 +108,16 @@ public class Thema {
 		this.themaTime = themaTime;
 	}
 
+	public String getTimeCode() {
+		return timeCode;
+	}
+	public void setTimeCode(String timeCode) {
+		this.timeCode = timeCode;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 }

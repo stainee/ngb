@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Reserve {
 	private int reserveNo;
 	private String themaCode;
+	private String themaName;
 	private String reserveDate;
 	private int reservePay;
 	private String reserveName;
@@ -15,7 +16,7 @@ public class Reserve {
 	private String reserveEtc;
 	private String playDate;
 	private String time;
-	private int time_code;
+	private String timeCode;
 	private int peopleMin;
 	private int peopleMax;
 	
@@ -39,7 +40,7 @@ public class Reserve {
 		this.reserveEtc = reserveEtc;
 		this.playDate = playDate;
 		this.time = time;
-		this.time_code = time_code;
+		this.timeCode = timeCode;
 	}
 	public int getReserveNo() {
 		return reserveNo;
@@ -113,11 +114,11 @@ public class Reserve {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public int getTime_code() {
-		return time_code;
+	public String getTimeCode() {
+		return timeCode;
 	}
-	public void setTime_code(int time_code) {
-		this.time_code = time_code;
+	public void setTimeCode(String timeCode) {
+		this.timeCode = timeCode;
 	}
 	public int getPeopleMin() {
 		return peopleMin;
@@ -132,6 +133,13 @@ public class Reserve {
 		this.peopleMax = peopleMax;
 	}
 	
+	public String getThemaName() {
+		return themaName;
+	}
+	public void setThemaName(String themaName) {
+		this.themaName = themaName;
+	}
+
 	
 	@Override
 	public String toString() {
@@ -139,7 +147,7 @@ public class Reserve {
 				+ ", reservePay=" + reservePay + ", reserveName=" + reserveName + ", reserveMail=" + reserveMail
 				+ ", reservephone=" + reservephone + ", reserveAmount=" + reserveAmount + ", reserveState="
 				+ reserveState + ", reserveEtc=" + reserveEtc + ", playDate=" + playDate + ", time=" + time
-				+ ", time_code=" + time_code + ", peopleMin=" + peopleMin + ", peopleMax=" + peopleMax + "]";
+				+ ", time_code=" + timeCode + ", peopleMin=" + peopleMin + ", peopleMax=" + peopleMax + "]";
 	}
 	
 	

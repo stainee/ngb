@@ -33,38 +33,12 @@ public class EditReserveFrmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Reserve r = new Reserve();
-		r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")+""));
-		
-		
-		System.out.println("reserveNo :::: "+r.getReserveNo());
+		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
 		
 		ReserveService service = new ReserveService();
-		ArrayList<Reserve> list = service.selectAllReserve(r.getReserveNo()+"");
-		//select
+		Reserve result = service.selectReserveEdit(reserveNo);
 		
-		System.out.println("dfdfd"+list);
-		Reserve result = null;
-		
-		if(list != null && !list.isEmpty()) {
-			result = list.get(0);
-		}
-		
-		
-		System.out.println("=======================");
-		System.out.println(result);
-		System.out.println("=======================");
-		
-//		r.setTime(request.getParameter("time"));
-//		r.setThemaCode(request.getParameter("thema"));
-//		r.setReserveName(request.getParameter("name"));
-//		r.setReservephone(request.getParameter("phone"));
-//		r.setReserveAmount(Integer.parseInt(request.getParameter("amount")));
-//		r.setReservePay(Integer.parseInt(request.getParameter("pay")));
-//		r.setReserveDate(request.getParameter("playTime"));
-//		r.setReserveState(Integer.parseInt(request.getParameter("reserveState")));
-		
-		request.setAttribute("r", result);
+		request.setAttribute("result", result);
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/editReserveFrm.jsp");
 		view.forward(request, response);
 		
