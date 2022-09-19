@@ -112,33 +112,5 @@ public class ThemaDao {
 		return t;
 	}
 	
-	//테마 하나의 가격 조회
-	public Thema selectOneThemaCode(Connection conn, int index) {
-		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Thema t = new Thema();
-		String query = "select thema_code from (select rownum as num, thema_price, thema_code from thema) t where t.num=?";
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, index+1);
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				t.setThemaCode(rset.getString("thema_code"));
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally{
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		
-		return t;
-	}
-	
-
-
 
 }

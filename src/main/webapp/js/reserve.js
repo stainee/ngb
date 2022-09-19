@@ -15,22 +15,24 @@ function dateFormat(date) {
     return date.getFullYear() + '-' + month + '-' + day + ' ';
 }
 
-//다음 스텝으로 전환
-$(".next").on("click", function(){
-    const length = $(".tab-menu .tabstep").length;
-    idx++;
-    for(let i=0; i<length; i++){
-        $(".tab-menu .tabstep").eq(i).removeClass("tabstep-now");
-    }
-    for(let k=0; k<=idx; k++){
-        $(".tab-menu .tabstep").eq(k).addClass("tabstep-now");
-    }
-    
-    nextTab();
-    //예약정보 set
-    if(idx==1){ 
+//첫번째 다음 버튼
+$("#tab1NextBtn").on("click", function(){
+    //예약정보(테마,시간)을 입력했는지 확인
+    let check = checkReserveInfo();
+    if(check == true){
+        //예약정보 set
         setReserveInfo();
+        //다음 스텝으로 넘어간다
+        nextStep();
     }
+})
+
+
+//두번째 다음 버튼
+$("#tab2NextBtn").on("click", function(){
+    //이름, 전화번호, 인원을 선택했는지 확인
+    thema = getThemaInfo(thema_code);
+    checkReserveDetailInfo(thema);
 })
 
 //이전 스텝으로 전환
@@ -47,6 +49,34 @@ $(".prev").on("click", function(){
         prevTab();
     }
 })
+
+// 테마 버튼을 눌렀을시 효과
+$(".themaList li").on("click",function(){
+    //테마 버튼마다 이벤트 부여
+    showthemaList(this);
+    //테마 버튼마다 테마 정보 조회
+    thema = getThemaInfo(thema_code);
+})
+
+
+
+/*함수들*/
+
+
+
+// 다음 스텝 전환
+function nextStep(){
+    const length = $(".tab-menu .tabstep").length;
+    idx++;
+    for(let i=0; i<length; i++){
+        $(".tab-menu .tabstep").eq(i).removeClass("tabstep-now");
+    }
+    for(let k=0; k<=idx; k++){
+        $(".tab-menu .tabstep").eq(k).addClass("tabstep-now");
+    }
+
+    nextTab();
+}
 
 //다음 탭으로 display 속성 전환
 function nextTab(){
@@ -67,16 +97,6 @@ function prevTab(){
 }
 
 
-// 테마 버튼을 눌렀을시 효과
-$(".themaList li").on("click",function(){
-    //테마 버튼마다 이벤트 부여
-    showthemaList(this);
-    //테마 버튼마다 인원수 조회
-    
-})
-
-
-/*함수들*/
 function setReserveInfo(){
     //예약날짜
     $("#playDate").text(date);
@@ -91,26 +111,100 @@ function setReserveInfo(){
     $("#totalPrice").text(price+"원");
 }
 
-function getThemaInfo(themaCode){
-    const themaInfo = [];
-    const length = $(".themaList .li").length;
+//첫번째 스텝의 예약정보를 모두 입력했는지를 확인하는 메소드
+function checkReserveInfo(){
+    let themaSelect = false;
+    let timeSelect = false;
 
-    for(let th=0; th<length; th++){
-        let code = $(".themaList .li").eq(th).attr(id);
-        let price = $(".themaList .li").eq(th).attr(price);
-        let peopleMin = $(".themaList .li").eq(th).attr(min);
-        let peopleMax = $(".themaList .li").eq(th).attr(max);
-        thema ={}
-        thema[code] = price;
-        thema[code] = peopleMin;
-        thema[code] = peopleMax;
-        themainfo.push(thema);
+    themaSelect = $(".themaList li").hasClass("select");
+    timeSelect = $(".timeList li").hasClass("select");
+
+    if(themaSelect == false){
+        alert("테마를 선택해주세요");
+        return false;
     }
-    console.log(themainfo);
+    else if(timeSelect == false){
+        alert("시간을 선택해주세요");
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 
+//두번째 스텝의 세부 예약정보를 모두 입력했는지를 확인하는 메소드
+function checkReserveDetailInfo(thema){
+    let name = true;
+    let people = 0; //정상일 경우 default=0
+    let phone = true;
+
+    let nameValue = $("input[name=reserveName]").val();
+    let phoneValue = $("input[name=reservePhone]").val();
+    let peopleValue = $("select[name=reserveAmount]").val();
+    
+    //전화번호가 비지 않았고 11자리의 숫자인지 유효성 검사
+    const phoneReg = /^[0-9]{11}$/;
+    if(phoneValue !=""){
+        if (!phoneReg.test(phoneValue)) { //11자리의 숫자인지 유효성 검사
+            phone = false;
+        }
+    }else{ //전화번호가 비었으면
+        phone = false;
+    }
+
+    //이름이 비었으면
+    if(nameValue==""){
+        name=false;
+    }
+    //인원이 작거나 큰지 검사
+    if(peopleValue>thema.peopleMax){//인원이 최대인원보다 크면
+        people =1;
+    }else if(peopleValue<thema.peopleMin){//인원이 최소인원보다 작으면
+        people =-1;
+    }
+
+    if(name==true && people==0 && phone==true){
+        nextStep();
+    }else{
+        if(name==false){
+            alert("이름을 입력하여 주십시오");
+        }else if(phone==false){
+            alert("정확한 전화번호를 입력하여 주십시오");
+        }else if(people!=0){
+            if(people==1){
+                alert("최대 수용 가능 인원을 초과하였습니다");
+            }else{
+                alert("최소 등록 인원을 충족하지 못하였습니다");
+            }
+        }
+    }
+
+}
+function getThemaInfo(themaCode){
+    thema ={}
+    const length = $(".themaList li").length;
+    for(let th=0; th<length; th++){
+        let code = $(".themaList li").eq(th).attr("id");
+        if(themaCode == code){
+            let price = $(".themaList li").eq(th).attr("price");
+            let peopleMin = $(".themaList li").eq(th).attr("min");
+            let peopleMax = $(".themaList li").eq(th).attr("max");
+            thema = {themaCode: code,
+                    price : price,
+                    peopleMin : peopleMin,
+                    peopleMax : peopleMax}
+            break;
+        }
+    }
+    
+    return thema;
+}   
+
 function showthemaList(thisObj){
+    //테마 인덱스 가져오기
     thema_idx = $(".themaList li").index(thisObj);
+    //테마 코드 가져오기
+    thema_code = $(thisObj).attr("id");
     const length = $(".themaList li").length;
     if(!$(thisObj).hasClass("thema-lock")){
         for(let k=0; k<length; k++){
@@ -119,76 +213,65 @@ function showthemaList(thisObj){
         $(".themaList li").eq(thema_idx).addClass("select");
     }
     
-    //테마에 맞는 가격을 가져오기
+    let price = getThemaInfo(thema_code).price;
+    $("#themaPrice").text(price +"원");
+
+    //테마에 맞는 시간 가져오기
     $.ajax({
-        url: "/getThemaCode.do",
-        type:"post",
-        data: {idx : thema_idx},
-        dataType:"json",
-        success: function(thema) {
-            thema_code = thema.themaCode;
-            getThemaInfo();
-            // let price = getThemaPrice(themaCode);
-            // $("#themaPrice").text(thema.themaPrice +"원");
-
-            //테마에 맞는 시간 가져오기
+        url: "/getThemaTime.do",
+        type: "post",
+        data:{themaCode : thema_code,
+                date: date},
+        dataType :"json",
+        success: function (list){
+            //이미 예약된 테마를 가져와 비교하여 list에 추가
             $.ajax({
-                url: "/getThemaTime.do",
-                type: "post",
+                url:"/getReserveTime.do",
+                type:"post",
                 data:{themaCode : thema_code,
-                        date: date},
-                dataType :"json",
-                success: function (list){
-                    //이미 예약된 테마를 가져와 비교하여 list에 추가
-                    $.ajax({
-                        url:"/getReserveTime.do",
-                        type:"post",
-                        data:{themaCode : thema_code,
-                            date : date},
-                        dataType : "json",
-                        success : function(reserveList){
-                            lock_list = reserveList;
-                            time_list = list;
-                            
-                            $(".timeList").empty();
-                            //lock_list에 존재 유무 찾기
-                            for(let t=0; t<time_list.length; t++){
-                                let searchIndex = -1;
-                                for(let l=0; l<lock_list.length; l++){
-                                    if(lock_list[l].timeCode == time_list[t].timeCode){
-                                        searchIndex = t;
-                                        break;
-                                    }
-                                }
-                                //lock_list 에 있으면 lock 된 목록을 표시, 아니면 일반 리스트를 표시한다.
-                                if(searchIndex ==-1){
-                                    $(".timeList").append("<li name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
-                                }else{ 
-                                    $(".timeList").append("<li class='time-lock' name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
-                                }
-                            }
-                            //시간 리스트 눌렀을시 효과
-                            $(".timeList li").on("click",function(){
-                                const length = $(".timeList li").length;
-                                const idx = $(".timeList li").index(this);
-                                if(!$(this).hasClass("time-lock")){
-                                for(let k=0; k<length; k++){
-                                    $(".timeList li").eq(k).removeClass("select");
-                                }
-                                $(".timeList li").eq(idx).addClass("select");
-                            }
-    
-                            })
-                        
-
-                        }
-                    }) // ajax
+                    date : date},
+                dataType : "json",
+                success : function(reserveList){
+                    lock_list = reserveList;
+                    time_list = list;
                     
-                }
-            }); //ajax 
+                    $(".timeList").empty();
+                    //lock_list에 존재 유무 찾기
+                    for(let t=0; t<time_list.length; t++){
+                        let searchIndex = -1;
+                        for(let l=0; l<lock_list.length; l++){
+                            if(lock_list[l].timeCode == time_list[t].timeCode){
+                                searchIndex = t;
+                                break;
+                            }
+                        }
+                        //lock_list 에 있으면 lock 된 목록을 표시, 아니면 일반 리스트를 표시한다.
+                        if(searchIndex ==-1){
+                            $(".timeList").append("<li name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
+                        }else{ 
+                            $(".timeList").append("<li class='time-lock' name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
+                        }
+                    }
+                    //시간 리스트 눌렀을시 효과
+                    $(".timeList li").on("click",function(){
+                        const length = $(".timeList li").length;
+                        const idx = $(".timeList li").index(this);
+                        if(!$(this).hasClass("time-lock")){
+                        for(let k=0; k<length; k++){
+                            $(".timeList li").eq(k).removeClass("select");
+                        }
+                        $(".timeList li").eq(idx).addClass("select");
+                    }
 
+                    })
+                
+
+                }
+            }) // ajax
+            
         }
-    });
+    }); //ajax 
+
 }
 
 

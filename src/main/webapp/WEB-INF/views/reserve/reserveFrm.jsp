@@ -63,7 +63,7 @@
 				 	</table>
 				 	<div class="btn-wrap">
 				    	<button class="prev btn4">이전</button>
-				     	<button class="next btn2">다음</button>
+				     	<button class="next btn2" id="tab1NextBtn">다음</button>
 			     	</div>
 		    	</div>
 		    	<div class="tab tab2" style="display:none;">
@@ -111,7 +111,7 @@
 				 	<div class="btn-wrap">
 				 		
 				    	<button class="prev btn4">이전</button>
-				    	<button class="next btn2">다음</button>
+				    	<button class="next btn2" id="tab2NextBtn">다음</button>
 			     	</div>
 		    	</div>
 		    	<div class="tab tab3" style="display:none;">
