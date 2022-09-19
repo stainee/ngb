@@ -32,39 +32,49 @@ $("#tab1NextBtn").on("click", function(){
 
 //두번째 다음 버튼
 $("#tab2NextBtn").on("click", function(){
+    console.log(1);
+})
+
+//신용카드로 결제
+$("#credit").on("click",function(){
     //이름, 전화번호, 인원을 선택했는지 확인
     thema = getThemaInfo(thema_code);
     let check = checkReserveDetailInfo(thema);
     if(check==true){
         setReserveInfo();
-        nextStep();
+        getReserveInfo();
+        console.log(reserve);
+        $.ajax({
+            url:"/checkReserve.do",
+            type:"post",
+            data:{
+                thema_code: reserve.thema_code,
+                time_code: reserve.time_code,
+                play_date: reserve.play_date
+            },
+            dataType : "json",
+            success : function(){
+                $.ajax({
+                    
+                    // url:"/reserve.do",
+                    // type:"post",
+                    // data:{
+                    //     thema_code: reserve.thema_code,
+                    //     time_code: reserve.time_code,
+                    //     reserve_pay : reserve.reserve_pay,
+                    //     reserve_name : reserve.reserve_name,
+                    //     reserve_mail : reserve.reserve_mail,
+                    //     reserve_phone : reserve.reserve_phone,
+                    //     reserve_amount : reserve.peopleAmount,
+                    //     play_date: reserve.play_date,
+                    //     thema_name: reserve.thema_name
+                    // }
+                })
+            }
+        })
     }
     
-})
-
-//신용카드로 결제
-$("#credit").on("click",function(){
-    getReserveInfo();
-    console.log(reserve.thema_code);
-    $.ajax({
-        url:"/reserve.do",
-        type:"post",
-        data:{
-            thema_code: reserve.thema_code,
-            time_code: reserve.time_code,
-            reserve_date : new Date(),
-            reserve_pay : reserve.totalPrice,
-            reserve_name : reserve.name,
-            reserve_mail : reserve.email,
-            reserve_phone : reserve.phone,
-            reserve_amount : reserve.peopleAmount,
-            play_date: reserve.play_date,
-            thema_name: reserve.reserveThemaName
-        },
-        dataType : "json",
-        success : function(){
-        }
-    })
+    
 })
 
 //이전 스텝으로 전환
@@ -139,10 +149,12 @@ function setReserveInfo(){
     //예약날짜
     $(".playDate").text(date);
     //예약시간Code(DB Code)
-    const time_code = $(".timeList .select").attr("timeCode");
+    time_code = $(".timeList .select").attr("timeCode");
     //예약시간
     const reserveTime = $(".timeList .select").text();
     $(".playTime").text(reserveTime);
+    //예약테마Code 
+    thema_code = $(".themaList .select").attr("id");
     //예약테마
     const reserveThemaName = $(".themaList .select").text();
     $(".themaName").text(reserveThemaName);
@@ -157,16 +169,10 @@ function setReserveInfo(){
 }
 
 function getReserveInfo(){
-
-    // //예약날짜
-    // const playDate = $(".playDate").text(date);
-    // //예약시간Code(DB Code)
-    // const time_code = $(".timeList .select").attr("timeCode");
-
     //예약테마
-    const reserveThemaName = $(".themaList .select").text();
+    const reserveThemaName = $(".themaList .select").text().trim();
     //총 결제금액
-    const totalPrice = $(".totalPrice").text($(".totalPrice").text().split("원")[0]+"원");
+    const totalPrice = $(".totalPrice").text().split("원")[0];
     //예약인원
     const peopleAmount = $("select[name=reserveAmount]").val();
     //이름
@@ -174,11 +180,10 @@ function getReserveInfo(){
     //전화번호
     const phone = $("input[name=reservePhone]").val();
     //이메일
-    const email = $("select[namme=reserveMail]").val();
+    const email = $("input[name=reserveMail]").val();
     reserve = {
         thema_code: thema_code,
         time_code: time_code,
-        reserve_date : new Date(),
         reserve_pay : totalPrice,
         reserve_name : name,
         reserve_mail : email,
@@ -220,7 +225,7 @@ function checkReserveDetailInfo(thema){
     let nameValue = $("input[name=reserveName]").val();
     let phoneValue = $("input[name=reservePhone]").val();
     let peopleValue = $("select[name=reserveAmount]").val();
-    let mailValue = $("select[namme=reserveMail]").val();
+    let mailValue = $("select[name=reserveMail]").val();
 
     //전화번호가 비지 않았고 11자리의 숫자인지 유효성 검사
     const phoneReg = /^[0-9]{11}$/;
@@ -244,13 +249,13 @@ function checkReserveDetailInfo(thema){
     }
 
     //이메일이 비었거나 유효하지 않으면
-    const mailReg = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    if(mailReg==""){
-        email = false;
-    }
-    if(!mailReg.test(mailValue)){
-        email = false;
-    }
+    // const mailReg = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    // if(mailReg==""){
+    //     email = false;
+    // }
+    // if(!mailReg.test(mailValue)){
+    //     email = false;
+    // }
 
     if(name==true && people==0 && phone==true && email==true){
         return true;
