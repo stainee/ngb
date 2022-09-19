@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.reserve.model.vo.Reserve;
-import com.ngb.reserve.model.vo.reserveMngr;
+import com.ngb.reserve.model.vo.ReserveMngr;
 import com.ngb.thema.model.vo.Thema;
 
 import common.JDBCTemplate;
@@ -93,10 +93,10 @@ public class ReserveDao {
 		return dateList;
 	}
 
-	public ArrayList<reserveMngr> selectDateReserveInfo(Connection conn, String strDate) {
+	public ArrayList<ReserveMngr> selectDateReserveInfo(Connection conn, String strDate) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<reserveMngr> selectList = new ArrayList<reserveMngr>();
+		ArrayList<ReserveMngr> selectList = new ArrayList<ReserveMngr>();
 		String query = "";
 		 query +=" SELECT * FROM"; 
 		 query +=" (SELECT "; 
@@ -144,12 +144,12 @@ public class ReserveDao {
 			pstmt.setString(2, strDate);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				reserveMngr r = new reserveMngr();
+				ReserveMngr r = new ReserveMngr();
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
 				r.setThemaName(rset.getString("thema_name"));
 				r.setReserveName(rset.getString("reserve_name"));
-				r.setReservephone(rset.getString("reserve_phone"));
+				r.setReservePhone(rset.getString("reserve_phone"));
 				r.setReserveAmount(rset.getString("reserve_amount"));
 				r.setReservePay(rset.getString("reserve_pay"));
 				r.setReserveDate(rset.getString("reserve_date"));
@@ -168,10 +168,10 @@ public class ReserveDao {
 		return selectList;
 	}
 
-	public Reserve selectReserveEdit(Connection conn, int reserveNo) {
+	public ReserveMngr selectReserveEdit(Connection conn, int reserveNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		Reserve result = new Reserve();
+		ReserveMngr result = new ReserveMngr();
 		
 		String query = "select * from (select * from reserve join (select Time_code,time from time) using (time_code)) join thema using(thema_code) where reserve_no = ?";
 		
@@ -185,8 +185,8 @@ public class ReserveDao {
 				result.setThemaName(rset.getString("thema_name"));
 				result.setReserveName(rset.getString("reserve_name"));
 				result.setReservePhone(rset.getString("reserve_phone"));
-				result.setReserveAmount(rset.getInt("reserve_amount"));
-				result.setReservePay(rset.getInt("reserve_pay"));
+				result.setReserveAmount(rset.getString("reserve_amount"));
+				result.setReservePay(rset.getString("reserve_pay"));
 				result.setReserveDate(rset.getString("reserve_date"));
 				result.setPlayDate(rset.getString("play_date"));
 			}
@@ -244,13 +244,13 @@ public class ReserveDao {
 			if(rset.next()) {
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
-				r.setThemaName(rset.getString("thema_name"));
 				r.setReserveName(rset.getString("reserve_name"));
 				r.setReservePhone(rset.getString("reserve_phone"));
 				r.setReserveAmount(rset.getInt("reserve_amount"));
 				r.setReservePay(rset.getInt("reserve_pay"));
 				r.setReserveDate(rset.getString("reserve_date"));
 				r.setPlayDate(rset.getString("play_date"));
+				//때에따라 themaName 추가해야할수도
 			}
 		}catch (SQLException e) {
 				// TODO Auto-generated catch block
