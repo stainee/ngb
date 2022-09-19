@@ -44,7 +44,7 @@ public class GetReserveTimeServlet extends HttpServlet {
 		Date dateForm;
 		String strDate="";
 		try {
-			dateForm = dtFormat.parse(date);			
+			dateForm = dtFormat.parse(date);
 			SimpleDateFormat newDtFormat = new SimpleDateFormat("yy-mm-dd");
 			strDate = newDtFormat.format(dateForm);
 		} catch (ParseException e) {

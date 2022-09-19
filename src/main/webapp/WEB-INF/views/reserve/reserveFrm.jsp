@@ -47,7 +47,8 @@
 					         <td>
 					         	<ul class="themaList">
 					         		<%for(Thema t : tList){%>
-					         		<li><%= t.getThemaName()%> </li>
+					         		<li id="<%=t.getThemaCode()%>" price="<%=t.getThemaPrice()%>" min="<%=t.getPeopleMin()%>" max="<%=t.getPeopleMax()%>">
+					         		<%= t.getThemaName()%> </li>
 					         		<% }%>
 					         		
 					         	</ul>
@@ -69,12 +70,12 @@
 		    		<table class="tbl2">
 					     <tr>
 					         <th>예약일</th>
-					         <td>YYYYMMDD</td>
+					         <td id="playDate">YYYYMMDD</td>
 					         <th colspan="2">인원선택</th>
 					     </tr>
 					     <tr>
 					     	<th>예약시간</th>
-					     	<td>18:00</td>
+					     	<td id="playTime">18:00</td>
 					     	<td rowspan="2" colspan="2">
 					     	<select name="reserveAmount">
 					     	<option>1</option>
@@ -83,13 +84,11 @@
 					     	<option>4</option>
 					     	<option>5</option>
 					     	<option>6</option>
-					     	<option>7</option>
-					     	<option>8</option>
 					     	</select></td>
 					     </tr>
 					     <tr>
 					     	<th>예약테마</th>
-					     	<td>당산탈출</td>
+					     	<td id="themaName">당산탈출</td>
 					     </tr>
 					     <tr>
 				 			<th>이름</th>
@@ -99,7 +98,7 @@
 				 		</tr>
 					     <tr>
 					     	<th>결제금액</th>
-					     	<td colspan="3"></td>
+					     	<td colspan="3" id="totalPrice"></td>
 					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>

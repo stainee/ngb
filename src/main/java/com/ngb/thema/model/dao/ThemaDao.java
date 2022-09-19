@@ -111,19 +111,19 @@ public class ThemaDao {
 		}
 		return t;
 	}
-
-	public Thema selectOneThemaPrice(Connection conn, int index) {
+	
+	//테마 하나의 가격 조회
+	public Thema selectOneThemaCode(Connection conn, int index) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Thema t = new Thema();
-		String query = "select thema_code, thema_price from (select rownum as num, thema_price, thema_code from thema) t where t.num=?";
+		String query = "select thema_code from (select rownum as num, thema_price, thema_code from thema) t where t.num=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, index+1);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				t.setThemaPrice(rset.getInt("thema_price"));
 				t.setThemaCode(rset.getString("thema_code"));
 				
 			}
@@ -137,6 +137,8 @@ public class ThemaDao {
 		
 		return t;
 	}
+	
+
 
 
 }

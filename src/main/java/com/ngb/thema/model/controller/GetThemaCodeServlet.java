@@ -16,14 +16,14 @@ import com.ngb.thema.service.ThemaService;
 /**
  * Servlet implementation class GetThemaTime
  */
-@WebServlet("/getThemaPrice.do")
-public class GetThemaPriceServlet extends HttpServlet {
+@WebServlet("/getThemaCode.do")
+public class GetThemaCodeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetThemaPriceServlet() {
+    public GetThemaCodeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class GetThemaPriceServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		int themaIdx = Integer.parseInt(request.getParameter("idx"));
 		ThemaService service = new ThemaService();
-		Thema t = service.getThemaPrice(themaIdx);
+		Thema t = service.getThemaCode(themaIdx);
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		Gson g = new Gson();

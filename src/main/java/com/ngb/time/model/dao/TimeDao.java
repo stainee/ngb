@@ -17,7 +17,7 @@ public class TimeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Time> list = new ArrayList<Time>();
-		String query = "select time from thema left join time using (thema_code) where thema_code= ?";
+		String query = "select time,time_code from thema left join time using (thema_code) where thema_code= ? order by time_code asc";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, themaCode);
@@ -25,6 +25,7 @@ public class TimeDao {
 			while(rset.next()) {
 				Time t = new Time();
 				t.setTime(rset.getString("time"));
+				t.setTimeCode(rset.getInt("time_code"));
 				list.add(t);
 			}
 		} catch (SQLException e) {
@@ -42,17 +43,18 @@ public class TimeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Time> list = new ArrayList<Time>();
-		String query = " select time from reserve r left join time t using (thema_code) "
+		String query = "select time, r.time_code from reserve r left join time t using (thema_code) "
 				+ "where thema_code= ? and to_char(play_date, 'yy-mm-dd') = ? and t.time_code=r.time_code";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "themaCode");
-			pstmt.setString(2, "date");
+			pstmt.setString(1, themaCode);
+			pstmt.setString(2, date);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				Time t = new Time();
 				t.setTime(rset.getString("time"));
+				t.setTimeCode(rset.getInt("time_code"));
 				list.add(t);
 			}
 		} catch (SQLException e) {
