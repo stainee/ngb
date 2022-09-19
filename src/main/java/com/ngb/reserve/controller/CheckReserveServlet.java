@@ -1,6 +1,10 @@
 package com.ngb.reserve.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ngb.reserve.model.vo.Reserve;
 import com.ngb.reserve.service.ReserveService;
 
@@ -34,10 +39,25 @@ public class CheckReserveServlet extends HttpServlet {
 		String themaCode = request.getParameter("thema_code");
 		int timeCode = Integer.parseInt(request.getParameter("time_code"));
 		String playDate = request.getParameter("play_date");
+		SimpleDateFormat dtFormat = new SimpleDateFormat("yy-mm-dd");
+		Date dateForm;
+		String strDate="";
+		try {
+			dateForm = dtFormat.parse(playDate);
+			SimpleDateFormat newDtFormat = new SimpleDateFormat("yy-mm-dd");
+			strDate = newDtFormat.format(dateForm);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		ReserveService service = new ReserveService();
 		Reserve checkReserve = service.searchOneReserve(themaCode, timeCode, playDate);
-		
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		if(checkReserve.getReserveNo()==0) {//조회된 결과가 없다는 뜻
+			//out으로 reserve여부를 보낸후 결제API, 이후 reserve Insert
+		}
 	}
 
 	/**

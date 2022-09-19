@@ -43,7 +43,6 @@ $("#credit").on("click",function(){
     if(check==true){
         setReserveInfo();
         getReserveInfo();
-        console.log(reserve);
         $.ajax({
             url:"/checkReserve.do",
             type:"post",
@@ -55,20 +54,20 @@ $("#credit").on("click",function(){
             dataType : "json",
             success : function(){
                 $.ajax({
-                    
-                    // url:"/reserve.do",
-                    // type:"post",
-                    // data:{
-                    //     thema_code: reserve.thema_code,
-                    //     time_code: reserve.time_code,
-                    //     reserve_pay : reserve.reserve_pay,
-                    //     reserve_name : reserve.reserve_name,
-                    //     reserve_mail : reserve.reserve_mail,
-                    //     reserve_phone : reserve.reserve_phone,
-                    //     reserve_amount : reserve.peopleAmount,
-                    //     play_date: reserve.play_date,
-                    //     thema_name: reserve.thema_name
-                    // }
+
+                    url:"/reserve.do",
+                    type:"post",
+                    data:{
+                        thema_code: reserve.thema_code,
+                        time_code: reserve.time_code,
+                        reserve_pay : reserve.reserve_pay,
+                        reserve_name : reserve.reserve_name,
+                        reserve_mail : reserve.reserve_mail,
+                        reserve_phone : reserve.reserve_phone,
+                        reserve_amount : reserve.peopleAmount,
+                        play_date: reserve.play_date,
+                        thema_name: reserve.thema_name
+                    }
                 })
             }
         })

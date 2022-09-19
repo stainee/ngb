@@ -207,13 +207,13 @@ public class ReserveDao {
 			if(rset.next()) {
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
-				r.setThemaName(rset.getString("thema_name"));
 				r.setReserveName(rset.getString("reserve_name"));
 				r.setReservePhone(rset.getString("reserve_phone"));
 				r.setReserveAmount(rset.getInt("reserve_amount"));
 				r.setReservePay(rset.getInt("reserve_pay"));
 				r.setReserveDate(rset.getString("reserve_date"));
 				r.setPlayDate(rset.getString("play_date"));
+				//때에따라 themaName 추가해야할수도
 			}
 		}catch (SQLException e) {
 				// TODO Auto-generated catch block
