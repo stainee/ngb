@@ -1,6 +1,7 @@
 let idx=0;
 let thema_idx=0;
 let thema_code=0;
+let time_code=0;
 let time_list = [];
 let lock_list = [];
 let date = new Date();
@@ -32,7 +33,25 @@ $("#tab1NextBtn").on("click", function(){
 $("#tab2NextBtn").on("click", function(){
     //이름, 전화번호, 인원을 선택했는지 확인
     thema = getThemaInfo(thema_code);
-    checkReserveDetailInfo(thema);
+    let check = checkReserveDetailInfo(thema);
+    if(check==true){
+        setReserveInfo();
+        nextStep();
+    }
+    
+})
+
+//신용카드로 결제
+$("#credit").on("click",function(){
+    $.ajax({
+        url:"/reserve.do",
+        type:"post",
+        data:{themaCode : thema_code,
+            timeCode: time_code},
+        dataType : "json",
+        success : function(){
+        }
+    })
 })
 
 //이전 스텝으로 전환
@@ -58,7 +77,13 @@ $(".themaList li").on("click",function(){
     thema = getThemaInfo(thema_code);
 })
 
-
+//인원수 변경시마다 결제금액 변동
+$("select[name=reserveAmount]").on("change", function(){
+    const pricePerPerson = $("#themaPrice").text().split("원")[0]; 
+    const peopleAmount = $(this).val();
+    const totalPrice = pricePerPerson*peopleAmount;
+    $(".totalPrice").text(totalPrice+"원");
+})
 
 /*함수들*/
 
@@ -99,18 +124,40 @@ function prevTab(){
 
 function setReserveInfo(){
     //예약날짜
-    $("#playDate").text(date);
+    $(".playDate").text(date);
+    //예약시간Code(DB Code)
+    const time_code = $(".timeList .select").attr("timeCode");
     //예약시간
     const reserveTime = $(".timeList .select").text();
-    $("#playTime").text(reserveTime);
+    $(".playTime").text(reserveTime);
     //예약테마
     const reserveThemaName = $(".themaList .select").text();
-    $("#themaName").text(reserveThemaName);
-    //결제금액 -- default = 인원수 1
-    const price = $("#themaPrice").text().split("원")[0]; 
-    $("#totalPrice").text(price+"원");
+    $(".themaName").text(reserveThemaName);
+    //결제금액 (인당)
+    const price = $(".totalPrice").text().split("원")[0];
+    //결제금액 1인 기본 셋팅
+    $(".totalPrice").text($(".totalPrice").text().split("원")[0]+"원");
+
+    const peopleAmount = $("select[name=reserveAmount]").val();
+    $(".peopleAmount").text(peopleAmount);
+    
 }
 
+function getReserveInfo(){
+    //예약날짜
+    const playDate = $(".playDate").text(date);
+    //예약시간Code(DB Code)
+    const time_code = $(".timeList .select").attr("timeCode");
+    //예약시간
+    const reserveTime = $(".timeList .select").text();
+    //예약테마
+    const reserveThemaName = $(".themaList .select").text();
+    //총 결제금액
+    const totalPrice = $(".totalPrice").text($(".totalPrice").text().split("원")[0]+"원");
+    //예약인원
+    const peopleAmount = $("select[name=reserveAmount]").val();
+    $(".peopleAmount").text(peopleAmount);
+}
 //첫번째 스텝의 예약정보를 모두 입력했는지를 확인하는 메소드
 function checkReserveInfo(){
     let themaSelect = false;
@@ -141,7 +188,7 @@ function checkReserveDetailInfo(thema){
     let nameValue = $("input[name=reserveName]").val();
     let phoneValue = $("input[name=reservePhone]").val();
     let peopleValue = $("select[name=reserveAmount]").val();
-    
+
     //전화번호가 비지 않았고 11자리의 숫자인지 유효성 검사
     const phoneReg = /^[0-9]{11}$/;
     if(phoneValue !=""){
@@ -164,7 +211,7 @@ function checkReserveDetailInfo(thema){
     }
 
     if(name==true && people==0 && phone==true){
-        nextStep();
+        return true;
     }else{
         if(name==false){
             alert("이름을 입력하여 주십시오");
@@ -177,6 +224,7 @@ function checkReserveDetailInfo(thema){
                 alert("최소 등록 인원을 충족하지 못하였습니다");
             }
         }
+        return false;
     }
 
 }
@@ -212,7 +260,7 @@ function showthemaList(thisObj){
         }
         $(".themaList li").eq(thema_idx).addClass("select");
     }
-    
+    //테마를 눌렀을시 테마 가격을 조회 및 표시
     let price = getThemaInfo(thema_code).price;
     $("#themaPrice").text(price +"원");
 
@@ -247,7 +295,7 @@ function showthemaList(thisObj){
                         }
                         //lock_list 에 있으면 lock 된 목록을 표시, 아니면 일반 리스트를 표시한다.
                         if(searchIndex ==-1){
-                            $(".timeList").append("<li name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
+                            $(".timeList").append("<li timeCode="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
                         }else{ 
                             $(".timeList").append("<li class='time-lock' name="+time_list[t].timeCode+">"+time_list[t].time+"</li>");
                         }

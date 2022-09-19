@@ -169,7 +169,7 @@
 .tbl2 tr:first-of-type th:last-of-type{
 	width:300px;
 }
-.tbl2 tr:nth-of-type(6) th{
+.tbl2 tr:nth-of-type(7) th{
 	background-color:rgb(50,50,50);
 }
 
@@ -185,6 +185,9 @@
 	width:180px;
 }
 
+.tbl2 tr [name=reserveMail]{
+	width:600px;
+}
 .tbl2 tr:last-of-type th{
 	background-color :rgb(50,50,50);
 }
@@ -198,7 +201,9 @@
 	width:500px;
 	float:left;
 }
-
+.tbl2 #home{
+	width:800px;
+}
 /*tbl3*/
 .tbl3 tr:nth-of-type(5) th{
 	background-color : rgb(50,50,50);

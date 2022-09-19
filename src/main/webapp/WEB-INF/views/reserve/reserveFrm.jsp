@@ -70,12 +70,12 @@
 		    		<table class="tbl2">
 					     <tr>
 					         <th>예약일</th>
-					         <td id="playDate">YYYYMMDD</td>
+					         <td class="playDate">YYYYMMDD</td>
 					         <th colspan="2">인원선택</th>
 					     </tr>
 					     <tr>
 					     	<th>예약시간</th>
-					     	<td id="playTime">18:00</td>
+					     	<td class="playTime">18:00</td>
 					     	<td rowspan="2" colspan="2">
 					     	<select name="reserveAmount">
 					     	<option>1</option>
@@ -88,7 +88,7 @@
 					     </tr>
 					     <tr>
 					     	<th>예약테마</th>
-					     	<td id="themaName">당산탈출</td>
+					     	<td class="themaName">당산탈출</td>
 					     </tr>
 					     <tr>
 				 			<th>이름</th>
@@ -96,9 +96,13 @@
 				 			<th>전화번호</th>
 				 			<td><input type="text" name="reservePhone" placeholder="01012345678"></td>
 				 		</tr>
+				 		<tr>
+				 			<th>이메일</th>
+				 			<td colspan="3" class="email"><input type="text" name="reserveMail" placeholder="abc@def.com"></td>
+				 		</tr>
 					     <tr>
 					     	<th>결제금액</th>
-					     	<td colspan="3" id="totalPrice"></td>
+					     	<td colspan="3" class="totalPrice"></td>
 					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>
@@ -118,30 +122,29 @@
 		    		<table class="tbl2 tbl3">
 					     <tr>
 					         <th>예약일</th>
-					         <td>YYYYMMDD</td>
+					         <td class="playDate">YYYYMMDD</td>
 					         <th colspan="2">인원선택</th>
 					     </tr>
 					     <tr>
 					     	<th>예약시간</th>
-					     	<td>18:00</td>
-					     	<td rowspan="2" colspan="2">
+					     	<td class="playTime">18:00</td>
+					     	<td rowspan="2" colspan="2" class="peopleAmount">
 					     		2
 					     	</td>
 					     </tr>
 					     <tr>
 					     	<th>예약테마</th>
-					     	<td>당산탈출</td>
+					     	<td class="themaName">당산탈출</td>
 					     </tr>
 					     <tr>
 					     	<th>결제금액</th>
-					     	<td colspan="3">20000원</td>
+					     	<td colspan="3" class="totalPrice">20000원</td>
 					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>
 					     </tr>
 				 		<tr>
-				 			<th colspan="2"><button id="credit" class="btn4" >예약취소</button></th>
-				 			<th colspan="2"><button id="account" class="btn2" onclick="location.href='index.jsp'" >홈으로</button></th>
+				 			<th colspan="4"><button id="home" class="btn4" onclick="location.href='index.jsp'" >홈으로</button></th>
 				 		</tr>
 				 	</table>
 		    	</div>
