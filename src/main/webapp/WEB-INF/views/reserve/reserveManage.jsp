@@ -28,9 +28,8 @@
                var today = $("#datepicker").val();
                selectDateReserve(today);
        });
+  
    </script>
-</head>
-<body>
 	<style>
 		tbody>tr>td{
 		text-align:center;
@@ -40,10 +39,13 @@
 		width:200px;
 		}
 	</style>
+</head>
+<body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
-	<form id="frm" method = "post">
-		<input type ="hidden" name="reserveNo" id="reserveNo" value=""/>
+	<form id="frm">
+	<input type="hidden" name= 'reserveNo' id="reserveNo"/>
 	</form>
+			
 	<div class="content-wrap">
 		<div>예약목록</div>
 		<div>
@@ -53,6 +55,7 @@
 			<thead>
 		        	<th>시간</th>
 		        	<th id = "themaTh">테마명</th>
+		        	<th>예약자명</th>	
     		        <th>전화번호</th>
     		        <th>인원</th>
     		        <th>요금</th>
@@ -62,23 +65,7 @@
     		        <th>관리자모드</th>
 	        </thead>
 	        <tbody id="tbody_reserve">
-	        	<%for(Thema t : list) { %>
-	        	<tr>
-	        		<input type = "hidden" name = "themaCode" value = "<%=t.getThemaCode() %>">
-	        		<input type = "hidden" name = "timeCode" value = "<%=t.getTimeCode() %>">
-		        	<td id = "time"><%=t.getTime() %></td>
-					<td id = "themaName"><%=t.getThemaName()%></td>
-					<td id = "reservePay"></td>
-					<td id = "reserveState"></td>
-					<td id = "payState"></td>
-					<td id = "button"></td>
-					<td></td>
-					<td></td>
-					<td>
-						<button>관리</button>
-					</td>
-				</tr>
-				<%} %>	        	
+	        	      	
 	        </tbody>
 	    </table>
     </div>
@@ -91,8 +78,22 @@
     			type : "get",
     			data : {select:select},
     			success : function(data){
-					console.log(data);
-					if()
+    				var html ="";
+    				$.each(data,function(idx,value){
+    					html += "<tr>";
+    					html += "<td>"+ value.time+"</td>";
+    					html += "<td>"+ value.themaName +"</td>";
+    					html += "<td>"+ value.reserveName +"</td>";
+    					html += "<td>"+ value.reservephone +"</td>";
+    					html += "<td>"+ value.reserveAmount +"</td>";
+    					html += "<td>"+ value.reservePay +"</td>";
+    					html += "<td>"+ value.reserveDate +"</td>";
+    					html += "<td>"+ value.reserveAmount+ "</td>";
+    					html += "<td>"+ "-" +"</td>";
+    					html += "<td><button onclick='fn_managePage("+value.reserveNo+");'>관리</button></td>";
+    					html +="</tr>";
+    				});
+    				$("#tbody_reserve").html(html);
     			}
     		});
     	}
@@ -100,7 +101,7 @@
     		const select = selectDate.val();
     		selectDateReserve(select);
     	});
-    	function go_managePage(reserveNo){
+     	function fn_managePage(reserveNo){
     		$("#frm").attr("action","/editReserveFrm.do");
     		$("#reserveNo").val(reserveNo);
     		$("#frm").submit();

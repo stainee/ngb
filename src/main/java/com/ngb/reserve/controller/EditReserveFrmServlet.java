@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ngb.reserve.model.vo.Reserve;
+import com.ngb.reserve.model.vo.ReserveMngr;
 import com.ngb.reserve.service.ReserveService;
 
 /**
@@ -36,7 +37,7 @@ public class EditReserveFrmServlet extends HttpServlet {
 		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
 		
 		ReserveService service = new ReserveService();
-		Reserve result = service.selectReserveEdit(reserveNo);
+		ReserveMngr result = service.selectReserveEdit(reserveNo);
 		
 		request.setAttribute("result", result);
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/editReserveFrm.jsp");

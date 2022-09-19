@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.ngb.reserve.model.vo.Reserve;
+import com.ngb.reserve.model.vo.ReserveMngr;
 import com.ngb.reserve.service.ReserveService;
 
 /**
@@ -52,7 +52,7 @@ public class SelectDateReserveServlet extends HttpServlet {
 		}
 		
 		ReserveService service = new ReserveService();
-		ArrayList<Reserve> selectList = service.selectDateReserveInfo(strDate);
+		ArrayList<ReserveMngr> selectList = service.selectDateReserveInfo(strDate);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");

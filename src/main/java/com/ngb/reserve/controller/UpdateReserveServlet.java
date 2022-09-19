@@ -1,13 +1,21 @@
 package com.ngb.reserve.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ngb.reserve.model.vo.Reserve;
+import com.ngb.reserve.model.vo.ReserveMngr;
 import com.ngb.reserve.service.ReserveService;
 
 /**
@@ -28,18 +36,25 @@ public class UpdateReserveServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method 
 		request.setCharacterEncoding("utf-8");
 		Reserve r = new Reserve();
 		r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")));
 		r.setReserveName(request.getParameter("reserveName"));
-		r.setReservephone(request.getParameter("reservePhone"));
+		r.setReservePhone(request.getParameter("reservePhone"));
 		r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
 		ReserveService service = new ReserveService();
 		int result = service.updateReserve(r);
-		if(result>0) {
-			
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		
+		if(result == 1) {
+			new Gson().toJson("success",out);
+		}else {
+			new Gson().toJson("fail",out);
 		}
 		
 	}

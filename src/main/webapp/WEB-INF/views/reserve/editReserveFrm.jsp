@@ -1,8 +1,9 @@
+<%@page import="com.ngb.reserve.model.vo.ReserveMngr"%>
 <%@page import="com.ngb.reserve.model.vo.Reserve"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-Reserve result = (Reserve) request.getAttribute("result");
+ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,32 @@ Reserve result = (Reserve) request.getAttribute("result");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/template.css">
+<script type="text/javascript">
+
+function updateReserve(reserveNo){
+	$.ajax({
+		url : "/updateReserve.do",
+		type : "get",
+		data : {
+			reserveNo:$("#reserveNo").val(),
+			reserveName:$("#reserveName").val(),
+			reservePhone:$("#reservePhone").val(),
+			reserveAmount:$("#reserveAmount").val()
+		},
+		success : function(result){
+			if(result == 'success'){
+				alert("수정이 완료되었습니다.");
+				location.href = "/reserveManage.do"
+			}else{
+				alert("수정 중 오류가 발생하였습니다.");
+			}
+		},
+		error :function(data){
+			console.log("2");
+		}
+	});
+}
+</script>
 </head>
 <body>
 	<style>
@@ -37,27 +64,21 @@ Reserve result = (Reserve) request.getAttribute("result");
 				<th>결제확인</th>
 				<th>관리자모드</th>
 			</tr>
-			<form action="/updateReserve.do" method="post">
 				<tr>
-					<input type="hidden" name="reserveNo"
-						value="<%=result.getReserveNo()%>">
+					<input type="hidden" id="reserveNo" value="<%=result.getReserveNo()%>">
 					<td><%=result.getTime()%></td>
 					<td><%=result.getThemaName()%></td>
-					<td><input type="text" class="input-form" name="reserveName"
-						value="<%=result.getReserveName()%>">	</td>
-					<td><input type="text" class="input-form" name="reservePhone"
-						value="<%=result.getReservephone()%>"></td>
-					<td><input type="text" class="input-form" name="reserveAmount"
-						value="<%=result.getReserveAmount()%>"></td>
+					<td><input type="text" class="input-form" id="reserveName" value="<%=result.getReserveName()%>"></td>
+					<td><input type="text" class="input-form" id="reservePhone" value="<%=result.getReservePhone()%>"></td>
+					<td><input type="text" class="input-form" id="reserveAmount" value="<%=result.getReserveAmount()%>"></td>
 					<td><%=result.getReservePay()%></td>
 					<td><%=result.getReserveDate()%></td>
 					<td><%=result.getReserveAmount() + "/" + result.getPeopleMax()%></td>
 					<td>-</td>
 					<td>
-						<button>수정</button>
+						<button onclick="updateReserve()">수정</button>
 					</td>
 				</tr>
-			</form>
 		</table>
 	</div>
 	<script>

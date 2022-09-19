@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.ngb.reserve.model.dao.ReserveDao;
 import com.ngb.reserve.model.vo.Reserve;
-import com.ngb.reserve.model.vo.reserveMngr;
+import com.ngb.reserve.model.vo.ReserveMngr;
 import com.ngb.thema.model.vo.Thema;
 
 import common.JDBCTemplate;
@@ -47,17 +47,17 @@ public class ReserveService {
 		return dateList;
 	}
 
-	public ArrayList<reserveMngr> selectDateReserveInfo(String strDate) {
+	public ArrayList<ReserveMngr> selectDateReserveInfo(String strDate) {
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<reserveMngr> selectList = dao.selectDateReserveInfo(conn, strDate);
+		ArrayList<ReserveMngr> selectList = dao.selectDateReserveInfo(conn, strDate);
 		JDBCTemplate.close(conn);
 		return selectList;
 	}
 
-	public Reserve selectReserveEdit(int reserveNo) {
+	public ReserveMngr selectReserveEdit(int reserveNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		Reserve result = dao.selectReserveEdit(conn, reserveNo);
+		ReserveMngr result = dao.selectReserveEdit(conn, reserveNo);
 		JDBCTemplate.close(conn);
 		return result;
 	}
