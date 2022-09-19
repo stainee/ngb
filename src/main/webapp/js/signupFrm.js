@@ -1,7 +1,10 @@
 
 let idx = 0;
-let regCheck = 0;
-
+let regCheckId = 0;
+let regCheckPw = 0;
+let regCheckPwRe = 0;
+let regCheckPhone = 0;
+let regCheckMail = 0;
 $(".nextBtn").on("click", function() {
 	if (idx == 1) {
 		if ($("input:checkbox[name = agreeCheckBox]").is(":checked") == true) {
@@ -15,7 +18,7 @@ $(".nextBtn").on("click", function() {
 
 	} else if (idx == 2) {
 		//수정중인 부분
-		if (regCheck == 5) {
+		if (regCheckId == 1 && regCheckPw == 1 && regCheckPwRe == 1 && regCheckPhone == 1 && regCheckMail ==1) {
 			for (let i = 0; i < idx; i++) {
 				$(".signup-content").eq(i).hide();
 			}
@@ -48,7 +51,7 @@ $(".nextBtn").on("click", function() {
 		}
 	} else if (idx == 2) {
 		//수정중인 부분
-		if (regCheck == 5) {
+		if (regCheckId == 1 && regCheckPw == 1 && regCheckPwRe == 1 && regCheckPhone == 1 && regCheckMail ==1) {
 			idx++;
 			for (let i = 0; i < length; i++) {
 				$(".tab-menu .tabstep").eq(i).removeClass("tabstep-now");
@@ -102,10 +105,11 @@ $("[name=memberId]").on("change", function() {
 				if (data == "1") {
 					idChkMsg.innerText = "이미 사용중인 아이디 입니다."
 					idChkMsg.style.color = "red";
+					regCheckId = 0;
 				} else if (data == "0") {
 					idChkMsg.innerText = "사용가능한 아이디 입니다."
 					idChkMsg.style.color = "rgb(255,193,7)";
-					regCheck++;
+					regCheckId = 1;
 				}
 			}
 		});
@@ -113,6 +117,7 @@ $("[name=memberId]").on("change", function() {
 		//정규 표현식 불만족시
 		idChkMsg.innerText = "6자이상 입력해 주세요."
 		idChkMsg.style.color = "red";
+		regCheckId = 0;
 	}
 });
 //비밀번호 유효성 검사 
@@ -126,16 +131,34 @@ memberPw.addEventListener("change", function() {
 	const inputPw = memberPw.value;
 	const pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 	const pwChkMsg = document.querySelector("#pwChkMsg");
+	
+	const inputPwRe = memberPwRe.value;
+	const pwReChkMsg = document.querySelector("#pwReChkMsg");
 	if (pwReg.test(inputPw)) {
 		//정규 표현식 만족시
 		pwChkMsg.innerText = "조건이 일치합니다."
 		pwChkMsg.style.color = "rgb(255,193,7)";
-		regCheck++;
+		regCheckPw = 1;
 	} else {
 		//정규 표현식 불만족시
 		pwChkMsg.innerText = "조건이 일치하지 않습니다."
 		pwChkMsg.style.color = "red";
+		regCheckPw = 0;
 	}
+	if(inputPwRe != ""){
+        if(inputPw == inputPwRe){
+            //비밀번호,확인 일치시
+            pwReChkMsg.innerText = "비밀번호가 일치합니다."
+            pwReChkMsg.style.color = "rgb(255,193,7)";
+			regCheckPwRe = 1;
+        }else{
+            pwReChkMsg.innerText = "비밀번호가 일치하지않습니다."
+            pwReChkMsg.style.color = "red";
+			regCheckPwRe = 0;
+        }
+    }else{
+	
+    }
 });
 
 memberPwRe.addEventListener("change", function() {
@@ -146,10 +169,11 @@ memberPwRe.addEventListener("change", function() {
 		//비밀번호,확인 일치시
 		pwReChkMsg.innerText = "비밀번호가 일치합니다."
 		pwReChkMsg.style.color = "rgb(255,193,7)";
-		regCheck++;
+		regCheckPwRe = 1;
 	} else {
 		pwReChkMsg.innerText = "비밀번호가 일치하지않습니다."
 		pwReChkMsg.style.color = "red";
+		regCheckPwRe = 0;
 	}
 });
 
@@ -160,10 +184,11 @@ memberPhone.addEventListener("change", function() {
 	const phoneReg = /^[0-9]{11}$/;
 	if (phoneReg.test(inputPhone)) {
 		phoneChkMsg.innerText = ""
-		regCheck++;
+		regCheckPhone = 1;
 	} else {
 		phoneChkMsg.innerText = "양식과 일치하지 않습니다."
 		phoneChkMsg.style.color = "red";
+		regCheckPhone = 0;
 	}
 
 });
@@ -235,14 +260,16 @@ $("#authBtn").on("click", function() {
 			$("#authMsg").css("color", "rgb(255,193,7)");
 			clearInterval(intervalId);
 			$("#timeZone").hide();
-			regCheck++;
+			regCheckMail = 1;
 		} else {
 			$("#authMsg").text("인증번호가 일치하지 않습니다.");
 			$("#authMsg").css("color", "red");
+			regCheckMail = 0;
 		}
 	} else {
 		$("#authMsg").text("인증시간만료");
 		$("#authMsg").css("color", "red");
+		regCheckMail = 0;
 	}
 
 });

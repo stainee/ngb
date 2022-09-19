@@ -13,9 +13,11 @@
 .signup-content{
     display: none;
 }
+
 .signup-content>.center-move>div>form>hr{
     border: 5px solid rgb(50,50,50);
 }
+
 .agree{
     width: 250px;
     padding-top: 10px;
@@ -102,6 +104,8 @@
 }
 .input-wrap>.input-backColor{
 	background-color: rgb(255,193,7);
+	border-right: 10px solid rgb(50,50,50);
+
 }
 /* .id-wrap{
     overflow: hidden;
@@ -122,6 +126,7 @@
 }
 .backColor{
 	background-color: rgb(50,50,50);
+	border-bottom: 10px solid rgb(50,50,50);
 }
 .input-wrap>.input-location:first-child{
     width: 100px;
@@ -129,8 +134,12 @@
     line-height: 40px;
 }
 #auth>.input-location:first-child{
-    padding-left: 130px;
+	width:100px;
+    height:40px;
+    border-right: 10px solid rgb(50,50,50);
+	background-color: rgb(255,193,7);
 }
+
 .input-location>input[type=text],input[type=password] {
     font-size: 16px;
 }
@@ -171,7 +180,7 @@
     color: rgb(255,193,7);
 }
 .fin-content-height{
-	height : 500px;
+	height : 490px;
 }
 .fin-content-height>h3{
 	color: rgb(255,193,7);

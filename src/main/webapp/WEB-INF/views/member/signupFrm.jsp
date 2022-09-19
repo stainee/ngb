@@ -147,9 +147,10 @@
 									<button onclick="sendMail();" class="btn3 notsubmit">인증메일전송</button>
 								</div>
 								<div id="auth">
-								
+									<div class="input-location input-backColor">
+										
+									</div>
 									<div class="input-location">
-									
 										<input type="text" id="authCode" placeholder="인증코드입력"
 											class="input-form">
 									</div>
