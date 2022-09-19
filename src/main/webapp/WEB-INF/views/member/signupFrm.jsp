@@ -1,31 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 페이지</title>
-<style>
-	.signupContent{
-		background-color : white;
-	}
-</style>
-<link rel = "stylesheet" href = "/css/signupFrm.css">
+<link rel="stylesheet" href="/css/signupFrm.css">
 </head>
 <body>
-	<%@include file="/WEB-INF/views/common/header.jsp" %>
+	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
 
-        <div class="content-box">
+		<div class="content-box">
 
-            <div class="tab-menu">
-                <ul class="tabstep tabstep-now "><img src="img/tabstep1.png">이용약관</ul>
-                <ul class="tabstep"><img src="img/tabstep2.png">회원가입</ul>
-                <ul class="tabstep"><img src="img/tabstep3.png">완료</ul>
-            </div>
-            <div class="signup-content">
-                <div class="center-move">
-                    <textarea readonly class="textarea-form">
+			<div class="tab-menu">
+				<ul class="tabstep tabstep-now ">
+					<img src="img/tabstep1.png">이용약관
+				</ul>
+				<ul class="tabstep">
+					<img src="img/tabstep2.png">회원가입
+				</ul>
+				<ul class="tabstep">
+					<img src="img/tabstep3.png">완료
+				</ul>
+			</div>
+			<div class="signup-content">
+				<div class="center-move">
+					<textarea readonly class="textarea-form">
 정보통신망법 규정에 따라 주식회사 나가방에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
 1. 수집하는 개인정보
@@ -62,103 +63,115 @@
 
                 </textarea>
 
-                </div>
-                <div class="agree">
-                    <label><input type="checkbox" name="agreeCheckBox">이용약관의 내용에 동의합니다.</label>
-                </div>
-                <div class="center-move">
-                    <button class="btn2 agreeBtn nextBtn">다음</button>
-                </div>
-            </div>
-            <!-----------------------------------------------이 위는 약관동의 -->
+				</div>
+				<div class="agree">
+					<label><input type="checkbox" name="agreeCheckBox">이용약관의
+						내용에 동의합니다.</label>
+				</div>
+				<div class="center-move">
+					<button class="btn2 agreeBtn nextBtn">다음</button>
+				</div>
+			</div>
+			<!-----------------------------------------------이 위는 약관동의 -->
 
-            <!-----------------------------------------------이 아래는 사용자 데이터 받기 -->
-            <div class="signup-content">
-                <div class="center-move">
-                    <form action="/signup.do" method="post">
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberId">아이디 <span id="ajaxCheckId"></span></a></label>
-                            </div>
-                            <div class="id-wrap">
-                                <div class="input-location">
-                                    <input type="text" name="memberId" id="memberId" class="input-form" placeholder="문자 6자 이상 입력">
-                                </div>
-                                <span id="idChkMsg"></span>
-                            </div>
-                        </div>
-<hr>
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberPw">비밀번호</label>
-                            </div>
-                            <div class="input-location ">
-                                <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="대소문자,숫자,특수문자 8자 이상 입력">
-                            </div>
-                            <span id="pwChkMsg"></span>
-                        </div>
-<hr>
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberPw">비밀번호확인</label>
-                            </div>
-                            <div class="input-location ">
-                                <input type="password" name="memberPwRe" id="memberPwRe" class="input-form">
-                            </div>
-                            <span id="pwReChkMsg"></span>
-                        </div>
-<hr>
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberName">이름</label>
-                            </div>
-                            <div class="input-location">
-                                <input type="text" name="memberName" id="memberName" class="input-form">
-                            </div>
-                        </div>
-<hr>
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberPhone">전화번호</label>
-                            </div>
-                            <div class="input-location">
-                                <input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="01012349876">
-                            </div>
-                            <span id="phoneChkMsg"></span>
-                        </div>
-<hr>
-                        <div class="input-wrap">
-                            <div class="input-location">
-                                <label for="memberMail">메일</label>
-                            </div>
-                            <div class="input-location">
-                                <input type="text" name="memberMail" id="memberMail" class="input-form">
-                            </div>
-                            <div class="input-location">
-                                <button onclick="sendMail();" class="btn3">인증메일전송</button>
-                            </div>
-                            <div id="auth">
-                                <div class="input-location">
-                                    <input type="text" id="authCode" placeholder="인증코드입력" class="input-form">
-                                </div>
-                                <div class="input-location">
-                                    <button class="btn3" id="authBtn">인증하기</button>
-                                </div>
-                                <span id="timeZone"></span>
-                                <span id="authMsg"></span>
-                            </div>
+			<!-----------------------------------------------이 아래는 사용자 데이터 받기 -->
+			<div class="signup-content">
+				<div class="center-move">
+					<div>
+						<form action="/signup.do" method="post">
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberId">아이디 <span id="ajaxCheckId"></span></a></label>
+								</div>
+								<div class="id-wrap">
+									<div class="input-location">
+										<input type="text" name="memberId" id="memberId"
+											class="input-form" placeholder="문자 6자 이상 입력">
+									</div>
+									<span id="idChkMsg"></span>
+								</div>
+							</div>
+							<hr>
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberPw">비밀번호</label>
+								</div>
+								<div class="input-location ">
+									<input type="password" name="memberPw" id="memberPw"
+										class="input-form" placeholder="대소문자,숫자,특수문자 8자 이상 입력">
+								</div>
+								<span id="pwChkMsg"></span>
+							</div>
+							<hr>
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberPw">비밀번호확인</label>
+								</div>
+								<div class="input-location ">
+									<input type="password" name="memberPwRe" id="memberPwRe"
+										class="input-form">
+								</div>
+								<span id="pwReChkMsg"></span>
+							</div>
+							<hr>
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberName">이름</label>
+								</div>
+								<div class="input-location">
+									<input type="text" name="memberName" id="memberName"
+										class="input-form">
+								</div>
+							</div>
+							<hr>
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberPhone">전화번호</label>
+								</div>
+								<div class="input-location ">
+									<input type="text" name="memberPhone" id="memberPhone"
+										class="input-form" placeholder="01012349876">
+								</div>
+								<span id="phoneChkMsg"></span>
+							</div>
+							<hr>
+							<div class="input-wrap">
+								<div class="input-location input-backColor">
+									<label for="memberMail">메일</label>
+								</div>
+								<div class="input-location">
+									<input type="text" name="memberMail" id="memberMail"
+										class="input-form">
+								</div>
+								<div class="input-location backColor">
+									<button onclick="sendMail();" class="btn3 notsubmit">인증메일전송</button>
+								</div>
+								<div id="auth">
+								
+									<div class="input-location">
+									
+										<input type="text" id="authCode" placeholder="인증코드입력"
+											class="input-form">
+									</div>
+									<div class="input-location backColor">
+										<button class="btn3 notsubmit" id="authBtn">인증하기</button>
+										<span id="timeZone"></span>
+									</div>
+								</div>
+							</div>
+							<span id="authMsg"></span>
 
+							<div class="center-move">
+								<button type="submit" class="btn2 nextBtn">회원가입</button>
+							</div>
+						</form>
 
-                        </div>
-                        <div class="center-move">
-                            <button type="submit" class="btn2 nextBtn">회원가입</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 	<script src="/js/signupFrm.js"></script>
 </body>
 </html>

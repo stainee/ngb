@@ -29,4 +29,22 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		return m;
 	}
+
+	public int insertMember(Member m) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertMember(conn,m);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public String sendMail(String email) {
+		// TODO Auto-generated method stub
+		String result = dao.sendMail(email);
+		return result;
+	}
 }

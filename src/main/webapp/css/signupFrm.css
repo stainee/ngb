@@ -6,12 +6,15 @@
     margin: 0 auto;
     width: 1200px;
     border: 1px solid black;
-    background-color: white;
+    background-color: rgb(50,50,50);
     overflow: hidden;
     
 }
 .signup-content{
     display: none;
+}
+.signup-content>.center-move>div>form>hr{
+    border: 5px solid rgb(50,50,50);
 }
 .agree{
     width: 250px;
@@ -97,15 +100,28 @@
 .input-wrap{
     overflow: hidden;
 }
+.input-wrap>.input-backColor{
+	background-color: rgb(255,193,7);
+}
 /* .id-wrap{
     overflow: hidden;
 } */
-#idChkMsg,#pwChkMsg,#pwReChkMsg,#phoneChkMsg{
+#idChkMsg,#pwChkMsg,#pwReChkMsg,#phoneChkMsg,#timeZone{
     line-height: 55px;
+}
+#timeZone{
+	color: rgb(255,193,7);
+}
+#authMsg{
+	padding-left : 130px;
 }
 .input-location{
     padding: 10px;
     float: left;
+    background-color: rgb(128,128,128);
+}
+.backColor{
+	background-color: rgb(50,50,50);
 }
 .input-wrap>.input-location:first-child{
     width: 100px;
@@ -117,6 +133,9 @@
 }
 .input-location>input[type=text],input[type=password] {
     font-size: 16px;
+}
+#auth{
+	display : none;
 }
 /* input 인풋 템플릿 폼 */
 /* textarea 템플릿 */
@@ -149,5 +168,13 @@
 }
 
 .agree>label{
-    color: red;
+    color: rgb(255,193,7);
+}
+.fin-content-height{
+	height : 500px;
+}
+.fin-content-height>h3{
+	color: rgb(255,193,7);
+	font-size : 23px;
+	line-height: 500px; 
 }

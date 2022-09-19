@@ -1,5 +1,6 @@
 
 let idx = 0;
+let regCheck = 0;
 
 $(".nextBtn").on("click", function() {
 	if (idx == 1) {
@@ -10,6 +11,17 @@ $(".nextBtn").on("click", function() {
 			$(".signup-content").eq(idx).show();
 		} else {
 
+		}
+
+	} else if (idx == 2) {
+		//수정중인 부분
+		if (regCheck == 5) {
+			for (let i = 0; i < idx; i++) {
+				$(".signup-content").eq(i).hide();
+			}
+			$(".signup-content").eq(idx).show();
+		} else {
+			event.preventDefault();
 		}
 
 	} else {
@@ -34,6 +46,21 @@ $(".nextBtn").on("click", function() {
 		} else {
 
 		}
+	} else if (idx == 2) {
+		//수정중인 부분
+		if (regCheck == 5) {
+			idx++;
+			for (let i = 0; i < length; i++) {
+				$(".tab-menu .tabstep").eq(i).removeClass("tabstep-now");
+
+			}
+			for (let k = 0; k < idx; k++) {
+				$(".tab-menu .tabstep").eq(k).addClass("tabstep-now");
+			}
+		} else {
+			event.preventDefault();
+		}
+
 	} else {
 		idx++;
 		for (let i = 0; i < length; i++) {
@@ -46,6 +73,9 @@ $(".nextBtn").on("click", function() {
 	}
 })
 
+$(".notsubmit").on("click", function(){
+	event.preventDefault();
+});
 $(".nextBtn:eq(0)").click();
 
 // 아이디 중복 검사
@@ -53,7 +83,7 @@ $(".nextBtn:eq(0)").click();
 const memberId = document.querySelector("#memberId");
 
 //memberId.addEventListener("change", function() {
-$("[name=memberId]").on("change",function(){
+$("[name=memberId]").on("change", function() {
 	// inputId = 입력된 memberId의 값을 저장
 	//const inputId = memberId.value;
 	const memberId = $(this).val();
@@ -72,10 +102,10 @@ $("[name=memberId]").on("change",function(){
 				if (data == "1") {
 					idChkMsg.innerText = "이미 사용중인 아이디 입니다."
 					idChkMsg.style.color = "red";
-
 				} else if (data == "0") {
 					idChkMsg.innerText = "사용가능한 아이디 입니다."
-					idChkMsg.style.color = "blue";
+					idChkMsg.style.color = "rgb(255,193,7)";
+					regCheck++;
 				}
 			}
 		});
@@ -99,7 +129,8 @@ memberPw.addEventListener("change", function() {
 	if (pwReg.test(inputPw)) {
 		//정규 표현식 만족시
 		pwChkMsg.innerText = "조건이 일치합니다."
-		pwChkMsg.style.color = "blue";
+		pwChkMsg.style.color = "rgb(255,193,7)";
+		regCheck++;
 	} else {
 		//정규 표현식 불만족시
 		pwChkMsg.innerText = "조건이 일치하지 않습니다."
@@ -114,7 +145,8 @@ memberPwRe.addEventListener("change", function() {
 	if (inputPw == inputPwRe) {
 		//비밀번호,확인 일치시
 		pwReChkMsg.innerText = "비밀번호가 일치합니다."
-		pwReChkMsg.style.color = "blue";
+		pwReChkMsg.style.color = "rgb(255,193,7)";
+		regCheck++;
 	} else {
 		pwReChkMsg.innerText = "비밀번호가 일치하지않습니다."
 		pwReChkMsg.style.color = "red";
@@ -125,12 +157,92 @@ const memberPhone = document.querySelector("#memberPhone");
 
 memberPhone.addEventListener("change", function() {
 	const inputPhone = memberPhone.value;
-	const phoneReg = /^[0-9]{9}$/;
+	const phoneReg = /^[0-9]{11}$/;
 	if (phoneReg.test(inputPhone)) {
 		phoneChkMsg.innerText = ""
+		regCheck++;
 	} else {
 		phoneChkMsg.innerText = "양식과 일치하지 않습니다."
 		phoneChkMsg.style.color = "red";
+	}
+
+});
+
+//인증 메일 관련
+
+let mailCode;
+function sendMail() {
+	const memberMail = $("#memberMail").val();
+	$.ajax({
+		url: "/sendMail.do",
+		data: { memberMail: memberMail },
+		type: "post",
+		success: function(data) {
+			if (data != null) {
+				mailCode = data;
+				$("#auth").show();
+
+				//메일이 전송된 시점
+				//에서 시간이 흐름
+				authTime();
+			}
+		}
+	});
+}
+//전역변수
+let intervalId;
+function authTime() {
+
+	$("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
+	intervalId = window.setInterval(function() {
+		timeCount();
+	}, 1000);
+}
+
+function timeCount() {
+	//#min 값그대로 읽어와라
+	//min은 숫자로변환
+	const min = Number($("#min").text());
+	//초는 변환안함
+	const sec = $("#sec").text();
+	if (sec == "00") {
+		if (min == 0) {
+			mailCode = null;
+			clearInterval(intervalId);
+		} else {
+			$("#min").text(min - 1);
+			$("#sec").text(59);
+			
+		}
+	} else {
+		//초를 문자열로 받아와서 계산하기위해 숫자타입으로 변환
+		const newSec = Number(sec) - 1;
+		if (newSec < 10) {
+			//문자형이니까 09초 이런식으로 띄우기위해 숫자타입으로 변환 안하고
+			//더해줌
+			$("#sec").text("0" + newSec);
+		} else {
+			$("#sec").text(newSec);
+		}
+	}
+}
+
+$("#authBtn").on("click", function() {
+	const inputValue = $("#authCode").val();
+	if (mailCode != null) {
+		if (inputValue == mailCode) {
+			$("#authMsg").text("인증에 성공하셨습니다.");
+			$("#authMsg").css("color", "rgb(255,193,7)");
+			clearInterval(intervalId);
+			$("#timeZone").hide();
+			regCheck++;
+		} else {
+			$("#authMsg").text("인증번호가 일치하지 않습니다.");
+			$("#authMsg").css("color", "red");
+		}
+	} else {
+		$("#authMsg").text("인증시간만료");
+		$("#authMsg").css("color", "red");
 	}
 
 });
