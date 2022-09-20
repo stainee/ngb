@@ -1,7 +1,6 @@
-package com.ngb.reserve.controller;
+package com.ngb.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,23 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.ngb.member.model.vo.Member;
-import com.ngb.thema.model.vo.Thema;
-import com.ngb.thema.service.ThemaService;
 
 /**
- * Servlet implementation class Reserve
+ * Servlet implementation class SearchMemberFrmServlet
  */
-@WebServlet(name = "ReserveFrm", urlPatterns = { "/reserveFrm.do" })
-public class ReserveFrm extends HttpServlet {
+@WebServlet(name = "SearchMemberFrm", urlPatterns = { "/searchMemberFrm.do" })
+public class SearchMemberFrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReserveFrm() {
+    public SearchMemberFrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,12 +28,12 @@ public class ReserveFrm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1.인코딩
 		request.setCharacterEncoding("utf-8");
-		//테마리스트 가져오기
-		ThemaService tservice = new ThemaService();
-		ArrayList<Thema> themaList = tservice.selectAllThema();
-		request.setAttribute("themaList", themaList);
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveFrm.jsp");
+		//2.값추출
+		//3.비즈니스로직
+		//4.결과처리
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/searchMember.jsp");
 		view.forward(request, response);
 	}
 

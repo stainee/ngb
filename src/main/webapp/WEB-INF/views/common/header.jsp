@@ -1,8 +1,12 @@
+<%@page import="com.ngb.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<%
+    	Member m = (Member)session.getAttribute("m");
+ %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel = "stylesheet" href = "/css/header.css">
@@ -12,7 +16,7 @@
 <body>
 <div class = "header-wrap">
         <div class = "header">
-            <li id = "logo-wrap"><img src="/img/logo.png"></li>
+            <li id = "logo-wrap"><a href="/index.jsp"><img src="/img/logo2.png"></a></li>
             <ul class = "notice menuwrap">
                 <div>
                     <li><a href = "#">공지사항</a></li>
@@ -27,8 +31,8 @@
             </ul>
             <ul class = "reserve menuwrap">
                 <div>
-                    <li><a href = "#">예약하기</a></li>
-                    <li><a href = "#">RESERVATION</a></li>
+                    <li><a href = "/reserveFrm.do">예약하기</a></li>
+                    <li><a href = "/reserveFrm.do">RESERVATION</a></li>
                 </div>
             </ul>
             <ul class = "mypage menuwrap">
@@ -38,8 +42,12 @@
             </div>
             </ul>
             <div class="signwrap">
-                <a href="#" class="login">로그인</a>
-                <a href="#" class="signin">회원가입</a>
+            	<%if(m==null){ %>
+                <a href="/loginFrm.do" class="login">로그인</a>
+                <a href="/signupFrm.do" class="signin">회원가입</a>
+                <%}else{ %>
+                <a href="/logout.do" class="logout">로그아웃</a>
+                <%} %>
             </div>
         </div>
        </div>

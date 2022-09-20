@@ -1,3 +1,4 @@
+<%@page import="com.ngb.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
 <body>
 	<div class="header-wrap">
 		<div class="header">
-			<div id="logo"><a href="#"><img src="/img/logo.png"></a></div>
+			<div id="logo"><a href="/index.jsp"><img src="/img/logo2.png"></a></div>
 		</div>
 	</div>
 	<div class="menu-wrap">
