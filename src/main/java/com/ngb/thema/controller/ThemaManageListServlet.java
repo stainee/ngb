@@ -1,4 +1,4 @@
-package com.ngb.reserve.thema.controller;
+package com.ngb.thema.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
