@@ -91,10 +91,17 @@ public class ReserveMailSender {
 		
 		//이메일 통신설정
 				Properties prop = System.getProperties();
-				prop.put("mail.smtp.host","smtp.gmail.com");
-				prop.put("mail.smtp.port", 465);
+//				prop.put("mail.smtp.host","smtp.gmail.com");
+//				prop.put("mail.smtp.port", 465);
+//				prop.put("mail.smtp.auth", "true");
+//				prop.put("mail.smtp.ssl.enable", "true");
+//				prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+				prop.put("mail.smtp.host", "smtp.gmail.com");
+				prop.put("mail.smtp.port", 587); //변경
 				prop.put("mail.smtp.auth", "true");
-				prop.put("mail.smtp.ssl.enable", "true");
+				prop.put("mail.smtp.starttls.enable", true); //추가
+				prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //추가
+				//prop.put("mail.smtp.ssl.enable", true);  // 주석
 				prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 				//인증정보설정(로그인)
 				Session session = Session.getDefaultInstance(prop, 
