@@ -86,5 +86,14 @@ public class ReserveService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+	
+
+	public Reserve findReserve(Reserve reserve) {
+		Connection conn = JDBCTemplate.getConnection();
+		Reserve reser = dao.findReserve(conn,reserve);
+		JDBCTemplate.close(conn);
+		
+		return reser;
+	}
 
 }

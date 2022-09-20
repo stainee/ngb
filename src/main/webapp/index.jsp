@@ -12,5 +12,6 @@
 	<a href="reserveManage.do">manage</a>
 	<a href="reserveFrm.do">reserve</a>
 	<a href="editReserveFrm.do">editReserve</a>
+	<a href="findReserveFrm.do">findReserve</a>
 </body>
 </html>

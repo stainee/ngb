@@ -290,6 +290,59 @@ public class ReserveDao {
 		
 		return resultSet;
 	}
+	
+	public Reserve findReserve(Connection conn, Reserve reserve) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Reserve reser = null;
+		
+		//String query = "select * from reserve where reserve_name=? and reserve_mail=?";
+		String query ="select to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
+				
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reserve.getReserveName());
+			pstmt.setString(2, reserve.getReserveMail());
+								//ㄴ넘겨받은 reserve에서 값을 가져와서 넣어준다
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				//넘겨줄 객체에 값 세팅함
+				reser = new Reserve();
+				
+				reser.setReserveAmount(rset.getInt("reserve_amount"));
+				reser.setPlayDate(rset.getString("playdate"));
+				//예약일자 편집
+				//reser.setReserveDate(rset.getString("reserve_date"));
+				//reser.setReserveEtc(rset.getString("reserve_etc"));
+				reser.setReserveMail(rset.getString("reserve_mail"));
+				reser.setReserveName(rset.getString("reserve_name"));
+//				reser.setReserveNo(rset.getInt("reserve_no"));
+				reser.setReservePay(rset.getInt("reserve_pay"));
+				reser.setReservePhone(rset.getString("reserve_phone"));
+//				reser.setReserveState(rset.getInt("reserve_state"));
+//				reser.setThemaCode(rset.getString("thema_code"));
+				reser.setThemaName(rset.getString("thema_name"));
+				reser.setTime(rset.getString("time"));
+				
+				
+//				reser.setTime_code(rset.getInt("time_code"));
+				//reser.setTime("");// 다른곳에서 조인한 쿼리 써야함
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return reser;
+	}
+	
 }
 
 

@@ -16,6 +16,8 @@ public class Reserve {
 	private String reserveEtc;
 	private String playDate;
 	private int timeCode;
+	private String time;
+	
 	public Reserve() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -114,6 +116,12 @@ public class Reserve {
 	}
 	public void setTimeCode(int timeCode) {
 		this.timeCode = timeCode;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	

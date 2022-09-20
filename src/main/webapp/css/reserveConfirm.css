@@ -1,0 +1,307 @@
+.tab-wrap>ul{ 
+    overflow: hidden; 
+    list-style-type: none; 
+	display:flex;
+	justify-content:center;
+}
+.tabstep{ 
+    margin: 25px;
+    float: left; 
+    width: 180px; 
+    height: 70px; 
+    line-height: 70px; 
+    padding-left: 0px;
+    text-align: center; 
+    border-top-right-radius : 35px; 
+    border-bottom-right-radius : 35px; 
+    border: 3px solid rgba(255,193,7, 1); 
+    font-size: 23px; 
+    font-weight: 700; 
+    color: rgba(255,193,7, 0.7); 
+    display: flex; 
+    align-items: center; 
+}
+
+.tabstep-now{ 
+    background-color: rgba(255,193,7, 1); 
+    border: 1px solid rgba(255,193,7, 0.4); 
+    color: white; 
+    font-weight: 900; 
+} 
+.tabstep>img{ 
+    width: 60px; 
+    height: 40px; 
+    padding-right: 10px; 
+    padding-left: 15px; 
+}
+
+
+.btn2{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+    font-size:20px;
+   
+   
+}
+.btn2:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    border:1px solid black;
+    box-shadow: none;
+}
+
+.btn-wrap{
+	text-align:center;
+} 
+
+.btn4{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    box-shadow: 1px 1px black;
+    cursor: pointer;
+    font-size:20px;
+}
+
+.btn4:active{
+    width:100px;
+    height:50px;
+    background-color: #fff;
+    border:1px solid rgb(55,55,55);
+    box-shadow: none;
+    transform: scale(1,1);
+}
+
+.tabs-container{
+	display:flex;
+	justify-content:center;
+	margin-bottom:100px;
+}
+
+.tabs-container .table{
+	display:block;
+	margin : 0 auto;
+}
+/*tab1*/
+
+.tbl1{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.tbl1 th{ 
+    text-align: center;
+    background-color: rgb(255,193,7);
+    width:200px;
+    border-right : 4px solid rgb(50,50,50);
+    border-bottom: 8px solid rgb(50,50,50);
+}
+
+.tbl1 td{
+    text-align: center;
+    border-bottom: 8px solid rgb(50,50,50);
+    border-right : 4px solid rgb(50,50,50);
+    background-color:  rgb(220,220,220);
+}
+
+
+.tbl1 th:last-of-type{
+    border-right: none;
+}
+
+
+.tbl1 th:nth-of-type(2), th:nth-of-type(1){
+	width:300px;
+}
+
+.tbl1 th:nth-of-type(3){
+	width:150px;
+}
+.tbl1 td:last-of-type{
+    border-right: none;
+}
+
+.tbl1 tr:last-of-type td{
+	height:300px;
+}
+.tbl1{
+    margin-bottom: 100px;
+}
+
+.tbl1 tr:first-of-type th:first-of-type{
+	width:350px;
+}
+/*tbl2*/
+.tbl2{
+    border-collapse: collapse;
+    border-spacing: 0px;
+    margin : 0 auto;
+}
+
+.tbl2 th{ 
+    text-align: center;
+    background-color: rgb(255,193,7);
+    width:200px;
+    height: 40px;
+    border-bottom: 4px solid rgb(50,50,50);
+}
+
+.tbl2 td{
+    text-align: center;
+    background-color:  rgb(220,220,220);
+    width:200px;
+    border-bottom: 4px solid rgb(50,50,50);
+}
+
+.tbl2 td:nth-of-type(1){
+	border-right: 8px solid rgb(50,50,50);
+	width:300px;
+}
+
+.tbl2 tr:nth-of-type(5) th:last-of-type{
+	border-right: 4px solid rgb(50,50,50);
+}
+.tbl2 th:first-of-type{
+	border-right: 4px solid rgb(50,50,50);
+}
+.tbl2 tr:first-of-type th:last-of-type{
+	width:300px;
+}
+.tbl2 tr:nth-of-type(6) th{
+	background-color:rgb(50,50,50);
+}
+
+
+.tbl2 tr select{
+	width:380px;
+	height:40px;
+	font-size:24px;
+	text-align:center;
+}
+
+.tbl2 tr input{
+	width:180px;
+}
+
+.tbl2 tr:last-of-type th{
+	background-color :rgb(50,50,50);
+}
+
+.tbl2 #credit{
+	width:500px;
+	float:right;
+}
+
+.tbl2 #account{
+	
+    width : 40%;
+    margin: 0 auto;
+	/*float:left;*/
+}
+
+
+/*tbl3*/
+.tbl3 tr:nth-of-type(5) th{
+	background-color : rgb(50,50,50);
+}
+
+.tbl3 tr:nth-of-type(2) td:last-of-type{
+	font-size:24px;
+}
+
+
+
+/*기능단*/
+.time-list{
+	overflow:auto;
+}
+.time-list li{
+	background-color : rgb(255,255,255);
+	height:30px;
+	line-height:30px;
+	margin-bottom:5px;
+	cursor:pointer;
+}
+
+.time-list .time-lock{
+	background-color : rgb(50,50,50);
+	color : white;
+	cursor : not-allowed;
+}
+
+.time-list .select{
+	background-color : rgb(255,193,7);
+}
+
+.thema-list{
+	overflow:auto;
+}
+.thema-list li{
+	background-color : rgb(255,255,255);
+	height:30px;
+	line-height:30px;
+	margin-bottom:5px;
+	cursor:pointer;
+}
+
+.thema-list .thema-lock{
+	background-color : rgb(50,50,50);
+	color : white;
+	cursor : not-allowed;
+}
+
+.thema-list .select{
+	background-color : rgb(255,193,7);
+}
+
+#datepicker .ui-datepicker-inline{
+	width:100%;
+}
+#datepicker table{
+	background-color: white;
+}
+
+#datepicker td{
+	height:40px;
+	width:40px;
+	border : none;
+	background-color: white;
+}
+
+#datepicker tr{
+	height:40px;
+	width:40px;
+	border : none;
+}
+#datepicker th{
+	height:40px;
+	width:40px;
+	border : 1px solid white;
+	background-color:rgb(50,50,50);
+	color : white;
+}
+
+#datepicker a{
+	text-align:center;
+}
+
+#datepicker .ui-datepicker-header{
+	background-color:rgb(255,193,7);
+}
+
+
+
+#datepicker .ui-state-active{
+	background-color: rgb(255,193,7);
+	border :none;
+}
+.reserveName{
+	color : white;
+	text-align: center;
+	padding-top  :10px;
+	padding-bottom : 40px;
+}
