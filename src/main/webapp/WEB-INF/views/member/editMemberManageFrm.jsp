@@ -44,7 +44,7 @@ function updateMember(){
 			}
 		},
 		error :function(){
-			alert("수정 중 오류가 발생하였습니다.");
+			alert("수정 중 오류가 발생하였습니다.(error)");
 			location = "/manageMember.do"
 		}
 	});
@@ -55,7 +55,7 @@ function updateMember(){
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<div class="content-wrap">
-	    <form action="/editMemberManage.do" method="post">
+	    <form action="/manageMember.do" method="post">
 			<table class="tbl1 manageMemTbl">
 		        <tr>
 		        	<th>회원번호</th>
