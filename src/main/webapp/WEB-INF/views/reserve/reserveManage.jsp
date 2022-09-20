@@ -43,7 +43,9 @@
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<form id="frm">
-	<input type="hidden" name= 'reserveNo' id="reserveNo"/>
+		<input type="hidden" name= 'reserveNo' id="reserveNo"/>
+		<input type="hidden" name= 'themaCode' id="themaCode"/>
+		<input type="hidden" name= 'timeCode' id="timeCode"/>
 	</form>
 			
 	<div class="content-wrap">
@@ -53,6 +55,7 @@
 		</div>
 		<table class="tbl1" id ="table">
 			<thead>
+					<th>번호</th>
 		        	<th>시간</th>
 		        	<th id = "themaTh">테마명</th>
 		        	<th>예약자명</th>	
@@ -78,19 +81,21 @@
     			type : "get",
     			data : {select:select},
     			success : function(data){
+    				console.log(data);
     				var html ="";
     				$.each(data,function(idx,value){
     					html += "<tr>";
+    					html += "<td>"+ (idx+1) +"</td>";
     					html += "<td>"+ value.time+"</td>";
     					html += "<td>"+ value.themaName +"</td>";
     					html += "<td>"+ value.reserveName +"</td>";
-    					html += "<td>"+ value.reservephone +"</td>";
+    					html += "<td>"+ value.reservePhone +"</td>";
     					html += "<td>"+ value.reserveAmount +"</td>";
     					html += "<td>"+ value.reservePay +"</td>";
     					html += "<td>"+ value.reserveDate +"</td>";
-    					html += "<td>"+ value.reserveAmount+ "</td>";
+    					html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
     					html += "<td>"+ "-" +"</td>";
-    					html += "<td><button onclick='fn_managePage("+value.reserveNo+");'>관리</button></td>";
+    					html += "<td><button onclick='fn_managePage("+value.reserveNo+","+'value.themaCode'+","+value.timeCode+");'>관리</button></td>";
     					html +="</tr>";
     				});
     				$("#tbody_reserve").html(html);
@@ -101,9 +106,15 @@
     		const select = selectDate.val();
     		selectDateReserve(select);
     	});
-     	function fn_managePage(reserveNo){
+     	function fn_managePage(reserveNo,themaCode,timeCode){
+     		console.log("themaCode:::"+themaCode);
     		$("#frm").attr("action","/editReserveFrm.do");
     		$("#reserveNo").val(reserveNo);
+    		$("#themaCode").val(themaCode);
+    		$("#timeCode").val(timeCode);
+    		console.log($("#reserveNo").val());
+    		console.log($("#themaCode").val());
+    		console.log($("#timeCode").val());
     		$("#frm").submit();
     	}
     </script>
