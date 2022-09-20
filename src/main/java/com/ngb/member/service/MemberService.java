@@ -73,5 +73,12 @@ public class MemberService {
 		}
 		JDBCTemplate.close(conn);
 		return result;
+	}
+
+	public Member searchMemberId(String memberName, String memberMail) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member m = dao.searchMemberId(conn , memberName , memberMail);
+		JDBCTemplate.close(conn);
+		return m;
 	} 
 }
