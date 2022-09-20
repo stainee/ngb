@@ -1,4 +1,4 @@
-package com.ngb.thema.model.controller;
+package com.ngb.reserve.thema.controller;
 
 import java.io.IOException;
 
