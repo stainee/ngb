@@ -215,14 +215,14 @@ function checkReserveInfo(){
 //두번째 스텝의 세부 예약정보를 모두 입력했는지를 확인하는 메소드
 function checkReserveDetailInfo(thema){
     let name = true;
-    let people = 0; //정상일 경우 default=0
+    let people = 0; //정상일 경우 default=0 크면 1 작으면 -1
     let phone = true;
     let email = true;
 
     let nameValue = $("input[name=reserveName]").val();
     let phoneValue = $("input[name=reservePhone]").val();
     let peopleValue = $("select[name=reserveAmount]").val();
-    let mailValue = $("select[name=reserveMail]").val();
+    let mailValue = $("input[name=reserveMail]").val();
 
     //전화번호가 비지 않았고 11자리의 숫자인지 유효성 검사
     const phoneReg = /^[0-9]{11}$/;
@@ -246,13 +246,14 @@ function checkReserveDetailInfo(thema){
     }
 
     //이메일이 비었거나 유효하지 않으면
-    // const mailReg = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    // if(mailReg==""){
-    //     email = false;
-    // }
-    // if(!mailReg.test(mailValue)){
-    //     email = false;
-    // }
+    const mailReg = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if(!mailValue==""){
+        if(!mailReg.test(mailValue)){
+            email = false;
+        }
+    }else{
+        email = false;
+    }
 
     if(name==true && people==0 && phone==true && email==true){
         return true;

@@ -40,6 +40,7 @@ public class CheckReserveServlet extends HttpServlet {
 		int timeCode = Integer.parseInt(request.getParameter("time_code"));
 		String playDate = request.getParameter("play_date");
 		SimpleDateFormat dtFormat = new SimpleDateFormat("yy-mm-dd");
+		
 		Date dateForm;
 		String strDate="";
 		try {
@@ -52,12 +53,13 @@ public class CheckReserveServlet extends HttpServlet {
 		}
 		
 		ReserveService service = new ReserveService();
-		Reserve checkReserve = service.searchOneReserve(themaCode, timeCode, playDate);
+		Reserve checkReserve = service.searchOneReserve(themaCode, timeCode, strDate);
 		
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		String result = "";
-		if(checkReserve.getReserveNo()==0) {//조회된 결과가 없다는 뜻
+		//조회된 결과가 없으면
+		if(checkReserve == null) {
 			//out으로 reserve여부를 보낸후 결제API, 이후 reserve Insert
 			result="yes";
 		}else {

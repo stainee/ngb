@@ -234,7 +234,7 @@ public class ReserveDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String query = "select * from reserve where thema_code=? and time_code=? and to_char(play_date, 'yy-mm-dd')=?";
-		Reserve r = new Reserve();
+		Reserve r = null;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, themaCode);
@@ -242,6 +242,7 @@ public class ReserveDao {
 			pstmt.setString(3, playDate);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
+				r = new Reserve();
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
 				r.setReserveName(rset.getString("reserve_name"));
