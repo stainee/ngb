@@ -55,7 +55,7 @@ function updateMember(){
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<div class="content-wrap">
-	    <form action="/manageMember.do" method="post">
+	    
 			<table class="tbl1 manageMemTbl">
 		        <tr>
 		        	<th>회원번호</th>
@@ -122,7 +122,7 @@ function updateMember(){
 		        	</td>
 				</tr>
 			</table>
-		</form>
+		
 	</div>
 </body>
 </html>
