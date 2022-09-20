@@ -125,7 +125,11 @@ body{
     font-size: 11px;
     font-family: ns-Medium;
 }
-
+.logout{
+	line-height: 45px;
+    font-size: 11px;
+    font-family: ns-Medium;
+}
 .content-wrap{
 	margin-left:100px;
 	margin-top:80px;
