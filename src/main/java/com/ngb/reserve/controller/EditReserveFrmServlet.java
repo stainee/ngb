@@ -33,15 +33,21 @@ public class EditReserveFrmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ReserveService service = new ReserveService();
 		request.setCharacterEncoding("utf-8");
 		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
-		
-		ReserveService service = new ReserveService();
-		ReserveMngr result = service.selectReserveEdit(reserveNo);
-		
-		request.setAttribute("result", result);
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/editReserveFrm.jsp");
-		view.forward(request, response);
+		if(reserveNo == 0) {
+			ReserveMngr result = service.selectReserveEdit(reserveNo);
+			
+			request.setAttribute("result", result);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/editReserveFrm.jsp");
+			view.forward(request, response);
+		}else {
+			ReserveMngr result = service.selectReserveEdit(reserveNo);
+			request.setAttribute("result", result);
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/editReserveFrm.jsp");
+			view.forward(request, response);
+		}
 		
 	}
 

@@ -13,7 +13,7 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
-function updateReserve(reserveNo){
+function insert(reserveNo){
 	$.ajax({
 		url : "/updateReserve.do",
 		type : "get",
@@ -66,17 +66,17 @@ function updateReserve(reserveNo){
 			</tr>
 				<tr>
 					<input type="hidden" id="reserveNo" value="<%=result.getReserveNo()%>">
-					<td><%=result.getPlayDate()%></td>
-					<td><%=result.getThemaName()%></td>
-					<td><input type="text" class="input-form" id="reserveName" value="<%=result.getReserveName()%>"></td>
-					<td><input type="text" class="input-form" id="reservePhone" value="<%=result.getReservePhone()%>"></td>
-					<td><input type="text" class="input-form" id="reserveAmount" value="<%=result.getReserveAmount()%>"></td>
+					<td><input type = "text" class = "input-form" id = "playDate"></td>
+					<td><input type = "text" class = "input-form" id = "themaName"></td>
+					<td><input type="text" class="input-form" id="reserveName"></td>
+					<td><input type="text" class="input-form" id="reservePhone"></td>
+					<td><input type="text" class="input-form" id="reserveAmount"></td>
 					<td><%=result.getReservePay()%></td>
 					<td><%=result.getReserveDate()%></td>
-					<td><%=result.getReserveAmount() + "/" + result.getPeopleMax()%></td>
+					<td><input type = "text" class = "input-form" id="reserveAmount"></td>
 					<td>-</td>
 					<td>
-						<button onclick="updateReserve()">수정</button>
+						<button onclick="insertReserve()">수정</button>
 					</td>
 				</tr>
 		</table>

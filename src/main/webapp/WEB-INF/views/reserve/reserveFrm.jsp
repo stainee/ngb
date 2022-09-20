@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="/css/reserveFrm.css">
 </head>
 <body>
@@ -34,7 +34,7 @@
 	    <div class="tabs-container">
          	
 		    <div class="tabs">
-		    	<div class="tab tab1" style="display:none"><!-- style="display:none"; 임시추가-->
+		    	<div class="tab tab1">
 		    		<table class="tbl1">
 					     <tr>
 					         <th>날짜</th>
@@ -66,7 +66,7 @@
 				     	<button class="next btn2" id="tab1NextBtn">다음</button>
 			     	</div>
 		    	</div>
-		    	<div class="tab tab2" style="display:block;"><!-- 임시변경 --> <!-- 원래 코드 style="display:none;" -->
+		    	<div class="tab tab2" style="display:none;">
 		    		<table class="tbl2">
 					     <tr>
 					         <th>예약일</th>
