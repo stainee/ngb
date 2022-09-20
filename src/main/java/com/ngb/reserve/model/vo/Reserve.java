@@ -15,14 +15,14 @@ public class Reserve {
 	private int reserveState;
 	private String reserveEtc;
 	private String playDate;
-	private String timeCode;
+	private int timeCode;
 	public Reserve() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Reserve(int reserveNo, String themaCode, String themaName, String reserveDate, int reservePay,
 			String reserveName, String reserveMail, String reservePhone, int reserveAmount, int reserveState,
-			String reserveEtc, String playDate, String timeCode) {
+			String reserveEtc, String playDate, int timeCode) {
 		this.reserveNo = reserveNo;
 		this.themaCode = themaCode;
 		this.themaName = themaName;
@@ -109,10 +109,10 @@ public class Reserve {
 	public void setPlayDate(String playDate) {
 		this.playDate = playDate;
 	}
-	public String getTimeCode() {
+	public int getTimeCode() {
 		return timeCode;
 	}
-	public void setTimeCode(String timeCode) {
+	public void setTimeCode(int timeCode) {
 		this.timeCode = timeCode;
 	}
 
