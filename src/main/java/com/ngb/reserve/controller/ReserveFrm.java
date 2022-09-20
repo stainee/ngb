@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ngb.member.model.vo.Member;
 import com.ngb.thema.model.vo.Thema;
 import com.ngb.thema.service.ThemaService;
 
@@ -33,6 +35,7 @@ public class ReserveFrm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		//테마리스트 가져오기
 		ThemaService tservice = new ThemaService();
 		ArrayList<Thema> themaList = tservice.selectAllThema();
 		request.setAttribute("themaList", themaList);

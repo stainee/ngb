@@ -29,12 +29,6 @@ $("#tab1NextBtn").on("click", function(){
     }
 })
 
-
-//두번째 다음 버튼
-$("#tab2NextBtn").on("click", function(){
-    console.log(1);
-})
-
 //신용카드로 결제
 $("#credit").on("click",function(){
     //이름, 전화번호, 인원을 선택했는지 확인
@@ -276,6 +270,7 @@ function checkReserveDetailInfo(thema){
     }
 
 }
+//선택한 테마 정보 가져오기
 function getThemaInfo(themaCode){
     thema ={}
     const length = $(".themaList li").length;

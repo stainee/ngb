@@ -217,6 +217,9 @@
 
 /*기능단*/
 
+#kakaoPay{
+	width:600px;
+}
 #themaPrice{
 	background-color : rgb(255,255,255);
 }

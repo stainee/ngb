@@ -92,13 +92,31 @@
 					     </tr>
 					     <tr>
 				 			<th>이름</th>
-				 			<td><input type="text" name="reserveName" placeholder="입금자명"></td>
+				 			<td>
+				 			<%if(m==null){ %>
+				 			<input type="text" name="reserveName" placeholder="입금자명">
+				 			<%}else{ %>
+				 			<input type="text" name="reserveName" placeholder="입금자명" value="<%=m.getMemberName()%>">
+				 			<%} %>
+				 			</td>
 				 			<th>전화번호</th>
-				 			<td><input type="text" name="reservePhone" placeholder="01012345678"></td>
+				 			<td>
+				 			<%if(m==null){ %>
+				 			<input type="text" name="reservePhone" placeholder="01012345678">
+				 			<%}else{ %>
+				 			<input type="text" name="reservePhone" placeholder="01012345678" value="<%=m.getMemberPhone()%>">
+				 			<%} %>
+				 			</td>
 				 		</tr>
 				 		<tr>
 				 			<th>이메일</th>
-				 			<td colspan="3" class="email"><input type="text" name="reserveMail" placeholder="abc@def.com"></td>
+				 			<td colspan="3" class="email">
+				 			<%if(m==null){ %>
+				 			<input type="text" name="reserveMail" placeholder="abc@def.com">
+				 			<%}else{ %>
+				 			<input type="text" name="reserveMail" placeholder="abc@def.com" value="<%=m.getMemberMail()%>">
+				 			<%} %>
+				 			</td>
 				 		</tr>
 					     <tr>
 					     	<th>결제금액</th>
@@ -110,6 +128,9 @@
 				 		<tr>
 				 			<th colspan="2"><button id="credit" class="credit btn2">카드결제</button></th>
 				 			<th colspan="2"><button id="account" class="account btn2">무통장입금</button></th>
+				 		</tr>
+				 		<tr>
+				 			<th colspan="4"><button id="kakaoPay" class="kakao btn2">카카오페이</button></th>
 				 		</tr>
 				 	</table>
 				 	<div class="btn-wrap">

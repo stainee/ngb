@@ -5,9 +5,6 @@
 <html>
 <link rel="stylesheet" href = "css/managerTemplate.css">
 <head>
-<%
-    	Member m = (Member)session.getAttribute("m");
- %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
