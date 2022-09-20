@@ -49,9 +49,17 @@ $("#credit").on("click",function(){
             dataType : "text",
             //예약하기
             success : function(result){
-                //예약 가능하면 예약실행
+                //예약 가능하면 결제, 아니면 취소
                 if(result=="yes"){
-                    reserveFunc();
+                    //결제하기
+                    const result = payCard();
+                    //결제 완료 되었으면
+                    if(result=="complete"){
+                        reserveFunc();
+                    }else{//result=="fail"
+                        alert("결제에 실패하였습니다");
+                    }
+
                 }else{  //예약 불가능하면 alert
                     alert("이미 예약된 테마입니다");
                 }
@@ -381,7 +389,30 @@ function reserveFunc(){
             play_date: reserve.play_date,
             thema_name: reserve.thema_name
         }
-    })
+    });
+}
+function payCard(){
+    const price = $(".totalPrice").val().split("원")[0]; 
+    const d = new Date();
+    const date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
+    let result = "";
+    IMP.init("imp87317522");
+    IMP.request_pay({
+        merchat_uid : "상품코드_"+date,
+        name : "결제 테스트",
+        amount : price,
+        buyer_email : reserve.reserve_mail,
+        buyer_name : reserve.reserve_name,
+        buyer_tel : "010-7324-7022",
+    }, function(rsp){
+        if(rsp.success){
+            result = "complete";
+        }else{
+            result="fail";
+        }
+    });
+
+    return result;
 
 }
 $(function() {
