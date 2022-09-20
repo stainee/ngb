@@ -40,21 +40,39 @@ public class UpdateReserveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Reserve r = new Reserve();
-		r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")));
-		r.setReserveName(request.getParameter("reserveName"));
-		r.setReservePhone(request.getParameter("reservePhone"));
-		r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
-		ReserveService service = new ReserveService();
-		int result = service.updateReserve(r);
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
-		
-		if(result == 1) {
-			new Gson().toJson("success",out);
+		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
+		if(reserveNo == 0) {
+			ReserveService service = new ReserveService();
+			r.setReserveName(request.getParameter("reserveName"));
+			r.setReservePhone(request.getParameter("reservePhone"));
+			r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
+			r.setThemaCode(request.getParameter("themaCode"));
+			r.setTimeCode(Integer.parseInt(request.getParameter("timeCode")));
+			
+			int result = service.insertReserve(r);
+//			reserveName:$("#reserveNo").val(),
+//			reserveName:$("#reserveName").val(),
+//			reservePhone:$("#reservePhone").val(),
+//			reserveAmount:$("#reserveAmount").val()
+//			reserveAmount:$("#timeCode").val()
+//			reserveAmount:$("#themaCode").val()
 		}else {
-			new Gson().toJson("fail",out);
+			ReserveService service = new ReserveService();
+			r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")));
+			r.setReserveName(request.getParameter("reserveName"));
+			r.setReservePhone(request.getParameter("reservePhone"));
+			r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
+			int result = service.updateReserve(r);
+			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			
+			if(result == 1) {
+				new Gson().toJson("success",out);
+			}else {
+				new Gson().toJson("fail",out);
+			}
 		}
 		
 	}
