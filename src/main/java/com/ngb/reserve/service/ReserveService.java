@@ -75,4 +75,16 @@ public class ReserveService {
 		return reserve;
 	}
 
+	public int insertReserve(Reserve r) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertReserve(conn,r);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 }

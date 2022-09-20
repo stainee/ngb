@@ -261,6 +261,34 @@ public class ReserveDao {
 		}
 		return r;
 	}
+	
+	public int insertReserve(Connection conn, Reserve r) {
+		PreparedStatement pstmt = null;
+		Reserve result = new Reserve();
+		int resultSet = 0;
+		String query = "insert into reserve values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, null, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, r.getThemaCode());
+			pstmt.setInt(2, r.getReservePay());
+			pstmt.setString(3, r.getReserveName());
+			pstmt.setString(4, r.getReserveMail());
+			pstmt.setString(5, r.getReservePhone());
+			pstmt.setInt(6, r.getReserveAmount());
+			pstmt.setString(7, r.getPlayDate());
+			pstmt.setInt(8, r.getTimeCode());
+			
+			resultSet = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return resultSet;
+	}
 }
 
 

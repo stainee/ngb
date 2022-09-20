@@ -53,11 +53,17 @@ public class CheckReserveServlet extends HttpServlet {
 		
 		ReserveService service = new ReserveService();
 		Reserve checkReserve = service.searchOneReserve(themaCode, timeCode, playDate);
+		
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
+		String result = "";
 		if(checkReserve.getReserveNo()==0) {//조회된 결과가 없다는 뜻
 			//out으로 reserve여부를 보낸후 결제API, 이후 reserve Insert
+			result="yes";
+		}else {
+			result="no";
 		}
+		out.print(result);
 	}
 
 	/**

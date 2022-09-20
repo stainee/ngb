@@ -43,6 +43,7 @@ $("#credit").on("click",function(){
     if(check==true){
         setReserveInfo();
         getReserveInfo();
+        //예약 확인
         $.ajax({
             url:"/checkReserve.do",
             type:"post",
@@ -51,24 +52,15 @@ $("#credit").on("click",function(){
                 time_code: reserve.time_code,
                 play_date: reserve.play_date
             },
-            dataType : "json",
-            success : function(){
-                $.ajax({
-
-                    url:"/reserve.do",
-                    type:"post",
-                    data:{
-                        thema_code: reserve.thema_code,
-                        time_code: reserve.time_code,
-                        reserve_pay : reserve.reserve_pay,
-                        reserve_name : reserve.reserve_name,
-                        reserve_mail : reserve.reserve_mail,
-                        reserve_phone : reserve.reserve_phone,
-                        reserve_amount : reserve.peopleAmount,
-                        play_date: reserve.play_date,
-                        thema_name: reserve.thema_name
-                    }
-                })
+            dataType : "text",
+            //예약하기
+            success : function(result){
+                //예약 가능하면 예약실행
+                if(result=="yes"){
+                    reserveFunc();
+                }else{  //예약 불가능하면 alert
+                    alert("이미 예약된 테마입니다");
+                }
             }
         })
     }
@@ -158,9 +150,15 @@ function setReserveInfo(){
     const reserveThemaName = $(".themaList .select").text();
     $(".themaName").text(reserveThemaName);
     //결제금액 (인당)
-    const price = $(".totalPrice").text().split("원")[0];
+    let price;
+    if(idx==0){
+        //두번째탭 넘어가는 순간 price의 초기 설정은 1인 가격으로 하여야 한다.
+        price = $("#themaPrice").text().split("원")[0];
+    }else{
+        price = $(".totalPrice").text().split("원")[0];
+    }
     //결제금액 1인 기본 셋팅
-    $(".totalPrice").text($(".totalPrice").text().split("원")[0]+"원");
+    $(".totalPrice").text(price+"원");
 
     const peopleAmount = $("select[name=reserveAmount]").val();
     $(".peopleAmount").text(peopleAmount);
@@ -371,7 +369,25 @@ function showthemaList(thisObj){
 
 }
 
+function reserveFunc(){
+    $.ajax({
 
+        url:"/reserve.do",
+        type:"post",
+        data:{
+            thema_code: reserve.thema_code,
+            time_code: reserve.time_code,
+            reserve_pay : reserve.reserve_pay,
+            reserve_name : reserve.reserve_name,
+            reserve_mail : reserve.reserve_mail,
+            reserve_phone : reserve.reserve_phone,
+            reserve_amount : reserve.reserve_amount,
+            play_date: reserve.play_date,
+            thema_name: reserve.thema_name
+        }
+    })
+
+}
 $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
