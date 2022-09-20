@@ -34,7 +34,7 @@
 	    <div class="tabs-container">
          	
 		    <div class="tabs">
-		    	<div class="tab tab1">
+		    	<div class="tab tab1" style="display:none"><!-- style="display:none"; 임시추가-->
 		    		<table class="tbl1">
 					     <tr>
 					         <th>날짜</th>
@@ -66,7 +66,7 @@
 				     	<button class="next btn2" id="tab1NextBtn">다음</button>
 			     	</div>
 		    	</div>
-		    	<div class="tab tab2" style="display:none;">
+		    	<div class="tab tab2" style="display:block;"><!-- 임시변경 --> <!-- 원래 코드 style="display:none;" -->
 		    		<table class="tbl2">
 					     <tr>
 					         <th>예약일</th>
@@ -109,7 +109,8 @@
 					     </tr>
 				 		<tr>
 				 			<th colspan="2"><button id="credit" class="credit btn2">카드결제</button></th>
-				 			<th colspan="2"><button id="account" class="account btn2">무통장입금</button></th>
+				 			<th colspan="2"><button id="account" class="account btn2" onclick="sendReserveMail();">무통장입금</button></th>
+				 	
 				 		</tr>
 				 	</table>
 				 	<div class="btn-wrap">
@@ -157,6 +158,24 @@
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>
 <script>
-
+	
+	function sendReserveMail(){
+		const reserveMail = $("[name=reserveMail]").val();
+		console.log(reserveMail);
+		
+		
+		console.log("무통장입금 클릭동작!");
+		$.ajax({
+			url : "/sendReserveMail2.do",
+			data : {reserveMail:reserveMail},
+			type : "post"
+		});
+		
+		//if(reserveMail != null){
+			//성공메세지
+		//}
+		
+	}
+	
 </script>
 </html>
