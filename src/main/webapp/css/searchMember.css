@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.content-box{
+    margin: 0 auto;
+    min-width: 500px;
+    height: 450px;
+    border: 5px solid rgb(50,50,50);
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+}
+.center-move{
+    width: 500px;
+    height: 450px;
+    margin: 0 auto;
+    border: 5px solid gray;
+    background-color: gray;
+}
+.content-box>.center-move>.search-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.content-box>.center-move>.search-wrap>div{
+    width: 300px;
+    height: 50px;
+    border: 5px solid rgb(50,50,50);
+    background-color: rgb(50,50,50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-box>.center-move>.search-wrap>div:first-child{
+    border: 5px solid rgb(50,50,50);
+
+}
+.content-box>.center-move>.search-content{
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 5px solid rgb(50,50,50);
+    border-top: rgb(50,50,50);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-box>.center-move>.search-content>span{
+    background-color: rgb(255,193,7);
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgb(255,193,7);
+    text-align: center;
+    line-height: 40px;
+}
+.content-box>.center-move>.search-content>input{
+    width: 300px;
+    height: 40px;
+}
+.btn2{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn2:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    border:1px solid black;
+    box-shadow: none;
+}
+.center-move>.search-content:last-child{
+    align-items: flex-end;
+}
+
+.show-hide{
+    display: none;
+}

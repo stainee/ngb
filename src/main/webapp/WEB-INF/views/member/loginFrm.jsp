@@ -4,38 +4,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
+<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<div class="page-content">
-		<div class="page-title">로그인</div>
-
-		<form action="/login.do" method="post">
-			<div>
-				<div class="input-box">
-					<label for="loginId">아이디</label>
-					
-					<input type="text" name="loginId" id="loginId" placeholder="아이디입력">
-				</div>
-
-				<div class="input-box">
-					<label for="loginPw">비밀번호</label> <input type="password"
-						name="loginPw" id="loginPw" placeholder="비밀번호입력">
-				</div>
-
-				<div class="input-box link-box">
-					<a href="searchIdPw.do">아이디/비밀번호 찾기</a>
-				</div>
-
-			</div>
-			<div>
-				<button type="submit">로그인</button>
-				<button type="button">취소</button>
-			</div>
-		</form>
-
-	</div>
+	<div class="content-wrap">
+        <div class="content-box">
+            <form action="/login.do" method="post">
+                <table border="1" >
+                    <tr>
+                        <th class="label-backColor"><label for="loginId">아이디</label></th>
+                        <td class="input-backColor"><input class="input-form" type="text" name="loginId" id="loginId" placeholder="아이디입력"></td>
+                    </tr>
+                    <tr>
+                        <th class="label-backColor"><label for="loginPw">비밀번호</label></th>
+                        <td class="input-backColor"> <input class="input-form" type="password" name="loginPw" id="loginPw"placeholder="비밀번호입력"></td>
+                    </tr>
+                    <tr>
+                        
+                        <td colspan="2"><a href="searchMemberFrm.do">아이디/비밀번호 찾기</a></td>
+                    </tr>
+                    <tr>
+                        
+                        <td colspan="2"><button type="submit" class="btn2">로그인</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
