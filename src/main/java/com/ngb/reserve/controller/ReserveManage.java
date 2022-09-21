@@ -38,10 +38,11 @@ public class ReserveManage extends HttpServlet {
 		Reserve r = new Reserve();
 		ReserveService service = new ReserveService();
 		
-		ArrayList<Thema> timeTable = service.timeTable();
+		System.out.println("df");
+		ArrayList<Thema> themaTable = service.themaTable(); //reserveManage.jsp에서 테마별로 정렬하기 위한 테마테이블 조회
 		
 		ArrayList<Reserve> list = service.selectAllReserve();
-		request.setAttribute("list", timeTable);
+		request.setAttribute("list", themaTable);
 		ArrayList<Reserve> dateList = service.selectReserveDate();
 		request.setAttribute("dateList", dateList);
 		

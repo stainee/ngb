@@ -39,25 +39,20 @@ public class UpdateReserveServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Reserve r = new Reserve();
 		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
 		if(reserveNo == 0) {
+			ReserveMngr rm = new ReserveMngr();
 			ReserveService service = new ReserveService();
-			r.setReserveName(request.getParameter("reserveName"));
-			r.setReservePhone(request.getParameter("reservePhone"));
-			r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
-			r.setThemaCode(request.getParameter("themaCode"));
-			r.setTimeCode(Integer.parseInt(request.getParameter("timeCode")));
-			r.setPlayDate(request.getParameter("playDate"));
-			String reserveMail = request.getParameter("reserveMail");
-			r.setReserveMail(request.getParameter("reserveMail"));
-			int result = service.insertReserve(r);
-//			reserveName:$("#reserveNo").val(),
-//			reserveName:$("#reserveName").val(),
-//			reservePhone:$("#reservePhone").val(),
-//			reserveAmount:$("#reserveAmount").val()
-//			reserveAmount:$("#timeCode").val()
-//			reserveAmount:$("#themaCode").val()
+			rm.setReserveName(request.getParameter("reserveName"));
+			rm.setReservePhone(request.getParameter("reservePhone"));
+			rm.setReserveAmount(request.getParameter("reserveAmount"));
+			rm.setThemaCode(request.getParameter("themaCode"));
+			rm.setTimeCode(request.getParameter("timeCode"));
+			rm.setPlayDate(request.getParameter("playDate"));
+			rm.setReserveMail(request.getParameter("reserveMail"));
+			rm.setThemaPrice(Integer.parseInt(request.getParameter("themaPrice")));
+			int themaPrice  = Integer.parseInt(request.getParameter("themaPrice"));
+			int result = service.insertReserveMngr(rm);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
 			PrintWriter out = response.getWriter();
@@ -68,6 +63,7 @@ public class UpdateReserveServlet extends HttpServlet {
 			}
 			}else {
 			ReserveService service = new ReserveService();
+			Reserve r = new Reserve();
 			r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")));
 			r.setReserveName(request.getParameter("reserveName"));
 			r.setReservePhone(request.getParameter("reservePhone"));
