@@ -99,7 +99,7 @@
 		</div>
 	</div>
 	<div class = "location" id = "location">
-		<a href = "reserveMange.do" style = "color:red">manage</a>
+		<a href = "reserveManage.do" style = "color:red">manage</a>
 		<a href = "reserveFrm.do" style = "color:blue">reserve</a>
 		<a href = "editReserveFrm.do" style = "color:green">editReserve</a>
 		<a href = "findReserveFrm.do" style = "color:purple">findReserve</a>
