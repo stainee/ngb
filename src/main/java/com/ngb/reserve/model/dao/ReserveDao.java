@@ -322,6 +322,17 @@ public class ReserveDao {
 		
 		return reser;
 	}
+
+	public ArrayList<ReserveMngr> emptyReserveInfo(Connection conn, ReserveMngr rm) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ReserveMngr> resultList = new ArrayList<ReserveMngr>();
+		resultList.add(rm);
+		System.out.println(resultList);
+		String query = "";
+		
+		return null;
+	}
 	
 }
 

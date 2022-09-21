@@ -77,6 +77,7 @@ function updateReserve(reserveNo){
 					<td>-</td>
 					<td>
 						<button onclick="updateReserve()">수정</button>
+						<button onclick="deleteReserve()">삭제</button>
 					</td>
 				</tr>
 		</table>

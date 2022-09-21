@@ -57,7 +57,7 @@ public class ReserveService {
 
 	public ReserveMngr selectReserveEdit(int reserveNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		ReserveMngr result = dao.selectReserveEdit(conn, reserveNo);
+			ReserveMngr result = dao.selectReserveEdit(conn, reserveNo);
 		JDBCTemplate.close(conn);
 		return result;
 	}
@@ -94,6 +94,12 @@ public class ReserveService {
 		JDBCTemplate.close(conn);
 		
 		return reser;
+	}
+
+	public ArrayList<ReserveMngr> emptyReserveInfo(ReserveMngr rm) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<ReserveMngr> resultList = dao.emptyReserveInfo(conn, rm);
+		return resultList;
 	}
 
 }

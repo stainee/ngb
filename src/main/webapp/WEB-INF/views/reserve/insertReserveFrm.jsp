@@ -13,26 +13,27 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
-function insert(reserveNo){
+function insert(){
 	$.ajax({
 		url : "/updateReserve.do",
 		type : "get",
 		data : {
-			reserveNo:$("#reserveNo").val(),
+			reserveName:$("#reserveNo").val(),
 			reserveName:$("#reserveName").val(),
 			reservePhone:$("#reservePhone").val(),
 			reserveAmount:$("#reserveAmount").val()
+			reserveAmount:$("#timeCode").val()
+			reserveAmount:$("#themaCode").val()
 		},
 		success : function(result){
 			if(result == 'success'){
-				alert("수정이 완료되었습니다.");
+				alert("예약추가가 완료되었습니다.");
 				location.href = "/reserveManage.do"
 			}else{
-				alert("수정 중 오류가 발생하였습니다.");
+				alert("예약추가 중 오류가 발생하였습니다.");
 			}
 		},
 		error :function(data){
-			console.log("2");
 		}
 	});
 }
@@ -49,7 +50,7 @@ function insert(reserveNo){
 	</style>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp"%>
 	<div class="content-wrap">
-	<div>예약수정</div>
+	<div>예약추가</div>
 	<hr>
 		<table class="tbl1">
 			<tr>
@@ -65,18 +66,21 @@ function insert(reserveNo){
 				<th>관리자모드</th>
 			</tr>
 				<tr>
-					<input type="hidden" id="reserveNo" value="<%=result.getReserveNo()%>">
-					<td><input type = "text" class = "input-form" id = "playDate"></td>
-					<td><input type = "text" class = "input-form" id = "themaName"></td>
+					<input type = "hidden" id = "timeCode" value = "<%=result.getTimeCode() %>">
+					<input type = "hidden" id = "themaCode" value = "<%=result.getThemaCode() %>">
+					<input type = "hidden" id = "reserveNo" value = "<%=result.getReserveNo() %>">
+					<td><%=result.getTime()%>
+					</td>
+					<td><%=result.getThemaName() %></td>
 					<td><input type="text" class="input-form" id="reserveName"></td>
 					<td><input type="text" class="input-form" id="reservePhone"></td>
-					<td><input type="text" class="input-form" id="reserveAmount"></td>
-					<td><%=result.getReservePay()%></td>
-					<td><%=result.getReserveDate()%></td>
-					<td><input type = "text" class = "input-form" id="reserveAmount"></td>
+					<td><input type="text" class="input-form" id="reserveAmount" value = "<%="최대인원"+result.getPeopleMax()+"명"%>"></td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
 					<td>-</td>
 					<td>
-						<button onclick="insertReserve()">수정</button>
+						<button onclick="insertReserve()">추가</button>
 					</td>
 				</tr>
 		</table>
