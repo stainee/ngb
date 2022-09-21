@@ -43,6 +43,8 @@
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<form id="frm">
+	
+		<input type="hidden" name= 'playDate' id="playDate"/>
 		<input type="hidden" name= 'peopleMax' id="peopleMax"/>
 		<input type="hidden" name= 'reserveNo' id="reserveNo"/>
 		<input type="hidden" name= 'themaCode' id="themaCode"/>
@@ -98,7 +100,7 @@
     					html += "<td>"+ value.reserveDate +"</td>";
     					html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
     					html += "<td>"+ "-" +"</td>";
-    					html += "<td><button onclick='fn_managePage("+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
+    					html += "<td><button onclick='fn_managePage(\""+select+"\","+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
     					html +="</tr>";
     				});
     				$("#tbody_reserve").html(html);
@@ -109,14 +111,16 @@
     		const select = selectDate.val();
     		selectDateReserve(select);
     	});
-     	function fn_managePage(peopleMax,themaName,time,reserveNo,themaCode,timeCode){
+     	function fn_managePage(select,peopleMax,themaName,time,reserveNo,themaCode,timeCode){
     		$("#frm").attr("action","/editReserveFrm.do");
     		$("#peopleMax").val(peopleMax);
     		$("#reserveNo").val(reserveNo);
     		$("#themaCode").val(themaCode);
     		$("#timeCode").val(timeCode);
     		$("#themaName").val(themaName);
+    		$("#playDate").val(select);
     		$("#time").val(time);
+    		console.log(select)
     		console.log(themaCode)
     		console.log(reserveNo)
     		console.log(timeCode)

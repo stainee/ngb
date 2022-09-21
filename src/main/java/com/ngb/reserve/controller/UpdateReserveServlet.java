@@ -48,7 +48,9 @@ public class UpdateReserveServlet extends HttpServlet {
 			r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
 			r.setThemaCode(request.getParameter("themaCode"));
 			r.setTimeCode(Integer.parseInt(request.getParameter("timeCode")));
-			
+			r.setPlayDate(request.getParameter("playDate"));
+			String reserveMail = request.getParameter("reserveMail");
+			r.setReserveMail(request.getParameter("reserveMail"));
 			int result = service.insertReserve(r);
 //			reserveName:$("#reserveNo").val(),
 //			reserveName:$("#reserveName").val(),
@@ -56,7 +58,15 @@ public class UpdateReserveServlet extends HttpServlet {
 //			reserveAmount:$("#reserveAmount").val()
 //			reserveAmount:$("#timeCode").val()
 //			reserveAmount:$("#themaCode").val()
-		}else {
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			if(result == 1) {
+				new Gson().toJson("success",out);
+			}else {
+				new Gson().toJson("fail",out);
+			}
+			}else {
 			ReserveService service = new ReserveService();
 			r.setReserveNo(Integer.parseInt(request.getParameter("reserveNo")));
 			r.setReserveName(request.getParameter("reserveName"));
@@ -64,10 +74,10 @@ public class UpdateReserveServlet extends HttpServlet {
 			r.setReserveAmount(Integer.parseInt(request.getParameter("reserveAmount")));
 			int result = service.updateReserve(r);
 			
+			
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
 			PrintWriter out = response.getWriter();
-			
 			if(result == 1) {
 				new Gson().toJson("success",out);
 			}else {
