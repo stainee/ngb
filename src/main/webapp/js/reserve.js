@@ -52,7 +52,7 @@ $("#credit").on("click",function(){
                 //예약 가능하면 결제, 아니면 취소
                 if(result=="yes"){
                     //결제하기
-                    const result = payCard();
+                    const isPaid = payCard();
                     //결제 완료 되었으면
                     if(result=="complete"){
                         reserveFunc();
