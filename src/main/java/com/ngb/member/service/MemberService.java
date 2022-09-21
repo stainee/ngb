@@ -80,5 +80,21 @@ public class MemberService {
 		Member m = dao.searchMemberId(conn , memberName , memberMail);
 		JDBCTemplate.close(conn);
 		return m;
+	}
+
+
+	public int deleteMember(Member m) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertDelMember(conn, m);
+		if(result>0) {
+			result = dao.deleteMember(conn, m.getMemberNo());
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+			}
+			JDBCTemplate.rollback(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		return result;
 	} 
 }

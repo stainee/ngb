@@ -65,8 +65,13 @@
 		        		<input type = "hidden" name = "memberMail" value = <%=m.getMemberMail() %>>
 		        	</td>
 		        	<td>
-		        		<%=m.getMemberLevel() %>
-		        		<input type = "hidden" name = "memberLevel" value = <%=m.getMemberLevel() %>>
+		        		<%if(m.getMemberLevel() == 0) { %>
+		        		관리자
+		        		<input type = "hidden" name = "memberLevel" value = <%=m.getMemberLevel()%>>
+		        		<%}else	{%>
+		        		일반회원
+		        		<input type = "hidden" name = "memberLevel" value = <%=m.getMemberLevel()%>>
+		        		<%} %>
 		        	</td>
 		        	<td>
 		        		<%=m.getEnrollDate() %>
