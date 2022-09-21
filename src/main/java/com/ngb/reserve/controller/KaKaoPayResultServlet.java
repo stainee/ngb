@@ -30,7 +30,6 @@ public class KaKaoPayResultServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String token = request.getParameter("pg_token");
-		System.out.println(token);
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/kakaoPayResult.jsp");
 		request.setAttribute("token", token);
 		view.forward(request, response);
