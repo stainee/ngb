@@ -70,6 +70,36 @@ $("#credit").on("click",function(){
     
 })
 
+//카카오페이로 결제 
+$("#kakaoPay").on("click", function(){
+    thema = getThemaInfo(thema_code);
+    let check = checkReserveDetailInfo(thema);
+    if(check==true){
+        setReserveInfo();
+        getReserveInfo();
+        //예약 확인
+        $.ajax({
+            url:"/checkReserve.do",
+            type:"post",
+            data:{
+                thema_code: reserve.thema_code,
+                time_code: reserve.time_code,
+                play_date: reserve.play_date
+            },
+            dataType : "text",
+            //예약하기
+            success : function(result){
+                //예약 가능하면 결제, 아니면 취소
+                if(result=="yes"){
+                    kakaoPay();
+
+                }else{  //예약 불가능하면 alert
+                    alert("이미 예약된 테마입니다");
+                }
+            }
+        })
+    }
+})
 //이전 스텝으로 전환
 $(".prev").on("click", function(){
     if(idx>0){
@@ -398,12 +428,13 @@ function payCard(){
     let result = "";
     IMP.init("imp87317522");
     IMP.request_pay({
-        merchat_uid : "상품코드_"+date,
+        pay_method: "card",
+        merchant_uid : "상품코드_"+date,
         name : "결제 테스트",
         amount : price,
         buyer_email : reserve.reserve_mail,
         buyer_name : reserve.reserve_name,
-        buyer_tel : "010-7324-7022",
+        buyer_tel : reserve.reserve_phone
     }, function(rsp){
         if(rsp.success){
             result = "complete";
@@ -413,8 +444,36 @@ function payCard(){
     });
 
     return result;
-
 }
+
+function kakaoPay(){
+    $.ajax({
+        url:"/kakaoPay.do",
+        type:"post",
+        dataType:"text",
+        data:{
+            thema_code: reserve.thema_code,
+            time_code: reserve.time_code,
+            reserve_pay : reserve.reserve_pay,
+            play_date: reserve.play_date
+        },
+        success:function(resp){
+            console.log("결제창 띄우기");
+        },
+        done: function(resp){
+            if(resp.status === 500){
+                alert("카카오페이결제를 실패하였습니다.")
+            } else{
+                //  // alert(resp.tid); //결제 고유 번호
+                // var box = resp.next_redirect_pc_url;
+                // //window.open(box); // 새창 열기
+                // location.href = box;
+            }
+        }
+    })
+    
+}
+
 $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
