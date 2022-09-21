@@ -102,6 +102,7 @@ public class ReserveDao {
 		query += " B.THEMA_CODE,";
 		query += " B.THEMA_NAME,";
 		query += " B.PEOPLE_MAX,";
+		query += " B.THEMA_PRICE,";
 		query += " CASE WHEN C.RESERVE_NAME IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_NAME) END AS RESERVE_NAME,";
 		query += " CASE WHEN C.RESERVE_PHONE IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_PHONE) END AS RESERVE_PHONE,";
 		query += " CASE WHEN C.RESERVE_AMOUNT IS NULL THEN '0' ELSE TO_CHAR(C.RESERVE_AMOUNT) END AS RESERVE_AMOUNT,";
@@ -118,10 +119,12 @@ public class ReserveDao {
 		query += " ORDER BY THEMA_CODE,A.TIME";
 		try {
 			pstmt = conn.prepareStatement(query);
+			System.out.println(query);
 			pstmt.setString(1, strDate);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				ReserveMngr r = new ReserveMngr();
+				r.setThemaPrice(rset.getInt("thema_price"));
 				r.setReserveNo(rset.getInt("reserve_no"));
 				r.setThemaCode(rset.getString("thema_code"));
 				r.setThemaName(rset.getString("thema_name"));
@@ -182,12 +185,12 @@ public class ReserveDao {
 		return result;
 	}
 
-	public ArrayList<Thema> timeTable(Connection conn) {
+	public ArrayList<Thema> themaTable(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<Thema> timeTable = new ArrayList<Thema>();
+		ArrayList<Thema> themaTable = new ArrayList<Thema>();
 		
-		String query = "select thema_code, thema_name,time_code, time from time join thema using(thema_code) order by 4";
+		String query = "select thema_code, thema_name from thema";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -196,9 +199,7 @@ public class ReserveDao {
 				Thema t = new Thema();
 				t.setThemaCode(rset.getString("thema_code"));
 				t.setThemaName(rset.getString("thema_name"));
-				t.setTimeCode(rset.getString("time_code"));
-				t.setTime(rset.getString("time"));
-				timeTable.add(t);
+				themaTable.add(t);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -207,7 +208,7 @@ public class ReserveDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		return timeTable;
+		return themaTable;
 	}
 
 	public Reserve selectOneReserve(Connection conn, String themaCode, int timeCode, String playDate) {
@@ -248,7 +249,14 @@ public class ReserveDao {
 		Reserve result = new Reserve();
 		int resultSet = 0;
 		String query = "insert into reserve values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, null, ?, ?)";
-		
+		System.out.println("themaCode::"+r.getThemaCode());
+		System.out.println("reservePay::"+r.getReservePay());
+		System.out.println("reseveName::"+r.getReserveName());
+		System.out.println("reserveMail::"+r.getReserveMail());
+		System.out.println("reservePhone::"+r.getReservePhone());
+		System.out.println("reserveAmount::"+r.getReserveAmount());
+		System.out.println("playDate::"+r.getPlayDate());
+		System.out.println("timeCode::"+r.getTimeCode());
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, r.getThemaCode());
@@ -328,10 +336,56 @@ public class ReserveDao {
 		ResultSet rset = null;
 		ArrayList<ReserveMngr> resultList = new ArrayList<ReserveMngr>();
 		resultList.add(rm);
-		System.out.println(resultList);
 		String query = "";
 		
 		return null;
+	}
+
+	public int insertReserveMngr(Connection conn, ReserveMngr rm) {
+		PreparedStatement pstmt = null;
+		Reserve result = new Reserve();
+		int resultSet = 0;
+		int reservePay = Integer.parseInt(rm.getReserveAmount())*rm.getThemaPrice();
+		String query = "insert into reserve values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, null, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, rm.getThemaCode());
+			pstmt.setInt(2, reservePay);
+			pstmt.setString(3, rm.getReserveName());
+			pstmt.setString(4, rm.getReserveMail());
+			pstmt.setString(5, rm.getReservePhone());
+			pstmt.setString(6, rm.getReserveAmount());
+			pstmt.setString(7, rm.getPlayDate());
+			pstmt.setString(8, rm.getTimeCode());
+			
+			resultSet = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return resultSet;
+	}
+
+	public int deleteReserveMngr(Connection conn, int reserveNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM RESERVE WHERE RESERVE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reserveNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 	
 }

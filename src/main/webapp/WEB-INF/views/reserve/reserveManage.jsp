@@ -28,7 +28,6 @@
                var today = $("#datepicker").val();
                selectDateReserve(today);
        });
-  
    </script>
 	<style>
 		tbody>tr>td{
@@ -43,20 +42,30 @@
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<form id="frm">
+		<input type="hidden" name= 'playDate' id="playDate"/>
 		<input type="hidden" name= 'peopleMax' id="peopleMax"/>
 		<input type="hidden" name= 'reserveNo' id="reserveNo"/>
 		<input type="hidden" name= 'themaCode' id="themaCode"/>
 		<input type="hidden" name= 'timeCode' id="timeCode"/>
 		<input type="hidden" name= 'themaName' id="themaName"/>
+		<input type="hidden" name= 'themaPrice' id="themaPrice"/>
 		<input type="hidden" name= 'time' id="time"/>
 	</form>
 			
 	<div class="content-wrap">
-		<div>예약목록</div>
 		<div>
-			<p>Date: <input type="text" id="datepicker" size="15"/></p>
+		<select id = "selectThema">
+			<option hidden = "" disabled = "disabled" selected = "selected">테마선택</option>
+			<%for(Thema t : list){ %>
+			<option id = "option" value = "<%=t.getThemaCode()%>"><%=t.getThemaName() %>
+			</option>
+			<%} %>
+		</select>
+		<div>
+			<input type="text" class = "input-form" id="datepicker" size="15"/>
 		</div>
 		<table class="tbl1" id ="table">
+		</div>
 			<thead>
 					<th>번호</th>
 		        	<th>시간</th>
@@ -77,6 +86,7 @@
     </div>
    	<script>
     	const selectDate = $("#datepicker");
+    	const selectThema = $("#selectThema");
     	
     	function selectDateReserve(select){
     		$.ajax({
@@ -98,7 +108,7 @@
     					html += "<td>"+ value.reserveDate +"</td>";
     					html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
     					html += "<td>"+ "-" +"</td>";
-    					html += "<td><button onclick='fn_managePage("+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
+    					html += "<td><button onclick='fn_managePage("+value.themaPrice+",\""+select+"\","+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
     					html +="</tr>";
     				});
     				$("#tbody_reserve").html(html);
@@ -109,21 +119,31 @@
     		const select = selectDate.val();
     		selectDateReserve(select);
     	});
-     	function fn_managePage(peopleMax,themaName,time,reserveNo,themaCode,timeCode){
+     	function fn_managePage(themaPrice,select,peopleMax,themaName,time,reserveNo,themaCode,timeCode){
     		$("#frm").attr("action","/editReserveFrm.do");
     		$("#peopleMax").val(peopleMax);
     		$("#reserveNo").val(reserveNo);
     		$("#themaCode").val(themaCode);
     		$("#timeCode").val(timeCode);
     		$("#themaName").val(themaName);
+    		$("#playDate").val(select);
+    		$("#themaPrice").val(themaPrice);
     		$("#time").val(time);
-    		console.log(themaCode)
-    		console.log(reserveNo)
-    		console.log(timeCode)
-    		console.log(themaName)
-    		console.log(time)
     		$("#frm").submit();
     	}
+     	selectThema.on("change",function(){
+     		const select = selectThema.val();
+     		console.log(select);
+     		selectThemaReserve(select);
+     	});
+     	function selectThemaReserve(){
+     		$.ajax({
+     			url : "/selectThemaReserve.do",
+     			type : get,
+     			data : {select:select}
+
+     		});
+     	}
     </script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>

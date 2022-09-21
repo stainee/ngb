@@ -13,7 +13,7 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
-function updateReserve(reserveNo){
+function updateReserve(){
 	$.ajax({
 		url : "/updateReserve.do",
 		type : "get",
@@ -29,6 +29,27 @@ function updateReserve(reserveNo){
 				location.href = "/reserveManage.do"
 			}else{
 				alert("수정 중 오류가 발생하였습니다.");
+			}
+		},
+		error :function(data){
+			console.log("2");
+		}
+	});
+}
+
+function deleteReserve(){
+	$.ajax({
+		url : "/deleteReserve.do",
+		type : "get",
+		data : {
+			reserveNo:$("#reserveNo").val(),
+		},
+		success : function(result){
+			if(result == 'success'){
+				alert("예약삭제가 완료되었습니다.");
+				location.href = "/reserveManage.do"
+			}else{
+				alert("예약 삭제 중 오류가 발생하였습니다.");
 			}
 		},
 		error :function(data){
