@@ -29,7 +29,6 @@ public class EditMemberManageFrmServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//2. 값추출
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		System.out.println(memberNo);
 		//3. 비즈니스 로직
 		MemberService service = new MemberService();
 		Member member = service.selectOneMember(memberNo);

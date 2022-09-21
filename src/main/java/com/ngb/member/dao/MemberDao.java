@@ -310,4 +310,41 @@ public class MemberDao {
 		}
 		return m;
 	}
+
+	public int insertDelMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into del_member values(?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getMemberId());
+			pstmt.setString(2, m.getMemberName());
+			pstmt.setString(3, m.getMemberMail());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete member where member_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

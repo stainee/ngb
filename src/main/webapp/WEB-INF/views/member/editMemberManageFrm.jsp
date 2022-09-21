@@ -49,6 +49,42 @@ function updateMember(){
 		}
 	});
 }
+
+function deleteMember(){
+	const memberNo = $("#memberNo").val();
+	const memberName = $("#memberName").val();
+	const memberId = $("#memberId").val();
+	const memberMail = $("#memberMail").val();
+	
+	if(confirm("정말로 탙퇴하시겠습니까?")){
+		$.ajax({
+			url : "/deleteMember.do",
+			type : "get",
+			data:{
+				memberNo:memberNo,
+				memberName:memberName,
+				memberId:memberId,
+				memberMail:memberMail
+			},
+			success : function(data){
+				if(data==1){
+					alert("탈퇴가 완료되었습니다.");
+					location = "/manageMember.do"
+				}else{
+					alert("탈퇴 중 오류가 발생하였습니다.");
+					location = "/"
+				}
+			},
+			error : function(){
+				alert("탈퇴 중 오류가 발생하였습니다.(error)");
+				location = "/"
+			}	
+		})
+	}else{
+		
+	}
+	
+}
 </script>
 </head>
 <link rel="stylesheet" href="/css/memberManage.css">
@@ -112,13 +148,13 @@ function updateMember(){
 								font-size:20px;">수정완료</button>    	
 		        	</td>
 		        	<td colspan="4" style="border-left:none; border-bottom: none;">
-						<a href="deleteMember.do?memberNo=<%=m.getMemberNo() %>">
-							<button id="delMemBtn" style="width:100px;
+<%-- 						<a href="deleteMember.do?memberNo=<%=m.getMemberNo() %>">  </a>--%>
+							<button onclick="deleteMember()" id="delMemBtn" style="width:100px;
 								height:50px;
 								background-color: #fff;
 								box-shadow: 1px 1px gray;
 								cursor: pointer;
-								font-size:20px;">회원탈퇴</button></a>   	
+								font-size:20px;">회원탈퇴</button>   	
 		        	</td>
 				</tr>
 			</table>
