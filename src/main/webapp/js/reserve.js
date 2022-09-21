@@ -51,16 +51,9 @@ $("#credit").on("click",function(){
             success : function(result){
                 //예약 가능하면 결제, 아니면 취소
                 if(result=="yes"){
-                    //결제하기
-                    const isPaid = payCard();
-                    //결제 완료 되었으면
-                    if(result=="complete"){
-                        reserveFunc();
-                    }else{//result=="fail"
-                        alert("결제에 실패하였습니다");
+                    payCard();
                     }
-
-                }else{  //예약 불가능하면 alert
+                else{  //예약 불가능하면 alert
                     alert("이미 예약된 테마입니다");
                 }
             }
@@ -91,7 +84,7 @@ $("#kakaoPay").on("click", function(){
             success : function(result){
                 //예약 가능하면 결제, 아니면 취소
                 if(result=="yes"){
-                    kakaoPay();
+                    kakaoPayJS();
 
                 }else{  //예약 불가능하면 alert
                     alert("이미 예약된 테마입니다");
@@ -422,28 +415,30 @@ function reserveFunc(){
     });
 }
 function payCard(){
-    const price = $(".totalPrice").val().split("원")[0]; 
+    const price = Number($(".totalPrice").text().split("원")[0]); 
     const d = new Date();
     const date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
-    let result = "";
+
     IMP.init("imp87317522");
     IMP.request_pay({
+        pg: "html5_inicis",
         pay_method: "card",
-        merchant_uid : "상품코드_"+date,
-        name : "결제 테스트",
-        amount : price,
-        buyer_email : reserve.reserve_mail,
-        buyer_name : reserve.reserve_name,
-        buyer_tel : reserve.reserve_phone
+        merchant_uid: "ORD20180131-0000011",
+        name: reserve.thema_name,
+        amount: price,
+        buyer_email: reserve.reserve_mail,
+        buyer_name: reserve.reserve_name,
+        buyer_tel: reserve.reserve_phone,
     }, function(rsp){
         if(rsp.success){
-            result = "complete";
+            //결제 완료 되었으면
+            reserveFunc();
+            nextStep();
         }else{
-            result="fail";
+            alert("결제에 실패하였습니다");
         }
     });
 
-    return result;
 }
 
 function kakaoPay(){
@@ -472,6 +467,56 @@ function kakaoPay(){
         }
     })
     
+}
+
+function kakaoPayJS(){
+    $.ajax({
+        url:"https://kapi.kakao.com/v1/payment/ready",
+        type:"post",
+        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
+        dataType:"json",
+        data:{
+            "cid": "TC0ONETIME",
+            "partner_order_id":"1000",
+            "partner_user_id":"haven2216@naver.com",
+            "item_name":"초코파이",
+            "quantity":"1",
+            "total_amount":"2200",
+            "vat_amount":"200",
+            "tax_free_amount":"0",
+            "approval_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+        },
+        success : function(data){
+            kakaoPayRedirect(data.next_redirect_pc_url);
+            console.log("서버 호출완료");
+        },
+        error : function(data){
+            console.log(data);
+            console.log("서버호출 실패")
+        }
+    })
+
+}
+
+function kakaoPayRedirect(redirectURL){
+    window.open(redirectURL);
+    /*
+    $.ajax({
+        url: redirectURL,
+        type:"post",
+        dataType:"json",
+        success : function(data){
+            console.log(data);
+            console.log("서버 추가 호출 완료");
+        },
+        error : function(data){
+            console.log(data);
+            console.log("서버 추가 호출 실패")
+        }
+    })
+    */
 }
 
 $(function() {
