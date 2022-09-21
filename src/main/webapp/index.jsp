@@ -99,11 +99,11 @@
 		</div>
 	</div>
 	<div class = "location" id = "location">
-		<a href = "reserveMange.do">manage</a>
-		<a href = "reserveFrm.do">reserve</a>
-		<a href = "editReserveFrm.do">editReserve</a>
-		<a href = "findReserveFrm.do">findReserve</a>
-		<a href = "manageMember.do">memberManage</a>
+		<a href = "reserveMange.do" style = "color:red">manage</a>
+		<a href = "reserveFrm.do" style = "color:blue">reserve</a>
+		<a href = "editReserveFrm.do" style = "color:green">editReserve</a>
+		<a href = "findReserveFrm.do" style = "color:purple">findReserve</a>
+		<a href = "manageMember.do" style = "color:blue">memberManage</a>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
