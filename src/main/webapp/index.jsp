@@ -98,7 +98,12 @@
 			</div>
 		</div>
 	</div>
-	<div class = "location" id = "location">지도지도지도지도지도지도지도지도
+	<div class = "location" id = "location">
+		<a href = "reserveMange.do">manage</a>
+		<a href = "reserveFrm.do">reserve</a>
+		<a href = "editReserveFrm.do">editReserve</a>
+		<a href = "findReserveFrm.do">findReserve</a>
+		<a href = "manageMember.do">memberManage</a>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
