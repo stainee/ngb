@@ -248,7 +248,14 @@ public class ReserveDao {
 		Reserve result = new Reserve();
 		int resultSet = 0;
 		String query = "insert into reserve values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, null, ?, ?)";
-		
+		System.out.println("themaCode::"+r.getThemaCode());
+		System.out.println("reservePay::"+r.getReservePay());
+		System.out.println("reseveName::"+r.getReserveName());
+		System.out.println("reserveMail::"+r.getReserveMail());
+		System.out.println("reservePhone::"+r.getReservePhone());
+		System.out.println("reserveAmount::"+r.getReserveAmount());
+		System.out.println("playDate::"+r.getPlayDate());
+		System.out.println("timeCode::"+r.getTimeCode());
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, r.getThemaCode());

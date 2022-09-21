@@ -13,17 +13,20 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
-function insert(){
+function go_insert(){
+	console.log($("#reserveMail").val());
 	$.ajax({
 		url : "/updateReserve.do",
 		type : "get",
 		data : {
-			reserveName:$("#reserveNo").val(),
+			reserveNo:$("#reserveNo").val(),
+			timeCode:$("#timeCode").val(),
+			themaCode:$("#themaCode").val(),
 			reserveName:$("#reserveName").val(),
 			reservePhone:$("#reservePhone").val(),
-			reserveAmount:$("#reserveAmount").val()
-			reserveAmount:$("#timeCode").val()
-			reserveAmount:$("#themaCode").val()
+			reserveAmount:$("#reserveAmount").val(),
+			reserveMail:$("#reserveMail").val(),
+			playDate:$("#playDate").val()
 		},
 		success : function(result){
 			if(result == 'success'){
@@ -36,7 +39,7 @@ function insert(){
 		error :function(data){
 		}
 	});
-}
+} 
 </script>
 </head>
 <body>
@@ -49,40 +52,69 @@ function insert(){
 		}
 	</style>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp"%>
+	<input type = "hidden" id = "reserveNo" value = "<%=result.getReserveNo()%>">
+	<input type = "hidden" id = "themaCode" value = "<%=result.getThemaCode()%>">
+	<input type = "hidden" id = "timeCode" value = "<%=result.getTimeCode()%>">
+	<input type = "hidden" id = "playDate" value = "<%=result.getPlayDate()%>">
 	<div class="content-wrap">
-	<div>예약추가</div>
-	<hr>
-		<table class="tbl1">
-			<tr>
-				<th>시간</th>
-				<th>테마명</th>
-				<th>예약자</th>
-				<th>전화번호</th>
-				<th>인원</th>
-				<th>요금</th>
-				<th>예약시간</th>
-				<th>예약상태</th>
-				<th>결제확인</th>
-				<th>관리자모드</th>
-			</tr>
+		<table class="tbl1" style = "width:1000px">
+			<thead>
 				<tr>
-					<input type = "hidden" id = "timeCode" value = "<%=result.getTimeCode() %>">
-					<input type = "hidden" id = "themaCode" value = "<%=result.getThemaCode() %>">
-					<input type = "hidden" id = "reserveNo" value = "<%=result.getReserveNo() %>">
-					<td><%=result.getTime()%>
-					</td>
-					<td><%=result.getThemaName() %></td>
-					<td><input type="text" class="input-form" id="reserveName"></td>
-					<td><input type="text" class="input-form" id="reservePhone"></td>
-					<td><input type="text" class="input-form" id="reserveAmount" value = "<%="최대인원"+result.getPeopleMax()+"명"%>"></td>
-					<td>-</td>
-					<td>-</td>
-					<td>-</td>
-					<td>-</td>
+					<th colspan = 2 style ="width:1200px; height:50px;">예약정보</th>
+				</tr>
+				<tr>
+					<td colspan = 2 style = "border:none;"><%="예약날짜 : "+result.getPlayDate() %></td>
+				</tr>
+				<tr>
+					<td colspan = 2 style ="width:10%; border:none"><%="예약시간 : "+result.getTime() %></td>
+				</tr>
+				<tr>
+					<td colspan = 2 style = "width:10%"><%="테마명 : "+result.getThemaName() %></td>
+				</tr>
+				<tr>
+					<th colspan = 2 style = "height:50px;">회원정보입력</th>
+				</tr>
+				<tr style = "height:50px;">
+					<th>구분</th>
+					<th>입력란</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>예약자명</td>
 					<td>
-						<button onclick="insertReserve()">추가</button>
+						<input type ="text" id = "reserveName" value = ""/>
 					</td>
 				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td>
+						<input type = "text" id = "reservePhone" value = ""/>
+					</td>
+				</tr>
+				<tr>
+					<td>메일입력</td>
+					<td>
+						<input type = "text" id = "reserveMail" value = ""/>
+					</td>
+				</tr>
+				<tr>
+					<td>예약인원</td>
+					<td>
+						<select id = "reserveAmount" name = "reserveAmount">
+							<%int size = Integer.parseInt(result.getPeopleMax());%>
+							<%for(int i=0;i<size;i++){ %>
+							<option><%=i+1%></option>						
+							<%} %>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan = 2>
+						<button onclick = 'go_insert()'>예약추가</button>
+					</td>
+				</tr>
+			</body>
 		</table>
 	</div>
 	<script>

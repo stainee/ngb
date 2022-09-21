@@ -37,23 +37,21 @@ public class EditReserveFrmServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
+		String playDate = request.getParameter("playDate");
 		String themaCode = request.getParameter("themaCode");
 		String timeCode = request.getParameter("timeCode");
 		String themaName = request.getParameter("themaName");
 		String time = request.getParameter("time");
 		String peopleMax = request.getParameter("peopleMax");
+		System.out.println(playDate);
 		if(reserveNo == 0) {
 			ReserveMngr rm = new ReserveMngr();
+			rm.setPlayDate(playDate);
 			rm.setPeopleMax(peopleMax);
 			rm.setThemaCode(themaCode);
 			rm.setTimeCode(timeCode);
 			rm.setThemaName(themaName);
 			rm.setTime(time);
-			System.out.println(rm.getPeopleMax());
-			System.out.println(rm.getThemaCode());
-			System.out.println(rm.getTimeCode());
-			System.out.println(rm.getThemaName());
-			System.out.println(rm.getTime());
 			request.setAttribute("result", rm);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/insertReserveFrm.jsp");
 			view.forward(request, response);
