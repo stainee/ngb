@@ -484,7 +484,7 @@ function kakaoPayJS(){
             "total_amount":"2200",
             "vat_amount":"200",
             "tax_free_amount":"0",
-            "approval_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
             "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
             "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
         },
@@ -502,21 +502,6 @@ function kakaoPayJS(){
 
 function kakaoPayRedirect(redirectURL){
     window.open(redirectURL);
-    /*
-    $.ajax({
-        url: redirectURL,
-        type:"post",
-        dataType:"json",
-        success : function(data){
-            console.log(data);
-            console.log("서버 추가 호출 완료");
-        },
-        error : function(data){
-            console.log(data);
-            console.log("서버 추가 호출 실패")
-        }
-    })
-    */
 }
 
 $(function() {

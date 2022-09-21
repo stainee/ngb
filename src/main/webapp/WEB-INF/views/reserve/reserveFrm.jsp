@@ -139,6 +139,7 @@
 				    	<button class="prev btn4">이전</button>
 				    	<button class="next btn2" id="tab2NextBtn">다음</button>
 			     	</div>
+			     	<input type="hidden" id="token">
 		    	</div>
 		    	<div class="tab tab3" style="display:none;">
 		    		<table class="tbl2 tbl3">
