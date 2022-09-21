@@ -80,5 +80,12 @@ public class MemberService {
 		Member m = dao.searchMemberId(conn , memberName , memberMail);
 		JDBCTemplate.close(conn);
 		return m;
+	}
+
+	public Member searchMemberPw(String memberId, String memberMail) {
+		Connection conn = JDBCTemplate.getConnection();
+		Member m = dao.searchMemberPw(conn , memberId , memberMail);
+		JDBCTemplate.close(conn);
+		return m;
 	} 
 }

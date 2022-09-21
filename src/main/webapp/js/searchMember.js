@@ -1,6 +1,7 @@
 /**
  * 
  */
+let regCheckMail = 0;
 
 $(".searchId").on("click", function() {
 	$(".first-content").removeClass("show-hide");
@@ -18,32 +19,47 @@ $(".searchPw").on("click", function() {
 
 $(".searchId").click();
 //모달-----------------------------------
-$(".first-content>.center-move>.search-content>.btn2").on("click",function(){
-    $(".modal-wrap").css("display","flex");
+const searchId = document.querySelector("#searchId");
+const searchName = document.querySelector("#searchName");
+const searchMail = document.querySelector("input[name=searchMail]");
+$(".first-content>.center-move>.search-content>.btn2").on("click", function() {
+	const inputSearchName = searchName.value;
+	const inputSearchMail = searchMail.value;
+	if(inputSearchName !="" && inputSearchMail !=""){
+		$(".modal-wrap").css("display", "flex");	
+	}
 });
 
-$(".second-content>.center-move>.search-content>.btn2").on("click",function(){
-    $(".modal-wrap").css("display","flex");
+
+$(".second-content>.center-move>.search-content>.btn2").on("click", function() {
+	const inputSearchId = searchId.value;
+	if (regCheckMail == 1 && inputSearchId !="") {
+		$(".modal-wrap").css("display", "flex");
+	} else {
+
+	}
 });
 
 
-$("#close").on("click",function(){
-    $(".modal-wrap").css("display","none");
-    $(".result-id").empty();
+$("#close").on("click", function() {
+	$(".modal-wrap").css("display", "none");
+	$(".result-id").empty();
 })
 //모달-----------------------------------
 $(".first-btn").on("click", function() {
 	const memberName = $("#searchName").val();
 	const memberMail = $("#searchMail1").val();
-	
-	const result = $(".result-id");
+
+	const result = $(".result");
 	result.empty();
 	$.ajax({
-		url: "/searchMember.do",
+		url: "/searchMemberId.do",
 		type: "post",
 		//타입 생략시 get
-		data: { memberName: memberName,
-				memberMail: memberMail },
+		data: {
+			memberName: memberName,
+			memberMail: memberMail
+		},
 		dataType: "json",
 		success: function(data) {
 			//console.log(data);
@@ -62,15 +78,16 @@ $(".first-btn").on("click", function() {
 $(".second-btn").on("click", function() {
 	const memberId = $("#searchId").val();
 	const memberMail = $("#searchMail2").val();
-	
 	const result = $(".result");
 	result.empty();
 	$.ajax({
-		url: "/searchMember.do",
+		url: "/searchMemberPw.do",
 		type: "post",
 		//타입 생략시 get
-		data: { memberId: memberId,
-				memberMail: memberMail },
+		data: {
+			memberId: memberId,
+			memberMail: memberMail
+		},
 		dataType: "json",
 		success: function(data) {
 			//console.log(data);
@@ -98,8 +115,6 @@ function sendMail() {
 		success: function(data) {
 			if (data != null) {
 				mailCode = data;
-				$("#auth").show();
-
 				//메일이 전송된 시점
 				//에서 시간이 흐름
 				authTime();
@@ -130,7 +145,7 @@ function timeCount() {
 		} else {
 			$("#min").text(min - 1);
 			$("#sec").text(59);
-			
+
 		}
 	} else {
 		//초를 문자열로 받아와서 계산하기위해 숫자타입으로 변환
