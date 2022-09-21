@@ -1,50 +1,50 @@
 package com.ngb.member.controller;
+
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.ngb.member.model.vo.Member;
 import com.ngb.member.service.MemberService;
+
 /**
- * Servlet implementation class EditMemberManageFrmServlet
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet(name = "EditMemberManageFrm", urlPatterns = { "/editMemberManageFrm.do" })
-public class EditMemberManageFrmServlet extends HttpServlet {
+@WebServlet(name = "deleteMember", urlPatterns = { "/deleteMember.do" })
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditMemberManageFrmServlet() {
+    public DeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 인코딩
+		//1
 		request.setCharacterEncoding("utf-8");
-		//2. 값추출
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		//3. 비즈니스 로직
+		//2.
+		Member m = new Member();
+		m.setMemberNo(Integer.parseInt(request.getParameter("memberNo")));
+		m.setMemberName(request.getParameter("memberName"));
+		m.setMemberId(request.getParameter("memberId"));
+		m.setMemberMail(request.getParameter("memberMail"));
 		MemberService service = new MemberService();
-		Member member = service.selectOneMember(memberNo);
-		
-		//4. 결과처리
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/editMemberManageFrm.jsp");
-		request.setAttribute("member", member);
-		view.forward(request, response);
-	}
-	private int Integer(Object parseint) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	private Object parseint(String parameter) {
-		// TODO Auto-generated method stub
-		return null;
+		int result = service.deleteMember(m);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(result);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,4 +53,5 @@ public class EditMemberManageFrmServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }
