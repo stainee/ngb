@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -24,7 +25,6 @@ import com.ngb.member.model.vo.Member;
 import common.JDBCTemplate;
 
 public class MemberDao {
-
 	public Member selectOneMember(Connection conn, Member member) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
@@ -57,7 +57,37 @@ public class MemberDao {
 		}
 		return m;
 	}
-
+	
+	public Member selectOneMember(Connection conn, int memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		String query = "select * from member where member_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, memberNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				m = new Member();
+				m.setMemberNo(rset.getInt("member_no"));
+				m.setMemberId(rset.getString("member_id"));
+				m.setMemberPw(rset.getString("member_pw"));
+				m.setMemberName(rset.getString("member_name"));
+				m.setMemberPhone(rset.getString("member_phone"));
+				m.setMemberMail(rset.getString("member_mail"));
+				m.setMemberLevel(rset.getInt("member_level"));
+				m.setEnrollDate(rset.getString("enroll_date"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return m;
+	}
+	
 	public Member selectOneMember(Connection conn, String memberId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -202,5 +232,82 @@ public class MemberDao {
 			return null;
 		}
 	}
+	
+	public ArrayList<Member> selectAllMember(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> list = new ArrayList<Member>();
+		String query= "select * from member";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Member m = new Member();
+				m.setMemberNo(rset.getInt("member_No"));
+				m.setMemberId(rset.getString("member_Id"));
+				m.setMemberPw(rset.getString("member_Pw"));
+				m.setMemberName(rset.getString("member_Name"));
+				m.setMemberPhone(rset.getString("member_Phone"));
+				m.setMemberMail(rset.getString("member_mail"));
+				m.setMemberLevel(rset.getInt("member_level"));
+				m.setEnrollDate(rset.getString("enroll_date"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
+	}
 
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result=0;
+		String query = "update member set member_name=?, member_id=?, member_pw=?, member_phone=?, member_mail=?, member_level=? where member_no=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, m.getMemberName());
+			pstmt.setString(2, m.getMemberId());
+			pstmt.setString(3, m.getMemberPw());
+			pstmt.setString(4, m.getMemberPhone());
+			pstmt.setString(5, m.getMemberMail());
+			pstmt.setInt(6, m.getMemberLevel());
+			pstmt.setInt(7, m.getMemberNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public Member searchMemberId(Connection conn, String memberName, String memberMail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		String query = "select * from member where member_name=? and member_mail=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberMail);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				m = new Member();
+				m.setMemberId(rset.getString("member_id"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return m;
+	}
 }

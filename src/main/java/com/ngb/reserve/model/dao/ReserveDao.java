@@ -97,51 +97,28 @@ public class ReserveDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<ReserveMngr> selectList = new ArrayList<ReserveMngr>();
-		String query = "";
-		 query +=" SELECT * FROM"; 
-		 query +=" (SELECT "; 
-		 query +="     C.RESERVE_NO,";
-		 query +="     A.THEMA_CODE,"; 
-		 query +="     A.TIME_CODE,"; 
-		 query +="     A.TIME,"; 
-		 query +="     B.THEMA_NAME,"; 
-		 query +="     C.RESERVE_NAME,"; 
-		 query +="     C.RESERVE_PHONE,"; 
-		 query +="     to_char(C.RESERVE_AMOUNT) ||'/'|| to_char(people_max) AS RESERVE_AMOUNT,"; 
-		 query +="     to_char(C.RESERVE_PAY) AS RESERVE_PAY,"; 
-		 query +="     to_char(C.RESERVE_DATE,'yy-mm-dd HH24:SS') AS RESERVE_DATE,"; 
-		 query +="     to_char(C.PLAY_DATE) AS PLAY_DATE,"; 
-		 query +="     '예약 불가' AS RESERVE_STATE"; 
-		 query +="  FROM TIME A"; 
-		 query +="  INNER JOIN THEMA B ON (A.THEMA_CODE = B.THEMA_CODE)"; 
-		 query +="  LEFT OUTER JOIN RESERVE C ON (C.THEMA_CODE = C.THEMA_CODE AND A.TIME_CODE = C.TIME_CODE)"; 
-		 query +="  WHERE TO_CHAR(C.PLAY_DATE,'yy-mm-dd') = ?"; 
-		 query +="  "; 
-		 query +="  union "; 
-		 query +="  "; 
-		 query +="  SELECT "; 
-		 query +="     C.RESERVE_NO,";
-		 query +="     A.THEMA_CODE,"; 
-		 query +="     A.TIME_CODE,"; 
-		 query +="     A.TIME,"; 
-		 query +="     B.THEMA_NAME,"; 
-		 query +="     '-' as RESERVE_NAME,"; 
-		 query +="     '-' as RESERVE_PHONE,"; 
-		 query +="     '-' as RESERVE_AMOUNT,"; 
-		 query +="     '-' as RESERVE_PAY,"; 
-		 query +="     '-' as RESERVE_DATE,"; 
-		 query +="     '-' as PLAY_DATE,"; 
-		 query +="     '예약가능' as RESERVE_STATE"; 
-		 query +="  FROM TIME A"; 
-		 query +="  INNER JOIN THEMA B ON (A.THEMA_CODE = B.THEMA_CODE)"; 
-		 query +="  LEFT OUTER JOIN RESERVE C ON (C.THEMA_CODE = C.THEMA_CODE AND A.TIME_CODE = C.TIME_CODE)"; 
-		 query +="  WHERE TO_CHAR(C.PLAY_DATE,'yy-mm-dd') <> ? or C.PLAY_DATE is null)";
-		 query +="  order by 2, 4";
+		String query = "SELECT";
+		query += " RESERVE_NO,";
+		query += " B.THEMA_CODE,";
+		query += " B.THEMA_NAME,";
+		query += " B.PEOPLE_MAX,";
+		query += " CASE WHEN C.RESERVE_NAME IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_NAME) END AS RESERVE_NAME,";
+		query += " CASE WHEN C.RESERVE_PHONE IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_PHONE) END AS RESERVE_PHONE,";
+		query += " CASE WHEN C.RESERVE_AMOUNT IS NULL THEN '0' ELSE TO_CHAR(C.RESERVE_AMOUNT) END AS RESERVE_AMOUNT,";
+		query += " CASE WHEN C.RESERVE_PAY IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_PAY) END AS RESERVE_PAY,";
+		query += " CASE WHEN C.RESERVE_DATE IS NULL THEN '-' ELSE TO_CHAR(C.RESERVE_DATE,'YY-MM-DD HH24:SS') END AS RESERVE_DATE,";
+		query += " C.RESERVE_DATE,";
+		query += " C.PLAY_DATE,";
+		query += " A.TIME_CODE,";
+		query += " A.TIME";
+		query += " FROM";
+		query += " TIME A"; 
+		query += " INNER JOIN THEMA B ON (A.THEMA_CODE = B.THEMA_CODE)";
+		query += " LEFT OUTER JOIN RESERVE C ON (C.THEMA_CODE = A.THEMA_CODE AND C.TIME_CODE = A.TIME_CODE AND TO_CHAR(C.PLAY_DATE,'YY-MM-DD') = ?)";
+		query += " ORDER BY THEMA_CODE,A.TIME";
 		try {
 			pstmt = conn.prepareStatement(query);
-			System.out.println(query);
 			pstmt.setString(1, strDate);
-			pstmt.setString(2, strDate);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				ReserveMngr r = new ReserveMngr();
@@ -156,6 +133,7 @@ public class ReserveDao {
 				r.setPlayDate(rset.getString("play_date"));
 				r.setTimeCode(rset.getString("time_code"));
 				r.setTime(rset.getString("time"));
+				r.setPeopleMax(rset.getString("people_max"));
 				selectList.add(r);
 			}
 		} catch (SQLException e) {
@@ -165,6 +143,7 @@ public class ReserveDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
+
 		return selectList;
 	}
 
@@ -189,6 +168,7 @@ public class ReserveDao {
 				result.setReservePay(rset.getString("reserve_pay"));
 				result.setReserveDate(rset.getString("reserve_date"));
 				result.setPlayDate(rset.getString("play_date"));
+				result.setPeopleMax(rset.getString("people_max"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -341,6 +321,17 @@ public class ReserveDao {
 		}
 		
 		return reser;
+	}
+
+	public ArrayList<ReserveMngr> emptyReserveInfo(Connection conn, ReserveMngr rm) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ReserveMngr> resultList = new ArrayList<ReserveMngr>();
+		resultList.add(rm);
+		System.out.println(resultList);
+		String query = "";
+		
+		return null;
 	}
 	
 }
