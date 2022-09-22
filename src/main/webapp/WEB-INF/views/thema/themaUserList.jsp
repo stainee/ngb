@@ -15,6 +15,12 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
+	
+		<div class="title-wrap">
+			<span class="title-span">ABOUT THEMA</span>
+		</div>
+	
+	
 		
 	        <form action="/selectThema.do" method="post" class="thema-select-wrap" >
 	            <span class="level-span">난이도</span>
@@ -35,10 +41,12 @@
 	                <option value="추리">추리</option>
 	                <option value="감성">감성</option>
 	            </select>
-	
 	            <button class="search-btn" type="submit">검색</button>
         	</form>
-	
+        	 
+		
+		
+		<hr>
 	    <div class="thema-content-wrap">
 	    <%for(Thema thema: list) {%>
             <a href="/themaUserView.do?themaCode=<%=thema.getThemaCode()%>" class="content-font">
@@ -55,19 +63,9 @@
          <%} %>
         </div>
            
-        <script>
-    
-        function ChageValue(){
-        	var level = document.getElementById("level");
-        	alert(level.options[level.selectedIndex].value);
-        }
+
         
-        functi
-        </script>
-              
-        
-        
-     
-       
+          
+       <%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
