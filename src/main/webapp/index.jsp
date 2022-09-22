@@ -97,6 +97,11 @@
 	            </div>
 			</div>
 		</div>
+		<div>
+			<p>안녕하세요</p>
+			<p>나가방 대표 안상영입니다.</p>
+			<p></p>
+		</div>
 	</div>
 	<div class = "location" id = "location">
 		<a href = "reserveManage.do" style = "color:red">manage</a>
