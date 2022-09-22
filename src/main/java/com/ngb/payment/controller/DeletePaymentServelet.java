@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.ngb.payment.model.vo.Payment;
 import com.ngb.payment.service.PaymentService;
 
 /**
- * Servlet implementation class PaymentInfo
+ * Servlet implementation class DeletePaymentServelet
  */
-@WebServlet("/getPaymentInfo.do")
-public class PaymentInfo extends HttpServlet {
+@WebServlet("/deletePayment.do")
+public class DeletePaymentServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentInfo() {
+    public DeletePaymentServelet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +33,11 @@ public class PaymentInfo extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
 		PaymentService service = new PaymentService();
-		Payment p = service.searchPayment(reserveNo);
-		
-		//paymentInfo 값을 response해준다
+		int result = service.deletePayment(reserveNo);
 		PrintWriter out = response.getWriter();
-		Gson g = new Gson();
-		g.toJson(p, out);
+		out.print(result);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
