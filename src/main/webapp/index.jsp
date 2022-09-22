@@ -14,5 +14,6 @@
 	<a href="editReserveFrm.do">editReserve</a>
 	<a href="findReserveFrm.do">findReserve</a>
 	<a href="manageMember.do">memberManage</a>
+	<a href="loginFrm.do">회원작업</a>
 </body>
 </html>
