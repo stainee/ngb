@@ -384,6 +384,28 @@ public class ReserveDao {
 		
 		return result;
 	}
+
+	public int deleteReserve(Connection conn, int reserveNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from reserve where reserve_no=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,reserveNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 	
 }
 
