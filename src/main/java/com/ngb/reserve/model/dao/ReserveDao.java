@@ -249,14 +249,7 @@ public class ReserveDao {
 		Reserve result = new Reserve();
 		int resultSet = 0;
 		String query = "insert into reserve values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, null, ?, ?)";
-		System.out.println("themaCode::"+r.getThemaCode());
-		System.out.println("reservePay::"+r.getReservePay());
-		System.out.println("reseveName::"+r.getReserveName());
-		System.out.println("reserveMail::"+r.getReserveMail());
-		System.out.println("reservePhone::"+r.getReservePhone());
-		System.out.println("reserveAmount::"+r.getReserveAmount());
-		System.out.println("playDate::"+r.getPlayDate());
-		System.out.println("timeCode::"+r.getTimeCode());
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, r.getThemaCode());
@@ -283,8 +276,6 @@ public class ReserveDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Reserve reser = null;
-		
-		//String query = "select * from reserve where reserve_name=? and reserve_mail=?";
 		String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
 				
 		
@@ -303,15 +294,11 @@ public class ReserveDao {
 				reser.setReserveAmount(rset.getInt("reserve_amount"));
 				reser.setPlayDate(rset.getString("playdate"));
 				//예약일자 편집
-				//reser.setReserveDate(rset.getString("reserve_date"));
-				//reser.setReserveEtc(rset.getString("reserve_etc"));
 				reser.setReserveMail(rset.getString("reserve_mail"));
 				reser.setReserveName(rset.getString("reserve_name"));
 				reser.setReserveNo(rset.getInt("reserve_no"));
 				reser.setReservePay(rset.getInt("reserve_pay"));
 				reser.setReservePhone(rset.getString("reserve_phone"));
-//				reser.setReserveState(rset.getInt("reserve_state"));
-//				reser.setThemaCode(rset.getString("thema_code"));
 				reser.setThemaName(rset.getString("thema_name"));
 				reser.setTime(rset.getString("time"));
 
@@ -415,7 +402,7 @@ public class ReserveDao {
 		String query = "select max(reserve_no) as curr from reserve";
 		try {
 			pstmt = conn.prepareStatement(query);
-			result = pstmt.executeUpdate();
+			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				result = rset.getInt("curr");
 			}
