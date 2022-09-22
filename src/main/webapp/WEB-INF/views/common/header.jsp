@@ -19,7 +19,7 @@
             <li id = "logo-wrap"><a href="/index.jsp"><img src="/img/logo2.png"></a></li>
             <ul class = "notice menuwrap">
                 <div>
-                    <li><a href = "#">공지사1</a></li>
+                    <li><a href = "#">공지사항</a></li>
                     <li><a href = "#">NOTICE</a></li>
                 </div>
             </ul>
@@ -37,16 +37,22 @@
             </ul>
             <ul class = "mypage menuwrap">
             <div>
-                <li><a href = "#">마이페이지</a></li>
-                <li><a href = "#">MY PAGE</a></li>
+                <div>
+                    <li><a href = "/findReserveFrm.do">예약확인</a></li>
+                    <li><a href = "/findReserveFrm.do">SERCH</a></li>
+                </div>
             </div>
             </ul>
             <div class="signwrap">
             	<%if(m==null){ %>
                 <a href="/loginFrm.do" class="login">로그인</a>
                 <a href="/signupFrm.do" class="signin">회원가입</a>
-                <%}else{ %>
+                <%}else if(m.getMemberLevel() == 0){ %>
                 <a href="/logout.do" class="logout">로그아웃</a>
+                <a href="/manageMember.do" class="logout">관리자</a>
+                <%}else if(m.getMemberLevel() != 0){ %>
+                <a href="/logout.do" class="logout">로그아웃</a>
+                <a href="/mypageFrm.do" class="logout">마이페이지</a>
                 <%} %>
             </div>
         </div>
