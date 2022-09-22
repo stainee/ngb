@@ -1,11 +1,15 @@
 package com.ngb.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ngb.member.service.MemberService;
 
 /**
  * Servlet implementation class DeleteUserServlet
@@ -29,8 +33,14 @@ public class DeleteUserServlet extends HttpServlet {
 		//1.
 		request.setCharacterEncoding("utf-8");
 		//2.
+		int userNo = (Integer.parseInt(request.getParameter("userNo")));
 		//3.
-		//4.
+		MemberService service = new MemberService();
+		int result = service.deleteUser(userNo);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(result);
 	}
 
 	/**

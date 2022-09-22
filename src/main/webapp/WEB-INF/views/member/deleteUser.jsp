@@ -59,7 +59,25 @@ function delUser(){
 	const agreeChk = $("#delCheck");
 	const userNo = $("#delMemNo").val();
 	if (agreeChk.is(":checked")) {
-		console.log(userNo);
+		$.ajax({
+			url : "/deleteUser.do",
+			type : "get",
+			data : {
+				userNo:userNo
+			},
+			success : function(data){
+				if(data==1){
+					alert("탈퇴가 완료되었습니다.");
+					location = "/"				
+				}else{
+					location = "/mypageFrm.do"	
+				}
+			},
+			error :function(){
+				alert("탈퇴에 실패했습니다.\n관리자에게 문의하세요.");
+				location = "/mypageFrm.do"
+			}
+		});
 	}else{
 		alert("약관에 동의해주세요.");
 	}

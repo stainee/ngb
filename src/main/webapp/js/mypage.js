@@ -48,9 +48,8 @@ function updateUser(){
 }
 
 function deleteFunc(){
-	const userNo = $("#userNo").val();
 	if(confirm("정말 탈퇴하시겠습니까?\n확인 시 탈퇴페이지로 이동합니다.")){
-		location.href="/deleteUserFrm.do?jhjk="+userNo;
+		location.href="/deleteUserFrm.do";
 	}else{
 		return;
 	}

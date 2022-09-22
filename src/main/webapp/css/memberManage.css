@@ -33,3 +33,7 @@
 .tbl1{
     margin-bottom: 100px;
 }
+.manageMemTbl input{
+	text-align: center;
+	outline: none;
+}
