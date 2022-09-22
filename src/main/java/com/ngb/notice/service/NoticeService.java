@@ -3,9 +3,9 @@ package com.ngb.notice.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.ngb.notice.vo.Notice;
-import com.ngb.notice.vo.NoticePageData;
-import com.ngb.noticel.dao.NoticeDao;
+import com.ngb.notice.model.dao.NoticeDao;
+import com.ngb.notice.model.vo.Notice;
+import com.ngb.notice.model.vo.NoticePageData;
 
 import common.JDBCTemplate;
 

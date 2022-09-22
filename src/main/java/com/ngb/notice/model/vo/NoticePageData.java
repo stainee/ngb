@@ -1,4 +1,4 @@
-package com.ngb.notice.vo;
+package com.ngb.notice.model.vo;
 
 import java.util.ArrayList;
 

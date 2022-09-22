@@ -1,4 +1,4 @@
-<%@page import="com.ngb.notice.vo.Notice"%>
+<%@page import="com.ngb.notice.model.vo.Notice"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
