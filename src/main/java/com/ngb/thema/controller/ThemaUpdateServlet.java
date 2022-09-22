@@ -15,16 +15,16 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
- * Servlet implementation class ThemaWriteServlet
+ * Servlet implementation class ThemaUpdateServlet
  */
-@WebServlet(name = "ThemaWrite", urlPatterns = { "/themaWrite.do" })
-public class ThemaWriteServlet extends HttpServlet {
+@WebServlet(name = "ThemaUpdate", urlPatterns = { "/themaUpdate.do" })
+public class ThemaUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaWriteServlet() {
+    public ThemaUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,52 +35,65 @@ public class ThemaWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
-		//2. 값추출
-		String root = getServletContext().getRealPath("/");
+		//2. 값추출		
+		
+		String root=getServletContext().getRealPath("/");
 		String saveDirectory = root+"upload/thema";
 		int maxSize = 10*1024*1024;
-		MultipartRequest mRequest  = new MultipartRequest(request, saveDirectory, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-		String themaCode = mRequest.getParameter("themaCode");
+		MultipartRequest mRequest = new MultipartRequest(request, saveDirectory,maxSize,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String themaCode=mRequest.getParameter("thamaCode");
 		String category = mRequest.getParameter("category");
-		String thamaName = mRequest.getParameter("themaName");
-		String themaContent = mRequest.getParameter("themaContent");
+		String themaName = mRequest.getParameter("themaName");
+		int themaTime = Integer.parseInt(mRequest.getParameter("themaTime"));
 		int devicePer = Integer.parseInt(mRequest.getParameter("devicePer"));
 		int lockPer = Integer.parseInt(mRequest.getParameter("lockPer"));
 		int peopleMin = Integer.parseInt(mRequest.getParameter("peopleMin"));
 		int peopleMax = Integer.parseInt(mRequest.getParameter("peopleMax"));
 		int themaLevel = Integer.parseInt(mRequest.getParameter("themaLevel"));
 		int themaPrice = Integer.parseInt(mRequest.getParameter("themaPrice"));
-		String filepath = mRequest.getFilesystemName("themaFilepath");
-		int themaTime = Integer.parseInt(mRequest.getParameter("themaTime"));
+		String themaContent = mRequest.getParameter("themaContent");
 		
+		//새 첨부파일있으면 새 첨부파일 값, 없으면 null
+		String filepath = mRequest.getFilesystemName("upfile");
+		//기존 첨부파일이 있었으면 기존첨부파일값, 없없으면 null
+		String oldFilepath = mRequest.getParameter("oldFilepath");
+		String status = mRequest.getParameter("status");
+		if(oldFilepath != null && status.equals("stay")) {
+			filepath = oldFilepath;
+		}
 		Thema t = new Thema();
 		t.setThemaCode(themaCode);
 		t.setCategory(category);
-		t.setThemaName(thamaName);
-		t.setThemaContent(themaContent);;
-		t.setThemaFilepath(filepath);
+		t.setThemaName(themaName);
+		t.setThemaTime(themaTime);
 		t.setDevicePer(devicePer);
 		t.setLockPer(lockPer);
 		t.setPeopleMin(peopleMin);
 		t.setPeopleMax(peopleMax);
 		t.setThemaLevel(themaLevel);
 		t.setThemaPrice(themaPrice);
-		t.setThemaTime(themaTime);
-		//3.비즈니스 로직
+		t.setThemaContent(themaContent);
+		t.setThemaFilepath(filepath);
+		
+		//3. 비즈니스 로직
 		ThemaService service = new ThemaService();
-		int result = service.insertThema(t);
+		int result = service.updateThema(t);
+		
 		//4. 결과처리
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
-			request.setAttribute("title", "성공");
-			request.setAttribute("msg", "테마가 성공적으로 등록되었습니다");
-			request.setAttribute("icon", "success");
+			request.setAttribute("title", "변경완료");
+			request.setAttribute("msg", "테마가 수정되었습니다");
+			request.setAttribute("icon","success");
+			request.setAttribute("loc", "/themaManageView.do?themaCode="+themaCode);
 		}else {
-			request.setAttribute("title", "실패");
-			request.setAttribute("msg", "테마 등록 중 문제가 생겼습니다.");
-			request.setAttribute("icon", "error");
+
+			request.setAttribute("title", "변경실패");
+			request.setAttribute("msg", "관리자에게 문의하세요");
+			request.setAttribute("icon","error");
+			request.setAttribute("loc", "/themaManageList.do");
 		}
-		request.setAttribute("loc", "/themaManageList.do");
 		view.forward(request, response);
 	}
 
