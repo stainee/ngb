@@ -19,7 +19,7 @@
             <li id = "logo-wrap"><a href="/index.jsp"><img src="/img/logo2.png"></a></li>
             <ul class = "notice menuwrap">
                 <div>
-                    <li><a href = "#">공지사항</a></li>
+                    <li><a href = "#">공지사1</a></li>
                     <li><a href = "#">NOTICE</a></li>
                 </div>
             </ul>
