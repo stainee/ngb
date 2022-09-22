@@ -19,7 +19,7 @@ $("#credit").on("click",function(){
 	//console.log(reserveNo);
 	
 	$.ajax({
-		url : "/deleteReserve.do",
+		url : "/deleteReserve2.do",
 			data: {reserveNo:reserveNo},
 			//키값,밸류값 (서블릿으로 값 넘겨줌)
 			type : "post",
