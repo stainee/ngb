@@ -3,7 +3,7 @@ package com.ngb.member.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.ngb.member.dao.MemberDao;
+import com.ngb.member.model.dao.MemberDao;
 import com.ngb.member.model.vo.Member;
 
 import common.JDBCTemplate;

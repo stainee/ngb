@@ -17,9 +17,10 @@
 	closeWindow();
 	function closeWindow(){
 		//서블릿에서 가져온 토큰값을 부모창의 hidden input에 전달한다
-		const token = document.getElementById("childToken").value; 
+		const token = document.getElementById("childToken").value;
 		window.opener.document.getElementById("token").value = token;
-		//window.close();
+		window.opener.document.getElementById("token").click();
+		window.close();
 	}
 </script>
 </html>

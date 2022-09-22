@@ -1,46 +1,56 @@
-//비밀번호 유효성 검사 
-//비밀번호,확인 인풋 받아오기
-const memberPw = document.querySelector("#userPw");
-const memberPwRe = document.querySelector("#userPwRe");
-
-memberPw.addEventListener("change", function() {
-	// pwReg = 정규표현식
-	// 대소문자,숫자,특수문자포함 8자 이상
-	const inputPw = memberPw.value;
+function updateUser(){
+	const userNo = $("#userNo").val();
+	const userPw = $("#userPw").val();
+	const userPwRe = $("#userPwRe").val();
+	const userPhone = $("#userPhone").val();
 	const pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-	
-	const inputPwRe = memberPwRe.value;
-	if (pwReg.test(inputPw)) {
-		//정규 표현식 만족시
-	} else {
-		//정규 표현식 불만족시
-		alert("비밀번호 조건이 충족되지 않습니다.\n대소문자,숫자,특수문자포함 8자 이상");
-	}
-	if(inputPwRe != ""){
-        if(inputPw == inputPwRe){
-           
-        }else{
-            alert("비밀번호와 일치하지 않습니다.");
-        }
-    }else{
-	
-    }
-});
-
-
-const memberPhone = document.querySelector("#userPhone");
-
-memberPhone.addEventListener("change", function() {
-	const inputPhone = memberPhone.value;
 	const phoneReg = /^[0-9]{11}$/;
-	if (phoneReg.test(inputPhone)) {
-	
-	} else {
-		alert("비밀번호 양식에 맞게 입력해주세요\n01012345678");
+	let phoneRegState = true;
+	let pwRegState = true;
+	pwRegState = pwReg.test(userPw); //조건이 다만족이면 얘가 true로 남게
+	if(pwReg.test(userPw) && userPw==userPwRe){
+		pwRegState = true;
+	}else{
+		alert("비밀번호를 확인하세요.\n1.비밀번호 일치\n2.대소문자,숫자,특수문자포함 8자 이상");
+		pwRegState = false;
 	}
+	
+	if(phoneReg.test(userPhone)){
+		let phoneRegState = true
+	}else{
+		alert("전화번호를 확인하세요.\nex)01012345678");
+		let phoneRegState = false;
+	}
+	
+	if(pwRegState && phoneRegState){
+		$.ajax({
+			url : "/updateUser.do",
+			type : "get",
+			data : {
+				userNo:userNo,
+				userPw:userPw,
+				userPhone:userPhone
+			},
+			success : function(data){
+				if(data==1){
+					alert("수정이 완료되었습니다.");
+					location = "/mypageFrm.do"				
+				}else{
+					location = "/mypageFrm.do"	
+				}
+			},
+			error :function(){
+				alert("수정 중 오류가 발생하였습니다.(error)");
+				location = "/mypageFrm.do"
+			}
+		});
+	}
+}
 
-});
-
-$(".editAlert").on("click",function(){
-	alert("해당 항목 변경은 관리자에게 문의하세요.");
-});
+function deleteFunc(){
+	if(confirm("정말 탈퇴하시겠습니까?")){
+		location.href="/deleteUserFrm.do";
+	}else{
+		return;
+	}
+}

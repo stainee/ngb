@@ -1,0 +1,88 @@
+@charset "UTF-8";.thema-wrap{
+    width: 1200px;
+    height: 550px;
+    background-image: url("/img/backimg.jpg");
+    margin: 0 auto;
+    background-position: 100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.img-wrap{
+    background-color: white;
+    width: 400px;
+    height: 450px;
+    display: inline-block;
+    float: left;
+}
+
+.img-content{
+	width: 400px;
+	height: 450px;
+}
+
+.thema-content-wrap{
+    width: 770px;
+    height: 450px;
+    background-color: rgb(66, 64, 64);
+    color: white;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+}
+
+.thema-title{
+	margin-top:20px;
+	margin-left: 20px;
+}
+
+
+.reserve-btn{
+    float: right;
+    width:100px;
+	height:50px;
+	background-color: rgb(255,193,7);
+	box-shadow: 1px 1px 1px 1px black;
+	cursor: pointer;
+	font-size:20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-family: ns-Bold;
+    font: weight 1.1em;;
+}
+.thema-table{
+    margin-top: 20px;
+    margin-left: 20px;
+    width:730px;
+    height: 350px;
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    background-color: white;
+    color:black;
+}
+.thema-table>tbody>tr>th{
+    margin-top: 50px;
+    width: 150px;
+    font-family: ns-Light;
+    font-size: 12px;
+    border: 0.5px solid black;
+    
+}
+
+
+.thColor{
+    background-color:rgb(86, 84, 84);
+    color: white;
+    text-align: center;
+}
+
+.th-left{
+    text-align: left;
+}
+
+.key{
+	width:15px;
+	height:15px;
+}

@@ -1,3 +1,8 @@
+.content-wrap{
+	margin-left:20vw;
+	margin-top:3vw;
+}
+
 .input-wraps{
 	display: flex;
 	justify-content: center;

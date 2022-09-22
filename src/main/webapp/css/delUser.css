@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.content-wrap{
+	border: 1px solid rgb(255,193,7);
+	width: 840px;
+	height: 600px;
+	background-color: #FFD454;
+}
+.text-wrap{
+	display:block;
+	margin-left: 30px;
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 780px;
+	height: 455px;
+	background-color: rgb(255,193,7);
+}
+.delNotice{
+	
+	margin-left: 40px;
+	margin-right: 30px;
+	font-size: 14px;
+}
+.delRed{
+	color:red;
+	font-weight:bolder;
+}
+#delCheck{
+	display: inline-block;
+}
+.chkText{
+	display: inline-block;
+	color: #fff;
+	width: 145px;
+	font-size: 11px;
+	font-weight: bolder;
+}
+
+.delBtn-wrap{
+	margin-top: 10px;
+	margin-left: 50px;
+}
