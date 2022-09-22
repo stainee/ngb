@@ -16,6 +16,9 @@ public class ReserveMngr {
 	private String time;
 	private String timeCode;
 	private String peopleMax;
+	private int themaPrice;
+	
+
 	public ReserveMngr() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -133,6 +136,13 @@ public class ReserveMngr {
 
 	public void setPeopleMax(String peopleMax) {
 		this.peopleMax = peopleMax;
+	}
+	public int getThemaPrice() {
+		return themaPrice;
+	}
+
+	public void setThemaPrice(int themaPrice) {
+		this.themaPrice = themaPrice;
 	}
 
 	@Override

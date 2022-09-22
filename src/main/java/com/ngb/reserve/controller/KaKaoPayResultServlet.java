@@ -1,7 +1,6 @@
 package com.ngb.reserve.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.reserve.model.vo.Reserve;
-import com.ngb.reserve.service.ReserveService;
-import com.ngb.thema.model.vo.Thema;
-import com.ngb.thema.service.ThemaService;
-
 /**
- * Servlet implementation class ReserveManage
+ * Servlet implementation class KaKaoPayResultServlet
  */
-@WebServlet("/reserveManage.do")
-public class ReserveManage extends HttpServlet {
+@WebServlet("/kakaoPayResult.do")
+public class KaKaoPayResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReserveManage() {
+    public KaKaoPayResultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,23 +29,13 @@ public class ReserveManage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		Reserve r = new Reserve();
-		ReserveService service = new ReserveService();
-		
-		System.out.println("df");
-		ArrayList<Thema> themaTable = service.themaTable(); //reserveManage.jsp에서 테마별로 정렬하기 위한 테마테이블 조회
-		
-		ArrayList<Reserve> list = service.selectAllReserve();
-		request.setAttribute("list", themaTable);
-		ArrayList<Reserve> dateList = service.selectReserveDate();
-		request.setAttribute("dateList", dateList);
-		
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveManage.jsp");
+		String token = request.getParameter("pg_token");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/kakaoPayResult.jsp");
+		request.setAttribute("token", token);
 		view.forward(request, response);
-	}
+		
 
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

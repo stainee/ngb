@@ -1,0 +1,43 @@
+.input-wraps{
+	display: flex;
+	justify-content: center;
+}
+.subjects{
+	display: inline-block;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background-color: rgb(255,193,7);
+	margin: 3px;
+	font-weight: bolder;
+}
+.contentss{
+	display: inline-block;
+	border: 1px solid rgb(255,193,7);
+	width: 300px;
+	height: 50px;
+	margin:3px;
+	box-sizing:border-box;
+}
+.contentss>input{
+	line-height:47px;
+	width: 300px;
+	text-align: center;
+	font-size: 20px;
+	box-sizing:border-box;
+}
+
+.bot-btn{
+	width: 229px;
+	height: 50px;
+	background-color: #fff;
+	margin: 1px;
+}
+#editDiv:hover{
+	cursor: pointer;
+}
+.editAlert{
+	background-color: #ccc;
+	color: black;
+}

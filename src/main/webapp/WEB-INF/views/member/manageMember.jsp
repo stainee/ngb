@@ -79,7 +79,6 @@
 		        	</td>
 		        	<td>
 		        		<a href="/editMemberManageFrm.do?memberNo=<%=m.getMemberNo()%>"><button>관리</button></a>
-		        		
 		        	</td>
 	        	</tr>
 	        	<%} %>

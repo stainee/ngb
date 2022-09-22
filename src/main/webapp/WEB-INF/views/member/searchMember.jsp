@@ -43,25 +43,28 @@
 				<div class="search-content">
 					<span>이메일 입력</span> <input type="text" name="searchMail"
 						id="searchMail2" placeholder="이메일 입력">
+						<div class="btn-box">
+						<button onclick="sendMail();" class="btn2 notsubmit">인증메일전송</button>
+					</div>
 				</div>
 
 				<!-- 인증코드 -->
 				<div class="search-content">
-					<div class="input-location backColor">
-						<button onclick="sendMail();" class="btn3 notsubmit">인증메일전송</button>
-					</div>
 					<div id="auth">
-						<div class="input-location input-backColor"></div>
-						<div class="input-location">
+						<div>
 							<input type="text" id="authCode" placeholder="인증코드입력"
 								class="input-form">
 						</div>
-						<div class="input-location backColor">
-							<button class="btn3 notsubmit" id="authBtn">인증하기</button>
-							<span id="timeZone"></span>
+						<div class="span-box">
+                            <span id="timeZone"></span>
+                            <span id="authMsg"></span>
+                        </div>
+						<div class="btn-center">
+							<button class="btn2" id="authBtn">인증하기</button>
 						</div>
 					</div>
 				</div>
+				
 				<!-- 인증코드 -->
 
 				<div class="search-content">
@@ -80,14 +83,18 @@
 			</div>
 			
 			<div class="modal-content">
-				<p class="result"></p>
-				<button type="button" id="close">닫기</button>
-			</div>
+                <div>
+                    <p class="result"></p>
+                    <div class="btn-last">
+                        <button type="button" id="close" class="btn2">닫기</button>
+                    </div>
+                </div>
+            </div>
 			
 		</div>
 	</div>
 
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
-	<script src="js/searchMember.js"></script>
+	<script src="/js/searchMember.js"></script>
 </body>
 </html>

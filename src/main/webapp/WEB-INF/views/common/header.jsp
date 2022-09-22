@@ -51,8 +51,5 @@
             </div>
         </div>
        </div>
-       
-       <div class="content-wrap">
-       </div>
 </body>
 </html>

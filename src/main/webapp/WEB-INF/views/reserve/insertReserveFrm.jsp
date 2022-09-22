@@ -26,7 +26,8 @@ function go_insert(){
 			reservePhone:$("#reservePhone").val(),
 			reserveAmount:$("#reserveAmount").val(),
 			reserveMail:$("#reserveMail").val(),
-			playDate:$("#playDate").val()
+			playDate:$("#playDate").val(),
+			themaPrice:$("#themaPrice").val()
 		},
 		success : function(result){
 			if(result == 'success'){
@@ -56,6 +57,7 @@ function go_insert(){
 	<input type = "hidden" id = "themaCode" value = "<%=result.getThemaCode()%>">
 	<input type = "hidden" id = "timeCode" value = "<%=result.getTimeCode()%>">
 	<input type = "hidden" id = "playDate" value = "<%=result.getPlayDate()%>">
+	<input type = "hidden" id = "themaPrice" value = "<%=result.getThemaPrice() %>">
 	<div class="content-wrap">
 		<table class="tbl1" style = "width:1000px">
 			<thead>

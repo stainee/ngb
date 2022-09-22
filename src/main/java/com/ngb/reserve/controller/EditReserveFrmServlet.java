@@ -43,9 +43,10 @@ public class EditReserveFrmServlet extends HttpServlet {
 		String themaName = request.getParameter("themaName");
 		String time = request.getParameter("time");
 		String peopleMax = request.getParameter("peopleMax");
-		System.out.println(playDate);
+		int themaPrice = Integer.parseInt(request.getParameter("themaPrice"));
 		if(reserveNo == 0) {
 			ReserveMngr rm = new ReserveMngr();
+			rm.setThemaPrice(themaPrice);
 			rm.setPlayDate(playDate);
 			rm.setPeopleMax(peopleMax);
 			rm.setThemaCode(themaCode);
