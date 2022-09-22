@@ -486,7 +486,6 @@ $("#token").on("click", function() {
     const token = $(this).val();
     payment.pg_token = token;
     payment.price = reserve.reserve_pay;
-    console.log(payment);
     kakaoPayApprove();
     
 })
@@ -505,7 +504,9 @@ function kakaoPayApprove(){
             pg_token : payment.pg_token
         },
         success :function(){
+            reserveFunc();
             kakaoPaySave();
+            nextStep();
         }
         
     });
