@@ -66,7 +66,6 @@ public class ReserveServlet extends HttpServlet {
 			r.setReservePhone(reservePhone);
 			r.setReserveAmount(reserveAmount);
 			r.setPlayDate(strDate);
-			//reserveNo, reserveDate, reserveState, reserveEtc 에 대한 DB상 추가 처리 필요
 			ReserveService service = new ReserveService();
 			int result = service.insertReserve(r);
 			String resultMsg = "";

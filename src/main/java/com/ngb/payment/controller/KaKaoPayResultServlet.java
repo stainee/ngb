@@ -1,4 +1,4 @@
-package com.ngb.reserve.controller;
+package com.ngb.payment.controller;
 
 import java.io.IOException;
 
