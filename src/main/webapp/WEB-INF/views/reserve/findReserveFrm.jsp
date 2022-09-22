@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/css/findReserveFrm.css">
     <link rel="stylesheet" href = "/css/notosans.css">
 
@@ -13,7 +18,7 @@
 <%@include file ="/WEB-INF/views/common/header.jsp" %>
 <div class="reserv_find_wrap">
         <div class="title-box">
-            <h1>비회원 예약확인</h1>
+            <h1>예약확인</h1>
         </div>
         <div class="input-wrap">
             <form name="findReserveFrm" action="/findReserve.do" method="post" id="reserv_find">
@@ -33,6 +38,8 @@
 
     </div><!--reserv_find_wrap-->
 <%@include file="/WEB-INF/views/common/footer.jsp" %>
+<script src="/js/findReserveFrm.js"></script>
+
 
 </body>
 </html>
