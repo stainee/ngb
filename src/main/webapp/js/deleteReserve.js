@@ -26,7 +26,7 @@ $("#credit").on("click",function(){
 			success : function(data){
 				//jsp에서 넘겨준 값(result)
 			console.log(data);
-			if(data>0){
+			if(data='success'){
 				//alert("취소성공");
 				swal({
 					title :'취소성공',
@@ -36,7 +36,7 @@ $("#credit").on("click",function(){
 				location.href = "/";
 	         });
 			}else{
-				alert("취소실패");
+				//alert("취소실패");
 				swal({
 					title :'취소실패',
 					text :'관리자에게 문의해주세요.',
