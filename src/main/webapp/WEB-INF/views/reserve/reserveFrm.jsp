@@ -1,8 +1,10 @@
 <%@page import="com.ngb.thema.model.vo.Thema"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.ngb.reserve.model.vo.Reserve"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% ArrayList<Thema> tList = (ArrayList<Thema>)request.getAttribute("themaList");  %>
+    <%Reserve reser = (Reserve)request.getAttribute("reserve"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +14,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/css/reserveFrm.css">
 </head>
+
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	
@@ -34,7 +38,7 @@
 	    <div class="tabs-container">
          	
 		    <div class="tabs">
-		    	<div class="tab tab1" style="display:none"><!-- style="display:none"; 임시추가-->
+		    	<div class="tab tab1">
 		    		<table class="tbl1">
 					     <tr>
 					         <th>날짜</th>
@@ -66,7 +70,7 @@
 				     	<button class="next btn2" id="tab1NextBtn">다음</button>
 			     	</div>
 		    	</div>
-		    	<div class="tab tab2" style="display:block;"><!-- 임시변경 --> <!-- 원래 코드 style="display:none;" -->
+		    	<div class="tab tab2" style="display:none;">
 		    		<table class="tbl2">
 					     <tr>
 					         <th>예약일</th>
@@ -127,76 +131,58 @@
 					     </tr>
 				 		<tr>
 				 			<th colspan="2"><button id="credit" class="credit btn2">카드결제</button></th>
-				 			<th colspan="2"><button id="account" class="account btn2" onclick="sendReserveMail();">무통장입금</button></th>
-				 	
+				 			<th colspan="2"><button id="account" class="account btn2" onclick="sendReserveMail();">무통장입금</button></th> 
+				 			<!-- <th colspan="2"><button id="account" class="account btn2">무통장입금</button></th> --> 
 				 		</tr>
 				 		<tr>
 				 			<th colspan="4"><button id="kakaoPay" class="kakao btn2">카카오페이</button></th>
 				 		</tr>
 				 	</table>
 				 	<div class="btn-wrap">
-				 		
 				    	<button class="prev btn4">이전</button>
 				    	<button class="next btn2" id="tab2NextBtn">다음</button>
 			     	</div>
 		    	</div>
 		    	<div class="tab tab3" style="display:none;">
-		    		<table class="tbl2 tbl3">
-					     <tr>
-					         <th>예약일</th>
-					         <td class="playDate">YYYYMMDD</td>
-					         <th colspan="2">인원선택</th>
-					     </tr>
-					     <tr>
-					     	<th>예약시간</th>
-					     	<td class="playTime">18:00</td>
-					     	<td rowspan="2" colspan="2" class="peopleAmount">
-					     		2
-					     	</td>
-					     </tr>
-					     <tr>
-					     	<th>예약테마</th>
-					     	<td class="themaName">당산탈출</td>
-					     </tr>
-					     <tr>
-					     	<th>결제금액</th>
-					     	<td colspan="3" class="totalPrice">20000원</td>
-					     </tr>
-				 		<tr>
-					     	<th colspan="4"></th>
-					     </tr>
-				 		<tr>
-				 			<th colspan="4"><button id="home" class="btn4" onclick="location.href='index.jsp'" >홈으로</button></th>
-				 		</tr>
-				 	</table>
-		    	</div>
+                <table class="tbl2 tbl3">
+                    <tr>
+                        <th>예약일</th>
+                        <td class="playDate">YYYYMMDD</td>
+                        <th colspan="2">인원선택</th>
+                    </tr>
+                    <tr>
+                       <th>예약시간</th>
+                       <td class="playTime">18:00</td>
+                       <td rowspan="2" colspan="2" class="peopleAmount">
+                          2
+                       </td>
+                    </tr>
+                    <tr>
+                       <th>예약테마</th>
+                       <td class="themaName">당산탈출</td>
+                    </tr>
+                    <tr>
+                       <th>결제금액</th>
+                       <td colspan="3" class="totalPrice">20000원</td>
+                    </tr>
+                   <tr>
+                       <th colspan="4"></th>
+                    </tr>
+                   <tr>
+                      <th colspan="4"><button id="home" class="btn4" onclick="location.href='index.jsp'" >홈으로</button></th>
+                   </tr>
+                </table>
+             </div>    	
 		    </div>
 	    </div>
 	</div>
 	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<script src="/js/reserve.js"></script>
+	<script src="/js/account.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>
 <script>
-	
-	function sendReserveMail(){
-		const reserveMail = $("[name=reserveMail]").val();
-		console.log(reserveMail);
-		
-		
-		console.log("무통장입금 클릭동작!");
-		$.ajax({
-			url : "/sendReserveMail2.do",
-			data : {reserveMail:reserveMail},
-			type : "post"
-		});
-		
-		//if(reserveMail != null){
-			//성공메세지
-		//}
-		
-	}
 	
 </script>
 </html>

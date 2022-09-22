@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<link rel="stylesheet" href="/css/reserveView.css">
+<script src="/js/sweetalert.min.js"></script>
+ <link rel="stylesheet" href="/css/reserveView.css">
 </head>
 <body>
 <!-- 
@@ -41,12 +42,15 @@
 	            </li> 
 	        </ul>
 	    </div>
+	    
 	    <div class="reserveName"><h4><%=reser.getReserveName() %>님의 예약내역입니다.</h4></div>
 	    <div class="tabs-container">
          	
 		    <div class="tabs">
 		    	<div class="tab tab1">
-		    	
+		    	<input type="hidden" name="reserveNo" value="<%=reser.getReserveNo() %>">
+		    	<input type="hidden" name="reserveName" value="<%=reser.getReserveName() %>">
+		    	<input type="hidden" name="reserveMail" value="<%=reser.getReserveMail() %>">
 		    	<div class="tab tab3" style="display:block;">
 		    		<table class="tbl2 tbl3">
 					     <tr>
@@ -73,7 +77,8 @@
 					     	<th colspan="4"></th>
 					     </tr>
 				 		<tr>
-				 			<th colspan="2"><button id="credit" class="btn4" >예약취소</button></th>
+				 			<!--<th colspan="2"><button id="delete" class="btn4" onclick="deleteReserve()" >예약취소</button></th>  -->
+				 			<th colspan="2"><button id="credit" class="btn4">예약취소</button></th>
 				 			<th colspan="2"><button id="account" class="btn2" onclick="location.href='index.jsp'" >홈으로</button></th>
 				 		</tr>
 				 	</table>
@@ -84,7 +89,8 @@
 	</div>
 	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
-	<script src="/js/reserve.js"></script>
+	<!--<script src="/js/reserve.js"></script>  -->
+	<script src="/js/deleteReserve.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 </body>
