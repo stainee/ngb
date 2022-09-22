@@ -323,7 +323,7 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				m = new Member();
-				m.setMemberId(rset.getString("member_pw"));
+				m.setMemberPw(rset.getString("member_pw"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -367,25 +367,6 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
-		}
-		return result;
-	}
-
-	public int updateUser(Connection conn, Member m) {
-		PreparedStatement pstmt = null;
-		int result=0;
-		String query = "update member set member_pw=?, member_phone=? where member_no=?";
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, m.getMemberPw());
-			pstmt.setString(2, m.getMemberPhone());
-			pstmt.setInt(3, m.getMemberNo());
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;

@@ -31,7 +31,7 @@
                         <span><a href = "#">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
                         <span><a href = "#">THEMA</a></span>
-                        <span><a href = "#">LOCATION</a></span>
+                        <span id = "go-location"><a href = "#section3">LOCATION</a></span>
                     </div>
                 </div>
         </div>
@@ -195,10 +195,20 @@
             title.hide(300);
         }
     });
+const goLocation = $("#go-location");
+
+goLocation.on("click",function(){
+    headerWrap.show(300);
+    loginBox.css("display","none");
+    title.hide(300);
+	page = 3;
+});
+    
 let imgNo = 0;
 const ul = $(".thema-info-box");
 const imgCount = ul.children().length; // 사용하는 이미지 갯수
 const width = 300;
+
 ul.css("width",(imgCount*width)+"px");
 $(".prev").on("click",function(){
     if(imgNo != 0){

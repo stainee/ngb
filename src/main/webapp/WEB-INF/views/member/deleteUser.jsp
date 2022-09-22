@@ -11,6 +11,7 @@
 <%@include file="/WEB-INF/views/common/header.jsp"%>
 	<h2>회원탈퇴</h2>
 	<div class="content-wrap">
+		<div class="context-wrap">
 		<div class="text-wrap">
 			<div class="delNotice">
 					
@@ -31,11 +32,10 @@
 				<br>
 				(단, (세금)계산서 내 개인식별번호는 3년 경과 후 파기)
 					
-				<br><br>
-				유의사항
-				<br>
-				회원탈퇴 처리 후에는 회원님의 개인정보를 복원할 수 없으며, 해당 
-				아이디는 영구적으로 삭제되어 	재가입이 불가합니다.
+				<br><br><br><br>
+				<p class="youeui">유의사항</p>
+				<p class="youeuii">회원탈퇴 처리 후에는 회원님의 개인정보를 복원할 수 없으며, 해당 
+				아이디는 영구적으로 삭제되어 	재가입이 불가합니다.</p>
 			</div>
 		</div>
 		<div class="delBtn-wrap">
@@ -43,10 +43,11 @@
 				<input type="checkbox" id="delCheck">
 				해당 내용을 모두 확인했으며 회원탈퇴에 동의합니다.
 			</label>
-			<button onclick="delUser();" type="button" class="realDelBtn">회원탈퇴</button>
+			<button onclick="delUser();" type="button" class="realDelBtn">회원탈퇴	</button>
+			<input type="hidden" id="delMemNo" value=<%=m.getMemberNo()%>>
 			<button onclick="noDelUser();" type="button" class="noDelBtn">취소</button>
 		</div>	
-		
+		</div>
 	</div>
 <%@include file="/WEB-INF/views/common/footer.jsp"%>
 <script>
@@ -55,8 +56,15 @@ function noDelUser(){
 }
 
 function delUser(){
-	
+	const agreeChk = $("#delCheck");
+	const userNo = $("#delMemNo").val();
+	if (agreeChk.is(":checked")) {
+		console.log(userNo);
+	}else{
+		alert("약관에 동의해주세요.");
+	}
 }
+
 </script>
 </body>
 </html>

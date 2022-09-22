@@ -55,7 +55,7 @@
 				<button onclick="updateUser();" class="bot-btn" id="editDiv">회원수정</button>
 			</div>
 			<div>
-				<button onclick="deleteFunc();" class="bot-btn">회원탈퇴</button>
+				<button onclick="deleteFunc();" class="bot-btn" id="delDiv">회원탈퇴</button>
 			</div>
 		</div>
 	</div>

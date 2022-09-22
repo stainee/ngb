@@ -38,12 +38,12 @@ public class DeleteReserve2Servlet extends HttpServlet {
 				ReserveService service = new ReserveService();
 				int result = service.deleteReserve(reserveNo);
 											//reserveNo를 담아서 넘겨줌
+				System.out.println(result);
 				//4.결과처리
 				PrintWriter out = response.getWriter();
 				out.print(result);
 						//ㄴreserveView.jsp로 보내줌
 				System.out.println(result);
-				
 	}
 
 	/**

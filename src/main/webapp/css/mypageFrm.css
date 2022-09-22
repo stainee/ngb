@@ -1,6 +1,5 @@
 .content-wrap{
-	margin-left:20vw;
-	margin-top:3vw;
+	margin: 0 auto;
 }
 
 .input-wraps{
@@ -39,10 +38,19 @@
 	background-color: #fff;
 	margin: 1px;
 }
-#editDiv:hover{
+.bot-btn:hover{
 	cursor: pointer;
 }
 .editAlert{
 	background-color: #ccc;
 	color: black;
+}
+#editDiv:hover{
+	background-color: rgb(255,193,7);
+	font-weight: bolder;
+}
+#delDiv:hover{
+	background-color: red;
+	color: white;
+	font-weight: bolder;
 }
