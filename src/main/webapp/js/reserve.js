@@ -504,6 +504,7 @@ function kakaoPayApprove(){
             pg_token : payment.pg_token
         },
         success :function(){
+            console.log("Approve");
             reserveFunc();
             kakaoPaySave();
             nextStep();
