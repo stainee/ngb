@@ -23,7 +23,7 @@
                         <span><a href="/loginFrm.do">로그인</a></span>
                         <span><a href="/signupFrm.do">회원가입</a></span>
                         <%}else{ %>
-                        <span><a href="/logout.do" class="logout">로그아웃</a></span>
+                        <span><a href="/logout.do">로그아웃</a></span>
                 		<%} %>
                     </div>
                     <div class="sub-menu"></div>
@@ -72,7 +72,7 @@
             <div class = "thema-info-wrap">
             <div class = "thema-info-box">
                 <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
+                	<a href = "#"><img src="/img/공포의foreach문.png"></a>
                 </div>
                 <div class = "section2-box content-box">
                     <div class = "mainThema-title">공포의FOREACH문</div>

@@ -328,8 +328,15 @@ html, body {
     align-content:center;
     justify-content:center;
 }
-.photo-box>img{
-	width:100%;
+.photo-box>a{
+	display:flex;
+	
+    align-content:center;
+    justify-content:center;
+}
+
+.photo-box>a>img{
+	width:98%;
 }
 .content-box{
     box-shadow: 1px 1px 1px 2px gray;
