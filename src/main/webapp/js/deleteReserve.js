@@ -3,7 +3,7 @@ payment={};
 $("#cancle").on("click",function(){
 	const reserveNo = $("[name=reserveNo]").val();
 	paymentInfo(reserveNo);
-	
+
 	
 });
 
@@ -19,7 +19,11 @@ function paymentInfo(reserveNo){
 			payment.reserveNo = reserveNo;
 			payment.price = resp.price;
 			payment.tid = resp.tid;
-			paymentCancle(reserveNo);
+			if(payment.tid ==null){ //무통장결제
+				deleteReserve(reserveNo);
+			}else{
+				paymentCancle(reserveNo);
+			}
 		}
 	})
 }
