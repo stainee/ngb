@@ -37,8 +37,8 @@
             </ul>
             <ul class = "mypage menuwrap">
             <div>
-                <li><a href = "#">마이페이지</a></li>
-                <li><a href = "#">MY PAGE</a></li>
+                <li><a href = "/mypageFrm.do">마이페이지</a></li>
+                <li><a href = "/mypageFrm.do">MY PAGE</a></li>
             </div>
             </ul>
             <div class="signwrap">
