@@ -323,7 +323,7 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				m = new Member();
-				m.setMemberId(rset.getString("member_pw"));
+				m.setMemberPw(rset.getString("member_pw"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

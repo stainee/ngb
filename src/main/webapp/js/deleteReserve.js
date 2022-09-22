@@ -1,26 +1,31 @@
-let payment ={};
+payment={};
 //예약취소버튼
 $("#cancle").on("click",function(){
 	const reserveNo = $("[name=reserveNo]").val();
-	//deleteReserve2.do 호출하면됨 , reserveNo 필요
 	paymentInfo(reserveNo);
 	
 	
 });
 
+//예약번호로 결제정보 조회
 function paymentInfo(reserveNo){
 	$.ajax({
 		url:"/getPaymentInfo.do",
 		type:"post",
-		dataType:"text",
-		data : reserveNo,
+		dataType:"json",
+		data : {reserveNo:reserveNo},
 		success: function(resp){
-			
+			//가격과 tid 정보 조회 결과
+			payment.reserveNo = reserveNo;
+			payment.price = resp.price;
+			payment.tid = resp.tid;
+			paymentCancle(reserveNo);
 		}
 	})
 }
 
-function paymentCancle(){
+//결제 취소 API 요청
+function paymentCancle(reserveNo){
 	$.ajax({
 		url:"https://kapi.kakao.com/v1/payment/cancel",
         type:"post",
@@ -28,34 +33,63 @@ function paymentCancle(){
         dataType:"json",
         data:{
             "cid": "TC0ONETIME",
-			"tid" : "1",
-			"cancle_amount" : "2000",
-			"cancle_tax_free_amount" : "0"
-        }
+			"tid" : payment.tid,
+			"cancel_amount" : payment.price,
+			"cancel_tax_free_amount" : 0,
+        },
+		success:function(){
+			deleteReserve(reserveNo);
+		},
+		error:function(resp){
+			console.log(resp);
+			swal({
+				title :"결제취소실패",
+				text :"관리자에게 문의해주세요",
+				icon:"error"
+			}).then(function(){
+				location.href = "/";
+			});
+		}
 	})
 }
-// url : "/deleteReserve2.do",
-// 			data: {reserveNo:reserveNo},
-// 			type : "post",
-// 			success : function(data){
-				
-// 			}
-// if(data='success'){
-// 	swal({
-// 		title :'취소성공',
-// 		text :'예약이 취소되었습니다.',
-// 		icon:'success'
-// 	}).then(function(){
-// 	location.href = "/";
-// });
-// }else{//취소하지 못하였으면
-// 	//alert("취소실패");
-// 	swal({
-// 		title :'취소실패',
-// 		text :'관리자에게 문의해주세요.',
-// 		icon:'error'
-// }).then(function(){
-// 	location.href = "/";
-// 	});
-// }
-// }
+
+//결제 내역 삭제. 정책상 쓰지 않을수도 있다 
+function deletePayment(reserveNo){
+	$.ajax({
+		url:"/deletePayment.do",
+        type:"post",
+        data:{reserveNo:reserveNo},
+        success: function(result){
+			if(result>0){
+				deleteReserve(reserveNo);
+			}
+		}
+	})
+}
+//예약 취소
+function deleteReserve(reserveNo){
+	$.ajax({
+		url:"/deleteReserve2.do",
+        type:"post",
+        data:{reserveNo:reserveNo},
+        success: function(){
+			swal({
+				title :"예약취소성공",
+				text :"예약이 취소되었습니다",
+				icon:"success"
+			}).then(function(){
+			location.href = "/";
+			}
+			)
+		},
+		error : function(){
+			swal({
+				title :"예약취소실패",
+				text :"관리자에게 문의해주세요",
+				icon:"error"
+			}).then(function(){
+				location.href = "/";
+			});
+		}
+	})
+}

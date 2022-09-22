@@ -411,6 +411,9 @@ function reserveFunc(){
             reserve_amount : reserve.reserve_amount,
             play_date: reserve.play_date,
             thema_name: reserve.thema_name
+        },
+        success:function(){
+            kakaoPaySave();
         }
     });
 }
@@ -457,12 +460,12 @@ function kakaoPay(){
             "total_amount": reserve.reserve_pay,
             "vat_amount": "0",
             "tax_free_amount":"0",
-            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
-            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
-            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
-            // "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
-            // "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
-            // "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
+            // "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            // "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            // "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
         },
         success : function(data){
             window.open(data.next_redirect_pc_url);
@@ -506,7 +509,6 @@ function kakaoPayApprove(){
         success :function(){
             console.log("Approve");
             reserveFunc();
-            kakaoPaySave();
             nextStep();
         }
         

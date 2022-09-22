@@ -23,26 +23,26 @@
 }
 
 .btn2{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	box-shadow: 0.5px 0.5px 0.5px 0.5px black;
-	cursor: pointer;
-	font-size:20px;
+   width:100px;
+   height:50px;
+   background-color: rgb(255,193,7);
+   box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+   cursor: pointer;
+   font-size:20px;
 }
 
 .btn2:active{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	border:1px solid black;
-	box-shadow: none;
+   width:100px;
+   height:50px;
+   background-color: rgb(255,193,7);
+   border:1px solid black;
+   box-shadow: none;
 }
 
 
 /*테이블*/
 .table-wrap{
-	width:1800px;
+   width:1800px;
     margin: 30px auto;
     padding-left: 350px;
 }
@@ -95,38 +95,38 @@
 .reserve-btn{
     margin-top: 20px;
     width:80px;
-	height:40px;
-	background-color: rgb(230,230,230);
-	box-shadow: 0px 0.5px 0.5px 0.5px black;
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:20px;
+   height:40px;
+   background-color: rgb(230,230,230);
+   box-shadow: 0px 0.5px 0.5px 0.5px black;
+   border-radius: 50px;
+   cursor: pointer;
+   font-size:20px;
     margin-left: 1150px;
 }
 
 .reserve-btn>a{
-	text-decoration: none;
+   text-decoration: none;
 }
 
 .reserve-btn>a:link{
-	color:black;
+   color:black;
 }
 
 .reserve-btn>a:visited{
-	color:black;
+   color:black;
 }
 
 
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-	
+   <%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
+   
 
 
     <div class="tap-wrap">
-        <button class="btn2 tab-thema">테마관리</button>
-        <button class="btn2 tab-time">시간관리</button>
+        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
+        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
     </div>
 
     <div class="table-wrap">
@@ -148,7 +148,7 @@
                 <td><%=thema.getThemaCode() %></td>
                 <td><%=thema.getCategory()%></td>
                 <td>
-               		<a href="/themaManageView.do?themaCode=<%=thema.getThemaCode()%>"><%=thema.getThemaName() %></a>
+                     <a href="/themaManageView.do?themaCode=<%=thema.getThemaCode()%>"><%=thema.getThemaName() %></a>
                 </td>
                 <td><%=thema.getThemaPrice() %></td>
                 <td><%=thema.getThemaTime()%></td>
