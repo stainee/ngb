@@ -1,26 +1,25 @@
-package com.ngb.payment.controller;
+package com.ngb.notice.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.payment.service.PaymentService;
-
 /**
- * Servlet implementation class KaKaoPaySaveServlet
+ * Servlet implementation class NoticeWriteFrmServlet
  */
-@WebServlet("/kakaoPaySave.do")
-public class KaKaoPaySaveServlet extends HttpServlet {
+@WebServlet(name = "NoticeWriteFrm", urlPatterns = { "/noticeWriteFrm.do" })
+public class NoticeWriteFrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public KaKaoPaySaveServlet() {
+    public NoticeWriteFrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +28,13 @@ public class KaKaoPaySaveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1.인코딩
 		request.setCharacterEncoding("utf-8");
-		//결제 정보를 가져온다
-		int price = Integer.parseInt(request.getParameter("price"));
-		String tid = request.getParameter("tid");
-		
-		PaymentService service = new PaymentService();
-		//reserveNo 찾아서 payment에 insert
-		int result = service.insertPayment(price, tid);
+		//2.값추출
+		//3.비즈니스로직
+		//4.결과처리
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/notice/noticeWriteFrm.jsp");
+		view.forward(request, response);
 	}
 
 	/**

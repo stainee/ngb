@@ -16,6 +16,10 @@
 <<<<<<< HEAD
 <script src="/js/sweetalert.min.js"></script>
 =======
+<<<<<<< HEAD
+<script src="/js/sweetalert.min.js"></script>
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 >>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/reserveFrm.css">
@@ -181,7 +185,7 @@
 	    </div>
 	</div>
 	
-	
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<script src="/js/reserve.js"></script>
 	<script src="/js/account.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>

@@ -384,6 +384,48 @@ public class ReserveDao {
 		
 		return result;
 	}
+
+	public int deleteReserve(Connection conn, int reserveNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from reserve where reserve_no=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,reserveNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+
+	public int selectCurrReserve(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String query = "select max(reserve_no) as curr from reserve";
+		try {
+			pstmt = conn.prepareStatement(query);
+			result = pstmt.executeUpdate();
+			if(rset.next()) {
+				result = rset.getInt("curr");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 }
 

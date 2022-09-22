@@ -108,6 +108,8 @@ $(".second-btn").on("click", function() {
 let mailCode;
 function sendMail() {
 	const memberMail = $("#searchMail2").val();
+	$("#timeZone").show();
+	$("#authMsg").hide();
 	$.ajax({
 		url: "/sendMail.do",
 		data: { memberMail: memberMail },
@@ -125,7 +127,6 @@ function sendMail() {
 //전역변수
 let intervalId;
 function authTime() {
-
 	$("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
 	intervalId = window.setInterval(function() {
 		timeCount();
@@ -163,6 +164,7 @@ function timeCount() {
 $("#authBtn").on("click", function() {
 	const inputValue = $("#authCode").val();
 	if (mailCode != null) {
+		$("#authMsg").show();
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");

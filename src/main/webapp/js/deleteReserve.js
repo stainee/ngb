@@ -19,14 +19,14 @@ $("#credit").on("click",function(){
 	//console.log(reserveNo);
 	
 	$.ajax({
-		url : "/deleteReserve.do",
+		url : "/deleteReserve2.do",
 			data: {reserveNo:reserveNo},
 			//키값,밸류값 (서블릿으로 값 넘겨줌)
 			type : "post",
 			success : function(data){
 				//jsp에서 넘겨준 값(result)
 			console.log(data);
-			if(data>0){
+			if(data='success'){
 				//alert("취소성공");
 				swal({
 					title :'취소성공',
@@ -36,7 +36,7 @@ $("#credit").on("click",function(){
 				location.href = "/";
 	         });
 			}else{
-				alert("취소실패");
+				//alert("취소실패");
 				swal({
 					title :'취소실패',
 					text :'관리자에게 문의해주세요.',
