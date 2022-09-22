@@ -206,6 +206,7 @@
 		
 		//----------------------------------------- 정규 표현식 --------------------------------------------------
 		
+		//시간제한 
 		$("input[name=themaTime]").on("keyup",function(event){
 			
 			const themaTime = $("input[name=themaTime]");
@@ -215,78 +216,119 @@
 				console.log("사용 가능");
 				themaTime.css("outline","none");
 				themaTime.css("color","black");
-				//themaTime.placeholder(themaTimeValue);
+			
 			}else{
 				console.log("사용 불가");
 				themaTime.css("outline","1px solid red");
 				themaTime.css("color","red");
 				themaTime.val("숫자로 입력해주세요");	
 			}
-
-		}).on("focusOut",function(event){
-			console.log("싯시시ㅣㅅ");
-			themaTime.css("outline","none");
-			themaTime.css("color","black");
-			themaTime.val("");	
 		});
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		$(".reserve-btn").on("click",function(event){
-			
-			const themaTime = $("input[name=themaTime]");
-			
+		//잠금장치 
+		$("input[name=devicePer]").on("keyup",function(event){
 			const devicePer = $("input[name=devicePer]");
-			const lockPer = $("input[name=lockPer]");
-			const peopleMin = $("input[name=peopleMin]");
-			const peopleMax = $("input[name=peopleMax]");
-			const themaLevel = $("input[name=themaLevel]");
-			const themaPrice = $("input[name=themaPrice]");
-			
-			const themaTimeValue = themaTime.val();
 			const devicePerValue = devicePer.val();
-			const lockPerValue = lockPer.val();
-			const peopleMinValue = peopleMin.val();
-			const peopleMaxValue = peopleMax.val();
-			const themaLevelValue = themaLevel.val();
-			const themaPriceValue = themaPrice.val();
-			
-			const themaTimeReg =  /^[0-9]+$/;
 			const devicePerReg =  /^[0-9]+$/;
-			const lockPerReg =  /^[0-9]+$/;
-			const peopleMinReg =  /^[0-9]+$/;
-			const peopleMaxReg =  /^[0-9]+$/;
-			const themaLevelReg =  /^[0-9]+$/;
-			const themaPriceReg =  /^[0-9]+$/;
-			
-			if(themaTimeReg.test(themaTimeValue)&&devicePerReg.test(devicePerValue)&&lockPerReg.test(lockPerValue)&&peopleMinReg.test(peopleMinValue)
-					&&peopleMaxReg.test(peopleMaxValue) &&themaLevelReg.test(themaLevelValue) && themaPriceReg.test(themaPriceValue) ){
+			if(devicePerReg.test(devicePerValue)){
 				console.log("사용 가능");
+				devicePer.css("outline","none");
+				devicePer.css("color","black");
 			}else{
-				//alert("다시 입력해주세요");
-				themaTime.text("숫자로 입력해주세요);
-				themaTime.css("border","1px solid red");
-				event.preventDefault();
+				console.log("사용 불가");
+				devicePer.css("outline","1px solid red");
+				devicePer.css("color","red");
+				devicePer.val("숫자로 입력해주세요");	
 			}
-			
 		});
 		
-		*/
+		//자물쇠 
+		$("input[name=lockPer]").on("keyup",function(event){
+			const lockPer = $("input[name=lockPer]");
+			const lockPerValue = lockPer.val();
+			const lockPerReg =  /^[0-9]+$/;
+			if(lockPerReg.test(lockPerValue)){
+				console.log("사용 가능");
+				lockPer.css("outline","none");
+				lockPer.css("color","black");
+			}else{
+				console.log("사용 불가");
+				lockPer.css("outline","1px solid red");
+				lockPer.css("color","red");
+				lockPer.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		//최소인원 
+		$("input[name=peopleMin]").on("keyup",function(event){
+			const peopleMin = $("input[name=peopleMin]");
+			const peopleMinValue = peopleMin.val();
+			const peopleMinReg =  /^[0-9]+$/;
+			if(peopleMinReg.test(peopleMinValue)){
+				console.log("사용 가능");
+				peopleMin.css("outline","none");
+				peopleMin.css("color","black");
+			}else{
+				console.log("사용 불가");
+				peopleMin.css("outline","1px solid red");
+				peopleMin.css("color","red");
+				peopleMin.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		//최대인원 
+		$("input[name=peopleMax]").on("keyup",function(event){
+			const peopleMax = $("input[name=peopleMax]");
+			const peopleMaxValue = peopleMax.val();
+			const peopleMaxReg =  /^[0-9]+$/;
+			if(peopleMaxReg.test(peopleMaxValue)){
+				console.log("사용 가능");
+				peopleMax.css("outline","none");
+				peopleMax.css("color","black");
+			}else{
+				console.log("사용 불가");
+				peopleMax.css("outline","1px solid red");
+				peopleMax.css("color","red");
+				peopleMax.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		//난이도 
+		$("input[name=themaLevel]").on("keyup",function(event){
+			const themaLevel = $("input[name=themaLevel]");
+			const themaLevelValue = themaLevel.val();
+			const themaLevelReg =  /^[0-9]+$/;
+			if(themaLevelReg.test(themaLevelValue)){
+				console.log("사용 가능");
+				themaLevel.css("outline","none");
+				themaLevel.css("color","black");
+			}else{
+				console.log("사용 불가");
+				themaLevel.css("outline","1px solid red");
+				themaLevel.css("color","red");
+				themaLevel.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		//가격 
+		$("input[name=themaPrice]").on("keyup",function(event){
+			const themaPrice = $("input[name=themaPrice]");
+			const themaPriceValue = themaPrice.val();
+			const themaPriceReg =  /^[0-9]+$/;
+			if(themaPriceReg.test(themaPriceValue)){
+				console.log("사용 가능");
+				themaPrice.css("outline","none");
+				themaPrice.css("color","black");
+			}else{
+				console.log("사용 불가");
+				themaPrice.css("outline","1px solid red");
+				themaPrice.css("color","red");
+				themaPrice.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		
 
 		
 		
