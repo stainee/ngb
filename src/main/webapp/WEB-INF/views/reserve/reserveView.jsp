@@ -77,8 +77,7 @@
 					     	<th colspan="4"></th>
 					     </tr>
 				 		<tr>
-				 			<!--<th colspan="2"><button id="delete" class="btn4" onclick="deleteReserve()" >예약취소</button></th>  -->
-				 			<th colspan="2"><button id="credit" class="btn4">예약취소</button></th>
+				 			<th colspan="2"><button id="cancle" class="btn4">예약취소</button></th>
 				 			<th colspan="2"><button id="account" class="btn2" onclick="location.href='index.jsp'" >홈으로</button></th>
 				 		</tr>
 				 	</table>
@@ -89,7 +88,6 @@
 	</div>
 	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
-	<!--<script src="/js/reserve.js"></script>  -->
 	<script src="/js/deleteReserve.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
