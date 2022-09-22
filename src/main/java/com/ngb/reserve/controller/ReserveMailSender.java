@@ -2,6 +2,7 @@ package com.ngb.reserve.controller;
 
 import java.io.UnsupportedEncodingException;
 
+
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -128,7 +129,7 @@ public class ReserveMailSender {
 					msg.setSubject("나가방 인증메일","UTF-8");
 					//이메일 본문설정
 					msg.setContent("<h1>안녕하세요. 방탈출 카페 나가방입니다.</h1>"
-									+"<h3>입금하실 가상 계좌번호는 [<span style='color:red'>"
+									+"<h3>입금하실 가상 계좌번호는 [<span style='color:blue'>KH은행</span>] [<span style='color:red'>"
 									+sb.toString()
 									+"</span>] 입니다.</h3>"
 							,"text/html;charset=utf-8");

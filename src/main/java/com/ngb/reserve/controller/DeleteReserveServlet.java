@@ -17,7 +17,7 @@ import com.ngb.reserve.service.ReserveService;
  */
 @WebServlet(name = "DeleteReserve", urlPatterns = { "/deleteReserve.do" })
 public class DeleteReserveServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,31 +27,31 @@ public class DeleteReserveServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
-		ReserveService service = new ReserveService();
-		int result = service.deleteReserveMngr(reserveNo);
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
-		if(result == 1) {
-			new Gson().toJson("success",out);
-		}else {
-			new Gson().toJson("fail",out);
-		}
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+      int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
+      ReserveService service = new ReserveService();
+      int result = service.deleteReserveMngr(reserveNo);
+      
+      response.setContentType("application/json");
+      response.setCharacterEncoding("utf-8");
+      PrintWriter out = response.getWriter();
+      if(result == 1) {
+         new Gson().toJson("success",out);
+      }else {
+         new Gson().toJson("fail",out);
+      }
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

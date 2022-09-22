@@ -384,7 +384,7 @@ public class ReserveDao {
 		
 		return result;
 	}
-	
+
 	public int deleteReserve(Connection conn, int reserveNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;

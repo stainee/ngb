@@ -1,8 +1,10 @@
 <%@page import="com.ngb.thema.model.vo.Thema"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.ngb.reserve.model.vo.Reserve"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% ArrayList<Thema> tList = (ArrayList<Thema>)request.getAttribute("themaList");  %>
+    <%Reserve reser = (Reserve)request.getAttribute("reserve"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +13,15 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<<<<<<< HEAD
 <script src="/js/sweetalert.min.js"></script>
+=======
+<<<<<<< HEAD
+<script src="/js/sweetalert.min.js"></script>
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/reserveFrm.css">
 </head>
 
