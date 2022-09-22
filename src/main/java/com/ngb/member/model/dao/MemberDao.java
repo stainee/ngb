@@ -1,4 +1,4 @@
-package com.ngb.member.dao;
+package com.ngb.member.model.dao;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
