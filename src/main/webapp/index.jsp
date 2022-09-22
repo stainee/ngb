@@ -5,111 +5,209 @@
 <head>
 <meta charset="UTF-8">
 <title>나가방</title>
-<link rel="stylesheet" href="/css/main.css">
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="/css/main2.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src = "js/test.js"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<div class="sub-menu">
-		<div class="box-wrap">
-			<div class="box left">
-				<div>
-					<a href="#">MYSTERY></a>
-				</div>
-			</div>
-			<div class="box right">
-				<div>
-					<a href="#">SF></a>
-				</div>
-			</div>
-		</div>
-		<br><br><br><br>
-		<div class="box-wrap">
-			<div class="box left">
-				<div>
-					<a href="#">IT></a>
-				</div>
-			</div>
-			<div class="box right">
-				<div>
-					<a href="#">THRILLER></a>
-				</div>
-			</div>
-		</div>
-		<div class="title">NA-GA-BA-NG</div>
-	</div>
-	<div class="middle-wrap">
-		<div class="middle-btn-wrap">
-			<a href = "#" class = "a-reserve">예약하기</a>
-			<a href = "#location" class = "a-location">오시는길</a>
-		</div>
-		<div>
-			<div class="notice-wrap">
-				<div class="notie-content">
-					 <table class="tbl tbl-hover notice-tbl">
-					        <tr class="tr-1">
-					            <th style="width:10%;">번호</th>
-					            <th style="width:45%;">제목</th>
-					            <th style="width:15%;">작성자</th>
-					            <th style="width:20%;">작성일</th>
-					        </tr>
-					        <tr class="tr-3">
-					            <td>1</td>
-					            <td>
-					                <a href="#"><p>공지사항입니다.</p></a>
-					            </td>
-					            <td>나가방장</td>
-					            <td>2022.09.15</td>
-					        </tr>
-					        <tr class="tr-3">
-					            <td>1</td>
-					            <td>
-					                <a href="#"><p>공지사항입니다.</p></a>
-					            </td>
-					            <td>나가방장</td>
-					            <td>2022.09.15</td>
-					        </tr>
-					        <tr class="tr-3">
-					            <td>1</td>
-					            <td>
-					                <a href="#"><p>공지사항입니다.</p></a>
-					            </td>
-					            <td>나가방장</td>
-					            <td>2022.09.15</td>
-					        </tr>
-					        <tr class="tr-3">
-					            <td>1</td>
-					            <td>
-					                <a href="#"><p>공지사항입니다.</p></a>
-					            </td>
-					            <td>나가방장</td>
-					            <td>2022.09.15</td>
-					        </tr>
-					        <tr class="tr-3">
-					            <td>1</td>
-					            <td>
-					                <a href="#"><p>공지사항입니다.</p></a>
-					            </td>
-					            <td>나가방장</td>
-					            <td>2022.09.15</td>
-					        </tr>
-					    </table>
-	            </div>
-			</div>
-		</div>
-		<div>
-			<p>안녕하세요</p>
-			<p>나가방 대표 안상영입니다.</p>
-			<p></p>
-		</div>
-	</div>
-	<div class = "location" id = "location">
-		<a href = "reserveManage.do" style = "color:red">manage</a>
-		<a href = "reserveFrm.do" style = "color:blue">reserve</a>
-		<a href = "editReserveFrm.do" style = "color:green">editReserve</a>
-		<a href = "findReserveFrm.do" style = "color:purple">findReserve</a>
-		<a href = "manageMember.do" style = "color:blue">memberManage</a>
-	</div>
-	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+        <div class="section" id="section1">
+                <div id = "section1_detail">
+                    <span class = "title">
+                        <a href="#">NAGABANG</a>
+                    </span>
+                    <div class = "login-box">
+                        <span><a href="#">로그인</a></span>
+                        <span><a href="#">회원가입</a></span>
+                    </div>
+                    <div class="sub-menu"></div>
+                    <div class = "middle-box">
+                        <span><a href = "#">NOTICE</a></span>
+                        <span><a href = "#">RESERVATION</a></span>
+                        <span><a href = "#">THEMA</a></span>
+                        <span><a href = "#">LOCATION</a></span>
+                    </div>
+                </div>
+        </div>
+        <div class="section" id="section2">
+            <div class = "notice-wrap">
+                <a href = "#">
+                    <div class = "notice-title">
+                    NOTICE
+                </div>
+                </a>
+                <div>
+                    <table class = "main-table">
+                        <thead>
+                            <th>공지</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><a href = "#">주의사항</a></td>
+                                <td>22/09/19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><a href = "#">주의사항</a></td>
+                                <td>22/09/19</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a href = "#">
+                <div class = "thema-title">
+                THEMA
+            </div>
+            </a>
+            <div class = "thema-info-wrap">
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">공포의FOREACH문</div>
+                    <div class = "mainThema-content">공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?</div>
+                </div>
+            </div>
+
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">
+                        공포의FOREACH문
+                    </div>
+                    <div class = "mainThema-content">
+                        공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?
+                    </div>
+                    </div>
+                </div>
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">
+                        공포의FOREACH문
+                    </div>
+                    <div class = "mainThema-content">
+                        공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?
+                    </div>
+                    </div>
+                </div>
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">
+                        공포의FOREACH문
+                    </div>
+                    <div class = "mainThema-content">
+                        공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?
+                    </div>
+                    </div>
+                </div>
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">
+                        공포의FOREACH문
+                    </div>
+                    <div class = "mainThema-content">
+                        공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?
+                    </div>
+                    </div>
+                </div>
+            <div class = "thema-info-box">
+                <div class = "section2-box photo-box left"></div>
+                <div class = "section2-box content-box">
+                    <div class = "mainThema-title">
+                        공포의FOREACH문
+                    </div>
+                    <div class = "mainThema-content">
+                        공포의 foreach문...
+                        for문도..while문도 사용불가하다..
+                        과연 foreach문으로 탈출할 수 있을까...?
+                    </div>
+                    </div>
+                </div>
+                <div class = "slide-navi prev">
+                    <span class = "material-icons">arrow_back_ios_new</span>
+                </div>
+                <div class = "slide-navi next">
+                    <span class = "material-icons">arrow_forward_ios</span>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class = "location-title">오시는길</div>
+            <div class = "location">
+            </div>
+	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
+    </div>
+    <script>
+    var mHtml = $("html");
+    var page = 1;
+    const headerWrap = $(".header-wrap");
+    const header = $(".header");
+    const loginBox = $(".login-box");
+    const title = $(".title");
+    headerWrap.css("display","none");
+
+    mHtml.animate({scrollTop : 0},10);
+
+    $(window).on("wheel", function(e) {
+        if(mHtml.is(":animated")) return;
+        if(e.originalEvent.deltaY > 0) {
+            if(page == 3) return;
+            page++;
+        } else if(e.originalEvent.deltaY < 0) {
+            if(page == 1) return;
+            page--;
+        }
+        var posTop =(page-1) * $(window).height();
+        mHtml.animate({scrollTop : posTop});
+
+        if(page == 1){
+            headerWrap.hide(300);
+            loginBox.css("display","block");
+            title.show(300);
+        }
+        if(page != 1){
+            headerWrap.show(300);
+            loginBox.css("display","none");
+            title.hide(300);
+        }
+    });
+let imgNo = 0;
+const ul = $(".thema-info-box");
+const imgCount = ul.children().length; // 사용하는 이미지 갯수
+const width = 500;
+ul.css("width",(imgCount*width)+"px");
+$(".prev").on("click",function(){
+    if(imgNo != 0){
+        imgNo--;
+        const move = -imgNo*width;
+        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
+    }
+});
+$(".next").on("click",function(){
+    if(imgNo != imgCount-1){
+        imgNo++;
+        const move = -imgNo*width;
+        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
+    }
+});
+</script>
 </body>
 </html>
