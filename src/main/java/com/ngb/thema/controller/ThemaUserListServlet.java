@@ -13,23 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.ngb.thema.model.vo.Thema;
 import com.ngb.thema.service.ThemaService;
 
-
-
 /**
- * Servlet implementation class ThemaManageListServlet
+ * Servlet implementation class ThemaUserListServlet
  */
-@WebServlet(name = "ThemaManageList", urlPatterns = { "/themaManageList.do" })
-public class ThemaManageListServlet extends HttpServlet {
+@WebServlet(name = "ThemaUserList", urlPatterns = { "/themaUserList.do" })
+public class ThemaUserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaManageListServlet() {
+    public ThemaUserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,7 +40,7 @@ public class ThemaManageListServlet extends HttpServlet {
 		ArrayList<Thema> list = service.selectAllThema();
 
 		//4. 결과처리
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaUserList.jsp");
 		request.setAttribute("list", list);
 		view.forward(request, response);
 	}

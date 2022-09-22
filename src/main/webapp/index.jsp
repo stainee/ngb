@@ -98,8 +98,9 @@
                     </div>
                 </div>
             <div class = "thema-info-box">
-                <div class = "section2-box photo-box left"></div>
-
+                <div class = "section2-box photo-box left">
+                	<img src="/img/공포의foreach문.png">
+                </div>
                 </div>
             <div class = "thema-info-box">
                 <div class = "section2-box photo-box left">
