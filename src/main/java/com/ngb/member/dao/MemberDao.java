@@ -36,7 +36,7 @@ public class MemberDao {
 			pstmt.setString(1, member.getMemberId());
 			pstmt.setString(2, member.getMemberPw());
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			if (rset.next()) {
 				m = new Member();
 				m.setMemberNo(rset.getInt("member_no"));
 				m.setMemberId(rset.getString("member_id"));
@@ -51,13 +51,13 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
 		return m;
 	}
-	
+
 	public Member selectOneMember(Connection conn, int memberNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -67,7 +67,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, memberNo);
 			rset = pstmt.executeQuery();
-			if(rset.next()) {
+			if (rset.next()) {
 				m = new Member();
 				m.setMemberNo(rset.getInt("member_no"));
 				m.setMemberId(rset.getString("member_id"));
@@ -81,13 +81,13 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
 		return m;
 	}
-	
+
 	public Member selectOneMember(Connection conn, String memberId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -141,30 +141,30 @@ public class MemberDao {
 
 	public String sendMail(String email) {
 		boolean result = false;
-		//인증용 랜덤코드 생성
+		// 인증용 랜덤코드 생성
 		Random r = new Random();
 		StringBuilder sb = new StringBuilder();
-		for(int i=0;i<8;i++) {
-			//숫자,영어소문자,영어대문자 섞어서 8개 조합
-			//0 : 0~9 , 1 : A-Z, 2 : a-z
+		for (int i = 0; i < 8; i++) {
+			// 숫자,영어소문자,영어대문자 섞어서 8개 조합
+			// 0 : 0~9 , 1 : A-Z, 2 : a-z
 			int flag = r.nextInt(3);
-			if(flag == 0) {
-				//0~9
+			if (flag == 0) {
+				// 0~9
 				int randomNum = r.nextInt(10);
-				//문자열로 추가
+				// 문자열로 추가
 				sb.append(randomNum);
-				
-			}else if(flag == 1) {
-				//A~Z 65번부터 시작임
-				//알파벳 26자를 65번부터
-				char randomChar = (char)(r.nextInt(26)+65);
+
+			} else if (flag == 1) {
+				// A~Z 65번부터 시작임
+				// 알파벳 26자를 65번부터
+				char randomChar = (char) (r.nextInt(26) + 65);
 				sb.append(randomChar);
-			}else if(flag == 2) {
-				char randomChar = (char)(r.nextInt(26)+97);
+			} else if (flag == 2) {
+				char randomChar = (char) (r.nextInt(26) + 97);
 				sb.append(randomChar);
 			}
 		}
-		
+
 		Properties prop = System.getProperties();
 //		prop.put("mail.smtp.host", "smtp.gmail.com");
 //		prop.put("mail.smtp.port", 465);
@@ -173,49 +173,49 @@ public class MemberDao {
 //		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 //		
 		prop.put("mail.smtp.host", "smtp.gmail.com");
-		prop.put("mail.smtp.port", 587); //변경
+		prop.put("mail.smtp.port", 587); // 변경
 		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.starttls.enable", true); //추가
-		prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //추가
-		//prop.put("mail.smtp.ssl.enable", true);  // 주석
+		prop.put("mail.smtp.starttls.enable", true); // 추가
+		prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 추가
+		// prop.put("mail.smtp.ssl.enable", true); // 주석
 		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		//인증정보설정(로그인 개념)
-		Session session = Session.getDefaultInstance(prop, 
-				new Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						PasswordAuthentication pa = new PasswordAuthentication("dhfkdlspt","yudqqmwhadncepyf");
-						return pa;
-					}		
-				}
-		);
-		//이메일을 작성해서 전송하는 객체
+		// 인증정보설정(로그인 개념)
+		Session session = Session.getDefaultInstance(prop, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				PasswordAuthentication pa = new PasswordAuthentication("dhfkdlspt", "yudqqmwhadncepyf");
+				return pa;
+			}
+		});
+		// 이메일을 작성해서 전송하는 객체
 		MimeMessage msg = new MimeMessage(session);
-		
-		//이메일 작성
-		
+
+		// 이메일 작성
+
 		try {
-			//메일 전송 날짜 설정
+			// 메일 전송 날짜 설정
 			msg.setSentDate(new Date());
-			
-			//보내는 사람 정보
-			msg.setFrom(new InternetAddress("dhfkdlspt@gamil.com","나가방"));
-			
-			//받는사람 정보
-			//new InternetAddress(지정한 변수명으로);
+
+			// 보내는 사람 정보
+			msg.setFrom(new InternetAddress("dhfkdlspt@gamil.com", "나가방"));
+
+			// 받는사람 정보
+			// new InternetAddress(지정한 변수명으로);
 			InternetAddress to = new InternetAddress(email);
 			msg.setRecipient(Message.RecipientType.TO, to);
-			
-			//이메일 제목
-			msg.setSubject("나가방 인증메일 입니다..","UTF-8");
-			
-			//이메일 본문 설정
-			//text/html;charset=utf-8 : html로 해석해라
-			msg.setContent("<h1>안녕하세요</h1>" + "<h3>인증번호는 [<span style='color:red'>"+sb.toString()+"</span>] 입니다.</h3>","text/html;charset=utf-8");
-		
-			//이메일 전송
+
+			// 이메일 제목
+			msg.setSubject("나가방 인증메일 입니다..", "UTF-8");
+
+			// 이메일 본문 설정
+			// text/html;charset=utf-8 : html로 해석해라
+			msg.setContent(
+					"<h1>안녕하세요</h1>" + "<h3>인증번호는 [<span style='color:red'>" + sb.toString() + "</span>] 입니다.</h3>",
+					"text/html;charset=utf-8");
+
+			// 이메일 전송
 			Transport.send(msg);
-			
-			//전송이 잘됬으면 true
+
+			// 전송이 잘됬으면 true
 			result = true;
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
@@ -224,24 +224,24 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//위에서 받은 결과로 처리해주겠다
-		if(result) {
+
+		// 위에서 받은 결과로 처리해주겠다
+		if (result) {
 			return sb.toString();
-		}else {
+		} else {
 			return null;
 		}
 	}
-	
+
 	public ArrayList<Member> selectAllMember(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Member> list = new ArrayList<Member>();
-		String query= "select * from member";
+		String query = "select * from member";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
-			while(rset.next()) {
+			while (rset.next()) {
 				Member m = new Member();
 				m.setMemberNo(rset.getInt("member_No"));
 				m.setMemberId(rset.getString("member_Id"));
@@ -256,7 +256,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
@@ -265,7 +265,7 @@ public class MemberDao {
 
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
-		int result=0;
+		int result = 0;
 		String query = "update member set member_name=?, member_id=?, member_pw=?, member_phone=?, member_mail=?, member_level=? where member_no=?";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -277,11 +277,11 @@ public class MemberDao {
 			pstmt.setInt(6, m.getMemberLevel());
 			pstmt.setInt(7, m.getMemberNo());
 			result = pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
@@ -311,6 +311,30 @@ public class MemberDao {
 		return m;
 	}
 
+	public Member searchMemberPw(Connection conn, String memberId, String memberMail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member m = null;
+		String query = "select * from member where member_id=? and member_mail=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberMail);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				m = new Member();
+				m.setMemberId(rset.getString("member_pw"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return m;
+	}
+
 	public int insertDelMember(Connection conn, Member m) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -324,10 +348,10 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JDBCTemplate.close(pstmt);
 		}
-		
+
 		return result;
 	}
 
@@ -342,7 +366,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;

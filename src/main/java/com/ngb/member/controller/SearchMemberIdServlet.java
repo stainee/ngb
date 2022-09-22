@@ -16,14 +16,14 @@ import com.ngb.member.service.MemberService;
 /**
  * Servlet implementation class SearchMemberServlet
  */
-@WebServlet(name = "SearchMember", urlPatterns = { "/searchMember.do" })
-public class SearchMemberServlet extends HttpServlet {
+@WebServlet(name = "SearchMemberId", urlPatterns = { "/searchMemberId.do" })
+public class SearchMemberIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchMemberServlet() {
+    public SearchMemberIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

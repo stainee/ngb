@@ -484,12 +484,15 @@ function kakaoPayJS(){
             "total_amount":"2200",
             "vat_amount":"200",
             "tax_free_amount":"0",
-            "approval_url":"http://192.168.10.37:8888/reserveFrm.do",
-            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
-            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            // "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            // "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            // "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
         },
         success : function(data){
-            kakaoPayRedirect(data.next_redirect_pc_url);
+            window.open(data.next_redirect_pc_url);
             console.log("서버 호출완료");
         },
         error : function(data){
@@ -498,25 +501,6 @@ function kakaoPayJS(){
         }
     })
 
-}
-
-function kakaoPayRedirect(redirectURL){
-    window.open(redirectURL);
-    /*
-    $.ajax({
-        url: redirectURL,
-        type:"post",
-        dataType:"json",
-        success : function(data){
-            console.log(data);
-            console.log("서버 추가 호출 완료");
-        },
-        error : function(data){
-            console.log(data);
-            console.log("서버 추가 호출 실패")
-        }
-    })
-    */
 }
 
 $(function() {
