@@ -1,4 +1,4 @@
-package com.ngb.notice.model.vo;
+package com.ngb.notice.vo;
 
 import java.sql.Date;
 
@@ -6,7 +6,7 @@ public class Notice {
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeWriter;
-	private String noticeContnet;
+	private String noticeContent;
 	private String regDate;
 	private int readCount;
 	private String noticeFilepath;
@@ -14,17 +14,22 @@ public class Notice {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Notice(int noticeNo, String noticeTitle, String noticeWriter, String noticeContnet, String regDate,
+	public Notice(int noticeNo, String noticeTitle, String noticeWriter, String noticeContent, String regDate,
 			int readCount, String noticeFilepath) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeWriter = noticeWriter;
-		this.noticeContnet = noticeContnet;
+		this.noticeContent = noticeContent;
 		this.regDate = regDate;
 		this.readCount = readCount;
 		this.noticeFilepath = noticeFilepath;
 	}
+	
+	public String getNoticeContentBr() {
+		return noticeContent.replaceAll("\r\n", "<br>");
+	}
+	
 	public int getNoticeNo() {
 		return noticeNo;
 	}
@@ -43,11 +48,11 @@ public class Notice {
 	public void setNoticeWriter(String noticeWriter) {
 		this.noticeWriter = noticeWriter;
 	}
-	public String getNoticeContnet() {
-		return noticeContnet;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
-	public void setNoticeContnet(String noticeContnet) {
-		this.noticeContnet = noticeContnet;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
 	public String getRegDate() {
 		return regDate;

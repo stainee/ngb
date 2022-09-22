@@ -1,9 +1,10 @@
-<%@page import="com.ngb.notice.model.vo.Notice"%>
+<%@page import="com.ngb.notice.vo.Notice"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
     	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+		String pageNavi = (String)request.getAttribute("pageNavi");
     %>
 <!DOCTYPE html>
 <html>
@@ -16,8 +17,7 @@
 	<div class="content-wrap">
 		<div class="page-title">공지사항</div>
 
-		<!-- m에 로그인되있으면 유저데이터 안되있으면 null이 들어간다. -->
-		<%if(m.getMemberLevel() == 0) {%>
+		<%if(m!=null && m.getMemberLevel() == 0) {%>
 		<a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a>
 		<%} %>
 
@@ -35,7 +35,7 @@
 
 			<%for(Notice n : list) {%>
 
-			<tr class="tr-1">
+			<tr>
 
 				<td><%=n.getNoticeNo() %></td>
 				<td><a href="/noticeView.do?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle() %></a>
@@ -48,6 +48,7 @@
 
 			<%} %>
 		</table>
+		<div id="pageNavi"><%=pageNavi %></div>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
