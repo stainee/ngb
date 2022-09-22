@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테마 시간 관리</title>
+<title>테마 시간 등록</title>
 <style>
 .tap-wrap{
     margin-top: 30px;
-    margin-left: 280px;
+    margin-left: 260px;
     padding: 0;
 }
 
@@ -39,7 +39,7 @@
 .table-wrap{
 	width:1800px;
     margin: 30px auto;
-    padding-left: 260px;
+    padding-left: 240px;
 }
 
 
@@ -50,7 +50,7 @@
     border-collapse: collapse;
 }
 .tbl th,.tbl td {
-    padding: 0.7rem;
+    padding: 0.1rem;
     text-align: center;
 }
 .tbl td>a {
@@ -79,6 +79,7 @@
 }
 .tbl .tr-3 {
     background-color: rgba(255, 255, 255, 1);
+    
 }
 .tbl .tr-4 {
     background-color: #664d02;
@@ -86,8 +87,12 @@
 .tbl.tbl-hover .tr-3:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
+.timeBtn-wrap{
+	display: flex;
+}
 
 .reserve-btn{
+	display: inline-block;
     margin-top: 20px;
     width:80px;
 	height:40px;
@@ -96,11 +101,13 @@
 	border-radius: 50px;
 	cursor: pointer;
 	font-size:20px;
-    margin-left: 1150px;
-}
-
-.reserve-btn{
 	text-decoration: none;
+}
+.reserve-btn1{
+	margin-left: 1050px;
+}
+.reserve-btn2{
+	margin-left: 30px;
 }
 
 .reserve-btn:link{
@@ -111,18 +118,25 @@
 	color:black;
 }
 
-
+.tr-3 input{
+	width: 90px;
+	height: 20px;
+	border: none;
+	text-align: center;
+	outline: none;
+}
+.timeDelBtn{
+	width: 80px;
+}
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-	
-
-
     <div class="tap-wrap">
         <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
         <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
     </div>
+    
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
             <tr class="tr-1">
@@ -139,37 +153,31 @@
                 <th>9타임</th>
                 <th>10타임</th>
                 <th>인원</th>
-                <th>관리</th>
-                <th></th>
             </tr>
-<%--  		<%for(thema:list) {%>--%>
             <tr class="tr-3">
-                <td><%="테마코드"%></td>
-                <td><%="테마명"%></td>
-                <td><%="타임1" %></td>
-                <td><%="타임2"%></td>
-                <td><%="타임3"%></td>
-                <td><%="타임4"%></td>
-                <td><%="타임5"%></td>
-                <td><%="타임6"%></td>
-                <td><%="타임7"%></td>
-                <td><%="타임8"%></td>
-                <td><%="타임9"%></td>
-                <td><%="타임10"%></td>
-                <td><%="1-3"%>명</td>
-                <td>
-                	<a href="/themaTimeManage.do"><button>수정</button></a>
-                	<button onclick="deleteThemaTime();">삭제</button>
-                </td>
+                <td><input type="text" value="테마코드"></td>
+                <td><input type="text" value="테마명"></td>
+                <td><input type="text" value="타임1"></td>
+                <td><input type="text" value="타임2"></td>
+                <td><input type="text" value="타임3"></td>
+                <td><input type="text" value="타임4"></td>
+                <td><input type="text" value="타임5"></td>
+                <td><input type="text" value="타임6"></td>
+                <td><input type="text" value="타임7"></td>
+                <td><input type="text" value="타임8"></td>
+                <td><input type="text" value="타임9"></td>
+                <td><input type="text" value="타임10"></td>
+                <td><input type="text" value="1-3명"></td>
             </tr>
-<%--             <%}%>--%>
         </table>
-       	<a href="/themaTimeAddFrm.do"><button class="reserve-btn">등록</button></a>
+        <div class="timeBtn-wrap">
+	       	<button onclick="addThemaTime();" class="reserve-btn reserve-btn1">등록</button>
+	       	<a href="/themaManageTimeFrm.do"><button class="reserve-btn reserve-btn2">취소</button></a>
+       	</div>
     </div>
-    
 <script>
-function deleteThemaTime(){
-	alert("쿼리부터하고와라");
+function addThemaTime(){
+	alert("쿼리하고와");
 }
 </script>
 </body>

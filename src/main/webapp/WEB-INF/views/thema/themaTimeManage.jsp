@@ -8,7 +8,7 @@
 <style>
 .tap-wrap{
     margin-top: 30px;
-    margin-left: 370px;
+    margin-left: 240px;
     padding: 0;
 }
 
@@ -39,7 +39,7 @@
 .table-wrap{
 	width:1800px;
     margin: 30px auto;
-    padding-left: 350px;
+    padding-left: 220px;
 }
 
 
@@ -50,7 +50,7 @@
     border-collapse: collapse;
 }
 .tbl th,.tbl td {
-    padding: 0.3rem;
+    padding: 0.1rem;
     text-align: center;
 }
 .tbl td>a {
@@ -79,6 +79,7 @@
 }
 .tbl .tr-3 {
     background-color: rgba(255, 255, 255, 1);
+    
 }
 .tbl .tr-4 {
     background-color: #664d02;
@@ -86,8 +87,12 @@
 .tbl.tbl-hover .tr-3:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
+.timeBtn-wrap{
+	display: flex;
+}
 
 .reserve-btn{
+	display: inline-block;
     margin-top: 20px;
     width:80px;
 	height:40px;
@@ -96,11 +101,13 @@
 	border-radius: 50px;
 	cursor: pointer;
 	font-size:20px;
-    margin-left: 1150px;
-}
-
-.reserve-btn{
 	text-decoration: none;
+}
+.reserve-btn1{
+	margin-left: 1050px;
+}
+.reserve-btn2{
+	margin-left: 30px;
 }
 
 .reserve-btn:link{
@@ -111,7 +118,16 @@
 	color:black;
 }
 
-
+.tr-3 input{
+	width: 90px;
+	height: 20px;
+	border: none;
+	text-align: center;
+	outline: none;
+}
+.timeDelBtn{
+	width: 80px;
+}
 </style>
 </head>
 <body>
@@ -155,12 +171,19 @@
                 <td><input type="text" value="타임10"></td>
                 <td><input type="text" value="1-3명"></td>
                 <td>
-                	<button onclick="deleteThemaTime();">삭제</button>
+                	<button onclick="deleteThemaTime();" class="timeDelBtn">삭제</button>
                 </td>
             </tr>
         </table>
-       	<a href="/themaManageList.do"><button class="reserve-btn">등록</button></a>
-       	<a href="/themaManageTimeFrm.do"><button class="reserve-btn">취소</button></a>
+        <div class="timeBtn-wrap">
+	       	<button onclick="editThemaTime();" class="reserve-btn reserve-btn1">수정</button>
+	       	<a href="/themaManageTimeFrm.do"><button class="reserve-btn reserve-btn2">취소</button></a>
+       	</div>
     </div>
+<script>
+function deleteThemaTime(){
+	alert("쿼리부터하고와라");
+}
+</script>
 </body>
 </html>
