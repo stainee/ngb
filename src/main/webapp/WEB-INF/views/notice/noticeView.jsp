@@ -41,14 +41,13 @@ Notice n = (Notice) request.getAttribute("n");
 			<tr>
 				<th colspan="6"><a
 					href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
-					<button
-						onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button></th>
+					<button onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button></th>
 			</tr>
 			<%
 			}
 			%>
 		</table>
 	</div>
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

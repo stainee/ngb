@@ -116,4 +116,26 @@ public class NoticeDao {
 		return n;
 	}
 
+	public int insertNotice(Connection conn, Notice n) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "insert into notice values(notice_seq.nextval,?,?,?,sysdate,0,?)";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeWriter());
+			pstmt.setString(3, n.getNoticeContent());
+			pstmt.setString(4, n.getNoticeFilepath());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}			
+		return result;
+	}
+
 }

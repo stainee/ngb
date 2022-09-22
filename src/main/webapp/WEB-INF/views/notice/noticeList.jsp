@@ -22,7 +22,6 @@
 		<%} %>
 
 		<table>
-
 			<tr>
 
 				<th style="width: 10%;">번호</th>
