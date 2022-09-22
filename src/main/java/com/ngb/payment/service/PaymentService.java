@@ -13,8 +13,8 @@ public class PaymentService {
 
 	public PaymentService() {
 		super();
-		this.dao = dao;
-		this.rdao = rdao;
+		dao = new PaymentDao();
+		rdao = new ReserveDao();
 	}
 
 	public int insertPayment(int price, String tid) {
