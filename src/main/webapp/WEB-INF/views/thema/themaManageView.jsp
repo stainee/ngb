@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
     <%
     	Thema t = (Thema)request.getAttribute("t");
+    	
     %>
 <!DOCTYPE html>
 <html>
@@ -108,7 +109,7 @@
 	   background-color: rgba(57, 62, 70, 0.1);
 	}
 	
-	.update-btn{
+	.update-btn>button{
 	    margin-top: 20px;
 	    width:80px;
 		height:40px;
@@ -118,6 +119,8 @@
 		cursor: pointer;
 		font-size:20px;
 	    margin-left: 1000px;
+	    text-decoration: none;
+	    color : black;
 	}
 	
 	.delete-btn{
@@ -156,14 +159,6 @@
             </tr>
             <tr>
                 <th class="tr-1">이미지 미리보기</th>
-                <!--  
-					<td colspan="3">
-						<div id="img-viewer">
-							<img id="img-view" width="500px">
-						</div>
-					</td>
-					<%=t.getThemaFilepath() %>
-					-->
 					<td>
 						<img src="/upload/thema/<%=t.getThemaFilepath() %>">
 					</td>
@@ -211,30 +206,25 @@
             <tr>
                 <th class="tr-1">설명</th>
                 <td colspan="3">
-                    <%=t.getThemaContent() %>
+                    <%=t.getThemaContentBr() %>
                 </td>
             </tr>
         </table>
-        <button class="delete-btn">삭제</button>
-        <button class="update-btn">수정</button>
+        
+        <button class="delete-btn" onclick="noticeDelete('<%=t.getThemaCode() %>');">삭제</button>
+        <a class="update-btn" href="/updateThemaForm.do?themaCode=<%=t.getThemaCode()%>"><button>수정</button></a>
     </div>
     
     <script>
-		function loadImg(f){
-			//첨부파일이 여러개일 수 있으므로 항상 배열 처리
-			console.log(f.files);//input에서 file을 선택하면 해당 파일이 들어있는 배열
-			if(f.files.length !=0 && f.files[0] != 0){
-				const reader = new FileReader(); //파일 정보를 읽어올 수 있는 객체
-				reader.readAsDataURL(f.files[0]); //선택한 파일 정보 읽어옴
-				//파일리더가 파일을 다 읽어오면 동작할 함수 작성
-				reader.onload = function(e){
-					$("#img-view").attr("src",e.target.result);
-				}
-			}else{
-				//이미지 교체되면 src 비움
-				$("#img-view").attr("src","");
+
+		
+		function noticeDelete(themaCode){
+			console.log(themaCode);
+			if(confirm("테마를 삭제하시겠습니까?")){
+				location.href="/deleteThema.do?themaCode="+themaCode;
 			}
 		}
+		
 		
 	</script>
 </body>

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.thema.model.vo.Thema;
-import com.ngb.time.model.vo.Time;
 
 import common.JDBCTemplate;
 
@@ -64,6 +63,7 @@ public class ThemaDao {
 				t.setPeopleMin(rset.getInt("people_min"));
 				t.setPeopleMax(rset.getInt("people_max"));
 				t.setThemaLevel(rset.getInt("thema_level"));
+				t.setThemaFilepath(rset.getString("thema_filepath"));
 				list.add(t);
 			}
 		} catch (SQLException e) {
@@ -111,6 +111,171 @@ public class ThemaDao {
 		}
 		return t;
 	}
+
+	//테마 삭제
+	public int deleteThema(Connection conn, String themaCode) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from thema where thema_code=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, themaCode);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+				
+		return result;
+	}
 	
+	//테마 수정
+	public int updateThema(Connection conn, Thema t) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update thema set category=?, thema_name=?, thema_time=?, thema_filepath=?, device_per=?,"
+				+ "lock_per=?, people_min=?, people_max=?, thema_level=?, thema_price=?, thema_content=? where thema_code=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,t.getCategory());
+			pstmt.setString(2, t.getThemaName());
+			pstmt.setInt(3, t.getThemaTime());
+			pstmt.setString(4, t.getThemaFilepath());
+			pstmt.setInt(5, t.getDevicePer());
+			pstmt.setInt(6, t.getLockPer());
+			pstmt.setInt(7, t.getPeopleMin());
+			pstmt.setInt(8, t.getPeopleMax());
+			pstmt.setInt(9, t.getThemaLevel());
+			pstmt.setInt(10, t.getThemaPrice());
+			pstmt.setString(11,t.getThemaContent());
+			pstmt.setString(12,t.getThemaCode());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	//특정 조건으로 조회
+	public ArrayList<Thema> selectThema(Connection conn, int level, String category) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Thema> list = new ArrayList<Thema>();
+		String query = "select * from thema where thema_level=? and category=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, level);
+			pstmt.setString(2, category);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Thema t = new Thema();
+				t.setThemaCode(rset.getString("thema_code"));
+				t.setCategory(rset.getString("category"));
+				t.setThemaName(rset.getString("thema_name"));
+				t.setThemaPrice(rset.getInt("thema_price"));
+				t.setThemaTime(rset.getInt("thema_time"));
+				t.setDevicePer(rset.getInt("device_per"));
+				t.setLockPer(rset.getInt("lock_per"));
+				t.setPeopleMin(rset.getInt("people_min"));
+				t.setPeopleMax(rset.getInt("people_max"));
+				t.setThemaLevel(rset.getInt("thema_level"));
+				t.setThemaFilepath(rset.getString("thema_filepath"));
+				t.setThemaContent(rset.getString("thema_content"));
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
+	}
+	
+	//셀렉박스로 선택한 테마 조회-테마가 전체일 때
+	public ArrayList<Thema> selectThema(Connection conn, int level) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Thema> list = new ArrayList<Thema>();
+		String query = "select * from thema where thema_level=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, level);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Thema t = new Thema();
+				t.setThemaCode(rset.getString("thema_code"));
+				t.setCategory(rset.getString("category"));
+				t.setThemaName(rset.getString("thema_name"));
+				t.setThemaPrice(rset.getInt("thema_price"));
+				t.setThemaTime(rset.getInt("thema_time"));
+				t.setDevicePer(rset.getInt("device_per"));
+				t.setLockPer(rset.getInt("lock_per"));
+				t.setPeopleMin(rset.getInt("people_min"));
+				t.setPeopleMax(rset.getInt("people_max"));
+				t.setThemaLevel(rset.getInt("thema_level"));
+				t.setThemaFilepath(rset.getString("thema_filepath"));
+				t.setThemaContent(rset.getString("thema_content"));
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
+	}
+	
+	//셀렉박스로 선택한 테마 조회-난이도가 전체일 때
+	public ArrayList<Thema> selectThema(Connection conn, String category) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Thema> list = new ArrayList<Thema>();
+		String query = "select * from thema where category=?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, category);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Thema t = new Thema();
+				t.setThemaCode(rset.getString("thema_code"));
+				t.setCategory(rset.getString("category"));
+				t.setThemaName(rset.getString("thema_name"));
+				t.setThemaPrice(rset.getInt("thema_price"));
+				t.setThemaTime(rset.getInt("thema_time"));
+				t.setDevicePer(rset.getInt("device_per"));
+				t.setLockPer(rset.getInt("lock_per"));
+				t.setPeopleMin(rset.getInt("people_min"));
+				t.setPeopleMax(rset.getInt("people_max"));
+				t.setThemaLevel(rset.getInt("thema_level"));
+				t.setThemaFilepath(rset.getString("thema_filepath"));
+				t.setThemaContent(rset.getString("thema_content"));
+				list.add(t);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return list;
+	}
+
+
+
+
+
 
 }

@@ -7,6 +7,7 @@ let lock_list = [];
 let date = new Date();
 date = dateFormat(date);
 reserve={};
+payment={};
 
 //dateFormating
 function dateFormat(date) {
@@ -49,10 +50,11 @@ $("#credit").on("click",function(){
             dataType : "text",
             //예약하기
             success : function(result){
-                //예약 가능하면 예약실행
+                //예약 가능하면 결제, 아니면 취소
                 if(result=="yes"){
-                    reserveFunc();
-                }else{  //예약 불가능하면 alert
+                    payCard();
+                    }
+                else{  //예약 불가능하면 alert
                     alert("이미 예약된 테마입니다");
                 }
             }
@@ -62,6 +64,36 @@ $("#credit").on("click",function(){
     
 })
 
+//카카오페이로 결제 
+$("#kakaoPay").on("click", function(){
+    thema = getThemaInfo(thema_code);
+    let check = checkReserveDetailInfo(thema);
+    if(check==true){
+        setReserveInfo();
+        getReserveInfo();
+        //예약 확인
+        $.ajax({
+            url:"/checkReserve.do",
+            type:"post",
+            data:{
+                thema_code: reserve.thema_code,
+                time_code: reserve.time_code,
+                play_date: reserve.play_date
+            },
+            dataType : "text",
+            //예약하기
+            success : function(result){
+                //예약 가능하면 결제, 아니면 취소
+                if(result=="yes"){
+                    kakaoPay();
+
+                }else{  //예약 불가능하면 alert
+                    alert("이미 예약된 테마입니다");
+                }
+            }
+        })
+    }
+})
 //이전 스텝으로 전환
 $(".prev").on("click", function(){
     if(idx>0){
@@ -367,7 +399,6 @@ function showthemaList(thisObj){
 
 function reserveFunc(){
     $.ajax({
-
         url:"/reserve.do",
         type:"post",
         data:{
@@ -381,8 +412,116 @@ function reserveFunc(){
             play_date: reserve.play_date,
             thema_name: reserve.thema_name
         }
+    });
+}
+function payCard(){
+    const price = Number($(".totalPrice").text().split("원")[0]); 
+    const d = new Date();
+    const date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
+
+    IMP.init("imp87317522");
+    IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "ORD20180131-0000011",
+        name: reserve.thema_name,
+        amount: price,
+        buyer_email: reserve.reserve_mail,
+        buyer_name: reserve.reserve_name,
+        buyer_tel: reserve.reserve_phone,
+    }, function(rsp){
+        if(rsp.success){
+            //결제 완료 되었으면
+            reserveFunc();
+            nextStep();
+        }else{
+            alert("결제에 실패하였습니다");
+        }
+    });
+
+}
+
+
+function kakaoPay(){
+    $.ajax({
+        url:"https://kapi.kakao.com/v1/payment/ready",
+        type:"post",
+        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
+        dataType:"json",
+        data:{
+            "cid": "TC0ONETIME",
+            "partner_order_id":"1000",
+            "partner_user_id":"haven2216@naver.com",
+            "item_name": reserve.thema_name,
+            "quantity":"1",
+            "total_amount": reserve.reserve_pay,
+            "vat_amount": "0",
+            "tax_free_amount":"0",
+            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            // "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            // "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            // "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
+        },
+        success : function(data){
+            window.open(data.next_redirect_pc_url);
+            payment ={
+                cid : "TC0ONETIME",
+                tid : data.tid,
+                partner_order_id : "1000",
+                partner_user_id : "haven2216@naver.com"
+            }
+            console.log("서버 호출완료");
+        },
+        error : function(data){
+            console.log("서버호출 실패")
+        }
     })
 
+}
+
+//토큰을 가져왔을시 결제 승인
+$("#token").on("click", function() {
+    const token = $(this).val();
+    payment.pg_token = token;
+    payment.price = reserve.reserve_pay;
+    console.log(payment);
+    kakaoPayApprove();
+    
+})
+
+function kakaoPayApprove(){
+    $.ajax({
+        url:"https://kapi.kakao.com/v1/payment/approve",
+        type:"post",
+        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
+        dataType:"json",
+        data: {
+            cid : "TC0ONETIME",
+            tid : payment.tid,
+            partner_order_id : "1000",
+            partner_user_id : "haven2216@naver.com",
+            pg_token : payment.pg_token
+        },
+        success :function(){
+            kakaoPaySave();
+        }
+        
+    });
+}
+
+function kakaoPaySave(){
+    $.ajax({
+        url: "/kakaoPaySave.do",
+        type:"post",
+        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
+        dataType:"json",
+        data: {
+            tid: payment.tid,
+            price : payment.price
+        }
+    });
 }
 $(function() {
     //input을 datepicker로 선언

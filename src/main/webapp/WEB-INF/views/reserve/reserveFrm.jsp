@@ -12,9 +12,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<<<<<<< HEAD
 <script src="/js/sweetalert.min.js"></script>
+=======
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/reserveFrm.css">
 </head>
 
@@ -142,6 +145,7 @@
 				    	<button class="prev btn4">이전</button>
 				    	<button class="next btn2" id="tab2NextBtn">다음</button>
 			     	</div>
+			     	<input type="hidden" id="token">
 		    	</div>
 		    	<div class="tab tab3" style="display:none;">
                 <table class="tbl2 tbl3">
@@ -177,7 +181,7 @@
 	    </div>
 	</div>
 	
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	
 	<script src="/js/reserve.js"></script>
 	<script src="/js/account.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>

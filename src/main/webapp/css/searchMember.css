@@ -2,14 +2,14 @@
 .content-box{
     margin: 0 auto;
     min-width: 500px;
-    height: 450px;
+    /*height: 450px;*/
     border: 5px solid rgb(50,50,50);
     background-color: rgb(50,50,50);
     overflow: hidden;
 }
 .center-move{
     width: 500px;
-    height: 450px;
+    /*height: 450px;*/
     margin: 0 auto;
     border: 5px solid gray;
     background-color: gray;
@@ -34,7 +34,7 @@
 
 }
 .content-box>.center-move>.search-content{
-    height: 100px;
+    height: 120px;
     padding-top: 10px;
     padding-bottom: 10px;
     border: 5px solid rgb(50,50,50);
@@ -76,4 +76,81 @@
 
 .show-hide{
     display: none;
+}
+
+/*모달*/
+.modal-wrap{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.modal{
+    background-color: #fff;
+    width: 500px;
+    min-width: 300px;
+    height: 500px;
+    min-height: 200px;
+}
+
+.modal-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content>div>.result{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+.modal-content>div>.btn-last{
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+/*-------------------------*/
+
+#authCode{
+    width: 300px;
+    height: 40px;
+}
+.btn-box>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-box{
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#authBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.span-box>#authMsg{
+
 }

@@ -178,7 +178,7 @@
 	            </tr>
 	            <tr>
 	                <th class="tr-1">설명</th>
-	                <td colspan="3"><input type="text" name="themaContent" class="textarea-form"></td>
+	                <td colspan="3"><textarea name="themaContent" class="textarea-form"></textarea></td>
 	            </tr>
 	        </table>
 	        <button class="reserve-btn" type="submit">등록</button>
@@ -203,6 +203,93 @@
 				$("#img-view").attr("src","");
 			}
 		}
+		
+		//----------------------------------------- 정규 표현식 --------------------------------------------------
+		
+		$("input[name=themaTime]").on("keyup",function(event){
+			
+			const themaTime = $("input[name=themaTime]");
+			const themaTimeValue = themaTime.val();
+			const themaTimeReg =  /^[0-9]+$/;
+			if(themaTimeReg.test(themaTimeValue)){
+				console.log("사용 가능");
+				themaTime.css("outline","none");
+				themaTime.css("color","black");
+				//themaTime.placeholder(themaTimeValue);
+			}else{
+				console.log("사용 불가");
+				themaTime.css("outline","1px solid red");
+				themaTime.css("color","red");
+				themaTime.val("숫자로 입력해주세요");	
+			}
+
+		}).on("focusOut",function(event){
+			console.log("싯시시ㅣㅅ");
+			themaTime.css("outline","none");
+			themaTime.css("color","black");
+			themaTime.val("");	
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		$(".reserve-btn").on("click",function(event){
+			
+			const themaTime = $("input[name=themaTime]");
+			
+			const devicePer = $("input[name=devicePer]");
+			const lockPer = $("input[name=lockPer]");
+			const peopleMin = $("input[name=peopleMin]");
+			const peopleMax = $("input[name=peopleMax]");
+			const themaLevel = $("input[name=themaLevel]");
+			const themaPrice = $("input[name=themaPrice]");
+			
+			const themaTimeValue = themaTime.val();
+			const devicePerValue = devicePer.val();
+			const lockPerValue = lockPer.val();
+			const peopleMinValue = peopleMin.val();
+			const peopleMaxValue = peopleMax.val();
+			const themaLevelValue = themaLevel.val();
+			const themaPriceValue = themaPrice.val();
+			
+			const themaTimeReg =  /^[0-9]+$/;
+			const devicePerReg =  /^[0-9]+$/;
+			const lockPerReg =  /^[0-9]+$/;
+			const peopleMinReg =  /^[0-9]+$/;
+			const peopleMaxReg =  /^[0-9]+$/;
+			const themaLevelReg =  /^[0-9]+$/;
+			const themaPriceReg =  /^[0-9]+$/;
+			
+			if(themaTimeReg.test(themaTimeValue)&&devicePerReg.test(devicePerValue)&&lockPerReg.test(lockPerValue)&&peopleMinReg.test(peopleMinValue)
+					&&peopleMaxReg.test(peopleMaxValue) &&themaLevelReg.test(themaLevelValue) && themaPriceReg.test(themaPriceValue) ){
+				console.log("사용 가능");
+			}else{
+				//alert("다시 입력해주세요");
+				themaTime.text("숫자로 입력해주세요);
+				themaTime.css("border","1px solid red");
+				event.preventDefault();
+			}
+			
+		});
+		
+		*/
+
+		
+		
 	</script>
 </body>
 </html>

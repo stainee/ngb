@@ -13,14 +13,15 @@ public class Thema {
 	private int themaPrice;
 	private String themaFilepath;
 	private int themaTime;
-	private String timeCode;
-	private String time;
 	public Thema() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	public Thema(String themaCode, String category, String themaName, String themaContent, int devicePer, int lockPer,
-			int peopleMin, int peopleMax, int themaLevel, int themaPrice, String themaFilepath, int themaTime) {
+			int peopleMin, int peopleMax, int themaLevel, int themaPrice, String themaFilepath,
+			int themaTime) {
 		super();
 		this.themaCode = themaCode;
 		this.category = category;
@@ -35,89 +36,134 @@ public class Thema {
 		this.themaFilepath = themaFilepath;
 		this.themaTime = themaTime;
 	}
+
+
 	public String getThemaCode() {
 		return themaCode;
 	}
+
+
 	public void setThemaCode(String themaCode) {
 		this.themaCode = themaCode;
 	}
+
+
 	public String getCategory() {
 		return category;
 	}
+
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+
 	public String getThemaName() {
 		return themaName;
 	}
+
+
 	public void setThemaName(String themaName) {
 		this.themaName = themaName;
 	}
+
+
 	public String getThemaContent() {
 		return themaContent;
 	}
+
+
 	public void setThemaContent(String themaContent) {
 		this.themaContent = themaContent;
 	}
+
+
 	public int getDevicePer() {
 		return devicePer;
 	}
+
+
 	public void setDevicePer(int devicePer) {
 		this.devicePer = devicePer;
 	}
+
+
 	public int getLockPer() {
 		return lockPer;
 	}
+
+
 	public void setLockPer(int lockPer) {
 		this.lockPer = lockPer;
 	}
+
+
 	public int getPeopleMin() {
 		return peopleMin;
 	}
+
+
 	public void setPeopleMin(int peopleMin) {
 		this.peopleMin = peopleMin;
 	}
+
+
 	public int getPeopleMax() {
 		return peopleMax;
 	}
+
+
 	public void setPeopleMax(int peopleMax) {
 		this.peopleMax = peopleMax;
 	}
+
+
 	public int getThemaLevel() {
 		return themaLevel;
 	}
+
+
 	public void setThemaLevel(int themaLevel) {
 		this.themaLevel = themaLevel;
 	}
+
+
 	public int getThemaPrice() {
 		return themaPrice;
 	}
+
+
 	public void setThemaPrice(int themaPrice) {
 		this.themaPrice = themaPrice;
 	}
+
+
 	public String getThemaFilepath() {
 		return themaFilepath;
 	}
+
+
 	public void setThemaFilepath(String themaFilepath) {
 		this.themaFilepath = themaFilepath;
 	}
+
+
+
 	public int getThemaTime() {
 		return themaTime;
 	}
+
+
 	public void setThemaTime(int themaTime) {
 		this.themaTime = themaTime;
 	}
 
-	public String getTimeCode() {
-		return timeCode;
+
+	//추가한 Getter 게시판 내용 공백처리
+	public String getThemaContentBr() {
+		return themaContent.replaceAll("\r\n","<br>");
 	}
-	public void setTimeCode(String timeCode) {
-		this.timeCode = timeCode;
-	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
+	
+	
+
 }

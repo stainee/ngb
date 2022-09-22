@@ -57,7 +57,7 @@ public class ThemaWriteServlet extends HttpServlet {
 		t.setThemaCode(themaCode);
 		t.setCategory(category);
 		t.setThemaName(thamaName);
-		t.setThemaContent(themaContent);
+		t.setThemaContent(themaContent);;
 		t.setThemaFilepath(filepath);
 		t.setDevicePer(devicePer);
 		t.setLockPer(lockPer);
@@ -73,14 +73,14 @@ public class ThemaWriteServlet extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
 			request.setAttribute("title", "성공");
-			request.setAttribute("msg", "공지사항이 등록되었습니다");
+			request.setAttribute("msg", "테마가 성공적으로 등록되었습니다");
 			request.setAttribute("icon", "success");
 		}else {
 			request.setAttribute("title", "실패");
-			request.setAttribute("msg", "공지사항 등록 중 문제가 생겼습니다.");
+			request.setAttribute("msg", "테마 등록 중 문제가 생겼습니다.");
 			request.setAttribute("icon", "error");
 		}
-		request.setAttribute("loc", "/");
+		request.setAttribute("loc", "/themaManageList.do");
 		view.forward(request, response);
 	}
 

@@ -14,6 +14,7 @@ import com.ngb.thema.model.vo.Thema;
 import com.ngb.thema.service.ThemaService;
 
 
+
 /**
  * Servlet implementation class ThemaManageListServlet
  */
@@ -40,6 +41,7 @@ public class ThemaManageListServlet extends HttpServlet {
 		//3. 비즈니스 로직
 		ThemaService service = new ThemaService();
 		ArrayList<Thema> list = service.selectAllThema();
+
 		//4. 결과처리
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageList.jsp");
 		request.setAttribute("list", list);

@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.reserve.model.vo.Reserve;
+import com.google.gson.Gson;
 import com.ngb.reserve.service.ReserveService;
 
 /**
  * Servlet implementation class DeleteReserveServlet
  */
-@WebServlet(name = "deleteReserve", urlPatterns = { "/deleteReserve.do" })
+@WebServlet(name = "DeleteReserve", urlPatterns = { "/deleteReserve.do" })
 public class DeleteReserveServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,32 +27,31 @@ public class DeleteReserveServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.인코딩
-		request.setCharacterEncoding("utf-8");
-		//2.값추출
-		int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
-		//3.비즈니스로직
-		ReserveService service = new ReserveService();
-		int result = service.deleteReserve(reserveNo);
-									//reserveNo를 담아서 넘겨줌
-		//4.결과처리
-		PrintWriter out = response.getWriter();
-		out.print(result);
-				//ㄴreserveView.jsp로 보내줌
-		System.out.println(result);
-		
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+      int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
+      ReserveService service = new ReserveService();
+      int result = service.deleteReserveMngr(reserveNo);
+      
+      response.setContentType("application/json");
+      response.setCharacterEncoding("utf-8");
+      PrintWriter out = response.getWriter();
+      if(result == 1) {
+         new Gson().toJson("success",out);
+      }else {
+         new Gson().toJson("fail",out);
+      }
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }

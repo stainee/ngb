@@ -1,0 +1,244 @@
+@charset "UTF-8";
+.middlebox-wrap{
+    width: 1200px;
+    margin:0 auto;
+}
+.middle-box{
+    display: flex;
+    justify-items: center;
+}
+.middle-box>span{
+	margin:20px;
+    width:600px;
+    height:100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 40px;
+    font-weight: 800;
+    font-style:italic;
+    border: 1px solid white;
+    border-radius: 30px;
+    color: #fff;
+}
+table{
+    background-color: white;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+td{
+    border: 1px solid black;
+    width:600px;
+    height:50px;
+}
+.notice-title{
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    border-top-right-radius: 20px;
+    
+}
+
+@keyframes boxAni{
+    0%{
+        transform: rotate(-14deg);
+    }
+    10%{
+        transform: rotate(-13deg);
+    }
+    20%{
+        transform: rotate(-12deg);
+    }
+    30%{
+        transform: rotate(-13deg);
+    }
+    40%{
+        transform: rotate(-14deg);
+    }
+    50%{
+        transform: rotate(-13deg);
+    }
+    60%{
+        transform: rotate(-12deg);
+    }
+}
+@keyframes boxAni2{
+    0%{
+        transform: rotate(14deg);
+    }
+    10%{
+        transform: rotate(13deg);
+    }
+    20%{
+        transform: rotate(12deg);
+    }
+    30%{
+        transform: rotate(13deg);
+    }
+    40%{
+        transform: rotate(14deg);
+    }
+    50%{
+        transform: rotate(13deg);
+    }
+    60%{
+        transform: rotate(12deg);
+    }
+}
+.title{
+    font-size: 50px;
+    position: absolute;
+    bottom: 340px;
+    left:450px;
+    font-weight: 900;
+    color: rgb(255, 193, 7);
+    font-style: italic;
+
+}
+.box{
+    display:flex;
+    justify-content: center;
+    align-items: end;
+}
+.box>div{
+    width:190px;
+    height:50px;
+    background-color: rgb(100,97,97);
+    margin-bottom:5px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: rgb(255, 193, 7);
+}
+
+.sub-menu{
+    background-image: url(/img/test.png);
+    position: relative;
+    width: 1200px;
+    height:780px;
+    margin:0 auto;
+}
+.box-wrap{
+    width:1100px;
+    padding: 50px;
+    display:flex;
+    justify-content: space-between;
+}
+.left{
+    width : 200px;
+    height : 250px;
+    background-color: white;
+    transform: rotate(-15deg);
+    box-shadow: 1px 1px 1px 2px gray;
+    margin-left:50px;
+}
+.right{
+    width : 200px;
+    height : 250px;
+    background-color: white;
+    transform: rotate(15deg);
+    box-shadow: 1px 1px 1px 2px gray;
+    margin-right:50px;
+}
+.left:hover{
+    animation : boxAni;
+    animation-duration: 1s;
+}
+.right:hover{
+    animation : boxAni2;
+    animation-duration: 1s;
+}
+.middle-wrap{
+    width:1200px;
+    margin: 0 auto;
+}
+
+.middle-wrap>.middle-btn-wrap{
+    width: 1200px;
+    height: 60px;
+    background-color: white;
+    /*margin-left: 10px;*/
+}
+
+.a-reserve, .a-location{
+    margin-left: 350px;
+    color: black;
+    line-height: 60px;
+    font-family: ns-Medium;
+}
+
+.a-reserve:hover, .a-location:hover{
+    font-family: ns-Bold;
+}
+
+.notice-wrap{
+    height: 360px;
+    width: 1200px;
+    background-color: aquamarine;
+    background-image: url(/img/backimg.jpg);
+    background-position: 150%;
+    background-size:cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.notie-content{
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 1000px;
+    border-radius: 10px;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/*공지사항 css*/
+.tbl {
+	margin-top:10px;
+	margin-bottom:10px;
+    width: 98%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+  }
+  .tbl th, .tbl td {
+    padding: 1rem;
+    text-align: center;
+    height:20px;
+  }
+  .tbl td>a {
+    text-decoration: none;
+    color : black;
+  }
+
+.notice-tbl a:hover{
+    text-decoration : underline;
+}
+.notice-tbl tr{
+     border-bottom : 1px solid #ccc;
+}
+.notice-tbl tr>td:nth-child(2){
+    text-align : left;
+}
+
+.tbl .tr-1 {
+    background-color: rgb(255,193,7);
+}
+.tbl .tr-2 {
+	background-color: rgba(57, 62, 70, 0.1);
+}
+.tbl .tr-3 {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.tbl .tr-4 {
+    background-color: #664d02;
+}
+.tbl.tbl-hover .tr-3:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+/*공지사항 css 끝*/
+
+.location{
+	height:500px;
+	width:1200px;
+	background-color: #fff;
+	margin:0 auto;
+}

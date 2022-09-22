@@ -57,15 +57,20 @@ public class ReserveService {
 
 	public ReserveMngr selectReserveEdit(int reserveNo) {
 		Connection conn = JDBCTemplate.getConnection();
-		ReserveMngr result = dao.selectReserveEdit(conn, reserveNo);
+			ReserveMngr result = dao.selectReserveEdit(conn, reserveNo);
 		JDBCTemplate.close(conn);
 		return result;
 	}
-
-	public ArrayList<Thema> timeTable() {
+/*
+ * 
+ * 테마별로 정렬하기 위한 themaTable입니다
+ * 
+ */
+	public ArrayList<Thema> themaTable() {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Thema> timeTable = dao.timeTable(conn);
-		return timeTable;
+		ArrayList<Thema> themaTable = dao.themaTable(conn);
+		JDBCTemplate.close(conn);
+		return themaTable;
 	}
 
 	public Reserve searchOneReserve(String themaCode, int timeCode, String playDate) {
@@ -96,13 +101,31 @@ public class ReserveService {
 		return reser;
 	}
 
-	public int deleteReserve(int reserveNo) {
+	public ArrayList<ReserveMngr> emptyReserveInfo(ReserveMngr rm) {
 		Connection conn = JDBCTemplate.getConnection();
-		int result = dao.deleteReserve(conn,reserveNo);
+		ArrayList<ReserveMngr> resultList = dao.emptyReserveInfo(conn, rm);
+		return resultList;
+	}
+
+	public int insertReserveMngr(ReserveMngr rm) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertReserveMngr(conn,rm);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int deleteReserveMngr(int reserveNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.deleteReserveMngr(conn, reserveNo);
 		if(result>0) {
 			JDBCTemplate.commit(conn);
 		}else {
-			JDBCTemplate.rollback(conn);	
+			JDBCTemplate.rollback(conn);
 		}
 		JDBCTemplate.close(conn);
 		return result;
