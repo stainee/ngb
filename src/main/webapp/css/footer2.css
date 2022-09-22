@@ -8,8 +8,10 @@
     position: relative;
 }
 .footer-content{
+	/*
     width: 100%;
     min-width: 100rem;
+    */
     margin: 0 auto;
     text-align: center;
     bottom:20px;
