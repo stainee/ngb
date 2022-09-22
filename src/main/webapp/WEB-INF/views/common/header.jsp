@@ -25,8 +25,8 @@
             </ul>
             <ul class = "thema menuwrap">
                 <div>
-                    <li><a href = "#">테마소개</a></li>
-                    <li><a href = "#">THEMA</a></li>
+                    <li><a href = "/themaManageList.do">테마소개</a></li>
+                    <li><a href = "/themaManageList.do">THEMA</a></li>
                 </div>
             </ul>
             <ul class = "reserve menuwrap">

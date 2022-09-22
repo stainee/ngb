@@ -44,6 +44,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+#logo-wrap>a>img{
+	width: 30px;
+}
 
 .menu-panel{
     display:flex;
