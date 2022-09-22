@@ -3,6 +3,7 @@ package com.ngb.reserve.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,13 +37,32 @@ public class SendReserveMail2Servlet extends HttpServlet {
 				//2.값추출
 				String reserveMail = request.getParameter("reserveMail");
 													//ㄴreserveMail.jsp에서 읽어옴
+				
 				//3.비즈니스 로직
-				ReserveMailSender sender = new ReserveMailSender();
+				ReserveMailSender sender = new ReserveMailSender(); //메일 보내기
 				String randomCode = sender.reserveSendMail2(reserveMail);
+				//System.out.println(randomCode);
+				
+				
 				//4.결과처리
+				
 				PrintWriter out = response.getWriter();
-				out.print(randomCode);
+				out.print(reserveMail);
 						//ㄴreserveMail.jsp로 보내줌
+				System.out.println(reserveMail);
+				
+//				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+//				if(reserveMail != null) {
+//					request.setAttribute("title", "메일전송성공");
+//					request.setAttribute("msg", "메일전송성공");
+//					request.setAttribute("icon", "success");
+//				}else {
+//					request.setAttribute("title", "메일전송실패");
+//					request.setAttribute("msg", "메일전송실패");
+//					request.setAttribute("icon", "error");
+//				}
+//				request.setAttribute("loc", "/");
+//				view.forward(request, response);	
 	}
 
 	/**

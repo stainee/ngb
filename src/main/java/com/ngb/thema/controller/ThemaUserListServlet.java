@@ -1,6 +1,7 @@
-package com.ngb.reserve.controller;
+package com.ngb.thema.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,33 +10,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.service.ThemaService;
+
 /**
- * Servlet implementation class KaKaoPayResultServlet
+ * Servlet implementation class ThemaUserListServlet
  */
-@WebServlet("/kakaoPayResult.do")
-public class KaKaoPayResultServlet extends HttpServlet {
+@WebServlet(name = "ThemaUserList", urlPatterns = { "/themaUserList.do" })
+public class ThemaUserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public KaKaoPayResultServlet() {
+    public ThemaUserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
-		String token = request.getParameter("pg_token");
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/kakaoPayResult.jsp");
-		request.setAttribute("token", token);
-		view.forward(request, response);
-		
+		//2. 값 추출
 
+		//3. 비즈니스 로직
+		ThemaService service = new ThemaService();
+		ArrayList<Thema> list = service.selectAllThema();
+
+		//4. 결과처리
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaUserList.jsp");
+		request.setAttribute("list", list);
+		view.forward(request, response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

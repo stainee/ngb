@@ -1,5 +1,9 @@
+<%@page import="com.ngb.thema.model.vo.Thema"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	Thema t = (Thema)request.getAttribute("t");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,16 +108,16 @@
 	   background-color: rgba(57, 62, 70, 0.1);
 	}
 	
-	.reserve-btn{
+	.update-btn{
 	    margin-top: 20px;
-	    width:80px;
+	    width:100px;
 		height:40px;
 		background-color: rgb(230,230,230);
 		box-shadow: 0px 1px 1px 1px black;
 		border-radius: 50px;
 		cursor: pointer;
 		font-size:20px;
-	    margin-left: 1150px;
+	    margin-left: 1100px;
 	}
 
 </style>
@@ -128,27 +132,38 @@
     </div>
 
     <div class="table-wrap">
-    	<form action="/themaWrite.do" method="post" enctype="multipart/form-data">
+    	<form action="/themaUpdate.do" method="post" enctype="multipart/form-data">
 	        <table class="tbl tbl-hover notice-tbl">
 	            <tr>
 	                <th class="tr-1">테마코드</th>
 	                <td>
-	                    <input type="text" name="themaCode" class="input-form">
+	                    <%=t.getThemaCode() %>
+	                     <input type="hidden" name="thamaCode" class="input-form" value="<%=t.getThemaCode() %>">
 	                </td>
 	                <th class="tr-1">테마 카테고리</th>
-	                <td><input type="text" name="category" class="input-form"></td>
+	                <td><input type="text" name="category" class="input-form" value="<%=t.getCategory() %>"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">테마명</th>
-	                 <td><input type="text" name="themaName" class="input-form"></td>
+	                 <td><input type="text" name="themaName" class="input-form" value="<%=t.getThemaName() %>"></td>
 	                 <th class="tr-1">시간제한</th>
-	                 <td><input type="text" name="themaTime" class="input-form"></td>
+	                 <td><input type="text" name="themaTime" class="input-form" value="<%=t.getThemaTime() %>"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">첨부파일</th>
 	                <td>
-	                	<input type="file" name="themaFilepath" accept=".jpg,.png,.jpeg" onchange="loadImg(this);">
-	                </td>
+	                <input type="hidden" name="status" value="stay">
+	                <%if(t.getThemaFilepath() != null) {%>
+                  <%--첨부파일 있을 때--%>
+                     <img src="/img/file.png" width="16px" class="delFile">
+                     <span class="delFile"><%=t.getThemaFilepath() %></span>
+                     <button type="button" class="btn bc1 delFile">삭제</button>
+                     <input type="file" name="upfile" style="display:none;" onchange="loadImg(this);" >
+                     <input type="hidden" name="oldFilepath" value="<%=t.getThemaFilepath() %>">
+                  <%}else{ %>
+                  <%--첨부파일 없을 때--%>
+                     <input type="file" name="upfile" accept=".jpg,.png,.jpeg" onchange="loadImg(this);">
+                  <%} %>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">이미지 미리보기</th>
@@ -160,28 +175,28 @@
 	            </tr>
 	            <tr>
 	                <th class="tr-1">잠금장치</th>
-	                <td><input type="text" name="devicePer" class="input-form"></td>
+	                <td><input type="text" name="devicePer" class="input-form" value="<%=t.getDevicePer() %>"></td>
 	                <th class="tr-1">자물쇠</th>
-	                <td><input type="text" name="lockPer" class="input-form"></td>
+	                <td><input type="text" name="lockPer" class="input-form" value="<%=t.getLockPer()%>"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">최소인원</th>
-	                <td><input type="text" name="peopleMin" class="input-form"></td>
+	                <td><input type="text" name="peopleMin" class="input-form" value="<%=t.getPeopleMin() %>"></td>
 	                <th class="tr-1">최대인원</th>
-	                <td><input type="text" name="peopleMax" class="input-form"></td>
+	                <td><input type="text" name="peopleMax" class="input-form" value="<%=t.getPeopleMax() %>"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">난이도</th>
-	                <td><input type="text" name="themaLevel" class="input-form"></td>
+	                <td><input type="text" name="themaLevel" class="input-form" value="<%=t.getThemaLevel() %>"></td>
 	                <th class="tr-1">가격(1인당)</th>
-	                <td><input type="text" name="themaPrice" class="input-form"></td>
+	                <td><input type="text" name="themaPrice" class="input-form" value="<%=t.getThemaPrice() %>"></td>
 	            </tr>
 	            <tr>
 	                <th class="tr-1">설명</th>
-	                <td colspan="3"><textarea name="themaContent" class="textarea-form"></textarea></td>
+	                <td colspan="3"><textarea name="themaContent" class="textarea-form"><%=t.getThemaContent() %></textarea></td>
 	            </tr>
 	        </table>
-	        <button class="reserve-btn" type="submit">등록</button>
+	        <button class="update-btn" type="submit">수정완료</button>
         
         </form>
     </div>
@@ -204,91 +219,11 @@
 			}
 		}
 		
-		//----------------------------------------- 정규 표현식 --------------------------------------------------
-		
-		$("input[name=themaTime]").on("keyup",function(event){
-			
-			const themaTime = $("input[name=themaTime]");
-			const themaTimeValue = themaTime.val();
-			const themaTimeReg =  /^[0-9]+$/;
-			if(themaTimeReg.test(themaTimeValue)){
-				console.log("사용 가능");
-				themaTime.css("outline","none");
-				themaTime.css("color","black");
-				//themaTime.placeholder(themaTimeValue);
-			}else{
-				console.log("사용 불가");
-				themaTime.css("outline","1px solid red");
-				themaTime.css("color","red");
-				themaTime.val("숫자로 입력해주세요");	
-			}
-
-		}).on("focusOut",function(event){
-			console.log("싯시시ㅣㅅ");
-			themaTime.css("outline","none");
-			themaTime.css("color","black");
-			themaTime.val("");	
+		$("button.delFile").on("click",function(){
+			$(".delFile").hide();
+			$(this).next().show();
+			$("[name=status]").val("delete");
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		$(".reserve-btn").on("click",function(event){
-			
-			const themaTime = $("input[name=themaTime]");
-			
-			const devicePer = $("input[name=devicePer]");
-			const lockPer = $("input[name=lockPer]");
-			const peopleMin = $("input[name=peopleMin]");
-			const peopleMax = $("input[name=peopleMax]");
-			const themaLevel = $("input[name=themaLevel]");
-			const themaPrice = $("input[name=themaPrice]");
-			
-			const themaTimeValue = themaTime.val();
-			const devicePerValue = devicePer.val();
-			const lockPerValue = lockPer.val();
-			const peopleMinValue = peopleMin.val();
-			const peopleMaxValue = peopleMax.val();
-			const themaLevelValue = themaLevel.val();
-			const themaPriceValue = themaPrice.val();
-			
-			const themaTimeReg =  /^[0-9]+$/;
-			const devicePerReg =  /^[0-9]+$/;
-			const lockPerReg =  /^[0-9]+$/;
-			const peopleMinReg =  /^[0-9]+$/;
-			const peopleMaxReg =  /^[0-9]+$/;
-			const themaLevelReg =  /^[0-9]+$/;
-			const themaPriceReg =  /^[0-9]+$/;
-			
-			if(themaTimeReg.test(themaTimeValue)&&devicePerReg.test(devicePerValue)&&lockPerReg.test(lockPerValue)&&peopleMinReg.test(peopleMinValue)
-					&&peopleMaxReg.test(peopleMaxValue) &&themaLevelReg.test(themaLevelValue) && themaPriceReg.test(themaPriceValue) ){
-				console.log("사용 가능");
-			}else{
-				//alert("다시 입력해주세요");
-				themaTime.text("숫자로 입력해주세요);
-				themaTime.css("border","1px solid red");
-				event.preventDefault();
-			}
-			
-		});
-		
-		*/
-
-		
 		
 	</script>
 </body>

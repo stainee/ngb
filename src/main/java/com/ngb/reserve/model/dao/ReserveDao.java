@@ -285,7 +285,7 @@ public class ReserveDao {
 		Reserve reser = null;
 		
 		//String query = "select * from reserve where reserve_name=? and reserve_mail=?";
-		String query ="select to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
+		String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
 				
 		
 		try {
@@ -307,17 +307,14 @@ public class ReserveDao {
 				//reser.setReserveEtc(rset.getString("reserve_etc"));
 				reser.setReserveMail(rset.getString("reserve_mail"));
 				reser.setReserveName(rset.getString("reserve_name"));
-//				reser.setReserveNo(rset.getInt("reserve_no"));
+				reser.setReserveNo(rset.getInt("reserve_no"));
 				reser.setReservePay(rset.getInt("reserve_pay"));
 				reser.setReservePhone(rset.getString("reserve_phone"));
 //				reser.setReserveState(rset.getInt("reserve_state"));
 //				reser.setThemaCode(rset.getString("thema_code"));
 				reser.setThemaName(rset.getString("thema_name"));
 				reser.setTime(rset.getString("time"));
-				
-				
-//				reser.setTime_code(rset.getInt("time_code"));
-				//reser.setTime("");// 다른곳에서 조인한 쿼리 써야함
+
 				
 			}
 		} catch (SQLException e) {
