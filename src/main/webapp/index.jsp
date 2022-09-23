@@ -10,6 +10,7 @@
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8rdr0sm91f&submodules=geocoder"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -156,8 +157,9 @@
             </div>
         </div>
         <div class="section" id="section3">
-            <div class = "location-title">오시는길</div>
+            <div class = "location-title">LOCATION</div>
             <div class = "location">
+            	<div id="map" style="width:1200px; height:500px; margin:0 auto;"></div>
             </div>
 	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
     </div>
@@ -203,6 +205,8 @@ goLocation.on("click",function(){
     title.hide(300);
 	page = 3;
 });
+
+
     
 let imgNo = 0;
 const ul = $(".thema-info-box");
@@ -224,6 +228,22 @@ $(".next").on("click",function(){
         ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
     }
 });
+
+const map = new naver.maps.Map("map",{
+	center: new naver.maps.LatLng(37.533837,126.896836),
+	zoom : 17,
+	zoomControl: true,
+	zoomControlOptions : {
+		position: naver.maps.Position.TOP_RIGHT,
+		style : naver.maps.ZoomControlStyle.SMALL
+	}
+});
+
+const marker = new naver.maps.Marker({
+	position: new naver.maps.LatLng(37.533837,126.896836),
+	map : map 
+});
+
 </script>
 </body>
 </html>
