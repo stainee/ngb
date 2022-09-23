@@ -7,10 +7,15 @@
 <title>테마 시간 수정</title>
 <link rel = "stylesheet" href = "/css/notosans.css">
 <style>
+.content-wrap{
+	width: 1400px;
+	/*margin-left:20vw;*/
+	margin-top:3vw;
+}
+
 .tap-wrap{
 	width:1800px;
     margin: 30px auto;
-    padding-left: 370px;
 }
 
 .tap-ul{
@@ -43,14 +48,11 @@
 
 /*테이블*/
 .table-wrap{
-	width:1800px;
-    margin: 0 auto;
-    padding-left: 350px;
+	width:1200px;
+    flaot:left;
 }
 
-
 .tbl{
-    margin-left: 20px;
     width: 1200px;
     border-spacing: 0px;
     border-collapse: collapse;
@@ -94,51 +96,8 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 .timeBtn-wrap{
-	display: flex;
-}
-
-.reserve-btn{
-	display: inline-block;
-    margin-top: 20px;
-    width:80px;
-	height:40px;
-	background-color: rgb(55,55,55);
-	color: white;
-	box-shadow: 0px 0.2px 0.2px 0.2px white;
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:15px;
-	text-decoration: none;
-	font-family: ns-bold;
-}
-
-.reserve-btn:hover{
-	display: inline-block;
-    margin-top: 20px;
-    width:80px;
-	height:40px;
-	background-color: white;
-	color: black;
-	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:15px;
-	text-decoration: none;
-	font-family: ns-bold;
-}
-.reserve-btn1{
-	margin-left: 1050px;
-}
-.reserve-btn2{
-	margin-left: 30px;
-}
-
-.reserve-btn:link{
-	color:black;
-}
-
-.reserve-btn:visited{
-	color:black;
+	width:1200px;
+	height: 300px;
 }
 
 .tr-3 input{
@@ -150,15 +109,66 @@
 }
 .timeDelBtn{
 	width: 80px;
-	background-color: rgb(55,55,55);
+	background-color: rgb(255,193,7);
+	border:none;
 	color: white;
+	font-family:ns-thin;
 }
+
+.update-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
+.cancel-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
+.update-btn:hover{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
+.cancel-btn:hover{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
 
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-	
+<div class="content-wrap">
     <div class="tap-wrap">
          <ul class="tap-ul">
          	<li>테마관리</li>
@@ -204,25 +214,23 @@
                 </td>
             </tr>
         </table>
-        <div class="timeBtn-wrap">
-	       	<button onclick="editThemaTime();" class="reserve-btn reserve-btn1">수정</button>
-	       	<a href="/themaManageTimeFrm.do"><button class="reserve-btn reserve-btn2">취소</button></a>
-       	</div>
+
+	    <button onclick="editThemaTime();" class="update-btn">수정</button>
+	    <a href="/themaManageTimeFrm.do"class="cancel-a"><button class="cancel-btn">취소</button></a>
+ 
     </div>
+</div>
 <script>
-function deleteThemaTime(){
-	alert("쿼리부터하고와라");
-}
-
-const tabs=$(".tap-ul>li");
-tabs.on("click",function(){
-	console.log("찍힘");
-	tabs.css("color","black").css("background-color","white");
-	$(this).css("color","white").css("background-color","rgb(255,193,7)");
-});
-tabs.eq(0).click();
-
-
+	function deleteThemaTime(){
+		alert("쿼리부터하고와라");
+	}
+	
+	const tabs=$(".tap-ul>li");
+	tabs.on("click",function(){
+		tabs.css("color","black").css("background-color","white");
+		$(this).css("color","white").css("background-color","rgb(255,193,7)");
+	});
+	tabs.eq(0).click();
 </script>
 </body>
 </html>
