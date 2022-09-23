@@ -22,7 +22,7 @@
 	
 	
 		
-	        <form action="/selectThema.do" method="post" class="thema-select-wrap" >
+	        <form action="/searchThema.do" method="post" class="thema-select-wrap" >
 	            <span class="level-span">난이도</span>
 	            <select class="level" name="level">
 	                <option value="0">전체</option>
