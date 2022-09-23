@@ -271,8 +271,16 @@
 	margin:0 auto;
 }
 .location-title{
-    padding-top: 100px;
+	padding-top:20px;
+    padding-left:140px;
+    width:240px;
+    height:100px;
+    line-height:120px;
+    text-align:center;
+    font-weight:900;
+    font-size:18px;
 }
+
 html {
     overflow: hidden;
 }
