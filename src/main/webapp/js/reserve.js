@@ -1,6 +1,4 @@
 let idx=0;
-nextStep();
-nextStep();
 let thema_idx=0;
 let thema_code=0;
 let time_code=0;
@@ -76,8 +74,7 @@ $("#account").on("click", function(){
         getReserveInfo();
         
         reserveFunc();//예약
-        sendReserveMail(); //이후 결과또한 전송한다
-        resultSendMail();
+        sendReserveMail(); //예약 메일(무통장)
         nextStep();
     }
 })
@@ -433,10 +430,11 @@ function reserveFunc(){
         success:function(){
             //카카오페이 일시
             getReserveNo();
+            
             if(iskakao == true){
                 kakaoPaySave();
             }
-            sendReserveMail();
+            resultSendMail();
         }
     });
 }
@@ -543,7 +541,6 @@ function kakaoPaySave(){
     $.ajax({
         url: "/kakaoPaySave.do",
         type:"post",
-        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
         dataType:"json",
         data: {
             tid: payment.tid,
