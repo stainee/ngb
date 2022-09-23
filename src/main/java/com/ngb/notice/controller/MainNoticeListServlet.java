@@ -1,6 +1,7 @@
 package com.ngb.notice.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ngb.notice.model.vo.NoticePageData;
 import com.ngb.notice.service.NoticeService;
 
@@ -16,13 +18,13 @@ import com.ngb.notice.service.NoticeService;
  * Servlet implementation class NoticeFrmServlet
  */
 @WebServlet(name = "NoticeList", urlPatterns = { "/mainNoticeList.do" })
-public class NoticeListServlet extends HttpServlet {
+public class MainNoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeListServlet() {
+    public MainNoticeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +36,16 @@ public class NoticeListServlet extends HttpServlet {
 		//1.인코딩
 		request.setCharacterEncoding("utf-8");
 		//2.값추출
-		int reqPage = Integer.parseInt(request.getParameter("reqPage"));
+		int reqPage = 1;
 		//3.비즈니스로직
 		NoticeService service = new NoticeService();
 		NoticePageData npd = service.selectNoticeList(reqPage);
+		
 		//4.결과처리
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/noticeList.jsp");
-		request.setAttribute("list", npd.getList());
-		request.setAttribute("pageNavi", npd.getPageNavi());
-		view.forward(request, response);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		new Gson().toJson(npd,out);
 	}
 
 	/**
