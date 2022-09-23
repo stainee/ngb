@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.model.vo.ThemaTime;
 
 import common.JDBCTemplate;
 
@@ -271,6 +272,27 @@ public class ThemaDao {
 			JDBCTemplate.close(rset);
 		}
 		return list;
+	}
+
+	public ArrayList<ThemaTime> selectAllTmt(Connection conn, ArrayList<Thema> tmCodeList) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<ThemaTime> tmt = new ArrayList<ThemaTime>();
+		String query = "select a.thema_code, a.thema_name,b.time_code,b.time from thema a left join time b on(a.thema_code = b.thema_code) where a.thema_code=? order by 1,4";
+		try {
+			pstmt = conn.prepareStatement(query);
+			for(int i=0;i<8;i++) {
+				rset = pstmt.executeQuery();
+//				pstmt.setString(1, list.get(i).thema_code);
+				while(rset.next()) {
+					
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

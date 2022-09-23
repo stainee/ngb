@@ -50,5 +50,12 @@ Notice n = (Notice) request.getAttribute("n");
 		</table>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+	function noticeDelete(noticeNo){
+		if(confirm("공지사항을 삭제하시겠습니까?")){
+			location.href="/noticeDelete.do?noticeNo="+noticeNo;
+		}
+	}
+	</script>
 </body>
 </html>

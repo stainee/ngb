@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.model.vo.ThemaTime;
 import com.ngb.thema.service.ThemaService;
 
 /**
@@ -36,9 +37,8 @@ public class ThemaManageTimeFrmServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//2.
 		//3.
-		ThemaService tservice = new ThemaService();
-		ArrayList<Thema> themaList = tservice.selectAllThema();
-		request.setAttribute("themaList", themaList);
+		ThemaService service = new ThemaService();
+		ArrayList<ThemaTime> tmt = service.selectAllTmt();
 		//4.
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageTimeFrm.jsp");
 		view.forward(request, response);
