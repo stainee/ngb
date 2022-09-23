@@ -16,7 +16,9 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-
+	
+	<div class="content-wrap">
+	
     <div class="title-wrap">테마관리</div>
     
     <div class="table-wrap">
@@ -88,7 +90,7 @@
         
         </form>
     </div>
-    
+    </div>
     
 	<script>
 		function loadImg(f){
