@@ -39,7 +39,7 @@
             <div>
                 <div>
                     <li><a href = "/findReserveFrm.do">예약확인</a></li>
-                    <li><a href = "/findReserveFrm.do">SERCH</a></li>
+                    <li><a href = "/findReserveFrm.do">SEARCH</a></li>
                 </div>
             </div>
             </ul>
