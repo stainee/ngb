@@ -313,7 +313,7 @@ html, body {
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 1600px;
+    width: 1000px;
     height: 300px;
     margin: 0 auto;
     overflow: hidden;
