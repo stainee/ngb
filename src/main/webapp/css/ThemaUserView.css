@@ -17,7 +17,8 @@
 	text-align:center;
 	display: flex;
 	justify-content: center;
-	font-size:30px;
+	font-size:40px;
+	font-family:ns-bold;
 }
 
 
@@ -30,14 +31,14 @@
 }
 .level-span{
     color: white;
-    font-family: ns-Bold;
+    font-family: ns-bold;
     font-size: 12px;
 }
 
 .select-them-span{
 	margin-left:10px;
     color: white;
-    font-family: ns-Bold;
+    font-family: ns-bold;
     font-size: 12px; 
 }
 
@@ -57,26 +58,28 @@
     margin-left: 40px;
     width:50px;
 	height:30px;
+	border:none;
 	background-color: rgb(255,193,7);
 	cursor: pointer;
 	font-size:15px;
 	margin-top: 15px;
+	font-family: ns-black;
 }
 
 .thema-content-wrap{
     width: 1600px;
     margin: 0 auto;
-    height: 900px;
+    height: 1000px;
 }
 
 
 .content-font>.thema-wrap{
 	margin-top: 70px;
 	margin-left: 10px;
-    background-color: dimgrey;
+    background-color: rgba(33,33,33);
     border-radius: 5px;
-    width: 200px;
-    height: 250px;
+    width: 300px;
+    height: 380px;
     padding-top: 10px;
     display:inline;
     float:left;
@@ -84,11 +87,12 @@
 }
 
 .img-wrap{
-    background-color: white;
-    width: 180px;
-    height: 200px;
+    background-color: rgba(33,33,33);
+    width: 250px;
+    height: 300px;
     padding: 0;
     margin: 0 auto;
+    padding-bottom:10px;
 }
 
 .imgwrap{
@@ -99,16 +103,16 @@
 
 .category{
     margin-left: 20px;
-    font-family: ns-Bold;
-    font-size: 12px;
+    font-family: ns-bold;
+    font-size: 16px;
     color: white;
 }
+
 .thema-name{
     margin-left: 20px;
-    font-family: ns-Bold;
-    font-size: 12px; 
+    font-family: ns-black;
+    font-size: 22px; 
     color: white;
-    font-weight: bold;
 }
 
 .key{

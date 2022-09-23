@@ -98,7 +98,8 @@
     margin-top: 20px;
     width:80px;
    height:40px;
-   background-color: rgb(230,230,230);
+   background-color: white;
+   color: black;
    box-shadow: 0px 0.5px 0.5px 0.5px black;
    border-radius: 50px;
    cursor: pointer;
