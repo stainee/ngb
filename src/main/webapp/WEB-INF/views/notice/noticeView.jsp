@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.ngb.notice.vo.Notice"%>
+<%@page import="com.ngb.notice.model.vo.Notice"%>
 <%@page import="java.util.ArrayList"%>
 <%
 Notice n = (Notice) request.getAttribute("n");
@@ -41,14 +41,13 @@ Notice n = (Notice) request.getAttribute("n");
 			<tr>
 				<th colspan="6"><a
 					href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
-					<button
-						onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button></th>
+					<button onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button></th>
 			</tr>
 			<%
 			}
 			%>
 		</table>
 	</div>
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

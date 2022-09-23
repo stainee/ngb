@@ -141,8 +141,8 @@
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
 	
 	<div class="tap-wrap">
-        <button class="btn2 tab-thema">테마관리</button>
-        <button class="btn2 tab-time">시간관리</button>
+        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
+        <a href="themaManageTimeFrm.do"><button class="btn2 tab-thema">시간관리</button></a>
     </div>
     
         <div class="table-wrap">

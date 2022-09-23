@@ -150,6 +150,57 @@ public class ReserveMailSender {
 				}
 	}
 
+	//예약 결과를 보여주는 메일 발송
+	public void reserveResultSendMail(String mail, int reserveNo) {
+		boolean result = false;
+		//이메일 통신설정
+		Properties prop = System.getProperties();
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.port", 587); //변경
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", true); //추가
+		prop.put("mail.smtp.ssl.protocols", "TLSv1.2"); //추가
+		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		//인증정보설정(로그인)
+		Session session = Session.getDefaultInstance(prop, 
+				new Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						PasswordAuthentication pa = new PasswordAuthentication("testzb0712","qqeqiggagbnrqeys");
+						return pa;
+					}
+				}
+		);
+		//이메일을 전송해서 전송하는 객체
+		MimeMessage msg = new MimeMessage(session);
+		
+		//이메일 작성
+		try {
+			//메일 전송날짜 설정
+			msg.setSentDate(new Date());
+			//보내는 사람 정보
+			msg.setFrom(new InternetAddress("testzb0712@gmail.com","나가방"));
+			//받는 사람 정보
+			InternetAddress to = new InternetAddress(mail);
+			msg.setRecipient(Message.RecipientType.TO, to);
+			//이메일 제목설정
+			msg.setSubject("나가방 예약확인 메일입니다 ","UTF-8");
+			//이메일 본문설정
+			msg.setContent("<h1>안녕하세요. 방탈출 카페 나가방입니다.</h1>"
+							+"<h3>고객님의 예약번호는 <span>"+reserveNo
+							+"</span> 입니다.</h3>"
+					,"text/html;charset=utf-8");
+			//이메일 전송
+			Transport.send(msg);
+			result = true;
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
 

@@ -4,6 +4,7 @@ let thema_code=0;
 let time_code=0;
 let time_list = [];
 let lock_list = [];
+let iskakao = false;
 let date = new Date();
 date = dateFormat(date);
 reserve={};
@@ -62,6 +63,20 @@ $("#credit").on("click",function(){
     }
     
     
+})
+
+//무통장입금시 메일 발송후 예약완료 페이지
+$("#account").on("click", function(){
+    thema = getThemaInfo(thema_code);
+    let check = checkReserveDetailInfo(thema);
+    if(check==true){
+        setReserveInfo();
+        getReserveInfo();
+        
+        sendReserveMail(); //이후 결과또한 전송한다
+        resultSendMail();
+        nextStep();
+    }
 })
 
 //카카오페이로 결제 
@@ -411,6 +426,13 @@ function reserveFunc(){
             reserve_amount : reserve.reserve_amount,
             play_date: reserve.play_date,
             thema_name: reserve.thema_name
+        },
+        success:function(){
+            //카카오페이 일시
+            if(iskakao == true){
+                kakaoPaySave();
+            }
+            sendReserveMail();
         }
     });
 }
@@ -457,14 +479,15 @@ function kakaoPay(){
             "total_amount": reserve.reserve_pay,
             "vat_amount": "0",
             "tax_free_amount":"0",
-            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
-            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
-            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
-            // "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
-            // "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
-            // "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
+            // "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            // "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            // "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
         },
         success : function(data){
+            iskakao = true;
             window.open(data.next_redirect_pc_url);
             payment ={
                 cid : "TC0ONETIME",
@@ -506,7 +529,6 @@ function kakaoPayApprove(){
         success :function(){
             console.log("Approve");
             reserveFunc();
-            kakaoPaySave();
             nextStep();
         }
         
@@ -525,6 +547,53 @@ function kakaoPaySave(){
         }
     });
 }
+
+function resultSendMail(){
+    console.log("resultsendMail");
+    $.ajax({
+        url:"/sendReserveResultMail.do",
+        type:"post",
+        data:{reserveMail : reserve.reserve_mail}
+    })
+}
+
+
+function sendReserveMail(){
+    const reserveMail = $("[name=reserveMail]").val();
+    const reserveName = $("[name=reserveName]").val();
+    const reservePhone = $("[name=reservePhone]").val();
+    if(reserveMail != "" && reserveName != "" && reservePhone != "" ){
+        $.ajax({
+            url : "/sendReserveMail2.do",
+            data : {reserveMail:reserveMail},
+            type : "post",
+            success : function(data){//서블릿에서 보내준 데이터가 들어감(reserveMail)
+                if(data != "") {
+                    swal({
+                    title :'무통장 가상계좌 정보 메일 전송 성공',
+                    text :'메일 전송에 성공했습니다.',
+                    icon:'success'
+                    })
+                }else {
+                    swal({
+                    title :'무통장 가상계좌 정보 메일 전송 실패',
+                    text :'관리자에게 문의해주세요',
+                    icon:'warning'
+                    })
+                }
+            }
+            });
+    }else{
+        swal({
+                title :'메일 전송 실패',
+                text :'성함,전화번호,메일주소를 모두 입력해주세요',
+                icon:'warning'
+
+        })
+    }
+    
+}
+
 $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({

@@ -3,9 +3,9 @@ package com.ngb.notice.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.ngb.notice.vo.Notice;
-import com.ngb.notice.vo.NoticePageData;
-import com.ngb.noticel.dao.NoticeDao;
+import com.ngb.notice.model.dao.NoticeDao;
+import com.ngb.notice.model.vo.Notice;
+import com.ngb.notice.model.vo.NoticePageData;
 
 import common.JDBCTemplate;
 
@@ -114,6 +114,25 @@ public class NoticeService {
 			return null;
 		}
 	
+	}
+
+	public int insertNotice(Notice n) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.insertNotice(conn,n);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public Notice getNotice(int noticeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Notice n = dao.selectOneNotice(conn, noticeNo);
+		JDBCTemplate.close(conn);
+		return n;
 	}
 	
 }

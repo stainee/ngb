@@ -13,15 +13,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<<<<<<< HEAD
 <script src="/js/sweetalert.min.js"></script>
-=======
-<<<<<<< HEAD
-<script src="/js/sweetalert.min.js"></script>
-=======
->>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
->>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/reserveFrm.css">
 </head>
 
@@ -138,8 +131,7 @@
 					     </tr>
 				 		<tr>
 				 			<th colspan="2"><button id="credit" class="credit btn2">카드결제</button></th>
-				 			<th colspan="2"><button id="account" class="account btn2" onclick="sendReserveMail();">무통장입금</button></th> 
-				 			<!-- <th colspan="2"><button id="account" class="account btn2">무통장입금</button></th> --> 
+				 			<th colspan="2"><button id="account" class="account btn2">무통장입금</button></th> 
 				 		</tr>
 				 		<tr>
 				 			<th colspan="4"><button id="kakaoPay" class="kakao btn2">카카오페이</button></th>
@@ -187,7 +179,6 @@
 	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 	<script src="/js/reserve.js"></script>
-	<script src="/js/account.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </body>
 <script>

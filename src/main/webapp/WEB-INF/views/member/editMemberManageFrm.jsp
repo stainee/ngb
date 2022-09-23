@@ -39,7 +39,7 @@ function updateMember(){
 				alert("수정이 완료되었습니다.");
 				location = "/manageMember.do"				
 			}else{
-				alert("수정 중 오류가 발생하였습니다.");
+				alert("수정 중 오류가 발생하였습니다\n아이디중복 등을 확인하세요.");
 				location = "/manageMember.do"
 			}
 		},
@@ -148,7 +148,6 @@ function deleteMember(){
 								font-size:20px;">수정완료</button>    	
 		        	</td>
 		        	<td colspan="4" style="border-left:none; border-bottom: none;">
-<%-- 						<a href="deleteMember.do?memberNo=<%=m.getMemberNo() %>">  </a>--%>
 							<button onclick="deleteMember()" id="delMemBtn" style="width:100px;
 								height:50px;
 								background-color: #fff;
