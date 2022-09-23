@@ -23,24 +23,7 @@
 				<th>제목</th>
 				<td>
 					<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo() %>">
-					<!-- 기존파일을 지웠는지 체크하는 용도 "stay"-->
-					<input type="hidden" name="status" value="stay">
-					
 					<input type="text" name="noticeTitle" class="input-form" value="<%=n.getNoticeTitle()%>">
-				</td>
-			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td>
-					<%if(n.getNoticeFilepath() != null) { %>
-						<!-- 첨부파일 보여줌 -->
-						<img src="/img/file.png" width="16px" class="delFile">
-						<button type="button" class="delFile">삭제</button>
-						<input type="file" name="upfile" style="display:none;"> %>">
-						<input type="hidden" name = "oldFilepath" value="<%=n.getNoticeFilepath() %>">
-					<%}else { %>
-						<input type="file" name="upfile">
-					<%} %>
 				</td>
 			</tr>
 			<tr>

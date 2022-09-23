@@ -12,13 +12,6 @@
 	<script src="/summernote/lang/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
 	<div class="page-content">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 		<div class="page-title">공지사항 작성(에디터사용)</div>
 		<!-- 첨부파일사용이 가능하게 할시 이 두개는 필수다:  method="post" enctype="multipart/form-data" -->
 		<form action="/noticeWrite.do" method="post"
@@ -34,12 +27,6 @@
 					<th>작성자</th>
 					<td><%=m.getMemberId()%> <input type="hidden"
 						name="noticeWriter" value="<%=m.getMemberId()%>"></td>
-					<!--  
-						에디터로 이미지 첨부가 가능하고 딱히 다운로드가 필요하지않기에
-						기능은 존재하나 비활성화
-						<th>첨부파일</th>
-						<td><input type="file" name="upfile"></td>
-					-->
 				</tr>
 
 				<tr>
