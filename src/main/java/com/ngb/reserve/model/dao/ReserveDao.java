@@ -284,14 +284,17 @@ public class ReserveDao {
 		ResultSet rset = null;
 		Reserve reser = null;
 		
-		//String query = "select * from reserve where reserve_name=? and reserve_mail=?";
-		String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
+		
+		//String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
+		String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_no=? and reserve_name=?";
 				
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, reserve.getReserveName());
-			pstmt.setString(2, reserve.getReserveMail());
+			//pstmt.setString(1, reserve.getReserveName());
+			pstmt.setInt(1, reserve.getReserveNo());
+			//pstmt.setString(2, reserve.getReserveMail());
+			pstmt.setString(2, reserve.getReserveName());
 								//ㄴ넘겨받은 reserve에서 값을 가져와서 넣어준다
 			
 			rset = pstmt.executeQuery();
@@ -314,8 +317,6 @@ public class ReserveDao {
 //				reser.setThemaCode(rset.getString("thema_code"));
 				reser.setThemaName(rset.getString("thema_name"));
 				reser.setTime(rset.getString("time"));
-
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

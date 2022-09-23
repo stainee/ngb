@@ -40,11 +40,15 @@ public class FindReserveServlet extends HttpServlet {
 			// 1.인코딩
 			request.setCharacterEncoding("utf-8");
 			// 2.값추출
+			//
+			//String reserveEmail = request.getParameter("reserveEmail");
+			int reserveNo = Integer.parseInt(request.getParameter("reserveNo"));
 			String reserveName = request.getParameter("reserveName");
-			String reserveEmail = request.getParameter("reserveEmail");
 			Reserve reserve = new Reserve();
+			//reserve.setReserveName(reserveEmail);
+			//reserve.setReserveMail(reserveEmail);
+			reserve.setReserveNo(reserveNo);
 			reserve.setReserveName(reserveName);
-			reserve.setReserveMail(reserveEmail);
 			// 3.비즈니스 로직
 			ReserveService service = new ReserveService();
 			Reserve reser = service.findReserve(reserve);
@@ -62,7 +66,8 @@ public class FindReserveServlet extends HttpServlet {
 			} else {
 				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 				request.setAttribute("title", "회원찾기 실패");
-				request.setAttribute("msg", "성함과 이메일을 확인해주세요");
+				//request.setAttribute("msg", "성함과 전화번호을 확인해주세요");
+				request.setAttribute("msg", "성함과 예약번호을 확인해주세요");
 				request.setAttribute("icon", "error");
 				request.setAttribute("loc", "/findReserveFrm.do");
 				// 최종목적지

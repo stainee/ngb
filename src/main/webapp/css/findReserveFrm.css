@@ -20,7 +20,7 @@
     border-bottom: 2px solid lightgray;
     margin-bottom: 20px;
     padding-bottom:20px;
-    padding-top:40px;
+    padding-top:80px;
     color:white;
 }
 
@@ -37,7 +37,9 @@
     height: 42px;
     line-height: 42px;
     text-align: center;
-    background-color: rgb(255,193,7);
+    /*background-color: rgb(255,193,7);*/
+     background-color :rgb(66,64,64);
+     color : white;
     font-size: 17px;
 }
 .input-area>input{
@@ -45,14 +47,15 @@
     padding-left: 10px;
     font-size: 17px;
     margin-left:5px;
+    outline : none;
 }
 .input-form {
     width: 70%;
     height: 40px;
     display: block;
     /*background-color: #fff;*/
-    background-color: rgb(220,220,220);
-    outline: none;
+    /*background-color: rgb(220,220,220);*/
+    background-color : white;
     border: 1px solid #ccc;
 }
 .input-form:focus {
