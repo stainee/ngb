@@ -30,7 +30,7 @@
                     <div class = "middle-box">
                         <span><a href = "#">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
-                        <span><a href = "#">THEMA</a></span>
+                        <span><a href = "/themaUserList.do">THEMA</a></span>
                         <span id = "go-location"><a href = "#section3">LOCATION</a></span>
                     </div>
                 </div>
@@ -41,31 +41,8 @@
 	    	</div>
             <div class = "notice-wrap">
                 <a href = "#">
-                    <div class = "notice-title">
-                    NOTICE
-                </div>
+                    <div class = "notice-title">NOTICE</div>
                 </a>
-                <div>
-                    <table class = "main-table">
-                        <thead>
-                            <th>공지</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <div class="section" id="section3">
