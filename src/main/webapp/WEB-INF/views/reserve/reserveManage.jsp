@@ -61,6 +61,7 @@
 			</option>
 			<%} %>
 		</select>
+		</div>
 		<div>
 			<input type="text" class = "input-form" id="datepicker" size="15"/>
 		</div>

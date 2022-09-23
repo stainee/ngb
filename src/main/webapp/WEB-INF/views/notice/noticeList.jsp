@@ -11,6 +11,11 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
+<link rel="stylesheet" href="/css/noticeList.css">
+<style>
+
+</style>
+
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -21,7 +26,12 @@
 		<a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a>
 		<%} %>
 
+<<<<<<< HEAD
+		<table class="notice-tbl">
+
+=======
 		<table>
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 			<tr>
 
 				<th style="width: 10%;">번호</th>
@@ -34,7 +44,7 @@
 
 			<%for(Notice n : list) {%>
 
-			<tr>
+			<tr class="tr-2">
 
 				<td><%=n.getNoticeNo() %></td>
 				<td><a href="/noticeView.do?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle() %></a>

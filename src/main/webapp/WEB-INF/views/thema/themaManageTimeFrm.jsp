@@ -164,7 +164,7 @@
             </tr>
 <%--             <%}%>--%>
         </table>
-       	<a href="/themaTimeAddFrm.do"><button class="reserve-btn">등록</button></a>
+       	<a href="/themaTimeAddFrm.do"><button class="reserve-btn">추가</button></a>
     </div>
     
 <script>
