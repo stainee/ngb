@@ -1,5 +1,6 @@
 package com.ngb.notice.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -15,16 +16,16 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
- * Servlet implementation class NoticeWriteServlet
+ * Servlet implementation class NoticeUpdateServlet
  */
-@WebServlet(name = "NoticeWrite", urlPatterns = { "/noticeWrite.do" })
-public class NoticeWriteServlet extends HttpServlet {
+@WebServlet(name = "NoticeUpdate", urlPatterns = { "/noticeUpdate.do" })
+public class NoticeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeWriteServlet() {
+    public NoticeUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,34 +39,37 @@ public class NoticeWriteServlet extends HttpServlet {
 		//2.값추출
 		String root = getServletContext().getRealPath("/");
 		String saveDirectory = root+"upload/notice";
-
+		//2-2. 파일최대크기 지정
 		int maxSize = 10*1024*1024;
+		//2-3. request -> MultipartRequest 변환(파일 업로드 시점)
+		MultipartRequest mRequest = new MultipartRequest(request, saveDirectory, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		
-		MultipartRequest mRequest = new MultipartRequest(request, saveDirectory,maxSize,"UTF-8", new DefaultFileRenamePolicy());
-		
+		int noticeNo = Integer.parseInt(mRequest.getParameter("noticeNo"));
 		String noticeTitle = mRequest.getParameter("noticeTitle");
-		String noticeWriter = mRequest.getParameter("noticeWriter");
 		String noticeContent = mRequest.getParameter("noticeContent");
-		
+		//기존파일이 지워졌으면 delete, 그외 모두 stay
+		String status = mRequest.getParameter("status");
+		//새첨부파일
 		Notice n = new Notice();
+		n.setNoticeNo(noticeNo);
 		n.setNoticeTitle(noticeTitle);
-		n.setNoticeWriter(noticeWriter);
 		n.setNoticeContent(noticeContent);
-		//3.비즈니스로직
+		
+		//3.비지니스로직
 		NoticeService service = new NoticeService();
-		int result = service.insertNotice(n);
+		int result = service.updateNotice(n);
 		//4.결과처리
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
-			request.setAttribute("title", "성공");
-			request.setAttribute("msg", "공지사항이 등록되었습니다.");
-			request.setAttribute("icon", "success");	
+			request.setAttribute("title", "변경완료");
+			request.setAttribute("msg", "공지사항이 수정되었습니다");
+			request.setAttribute("icon", "success");
 		}else {
-			request.setAttribute("title", "실패");
-			request.setAttribute("msg", "공지사항 등록중 문제가 발생했습니다..");
-			request.setAttribute("icon", "error");	
+			request.setAttribute("title", "변경실패");
+			request.setAttribute("msg", "관리자에게 문의하세요");
+			request.setAttribute("icon", "error");
 		}
-		request.setAttribute("loc", "/noticeList.do?reqPage=1");
+		request.setAttribute("loc", "/noticeView.do?noticeNo="+noticeNo);
 		view.forward(request, response);
 	}
 

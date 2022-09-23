@@ -1,4 +1,4 @@
-package com.ngb.notice.controller;
+package com.ngb.reserve.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.ngb.reserve.service.ReserveService;
 
 /**
- * Servlet implementation class UploadImageServlet
+ * Servlet implementation class GetCurrReserveSevlet
  */
-@WebServlet(name = "UploadImage", urlPatterns = { "/uploadImage.do" })
-public class UploadImageServlet extends HttpServlet {
+@WebServlet("/getCurrReserve.do")
+public class GetCurrReserveSevlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadImageServlet() {
+    public GetCurrReserveSevlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +30,13 @@ public class UploadImageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.인코딩
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		//2.값추출
-		String root = getServletContext().getRealPath("/");
-		String saveDirectory = root+"upload/editor";
-		int maxSize = 10*1024*1024;
-		MultipartRequest mRequest = new MultipartRequest(request, saveDirectory, maxSize, "UTF-8", new DefaultFileRenamePolicy());
-		String filepath = mRequest.getFilesystemName("file");
-		//3.비즈니스로직
-		
-		//4.결과처리
-		response.setCharacterEncoding("UTF-8");
+		ReserveService service = new ReserveService();
+		int reserveNo = service.selectCurrReserve();
 		PrintWriter out = response.getWriter();
-		out.print("/upload/editor/"+filepath);
+		out.print(reserveNo);
+		
 	}
 
 	/**

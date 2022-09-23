@@ -73,8 +73,8 @@ $("#account").on("click", function(){
         setReserveInfo();
         getReserveInfo();
         
-        sendReserveMail(); //이후 결과또한 전송한다
-        resultSendMail();
+        reserveFunc();//예약
+        sendReserveMail(); //예약 메일(무통장)
         nextStep();
     }
 })
@@ -429,10 +429,12 @@ function reserveFunc(){
         },
         success:function(){
             //카카오페이 일시
+            getReserveNo();
+            
             if(iskakao == true){
                 kakaoPaySave();
             }
-            sendReserveMail();
+            resultSendMail();
         }
     });
 }
@@ -479,12 +481,12 @@ function kakaoPay(){
             "total_amount": reserve.reserve_pay,
             "vat_amount": "0",
             "tax_free_amount":"0",
-            // "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
-            // "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
-            // "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
-            "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
-            "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
-            "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
+            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            // "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            // "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            // "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
         },
         success : function(data){
             iskakao = true;
@@ -539,7 +541,6 @@ function kakaoPaySave(){
     $.ajax({
         url: "/kakaoPaySave.do",
         type:"post",
-        headers:{"Authorization" : "KakaoAK 4cd7966831fbf5f2f92cde2508a84cac"},
         dataType:"json",
         data: {
             tid: payment.tid,
@@ -549,7 +550,6 @@ function kakaoPaySave(){
 }
 
 function resultSendMail(){
-    console.log("resultsendMail");
     $.ajax({
         url:"/sendReserveResultMail.do",
         type:"post",
@@ -594,6 +594,16 @@ function sendReserveMail(){
     
 }
 
+function getReserveNo(){
+    $.ajax({
+        url: "/getCurrReserve.do",
+        type:"get",
+        dataType:"text",
+        success:function(reserveNo){
+            $(".reserveNo").text(reserveNo);
+        }
+    });
+}
 $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
