@@ -276,8 +276,20 @@ public class ReserveDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Reserve reser = null;
+<<<<<<< HEAD
 	
+=======
+
+		
+		
+		//String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_name=? and reserve_mail=?";
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 		String query ="select reserve_no,to_char(play_date,'yymmdd') as playdate ,reserve_pay,reserve_name,reserve_mail,reserve_phone,reserve_amount,thema_name,time from (reserve join (select Time_code,time from time) using (time_code))join (select thema_code,thema_name from thema) using (thema_code) where reserve_no=? and reserve_name=?";
+<<<<<<< HEAD
+=======
+
+				
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 		
 		try {
 			pstmt = conn.prepareStatement(query);

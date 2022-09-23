@@ -1,4 +1,27 @@
-@charset "UTF-8";.thema-wrap{
+@charset "UTF-8";
+.title-wrap{
+	padding-top:100px;
+	margin-top:120px;
+	width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    background-color:rgba(22,22,22,0.5);
+}
+
+.title-span{
+	width:100%;
+	height:100px;
+	margin:0 auto;
+	color:white;
+	line-height:300px;
+	text-align:center;
+	display: flex;
+	justify-content: center;
+	font-size:40px;
+	font-family:ns-bold;
+}
+
+.thema-wrap{
     width: 1200px;
     height: 550px;
     background-image: url("/img/backimg.jpg");
@@ -6,8 +29,9 @@
     background-position: 100%;
     background-size:cover;
     background-repeat: no-repeat;
-    padding-top: 20px;
+    padding-top: 40px;
     padding-left: 20px;
+    margin-top:20px;
 }
 
 .img-wrap{
@@ -26,7 +50,7 @@
 .thema-content-wrap{
     width: 770px;
     height: 450px;
-    background-color: rgb(66, 64, 64);
+    background-color: rgb(33, 33, 33);
     color: white;
     display: inline-block;
     float: left;
@@ -36,6 +60,8 @@
 .thema-title{
 	margin-top:20px;
 	margin-left: 20px;
+	color:white;
+	font-family: ns-black;
 }
 
 
@@ -44,14 +70,14 @@
     width:100px;
 	height:50px;
 	background-color: rgb(255,193,7);
-	box-shadow: 1px 1px 1px 1px black;
 	cursor: pointer;
-	font-size:20px;
+	font-size:16px;
     margin-right: 20px;
     margin-top: 10px;
-    font-family: ns-Bold;
-    font: weight 1.1em;;
+    font-family: ns-bold;
+    font-weight:bold;
 }
+
 .thema-table{
     margin-top: 20px;
     margin-left: 20px;
@@ -65,7 +91,7 @@
 .thema-table>tbody>tr>th{
     margin-top: 50px;
     width: 150px;
-    font-family: ns-Light;
+    font-family: ns-thin;
     font-size: 12px;
     border: 0.5px solid black;
     
@@ -80,6 +106,7 @@
 
 .th-left{
     text-align: left;
+    text-indent: 20px;
 }
 
 .key{

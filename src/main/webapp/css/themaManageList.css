@@ -25,7 +25,7 @@
 	background-color:rgb(255,193,7);
 	box-sizing: border-box;
 	font-weight: bold;
-	font-familly: ns-bold;
+	font-family: ns-bold;
 }
 
 
@@ -89,6 +89,11 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+.tr-3>td>a{
+	    font-family: ns-thin;
+}
+
+
 /* 등록 버튼 */
 .reserve-btn{
     margin-top: 20px;
@@ -101,7 +106,7 @@
 	cursor: pointer;
 	font-size:15px;
     margin-left: 1150px;
-    font-familly: ns-bold;
+    font-family: ns-bold;
 }
 
 

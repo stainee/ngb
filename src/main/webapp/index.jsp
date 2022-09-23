@@ -43,7 +43,19 @@
             <div class = "notice-wrap">
                 <a href = "#">
                     <div class = "notice-title">NOTICE</div>
-                </a>
+                                </a>    
+                                    <div>
+                    <table class = "main-table">
+                        <thead>
+                            <th>공지</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </thead>
+                        <tbody id = "tbody">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="section" id="section3">
@@ -62,7 +74,7 @@
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
-					html += "<a href = '#location'>";
+					html += "<a href = '#'>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";
@@ -75,11 +87,27 @@
 				html += "<span class='material-icons'>arrow_forward_ios</span>";
 				html += "</div>";
 
-				$("#thema-info-wrap").html(html);				
+				$("#thema-info-wrap").html(html);
 			}
 		});
  	});
- 	
+    $(document).ready(function(){
+    	$.ajax({
+    		url:"/mainNoticeList.do",
+    		success:function(data){
+    			var html = "";
+    			console.log(data);
+    			for(let i=0;i<5;i++){
+    			console.log(data.list[i].noticeTitle);
+    			html += "<tr>";
+    			html += "<td>"+data.list[i].noticeNo+"</td>";
+    			html += "<td><a>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td>"+data.list[i].regDate+"</td>";
+    			}
+    			$("#tbody").html(html);
+    		}
+    	});
+    });
  		
  		$(document).on("click",".prev",function(){
  				console.log($(".thema-info-box").length);
@@ -147,25 +175,6 @@ goLocation.on("click",function(){
     loginBox.css("display","none");
     title.hide(300);
 	page = 3;
-});
-
-
-    
-
-ul.css("width",(imgCount*width)+"px");
-$(".prev").on("click",function(){
-    if(imgNo != 0){
-        imgNo--;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
-});
-$(".next").on("click",function(){
-    if(imgNo != imgCount-1){
-        imgNo++;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
 });
 
 const map = new naver.maps.Map("map",{
