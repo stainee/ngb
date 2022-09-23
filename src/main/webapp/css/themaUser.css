@@ -83,18 +83,22 @@
     margin-left: 20px;
     width:730px;
     height: 350px;
-    border: 0.5px solid black;
     border-collapse: collapse;
     background-color: white;
     color:black;
 }
+
+.thema-table>tbody>tr{
+    border-bottom: 4px solid rgb(33, 33, 33);
+}
+
 .thema-table>tbody>tr>th{
     margin-top: 50px;
     width: 150px;
     font-family: ns-thin;
     font-size: 12px;
     border: 0.5px solid black;
-    
+    border-right: 4px solid rgb(33, 33, 33);
 }
 
 
