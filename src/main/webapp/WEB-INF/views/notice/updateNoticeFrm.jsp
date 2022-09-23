@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/noticeUpdateFrm.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -29,20 +30,7 @@
 					<input type="text" name="noticeTitle" class="input-form" value="<%=n.getNoticeTitle()%>">
 				</td>
 			</tr>
-			<tr>
-				<th>첨부파일</th>
-				<td>
-					<%if(n.getNoticeFilepath() != null) { %>
-						<!-- 첨부파일 보여줌 -->
-						<img src="/img/file.png" width="16px" class="delFile">
-						<button type="button" class="delFile">삭제</button>
-						<input type="file" name="upfile" style="display:none;"> %>">
-						<input type="hidden" name = "oldFilepath" value="<%=n.getNoticeFilepath() %>">
-					<%}else { %>
-						<input type="file" name="upfile">
-					<%} %>
-				</td>
-			</tr>
+			
 			<tr>
 				<th>내용</th>
 				<td>

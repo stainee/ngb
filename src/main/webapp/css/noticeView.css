@@ -35,12 +35,13 @@
 	 padding-top: 10px;
 	 padding-bottom:10px;
 	}
-	/*
-
+	
 	.tbl .tr-1>th{
-	background-color : rgb(128,128,128) ;
+	background-color : white ;
+	color : rgb(66,64,64);
+	border-left : 1px solid rgb(66,64,64);
 	}
-	*/
+	
 	.tbl tr{
 	 	border-bottom : 1px solid rgb(66,64,64);
 	}
@@ -53,38 +54,44 @@
 	font-size:14px;
 	padding-top: 10px;
 	padding-bottom:10px;
+	border-left : 1px solid rgb(66,64,64);
 	
 	}
 	
 	.tbl a{
-		color:rgb(66,64,64);
+		color:rgb(66, 64, 64);
 	}
-	
-	.tbl a:hover{
-		text-decoration : underline;
-	}
+
 	
 	.notice-tbl tr>td:nth-child(2){
 		text-align:left;
 		padding-left :15px;
 	}
 	
-
+	#noticeContent{
+		height: 500px;
+	}
 	
-	#pageNavi{
-	margin-top:10px;
-	text-align:center;
+		
+	.tbl button{
+	width:200px;
+	height:50px;
 	/*
-	display:inline-block;
-	width: 30px;
-	height: 30px;
-	border-radius: 30px;
-	line-height:30px;
-	background-color: rgb(255,193,7);
+	background-color: rgb(66, 64, 64);
+	color:white;
 	*/
+	background-color :white;
+	color:rgb(66, 64, 64);
+	cursor: pointer;
+	font-size  :17px;
+	font-weight : 700;
+
 	}
 	
-	#pageNavi a{
-	/*color : white;*/
-	color : rgb(255,193,7);
-	}
+	/*
+	.tbl button:hover{
+		background-color: rgb(66, 64, 64);
+		color:white;
+	}*/
+	
+	
