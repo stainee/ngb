@@ -11,16 +11,39 @@
 <meta charset="UTF-8">
 <title>테마 시간 등록</title>
 <style>
+
 .tap-wrap{
-    margin-top: 30px;
-    margin-left: 260px;
+	width:1800px;
+    margin: 30px auto;
+}
+
+.tap-ul{
+	width:1200px;
+	border-bottom: 1px solid rgb(255,193,7);
+	list-style-type: none;
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+    
+}
+
+.tap-ul>li{
+	width:200px;
+	height: 50px;
+	line-height:50px;
+	text-align: center;
+	float:left;
+	background-color:rgb(255,193,7);
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: ns-bold;
 }
 
 
-.tab-time{
-    margin-left: 20px;
+.tap-ul>li:hover{
+	cursor:pointer;
 }
+
 
 .btn2{
 	width:100px;
@@ -45,14 +68,12 @@
 
 /*테이블*/
 .table-wrap{
-	width:1800px;
-    margin: 30px auto;
-    padding-left: 240px;
+	width:1200px;
+    flaot:left;
 }
 
 
 .tbl{
-    margin-left: 20px;
     width: 1200px;
     border-spacing: 0px;
     border-collapse: collapse;
@@ -139,13 +160,53 @@
 	width: 80px;
 	height:40px;
 }
+
+.content-wrap{
+	width: 1400px;
+	/*margin-left:20vw;*/
+	margin-top:3vw;
+}
+
+.upload-a{
+	text-decoration: none;
+	width:80px;
+}
+
+.upload-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+	float:right;
+}
+
+.cancel-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
+	<div class="content-wrap">
     <div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
+         <ul class="tap-ul">
+         	<li>테마관리</li>
+         	<li>시간관리</li>
+         </ul>
     </div>
     
     <div class="table-wrap">
@@ -187,22 +248,30 @@
                 <td><input type="text" value="<%=1%>-<%=3%> 명" readonly></td>
             </tr>
         </table>
-        <div class="timeBtn-wrap">
-	       	<button onclick="addThemaTime();" class="reserve-btn reserve-btn1">등록</button>
-	       	<a href="/themaManageTimeFrm.do"><button class="reserve-btn reserve-btn2">취소</button></a>
-       	</div>
+        
+	       	<button onclick="addThemaTime();" class="upload-btn">등록</button>
+	       	<a href="/themaManageTimeFrm.do" class="upload-a"><button class="cancel-btn">취소</button></a>
+
+    </div>
     </div>
 <script>
-function addThemaTime(){
-	alert("쿼리하고와");
-}
-
-function getThemaCode(obj){
-	let selectVal = $(obj).val();
-	let tmName = $("#sltdCode").val();
-	if(selectVal==)
+	function addThemaTime(){
+		alert("쿼리하고와");
+	}
 	
-}
+	function getThemaCode(obj){
+		let selectVal = $(obj).val();
+		let tmName = $("#sltdCode").val();
+		
+	}
+	
+	const tabs=$(".tap-ul>li");
+	tabs.on("click",function(){
+		console.log("찍힘");
+		tabs.css("color","black").css("background-color","white");
+		$(this).css("color","white").css("background-color","rgb(255,193,7)");
+	});
+	tabs.eq(1).click();
 
 </script>
 </body>
