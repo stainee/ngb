@@ -146,5 +146,19 @@ public class NoticeService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+	public Notice deleteNotice(int noticeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Notice n = dao.selectOneNotice(conn, noticeNo);
+		int result = dao.deleteNotice(conn,noticeNo);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+			n = null;
+		}
+		JDBCTemplate.close(conn);
+		return n;
+	}
 	
 }

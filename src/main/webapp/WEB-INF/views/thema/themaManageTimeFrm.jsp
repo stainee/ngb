@@ -5,46 +5,48 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 시간 관리</title>
+<link rel = "stylesheet" href = "/css/notosans.css">
 <style>
 .tap-wrap{
-    margin-top: 30px;
-    margin-left: 280px;
+	width:1800px;
+    margin: 30px auto;
+}
+
+.tap-ul{
+	width:1200px;
+	border-bottom: 1px solid rgb(255,193,7);
+	list-style-type: none;
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+    
+}
+
+.tap-ul>li{
+	width:200px;
+	height: 50px;
+	line-height:50px;
+	text-align: center;
+	float:left;
+	background-color:rgb(255,193,7);
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: ns-bold;
 }
 
 
-.tab-time{
-    margin-left: 20px;
+.tap-ul>li:hover{
+	cursor:pointer;
 }
-
-.btn2{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	box-shadow: 0.5px 0.5px 0.5px 0.5px black;
-	cursor: pointer;
-	font-size:20px;
-}
-
-.btn2:active{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	border:1px solid black;
-	box-shadow: none;
-}
-
 
 /*테이블*/
 .table-wrap{
-	width:1800px;
-    margin: 30px auto;
-    padding-left: 260px;
+	width:1200px;
+    flaot:left;
 }
 
 
 .tbl{
-    margin-left: 20px;
     width: 1200px;
     border-spacing: 0px;
     border-collapse: collapse;
@@ -91,16 +93,32 @@
     margin-top: 20px;
     width:80px;
 	height:40px;
-	background-color: rgb(230,230,230);
+	background-color: rgb(55,55,55);
 	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
 	border-radius: 50px;
 	cursor: pointer;
-	font-size:20px;
+	font-size:15px;
+	float:right;
+}
+
+
+.reserve-btn:hover{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
     margin-left: 1150px;
 }
 
-.reserve-btn{
+.reserve-a{
 	text-decoration: none;
+	width:80px;
 }
 
 .reserve-btn:link{
@@ -110,19 +128,36 @@
 .reserve-btn:visited{
 	color:black;
 }
+.update, .delete{
+	width: 80px;
+	background-color: rgb(255,193,7);
+	border:none;
+	color: white;
+}
 
+.content-wrap{
+	width: 1400px;
+	/*margin-left:20vw;*/
+	margin-top:3vw;
+}
 
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
+	<div class="content-wrap">
+	
     <div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
+         <ul class="tap-ul">
+         	<li>테마관리</li>
+         	<li>시간관리</li>
+         </ul>
     </div>
+    
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
             <tr class="tr-1">
+                <th>테마코드</th>
                 <th>테마명</th>
                 <th>1타임</th>
                 <th>2타임</th>
@@ -134,14 +169,14 @@
                 <th>8타임</th>
                 <th>9타임</th>
                 <th>10타임</th>
+                <th>인원</th>
                 <th>관리</th>
                 <th></th>
             </tr>
 <%--  		<%for(thema:list) {%>--%>
             <tr class="tr-3">
-                <td><%="테마명"%>
-                	<input type="hidden" value="<%="테마코드"%>" id="hiddenTmCode">
-                </td>
+                <td><%="테마코드"%></td>
+                <td><%="테마명"%></td>
                 <td><%="타임1" %></td>
                 <td><%="타임2"%></td>
                 <td><%="타임3"%></td>
@@ -152,19 +187,28 @@
                 <td><%="타임8"%></td>
                 <td><%="타임9"%></td>
                 <td><%="타임10"%></td>
+                <td><%="1-3"%>명</td>
                 <td>
-                	<a href="/themaTimeManage.do"><button>수정</button></a>
-                	<button onclick="deleteThemaTime();">삭제</button>
+                	<a href="/themaTimeManage.do"><button class="update">수정</button></a>
+                	<button onclick="deleteThemaTime();" class="delete">삭제</button>
                 </td>
             </tr>
 <%--             <%}%>--%>
         </table>
-       	<a href="/themaTimeAddFrm.do"><button class="reserve-btn">추가</button></a>
+       	<a href="/themaTimeAddFrm.do" class="reserve-a"><button class="reserve-btn">추가</button></a>
     </div>
+</div>
 <script>
-function deleteThemaTime(){
-	alert("쿼리부터하고와라");
-}
+	function deleteThemaTime(){
+		alert("쿼리부터하고와라");
+	}
+	
+	const tabs=$(".tap-ul>li");
+	tabs.on("click",function(){
+		tabs.css("color","black").css("background-color","white");
+		$(this).css("color","white").css("background-color","rgb(255,193,7)");
+	});
+	tabs.eq(1).click();
 </script>
 </body>
 </html>

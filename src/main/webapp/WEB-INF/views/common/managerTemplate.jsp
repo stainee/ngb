@@ -29,8 +29,7 @@
 			<li><a href="#">테마관리</a></li>
 		</ul>
 	</div>
-	<div class="content-wrap">
-	</div>
+
 	<script>
 	$(".menu a").on("click",function(){
 		const length = $(".menu a").length;

@@ -1,7 +1,7 @@
 package com.ngb.notice.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.ngb.notice.model.vo.NoticePageData;
+import com.ngb.notice.model.vo.Notice;
 import com.ngb.notice.service.NoticeService;
 
 /**
- * Servlet implementation class NoticeFrmServlet
+ * Servlet implementation class NoticeDeleteServlet
  */
-@WebServlet(name = "NoticeList", urlPatterns = { "/mainNoticeList.do" })
-public class MainNoticeListServlet extends HttpServlet {
+@WebServlet(name = "NoticeDelete", urlPatterns = { "/noticeDelete.do" })
+public class NoticeDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainNoticeListServlet() {
+    public NoticeDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,16 +35,27 @@ public class MainNoticeListServlet extends HttpServlet {
 		//1.인코딩
 		request.setCharacterEncoding("utf-8");
 		//2.값추출
-		int reqPage = 1;
+		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		//3.비즈니스로직
 		NoticeService service = new NoticeService();
-		NoticePageData npd = service.selectNoticeList(reqPage);
-		
+		//삭제후 파일을 처리하기 위해 해당 정보를 받음
+		Notice n = service.deleteNotice(noticeNo);
 		//4.결과처리
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
-		new Gson().toJson(npd,out);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+		if(n!=null) {
+			
+			request.setAttribute("title", "삭제완료");
+			request.setAttribute("msg", "삭제가 완료됬습니다");
+			request.setAttribute("icon", "success");
+			request.setAttribute("loc", "/noticeList.do?reqPage=1");
+			
+		}else {
+			request.setAttribute("title", "삭제실패");
+			request.setAttribute("msg", "삭제 실패");
+			request.setAttribute("icon", "error");
+			request.setAttribute("loc", "/noticeView.do?noticeNo="+noticeNo);
+		}
+		view.forward(request, response);
 	}
 
 	/**
