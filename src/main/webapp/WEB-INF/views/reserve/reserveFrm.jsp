@@ -20,6 +20,10 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	
+		<div class="title-wrap">
+			<span class="title-span">RESERVATION</span>
+		</div>
+	
 	<div class="content-wrap">
 		<div class="tab-wrap"> 
 	        <ul class="tab-menu">
