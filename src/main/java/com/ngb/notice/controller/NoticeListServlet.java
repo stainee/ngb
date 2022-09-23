@@ -15,7 +15,7 @@ import com.ngb.notice.service.NoticeService;
 /**
  * Servlet implementation class NoticeFrmServlet
  */
-@WebServlet(name = "NoticeList", urlPatterns = { "/mainNoticeList.do" })
+@WebServlet(name = "NoticeList", urlPatterns = { "/noticeList.do" })
 public class NoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
