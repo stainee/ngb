@@ -20,7 +20,6 @@
 			<span class="title-span">ABOUT THEMA</span>
 		</div>
 	
-	
 		
 	        <form action="/searchThema.do" method="post" class="thema-select-wrap" >
 	            <span class="level-span">난이도</span>

@@ -10,140 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.tap-wrap{
-	    margin-top: 30px;
-	    margin-left: 270px;
-	    padding: 0;
-	}
-	
-	
-	.tab-time{
-	    margin-left: 20px;
-	}
-	
-	.btn2{
-		width:100px;
-		height:50px;
-		background-color: rgb(255,193,7);
-		box-shadow: 1px 1px 1px 1px black;
-		cursor: pointer;
-		font-size:20px;
-	}
-	
-	.btn2:active{
-		width:100px;
-		height:50px;
-		background-color: rgb(255,193,7);
-		border:1px solid black;
-		box-shadow: none;
-	}
-	.input-form {
-	    width: 100%;
-	    height: 40px;
-	    display: block;
-	    background-color: #fff;
-	    outline: none;
-	    border: 1px solid #ccc;
-	    box-sizing: border-box;
-	}
-	
-	.input-form {
-	    width: 100%;
-	    height: 40px;
-	    display: block;
-	    background-color: #fff;
-	    outline: none;
-	    border: 1px solid #ccc;
-	    box-sizing: border-box;
-	}
-	
-	.input-form:focus {
-	    box-shadow: 0 0 0 0.1rem #eee;
-	}
-	
-	.textarea-form {
-	    width: 100%;
-	    resize: none;
-	    min-height: 300px;
-	    outline: none;
-	    border: 1px solid #ccc;
-	}
-	
-	.tbl .tr-1 {
-	    background-color: rgba(57, 62, 70, 0.1);
-	}
-	
-	.table-wrap{
-	    margin-top: 20px;
-	    margin-left: 250px;
-	}
-	
-	
-	.tbl{
-	    margin-left: 20px;
-	    width: 1200px;
-	    border-spacing: 0px;
-	    border-collapse: collapse;
-	}
-	.tbl th,.tbl td {
-	    padding: 1rem;
-	    text-align: center;
-	}
-	.tbl td>a {
-	    text-decoration: none;
-	    color : black;
-	}
-	
-	.notice-tbl a:hover{
-	    text-decoration : underline;
-	}
-	.notice-tbl tr{
-	    border-bottom : 1px solid #ccc;
-	}
-	.notice-tbl tr>td:nth-child(2){
-	    text-align : left;
-	}
-	
-	.tbl .tr-1 {
-	   background-color: rgba(57, 62, 70, 0.1);
-	}
-	
-	.update-btn>button{
-	    margin-top: 20px;
-	    width:80px;
-		height:40px;
-		background-color: rgb(230,230,230);
-		box-shadow: 0px 1px 1px 1px black;
-		border-radius: 50px;
-		cursor: pointer;
-		font-size:20px;
-	    margin-left: 1000px;
-	    text-decoration: none;
-	    color : black;
-	}
-	
-	.delete-btn{
-	    margin-top: 20px;
-	    width:80px;
-		height:40px;
-		background-color: rgb(230,230,230);
-		box-shadow: 0px 1px 1px 1px black;
-		border-radius: 50px;
-		cursor: pointer;
-		font-size:20px;
-	    margin-left: 15px;
-	}
-
-</style>
+<link rel="stylesheet" href="/css/notosans.css">
+<link rel="stylesheet" href="/css/themaManageView.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
 	
-	<div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-thema">시간관리</button></a>
-    </div>
+    <div class="title-wrap">테마관리</div>
     
         <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
@@ -225,7 +98,13 @@
 			}
 		}
 		
-		
+	    const tabs=$(".tap-ul>li");
+	    tabs.on("click",function(){
+	      	tabs.css("color","black").css("background-color","white");
+	    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
+	    });
+	    tabs.eq(0).click();
+
 	</script>
 </body>
 

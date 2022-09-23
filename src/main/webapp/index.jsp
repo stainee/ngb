@@ -74,7 +74,7 @@
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
-					html += "<a href = '#location'>";
+					html += "<a href = '/themaManageView.do?themaCode=<%=thema.getThemaCode()%>'>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";

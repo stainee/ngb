@@ -1,5 +1,10 @@
+<%@page import="com.ngb.thema.model.vo.Thema"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    ArrayList<Thema> list =(ArrayList<Thema>)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +38,10 @@
 	border:1px solid black;
 	box-shadow: none;
 }
-
+.addThemaCode{
+	text-align: center;
+	width: 160px;
+}
 
 /*테이블*/
 .table-wrap{
@@ -89,6 +97,7 @@
 }
 .timeBtn-wrap{
 	display: flex;
+	margin-left: -20px;
 }
 
 .reserve-btn{
@@ -105,9 +114,9 @@
 }
 .reserve-btn1{
 	margin-left: 1050px;
+	margin-right:30px;
 }
 .reserve-btn2{
-	margin-left: 30px;
 }
 
 .reserve-btn:link{
@@ -125,8 +134,10 @@
 	text-align: center;
 	outline: none;
 }
-.timeDelBtn{
+
+.timeBtn-wrap>a{
 	width: 80px;
+	height:40px;
 }
 </style>
 </head>
@@ -140,8 +151,7 @@
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
             <tr class="tr-1">
-                <th>테마코드</th>
-                <th>테마명</th>
+                <th>테마</th>
                 <th>1타임</th>
                 <th>2타임</th>
                 <th>3타임</th>
@@ -155,19 +165,26 @@
                 <th>인원</th>
             </tr>
             <tr class="tr-3">
-                <td><input type="text" value="테마코드"></td>
-                <td><input type="text" value="테마명"></td>
-                <td><input type="text" value="타임1"></td>
-                <td><input type="text" value="타임2"></td>
-                <td><input type="text" value="타임3"></td>
-                <td><input type="text" value="타임4"></td>
-                <td><input type="text" value="타임5"></td>
-                <td><input type="text" value="타임6"></td>
-                <td><input type="text" value="타임7"></td>
-                <td><input type="text" value="타임8"></td>
-                <td><input type="text" value="타임9"></td>
-                <td><input type="text" value="타임10"></td>
-                <td><input type="text" value="1-3명"></td>
+                <td>
+                	<select onchange="getThemaCode(this)" class="addThemaCode">
+                	<%String tmCode = "tm"; %>
+                		<option value="">테마</option>
+            		<%for(Thema tm: list) {%>
+                		<option value="<%=tm.getThemaCode() %>"><%=tm.getThemaName() %></option>
+               		<%} %>
+                 	</select>
+                </td>
+                <td><input type="text" value="" name="tmTime1" class="tmTime1" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime2" class="tmTime2" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime3" class="tmTime3" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime4" class="tmTime4" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime5" class="tmTime5" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime6" class="tmTime6" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime7" class="tmTime7" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime8" class="tmTime8" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime9" class="tmTime9" placeholder="00:00"></td>
+                <td><input type="text" value="" name="tmTime10" class="tmTime10" placeholder="00:00"></td>
+                <td><input type="text" value="<%=1%>-<%=3%> 명" readonly></td>
             </tr>
         </table>
         <div class="timeBtn-wrap">
@@ -179,6 +196,14 @@
 function addThemaTime(){
 	alert("쿼리하고와");
 }
+
+function getThemaCode(obj){
+	let selectVal = $(obj).val();
+	let tmName = $("#sltdCode").val();
+	if(selectVal==)
+	
+}
+
 </script>
 </body>
 </html>
