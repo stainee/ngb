@@ -144,5 +144,11 @@ public class ReserveService {
 		return result;
 		
 	}
-
+	
+	public int selectCurrReserve() {
+		Connection conn = JDBCTemplate.getConnection();
+		int reserveNo = dao.selectCurrReserve(conn);
+		JDBCTemplate.close(conn);
+		return reserveNo;
+	}
 }

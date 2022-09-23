@@ -31,45 +31,12 @@
                         <span><a href = "#">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
                         <span><a href = "#">THEMA</a></span>
-                        <span><a href = "#">LOCATION</a></span>
+                        <span id = "go-location"><a href = "#section3">LOCATION</a></span>
                     </div>
                 </div>
         </div>
         <div class="section" id="section2">
-            <div class = "notice-wrap">
-                <a href = "#">
-                    <div class = "notice-title">
-                    NOTICE
-                </div>
-                </a>
-                <div>
-                    <table class = "main-table">
-                        <thead>
-                            <th>공지</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <a href = "#">
-                <div class = "thema-title">
-                THEMA
-            </div>
-            </a>
-            <div class = "thema-info-wrap">
+	             <div class = "thema-info-wrap">
             <div class = "thema-info-box">
                 <div class = "section2-box photo-box left">
                 	<a href = "#"><img src="/img/공포의foreach문.png"></a>
@@ -154,6 +121,34 @@
                     <span class = "material-icons">arrow_forward_ios</span>
                 </div>
             </div>
+            <div class = "notice-wrap">
+                <a href = "#">
+                    <div class = "notice-title">
+                    NOTICE
+                </div>
+                </a>
+                <div>
+                    <table class = "main-table">
+                        <thead>
+                            <th>공지</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><a href = "#">주의사항</a></td>
+                                <td>22/09/19</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><a href = "#">주의사항</a></td>
+                                <td>22/09/19</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="section" id="section3">
             <div class = "location-title">오시는길</div>
@@ -195,10 +190,21 @@
             title.hide(300);
         }
     });
+const goLocation = $("#go-location");
+
+goLocation.on("click",function(){
+    headerWrap.show(300);
+    loginBox.css("display","none");
+    title.hide(300);
+	page = 3;
+});
+    
 let imgNo = 0;
 const ul = $(".thema-info-box");
-const imgCount = ul.children().length; // 사용하는 이미지 갯수
-const width = 300;
+const imgCount = $(".thema-info-box").length; // 사용하는 이미지 갯수
+const width = 200;
+console.log(imgCount);
+
 ul.css("width",(imgCount*width)+"px");
 $(".prev").on("click",function(){
     if(imgNo != 0){
@@ -214,6 +220,12 @@ $(".next").on("click",function(){
         ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
     }
 });
+	window.onload = function(){
+		$.ajax({
+			url: /
+			
+		});
+ 	}
 </script>
 </body>
 </html>

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ngb.notice.model.vo.NoticePageData;
 import com.ngb.notice.service.NoticeService;
-import com.ngb.notice.vo.NoticePageData;
 
 /**
  * Servlet implementation class NoticeFrmServlet

@@ -1,4 +1,4 @@
-<%@page import="com.ngb.notice.vo.Notice"%>
+<%@page import="com.ngb.notice.model.vo.Notice"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -26,8 +26,12 @@
 		<a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a>
 		<%} %>
 
+<<<<<<< HEAD
 		<table class="notice-tbl">
 
+=======
+		<table>
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 			<tr>
 
 				<th style="width: 10%;">번호</th>
