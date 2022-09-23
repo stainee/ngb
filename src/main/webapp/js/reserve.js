@@ -1,4 +1,6 @@
 let idx=0;
+nextStep();
+nextStep();
 let thema_idx=0;
 let thema_code=0;
 let time_code=0;
@@ -73,6 +75,7 @@ $("#account").on("click", function(){
         setReserveInfo();
         getReserveInfo();
         
+        reserveFunc();//예약
         sendReserveMail(); //이후 결과또한 전송한다
         resultSendMail();
         nextStep();
@@ -429,6 +432,7 @@ function reserveFunc(){
         },
         success:function(){
             //카카오페이 일시
+            getReserveNo();
             if(iskakao == true){
                 kakaoPaySave();
             }
@@ -479,12 +483,12 @@ function kakaoPay(){
             "total_amount": reserve.reserve_pay,
             "vat_amount": "0",
             "tax_free_amount":"0",
-            // "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
-            // "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
-            // "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
-            "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
-            "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
-            "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
+            "approval_url":"http://192.168.10.37:8888/kakaoPayResult.do",
+            "fail_url":"http://192.168.10.37:8888/reserveFrm.do",
+            "cancel_url":"http://192.168.10.37:8888/reserveFrm.do"
+            // "approval_url":"http://175.197.87.72:8888/kakaoPayResult.do",
+            // "fail_url":"http://175.197.87.72:8888/reserveFrm.do",
+            // "cancel_url":"http://175.197.87.72:8888/reserveFrm.do"
         },
         success : function(data){
             iskakao = true;
@@ -549,7 +553,6 @@ function kakaoPaySave(){
 }
 
 function resultSendMail(){
-    console.log("resultsendMail");
     $.ajax({
         url:"/sendReserveResultMail.do",
         type:"post",
@@ -594,6 +597,16 @@ function sendReserveMail(){
     
 }
 
+function getReserveNo(){
+    $.ajax({
+        url: "/getCurrReserve.do",
+        type:"get",
+        dataType:"text",
+        success:function(reserveNo){
+            $(".reserveNo").text(reserveNo);
+        }
+    });
+}
 $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
