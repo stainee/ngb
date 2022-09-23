@@ -10,6 +10,25 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.title-wrap{
+			width:1000px;
+			font-family: ns-bold;
+			font-weight:bold;
+			font-size:16px;	
+			padding-bottom:10px;
+			border-bottom: 3px solid rgb(255,193,7);
+	}
+	
+	.content-wrap{
+	width: 1400px;
+	margin-top:3vw;
+	}	
+
+	.tbl1{
+	margin-top:20px;
+	}
+</style>
 <link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
@@ -59,6 +78,7 @@ function go_insert(){
 	<input type = "hidden" id = "playDate" value = "<%=result.getPlayDate()%>">
 	<input type = "hidden" id = "themaPrice" value = "<%=result.getThemaPrice() %>">
 	<div class="content-wrap">
+	 	<div class="title-wrap">예약관리</div>
 		<table class="tbl1" style = "width:1000px">
 			<thead>
 				<tr>
