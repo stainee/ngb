@@ -10,11 +10,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/notosans.css">
 <link rel="stylesheet" href="/css/themaUser.css">
 
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
+	
+		<div class="title-wrap">
+			<span class="title-span">ABOUT THEMA</span>
+		</div>
+	
 	
         <div class="thema-wrap">
             
@@ -62,7 +68,9 @@
                     </tr>
                 </table>
             </form>
-            <button class="reserve-btn" type=""submit">예약하기</button>
+            <button class="reserve-btn" type="submit">예약하기</button>
         </div>
+        
+        <%@include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

@@ -5,41 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 시간 수정</title>
+<link rel = "stylesheet" href = "/css/notosans.css">
 <style>
 .tap-wrap{
-    margin-top: 30px;
-    margin-left: 240px;
+	width:1800px;
+    margin: 30px auto;
+    padding-left: 370px;
+}
+
+.tap-ul{
+	width:1300px;
+	border-bottom: 1px solid rgb(255,193,7);
+	list-style-type: none;
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+    
+}
+
+.tap-ul>li{
+	width:200px;
+	height: 50px;
+	line-height:50px;
+	text-align: center;
+	float:left;
+	background-color:rgb(255,193,7);
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: ns-bold;
 }
 
 
-.tab-time{
-    margin-left: 20px;
-}
-
-.btn2{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	box-shadow: 0.5px 0.5px 0.5px 0.5px black;
-	cursor: pointer;
-	font-size:20px;
-}
-
-.btn2:active{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	border:1px solid black;
-	box-shadow: none;
+.tap-ul>li:hover{
+	cursor:pointer;
 }
 
 
 /*테이블*/
 .table-wrap{
 	width:1800px;
-    margin: 30px auto;
-    padding-left: 220px;
+    margin: 0 auto;
+    padding-left: 350px;
 }
 
 
@@ -96,12 +102,29 @@
     margin-top: 20px;
     width:80px;
 	height:40px;
-	background-color: rgb(230,230,230);
-	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	background-color: rgb(55,55,55);
+	color: white;
+	box-shadow: 0px 0.2px 0.2px 0.2px white;
 	border-radius: 50px;
 	cursor: pointer;
-	font-size:20px;
+	font-size:15px;
 	text-decoration: none;
+	font-family: ns-bold;
+}
+
+.reserve-btn:hover{
+	display: inline-block;
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+	text-decoration: none;
+	font-family: ns-bold;
 }
 .reserve-btn1{
 	margin-left: 1050px;
@@ -127,14 +150,20 @@
 }
 .timeDelBtn{
 	width: 80px;
+	background-color: rgb(55,55,55);
+	color: white;
 }
+
 </style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
+	
     <div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
+         <ul class="tap-ul">
+         	<li>테마관리</li>
+         	<li>시간관리</li>
+         </ul>
     </div>
     
     <div class="table-wrap">
@@ -184,6 +213,16 @@
 function deleteThemaTime(){
 	alert("쿼리부터하고와라");
 }
+
+const tabs=$(".tap-ul>li");
+tabs.on("click",function(){
+	console.log("찍힘");
+	tabs.css("color","black").css("background-color","white");
+	$(this).css("color","white").css("background-color","rgb(255,193,7)");
+});
+tabs.eq(0).click();
+
+
 </script>
 </body>
 </html>
