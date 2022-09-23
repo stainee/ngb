@@ -152,7 +152,6 @@ goLocation.on("click",function(){
 
     
 
-<<<<<<< HEAD
 ul.css("width",(imgCount*width)+"px");
 $(".prev").on("click",function(){
     if(imgNo != 0){
@@ -184,9 +183,7 @@ const marker = new naver.maps.Marker({
 	map : map 
 });
 
-=======
 	
->>>>>>> refs/remotes/origin/master
 </script>
 </body>
 </html>
