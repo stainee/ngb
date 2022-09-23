@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.page-content{
+		margin-top:70px;
+	}
+	
+	
+	.page-title{
+		width : 70%;
+		color : white;
+		font-size  :27px;
+		margin : 0 auto;
+		margin-top: 50px;
+		text-align: center;
+	}
+	.page-content table{
+	width :70%;
+	margin : 0 auto;
+	margin-top : 50px;
+	text-align: center;
+	
+	}
+
+	.tbl{
+	padding-top : 100px;
+	border-collapse : collapse;
+	}
+	
+	
+	.tbl th{
+	 text-align:center;
+	 background-color : rgb(66,64,64);
+	 color:white;
+	 font-size :17px;
+	 padding-top: 10px;
+	 padding-bottom:10px;
+	}
+	/*
+
+	.tbl .tr-1>th{
+	background-color : rgb(128,128,128) ;
+	}
+	*/
+	.tbl tr{
+	 	border-bottom : 1px solid rgb(66,64,64);
+	}
+	
+	
+	.tbl td{
+	text-align:center;
+	background-color :white;
+	color:rgb(66,64,64);
+	font-size:14px;
+	padding-top: 10px;
+	padding-bottom:10px;
+	
+	}
+	
+	.tbl a{
+		color:rgb(66,64,64);
+	}
+	
+	.tbl a:hover{
+		text-decoration : underline;
+	}
+	
+	.notice-tbl tr>td:nth-child(2){
+		text-align:left;
+		padding-left :15px;
+	}
+	
+
+	
+	#pageNavi{
+	margin-top:10px;
+	text-align:center;
+	/*
+	display:inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	line-height:30px;
+	background-color: rgb(255,193,7);
+	*/
+	}
+	
+	#pageNavi a{
+	/*color : white;*/
+	color : rgb(255,193,7);
+	}

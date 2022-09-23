@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel = "stylesheet" href = "/css/themaManageList.css">
+<link rel = "stylesheet" href = "/css/notosans.css">
 <style>
 .tap-wrap{
     margin-top: 30px;
@@ -123,10 +125,11 @@
    <%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
    
 
-
     <div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
+         <ul class="tap-ul">
+         	<li>테마관리</li>
+         	<li>시간관리</li>
+         </ul>
     </div>
 
     <div class="table-wrap">
@@ -160,7 +163,18 @@
             </tr>
             <%}%>
         </table>
-       <button class="reserve-btn"><a href="/themaWriteFrm.do">등록</a></button>
+       <a href="/themaWriteFrm.do"><button class="reserve-btn">등록</button></a>
     </div>
+    <script>
+   
+    const tabs=$(".tap-ul>li");
+    tabs.on("click",function(){
+    	console.log("찍힘");
+    	tabs.css("color","black").css("background-color","white");
+    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
+    });
+    tabs.eq(0).click();
+    
+    </script>
 </body>
 </html>

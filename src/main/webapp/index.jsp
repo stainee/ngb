@@ -10,6 +10,7 @@
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8rdr0sm91f&submodules=geocoder"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -30,7 +31,7 @@
                     <div class = "middle-box">
                         <span><a href = "#">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
-                        <span><a href = "#">THEMA</a></span>
+                        <span><a href = "/themaUserList.do">THEMA</a></span>
                         <span id = "go-location"><a href = "#section3">LOCATION</a></span>
                     </div>
                 </div>
@@ -41,36 +42,14 @@
 	    	</div>
             <div class = "notice-wrap">
                 <a href = "#">
-                    <div class = "notice-title">
-                    NOTICE
-                </div>
+                    <div class = "notice-title">NOTICE</div>
                 </a>
-                <div>
-                    <table class = "main-table">
-                        <thead>
-                            <th>공지</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <div class="section" id="section3">
-            <div class = "location-title">오시는길</div>
+            <div class = "location-title">LOCATION</div>
             <div class = "location">
+            	<div id="map" style="width:1200px; height:500px; margin:0 auto;"></div>
             </div>
 	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
     </div>
@@ -169,7 +148,40 @@ goLocation.on("click",function(){
     title.hide(300);
 	page = 3;
 });
+
+
     
+
+ul.css("width",(imgCount*width)+"px");
+$(".prev").on("click",function(){
+    if(imgNo != 0){
+        imgNo--;
+        const move = -imgNo*width;
+        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
+    }
+});
+$(".next").on("click",function(){
+    if(imgNo != imgCount-1){
+        imgNo++;
+        const move = -imgNo*width;
+        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
+    }
+});
+
+const map = new naver.maps.Map("map",{
+	center: new naver.maps.LatLng(37.533837,126.896836),
+	zoom : 17,
+	zoomControl: true,
+	zoomControlOptions : {
+		position: naver.maps.Position.TOP_RIGHT,
+		style : naver.maps.ZoomControlStyle.SMALL
+	}
+});
+
+const marker = new naver.maps.Marker({
+	position: new naver.maps.LatLng(37.533837,126.896836),
+	map : map 
+});
 
 	
 </script>
