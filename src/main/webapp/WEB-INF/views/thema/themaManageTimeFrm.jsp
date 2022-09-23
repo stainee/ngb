@@ -116,9 +116,6 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-	
-
-
     <div class="tap-wrap">
         <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
         <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
@@ -126,7 +123,6 @@
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
             <tr class="tr-1">
-                <th>테마코드</th>
                 <th>테마명</th>
                 <th>1타임</th>
                 <th>2타임</th>
@@ -138,14 +134,14 @@
                 <th>8타임</th>
                 <th>9타임</th>
                 <th>10타임</th>
-                <th>인원</th>
                 <th>관리</th>
                 <th></th>
             </tr>
 <%--  		<%for(thema:list) {%>--%>
             <tr class="tr-3">
-                <td><%="테마코드"%></td>
-                <td><%="테마명"%></td>
+                <td><%="테마명"%>
+                	<input type="hidden" value="<%="테마코드"%>" id="hiddenTmCode">
+                </td>
                 <td><%="타임1" %></td>
                 <td><%="타임2"%></td>
                 <td><%="타임3"%></td>
@@ -156,7 +152,6 @@
                 <td><%="타임8"%></td>
                 <td><%="타임9"%></td>
                 <td><%="타임10"%></td>
-                <td><%="1-3"%>명</td>
                 <td>
                 	<a href="/themaTimeManage.do"><button>수정</button></a>
                 	<button onclick="deleteThemaTime();">삭제</button>
@@ -166,7 +161,6 @@
         </table>
        	<a href="/themaTimeAddFrm.do"><button class="reserve-btn">추가</button></a>
     </div>
-    
 <script>
 function deleteThemaTime(){
 	alert("쿼리부터하고와라");
