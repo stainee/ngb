@@ -10,6 +10,7 @@
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=8rdr0sm91f&submodules=geocoder"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
@@ -30,133 +31,82 @@
                     <div class = "middle-box">
                         <span><a href = "#">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
-                        <span><a href = "#">THEMA</a></span>
+                        <span><a href = "/themaUserList.do">THEMA</a></span>
                         <span id = "go-location"><a href = "#section3">LOCATION</a></span>
                     </div>
                 </div>
         </div>
         <div class="section" id="section2">
-	             <div class = "thema-info-wrap">
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<a href = "#"><img src="/img/공포의foreach문.png"></a>
-                </div>
-                <div class = "section2-box content-box">
-                    <div class = "mainThema-title">공포의FOREACH문</div>
-                    <div class = "mainThema-content">공포의 foreach문...
-                        for문도..while문도 사용불가하다..
-                        과연 foreach문으로 탈출할 수 있을까...?</div>
-                </div>
-            </div>
-
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
-                </div>
-                <div class = "section2-box content-box">
-                    <div class = "mainThema-title">
-                        공포의FOREACH문
-                    </div>
-                    <div class = "mainThema-content">
-                        공포의 foreach문...
-                        for문도..while문도 사용불가하다..
-                        과연 foreach문으로 탈출할 수 있을까...?
-                    </div>
-                    </div>
-                </div>
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
-                </div>
-                </div>
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
-                </div>
-                <div class = "section2-box content-box">
-                    <div class = "mainThema-title">
-                        공포의FOREACH문
-                    </div>
-                    <div class = "mainThema-content">
-                        공포의 foreach문...
-                        for문도..while문도 사용불가하다..
-                        과연 foreach문으로 탈출할 수 있을까...?
-                    </div>
-                    </div>
-                </div>
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
-                </div>
-                <div class = "section2-box content-box">
-                    <div class = "mainThema-title">
-                        공포의FOREACH문
-                    </div>
-                    <div class = "mainThema-content">
-                        공포의 foreach문...
-                        for문도..while문도 사용불가하다..
-                        과연 foreach문으로 탈출할 수 있을까...?
-                    </div>
-                    </div>
-                </div>
-            <div class = "thema-info-box">
-                <div class = "section2-box photo-box left">
-                	<img src="/img/공포의foreach문.png">
-                </div>
-                <div class = "section2-box content-box">
-                    <div class = "mainThema-title">
-                        공포의FOREACH문
-                    </div>
-                    <div class = "mainThema-content">
-                        공포의 foreach문...
-                        for문도..while문도 사용불가하다..
-                        과연 foreach문으로 탈출할 수 있을까...?
-                    </div>
-                    </div>
-                </div>
-                <div class = "slide-navi prev">
-                    <span class = "material-icons">arrow_back_ios_new</span>
-                </div>
-                <div class = "slide-navi next">
-                    <span class = "material-icons">arrow_forward_ios</span>
-                </div>
-            </div>
+	    	<div id = "thema-info-wrap" class = "thema-info-wrap">
+	    	<!-- 테마목록 들어가는 자리 -->
+	    	</div>
             <div class = "notice-wrap">
                 <a href = "#">
-                    <div class = "notice-title">
-                    NOTICE
-                </div>
+                    <div class = "notice-title">NOTICE</div>
                 </a>
-                <div>
-                    <table class = "main-table">
-                        <thead>
-                            <th>공지</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href = "#">주의사항</a></td>
-                                <td>22/09/19</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <div class="section" id="section3">
-            <div class = "location-title">오시는길</div>
+            <div class = "location-title">LOCATION</div>
             <div class = "location">
+            	<div id="map" style="width:1200px; height:500px; margin:0 auto;"></div>
             </div>
 	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
     </div>
     <script>
+    $(document).ready(function(){
+		$.ajax({
+			url: "/mainThemaPrint.do",
+			success: function(data){
+				var html = "";
+				$.each(data,function(idx,value){
+					html += "<div id = 'test' class='thema-info-box'>";
+					html += "<div class='section2-box photo-box left'>";
+					html += "<a href = '#location'>";
+					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
+					html += "</a>";
+					html += "</div>";
+					html += "</div>";
+				});
+				html += "<div class='slide-navi prev'>";
+				html += "<span class='material-icons'>arrow_back_ios_new</span>";
+				html += "</div>";
+				html += "<div class='slide-navi next'>";
+				html += "<span class='material-icons'>arrow_forward_ios</span>";
+				html += "</div>";
+
+				$("#thema-info-wrap").html(html);				
+			}
+		});
+ 	});
+ 	
+ 		
+ 		$(document).on("click",".prev",function(){
+ 				console.log($(".thema-info-box").length);
+ 				
+ 		});
+		let imgNo = 0;
+
+		$(document).on("click",".prev",function(){
+			var length = $(".thema-info-box").length;
+			const width = 200;
+		    if(imgNo != 0){
+		        imgNo--;
+		        const move = -imgNo*width;
+		        $(".thema-info-box").css("transform","translateX("+move+"px)").css("transition-duration","1s")
+		    }
+		});
+		$(document).on("click",".next",function(){
+			var length = $(".thema-info-box").length;
+			const width = 200;
+		    if(imgNo != length-1){
+		        imgNo++;
+		        const move = -imgNo*width;
+		        $(".thema-info-box").css("transform","translateX("+move+"px)").css("transition-duration","1s")
+		    }
+		});
+    
+    
     var mHtml = $("html");
     var page = 1;
     const headerWrap = $(".header-wrap");
@@ -198,12 +148,9 @@ goLocation.on("click",function(){
     title.hide(300);
 	page = 3;
 });
+
+
     
-let imgNo = 0;
-const ul = $(".thema-info-box");
-const imgCount = $(".thema-info-box").length; // 사용하는 이미지 갯수
-const width = 200;
-console.log(imgCount);
 
 ul.css("width",(imgCount*width)+"px");
 $(".prev").on("click",function(){
@@ -220,12 +167,23 @@ $(".next").on("click",function(){
         ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
     }
 });
-	window.onload = function(){
-		$.ajax({
-			url: /
-			
-		});
- 	}
+
+const map = new naver.maps.Map("map",{
+	center: new naver.maps.LatLng(37.533837,126.896836),
+	zoom : 17,
+	zoomControl: true,
+	zoomControlOptions : {
+		position: naver.maps.Position.TOP_RIGHT,
+		style : naver.maps.ZoomControlStyle.SMALL
+	}
+});
+
+const marker = new naver.maps.Marker({
+	position: new naver.maps.LatLng(37.533837,126.896836),
+	map : map 
+});
+
+	
 </script>
 </body>
 </html>

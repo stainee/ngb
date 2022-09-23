@@ -271,8 +271,16 @@
 	margin:0 auto;
 }
 .location-title{
-    padding-top: 100px;
+	padding-top:20px;
+    padding-left:140px;
+    width:240px;
+    height:100px;
+    line-height:120px;
+    text-align:center;
+    font-weight:900;
+    font-size:18px;
 }
+
 html {
     overflow: hidden;
 }
@@ -313,7 +321,7 @@ html, body {
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 1600px;
+    width: 1000px;
     height: 300px;
     margin: 0 auto;
     overflow: hidden;
