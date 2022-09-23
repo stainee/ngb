@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나가방</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <link rel="stylesheet" href="/css/main2.css">
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,7 +46,19 @@
             <div class = "notice-wrap">
                 <a href = "#">
                     <div class = "notice-title">NOTICE</div>
-                </a>
+                                </a>    
+                                    <div>
+                    <table class = "main-table">
+                        <thead>
+                            <th>공지</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </thead>
+                        <tbody id = "tbody">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="section" id="section3">
@@ -54,7 +69,8 @@
 	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
     </div>
     <script>
-    $(document).ready(function(){
+    window.onload = function(){
+    	scroll
 		$.ajax({
 			url: "/mainThemaPrint.do",
 			success: function(data){
@@ -75,16 +91,44 @@
 				html += "<span class='material-icons'>arrow_forward_ios</span>";
 				html += "</div>";
 
-				$("#thema-info-wrap").html(html);				
+				$("#thema-info-wrap").html(html);
 			}
 		});
- 	});
- 	
- 		
- 		$(document).on("click",".prev",function(){
- 				console.log($(".thema-info-box").length);
- 				
- 		});
+    	$.ajax({
+    		url:"/mainNotice.do",
+    		success:function(data){
+    			var html = "";
+    			for(let i=0;i<5;i++){
+    			console.log(data.list[i].noticeTitle);
+    			html += "<tr>";
+    			html += "<td>"+data.list[i].noticeNo+"</td>";
+    			html += "<td><a>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td>"+data.list[i].regDate+"</td>";
+    			html += "</tr>";
+    			}
+    			$("#tbody").html(html);
+    		}
+    	});
+ 	};
+    /*
+    $(document).ready(function(){
+    	$.ajax({
+    		url:"/mainNotice.do",
+    		success:function(data){
+    			var html = "";
+    			for(let i=0;i<5;i++){
+    			console.log(data.list[i].noticeTitle);
+    			html += "<tr>";
+    			html += "<td>"+data.list[i].noticeNo+"</td>";
+    			html += "<td><a>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td>"+data.list[i].regDate+"</td>";
+    			html += "</tr>";
+    			}
+    			$("#tbody").html(html);
+    		}
+    	})
+    });
+    */
 		let imgNo = 0;
 
 		$(document).on("click",".prev",function(){
@@ -104,6 +148,7 @@
 		        const move = -imgNo*width;
 		        $(".thema-info-box").css("transform","translateX("+move+"px)").css("transition-duration","1s")
 		    }
+
 		});
     
     
@@ -149,25 +194,6 @@ goLocation.on("click",function(){
 	page = 3;
 });
 
-
-    
-
-ul.css("width",(imgCount*width)+"px");
-$(".prev").on("click",function(){
-    if(imgNo != 0){
-        imgNo--;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
-});
-$(".next").on("click",function(){
-    if(imgNo != imgCount-1){
-        imgNo++;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
-});
-
 const map = new naver.maps.Map("map",{
 	center: new naver.maps.LatLng(37.533837,126.896836),
 	zoom : 17,
@@ -182,8 +208,6 @@ const marker = new naver.maps.Marker({
 	position: new naver.maps.LatLng(37.533837,126.896836),
 	map : map 
 });
-
-	
 </script>
 </body>
 </html>

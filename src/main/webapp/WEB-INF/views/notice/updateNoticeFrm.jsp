@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/noticeUpdateFrm.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -27,7 +28,10 @@
 					<input type="text" name="noticeTitle" class="input-form" value="<%=n.getNoticeTitle()%>">
 				</td>
 			</tr>
-			
+			<tr>
+				<th></th>
+				<td></td>
+			</tr>
 			<tr>
 				<th>내용</th>
 				<td colspan="4" style="text-align: left;">

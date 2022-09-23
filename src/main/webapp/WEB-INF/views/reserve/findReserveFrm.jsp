@@ -16,25 +16,21 @@
 </head>
 <body>
 <%@include file ="/WEB-INF/views/common/header.jsp" %>
+<div class="content-wrap">
 <div class="reserv_find_wrap">
         <div class="title-box">
             <h1>예약확인</h1>
         </div>
         <div class="input-wrap">
             <form name="findReserveFrm" action="/findReserve.do" method="post" id="reserv_find">
-                <div class="input-area">
-                    <div class="subjcet">예약번호</div>
-                    <input type="text" name="reserveNo" class="input-form" placeholder="예약번호를 입력해주세요">
-                </div>
-                <div class="input-area">
-                <!-- 
-                	<div class="subjcet">이메일</div>
-                    <input type="text" name="reserveEmail" class="input-form" placeholder="예약시 입력한 이메일주소를 입력해주세요">
-                 -->
-                 <div class="subjcet">성함</div>
+            <div class="input-area">
+                <div class="subjcet">이름</div>
                     <input type="text" name="reserveName" class="input-form" placeholder="예약자분의 성함을 입력해주세요">
-                    
-                </div>
+            </div>
+            <div class="input-area">
+                <div class="subjcet">예약번호</div>
+                <input type="text" name="reserveNo" class="input-form" placeholder="예약번호를 입력해주세요">
+            </div>    
                 <div class="submit">
                     <input type="submit" class="btn3" value="예약찾기">
                 </div>
@@ -42,6 +38,7 @@
         </div><!--input-wrap-->
 
     </div><!--reserv_find_wrap-->
+</div>
 <%@include file="/WEB-INF/views/common/footer.jsp" %>
 <script src="/js/findReserveFrm.js"></script>
 

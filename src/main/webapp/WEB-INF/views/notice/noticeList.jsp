@@ -12,9 +12,7 @@
 <meta charset="UTF-8">
 <title>공지사항</title>
 <link rel="stylesheet" href="/css/noticeList.css">
-<style>
 
-</style>
 
 </head>
 <body>
@@ -26,12 +24,7 @@
 		<a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a>
 		<%} %>
 
-<<<<<<< HEAD
 		<table class="notice-tbl">
-
-=======
-		<table>
->>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 			<tr>
 
 				<th style="width: 10%;">번호</th>

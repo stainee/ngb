@@ -40,8 +40,8 @@ Notice n = (Notice) request.getAttribute("n");
 			if (m != null && n.getNoticeWriter().equals(m.getMemberId())) {
 			%>
 			<tr>
-				<th colspan="6"><a
-					href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a>
+				<th colspan="6">
+				<button><a href="/noticeUpdateFrm.do?noticeNo=<%=n.getNoticeNo()%>">수정</a></button>
 					<button onclick="noticeDelete(<%=n.getNoticeNo()%>);">삭제</button></th>
 			</tr>
 			<%
