@@ -17,7 +17,6 @@ public class Thema {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	public Thema(String themaCode, String category, String themaName, String themaContent, int devicePer, int lockPer,
 			int peopleMin, int peopleMax, int themaLevel, int themaPrice, String themaFilepath,

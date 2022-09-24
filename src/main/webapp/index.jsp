@@ -4,8 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나가방</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <link rel="stylesheet" href="/css/main2.css">
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,6 +28,7 @@
                         <span><a href="/signupFrm.do">회원가입</a></span>
                         <%}else{ %>
                         <span><a href="/logout.do">로그아웃</a></span>
+                        <span><a href="/reserveManage.do">관리자</a></span>
                 		<%} %>
                     </div>
                     <div class="sub-menu"></div>
@@ -43,11 +47,25 @@
             <div class = "notice-wrap">
                 <a href = "#">
                     <div class = "notice-title">NOTICE</div>
-                </a>
+                                </a>    
+                                    <div>
+                    <table class = "main-table">
+                        <thead>
+                            <th>공지</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </thead>
+                        <tbody id = "tbody">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="section" id="section3">
-            <div class = "location-title">LOCATION</div>
+            <div class = "location-title">
+            	<span>LOCATION</span>
+            </div>
             <div class = "location">
             	<div id="map" style="width:1200px; height:500px; margin:0 auto;"></div>
             </div>
@@ -62,7 +80,7 @@
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
-					html += "<a href = '/themaManageView.do?themaCode=<%=thema.getThemaCode()%>'>";
+					html += "<a href ='/themaUserView.do?themaCode="+value.themaCode+"'>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";
@@ -75,21 +93,31 @@
 				html += "<span class='material-icons'>arrow_forward_ios</span>";
 				html += "</div>";
 
-				$("#thema-info-wrap").html(html);				
+				$("#thema-info-wrap").html(html);
 			}
 		});
- 	});
- 	
- 		
- 		$(document).on("click",".prev",function(){
- 				console.log($(".thema-info-box").length);
- 				
- 		});
+    	$.ajax({
+    		url:"/mainNotice.do",
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			for(let i=0;i<5;i++){
+    			console.log(data.list[i].noticeTitle);
+    			html += "<tr>";
+    			html += "<td>"+data.list[i].noticeNo+"</td>";
+    			html += "<td><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td>"+data.list[i].regDate+"</td>";
+    			html += "</tr>";
+    			}
+    			$("#tbody").html(html);
+    		}
+    	});
+    });
 		let imgNo = 0;
 
 		$(document).on("click",".prev",function(){
 			var length = $(".thema-info-box").length;
-			const width = 200;
+			const width = 140;
 		    if(imgNo != 0){
 		        imgNo--;
 		        const move = -imgNo*width;
@@ -98,12 +126,13 @@
 		});
 		$(document).on("click",".next",function(){
 			var length = $(".thema-info-box").length;
-			const width = 200;
+			const width = 140;
 		    if(imgNo != length-1){
 		        imgNo++;
 		        const move = -imgNo*width;
 		        $(".thema-info-box").css("transform","translateX("+move+"px)").css("transition-duration","1s")
 		    }
+
 		});
     
     
@@ -140,6 +169,7 @@
             title.hide(300);
         }
     });
+
 const goLocation = $("#go-location");
 
 goLocation.on("click",function(){
@@ -147,25 +177,6 @@ goLocation.on("click",function(){
     loginBox.css("display","none");
     title.hide(300);
 	page = 3;
-});
-
-
-    
-
-ul.css("width",(imgCount*width)+"px");
-$(".prev").on("click",function(){
-    if(imgNo != 0){
-        imgNo--;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
-});
-$(".next").on("click",function(){
-    if(imgNo != imgCount-1){
-        imgNo++;
-        const move = -imgNo*width;
-        ul.css("transform","translateX("+move+"px)").css("transition-duration","1s")
-    }
 });
 
 const map = new naver.maps.Map("map",{
@@ -177,13 +188,14 @@ const map = new naver.maps.Map("map",{
 		style : naver.maps.ZoomControlStyle.SMALL
 	}
 });
-
 const marker = new naver.maps.Marker({
 	position: new naver.maps.LatLng(37.533837,126.896836),
 	map : map 
 });
+window.onload=function(){
+	history.scrollRestoration = "manual"
+}
 
-	
 </script>
 </body>
 </html>

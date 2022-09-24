@@ -1,30 +1,29 @@
-package com.ngb.thema.controller;
+package com.ngb.notice.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.thema.model.vo.Thema;
-import com.ngb.thema.model.vo.ThemaTime;
-import com.ngb.thema.service.ThemaService;
+import com.google.gson.Gson;
+import com.ngb.notice.model.vo.NoticePageData;
+import com.ngb.notice.service.NoticeService;
 
 /**
- * Servlet implementation class ThemaManageTimeServlet
+ * Servlet implementation class MainNoticeServlet
  */
-@WebServlet(name = "ThemaManageTimeFrm", urlPatterns = { "/themaManageTimeFrm.do" })
-public class ThemaManageTimeFrmServlet extends HttpServlet {
+@WebServlet(name = "MainNotice", urlPatterns = { "/mainNotice.do" })
+public class MainNoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaManageTimeFrmServlet() {
+    public MainNoticeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +32,19 @@ public class ThemaManageTimeFrmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.
-		request.setCharacterEncoding("utf-8");
-		//2.
-		//3.
-		ThemaService service = new ThemaService();
-		ArrayList<ThemaTime> tmt = service.selectAllTmt();
-		//4.
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageTimeFrm.jsp");
-		view.forward(request, response);
+		//1.인코딩
+				request.setCharacterEncoding("utf-8");
+				//2.값추출
+				int reqPage = 1;
+				//3.비즈니스로직
+				NoticeService service = new NoticeService();
+				NoticePageData npd = service.selectNoticeList(reqPage);
+				
+				//4.결과처리
+				response.setContentType("application/json");
+				response.setCharacterEncoding("utf-8");
+				PrintWriter out = response.getWriter();
+				new Gson().toJson(npd,out);
 	}
 
 	/**

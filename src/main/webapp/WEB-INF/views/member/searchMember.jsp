@@ -10,6 +10,9 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
+		<div class="title-wrap">
+			<h2>아이디/비밀번호 찾기</h2>
+		</div>
 		<div class="content-box first-content show-hide">
 			<div class="center-move">
 				<div class="search-wrap">
@@ -17,11 +20,11 @@
 					<div class="searchPw">비밀번호 찾기</div>
 				</div>
 				<div class="search-content">
-					<span>이름 입력</span> <input type="text" name="searchName"
+					<span>이름</span> <input type="text" name="searchName"
 						id="searchName" placeholder="조회할 이름 입력">
 				</div>
 				<div class="search-content">
-					<span>이메일 입력</span> <input type="text" name="searchMail"
+					<span>이메일</span> <input type="text" name="searchMail"
 						id="searchMail1" placeholder="이메일 입력">
 				</div>
 				<div class="search-content">
@@ -36,35 +39,34 @@
 					<div class="searchId">아이디 찾기</div>
 					<div class="searchPw">비밀번호 찾기</div>
 				</div>
+				
 				<div class="search-content">
-					<span>ID 입력</span> <input type="text" name="searchId" id="searchId"
+					<span>아이디</span> <input type="text" name="searchId" id="searchId"
 						placeholder="비밀번호를 조회할 아이디 입력">
+						<div class="btn-box"></div>
 				</div>
 				<div class="search-content">
-					<span>이메일 입력</span> <input type="text" name="searchMail"
+					<span>이메일</span> <input type="text" name="searchMail"
 						id="searchMail2" placeholder="이메일 입력">
-						<div class="btn-box">
+					<div class="btn-box">
 						<button onclick="sendMail();" class="btn2 notsubmit">인증메일전송</button>
 					</div>
 				</div>
-
+				
 				<!-- 인증코드 -->
 				<div class="search-content">
 					<div id="auth">
-						<div>
-							<input type="text" id="authCode" placeholder="인증코드입력"
-								class="input-form">
-						</div>
-						<div class="span-box">
-                            <span id="timeZone"></span>
-                            <span id="authMsg"></span>
-                        </div>
-						<div class="btn-center">
-							<button class="btn2" id="authBtn">인증하기</button>
-						</div>
+						<span>인증코드</span>
+						<input type="text" id="authCode" placeholder="인증코드입력"
+							class="input-form">
+							<button id="authBtn">인증하기</button>
+						
 					</div>
 				</div>
-				
+				<div class="span-box">
+                            <span id="timeZone"></span>
+                            <span id="authMsg"></span>
+                </div>
 				<!-- 인증코드 -->
 
 				<div class="search-content">

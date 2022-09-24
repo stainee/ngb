@@ -12,7 +12,9 @@
 	<div class="content-wrap">
 
 		<div class="content-box">
-
+			<div class="title-wrap">
+				<h2>회원가입</h2>
+			</div>
 			<div class="tab-menu">
 				<ul class="tabstep tabstep-now ">
 					<img src="img/tabstep1.png">이용약관
@@ -91,7 +93,6 @@
 									<span id="idChkMsg"></span>
 								</div>
 							</div>
-							<hr>
 							<div class="input-wrap">
 								<div class="input-location input-backColor">
 									<label for="memberPw">비밀번호</label>
@@ -102,7 +103,6 @@
 								</div>
 								<span id="pwChkMsg"></span>
 							</div>
-							<hr>
 							<div class="input-wrap">
 								<div class="input-location input-backColor">
 									<label for="memberPw">비밀번호확인</label>
@@ -113,7 +113,7 @@
 								</div>
 								<span id="pwReChkMsg"></span>
 							</div>
-							<hr>
+
 							<div class="input-wrap">
 								<div class="input-location input-backColor">
 									<label for="memberName">이름</label>
@@ -123,7 +123,6 @@
 										class="input-form">
 								</div>
 							</div>
-							<hr>
 							<div class="input-wrap">
 								<div class="input-location input-backColor">
 									<label for="memberPhone">전화번호</label>
@@ -134,7 +133,6 @@
 								</div>
 								<span id="phoneChkMsg"></span>
 							</div>
-							<hr>
 							<div class="input-wrap">
 								<div class="input-location input-backColor">
 									<label for="memberMail">메일</label>
@@ -143,7 +141,7 @@
 									<input type="text" name="memberMail" id="memberMail"
 										class="input-form">
 								</div>
-								<div class="input-location backColor">
+								<div class="backColor mailBtn">
 									<button onclick="sendMail();" class="btn3 notsubmit">인증메일전송</button>
 								</div>
 								<div id="auth">

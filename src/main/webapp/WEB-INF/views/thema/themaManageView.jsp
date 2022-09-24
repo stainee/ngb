@@ -16,6 +16,7 @@
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
 	
+	<div class="content-wrap">
     <div class="title-wrap">테마관리</div>
     
         <div class="table-wrap">
@@ -86,6 +87,7 @@
         
         <button class="delete-btn" onclick="noticeDelete('<%=t.getThemaCode() %>');">삭제</button>
         <a class="update-btn" href="/updateThemaForm.do?themaCode=<%=t.getThemaCode()%>"><button>수정</button></a>
+    </div>
     </div>
     
     <script>

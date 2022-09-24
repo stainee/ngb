@@ -16,7 +16,9 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
-
+	
+	<div class="content-wrap">
+	
     <div class="title-wrap">테마관리</div>
     
     <div class="table-wrap">
@@ -57,7 +59,7 @@
 	                <th class="tr-1">이미지 미리보기</th>
 					<td colspan="3">
 						<div id="img-viewer">
-							<img id="img-view" width="500px">
+							<img id="img-view" width="500px" src="/upload/thema/<%=t.getThemaFilepath() %>">
 						</div>
 					</td>
 	            </tr>
@@ -88,7 +90,7 @@
         
         </form>
     </div>
-    
+    </div>
     
 	<script>
 		function loadImg(f){
@@ -111,6 +113,7 @@
 			$(".delFile").hide();
 			$(this).next().show();
 			$("[name=status]").val("delete");
+			$("#img-view").attr("src","");
 		});
 		
 		

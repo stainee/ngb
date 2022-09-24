@@ -1,39 +1,73 @@
-.tbl1{
-    border-collapse: collapse;
+
+.content-wrap{
+	width: 1400px;
+	margin-top:3vw;
+}
+
+.title-wrap{
+		width:1200px;
+		font-family: ns-bold;
+		font-weight:bold;
+		font-size:16px;	
+		padding-bottom:10px;
+}
+		
+
+/*테이블*/
+
+.tbl{
+    width: 1200px;
+    margin-top:20px;
     border-spacing: 0px;
+    border-collapse: collapse;
 }
 
-
-.tbl1 th{ 
+.tbl th,.tbl td {
+    padding: 1rem;
     text-align: center;
-    background-color: #dcdcdc;
-    width:120px;
-    border-right : 1px solid gray;
-    border-bottom: 2px solid black;
+}
+.tbl td>a {
+    text-decoration: none;
+    color : black;
 }
 
-.tbl1 td{
-    text-align: center;
-    border-bottom: 1px solid gray;
-    border-right : 1px solid gray;
+.notice-tbl a:hover{
+    text-decoration : underline;
 }
 
-.tbl1>tr>td input{
-	text-align: center;
-}
-/* 마지막 요소의 값은 지정하지 않는다 */
-
-.tbl1 th:last-of-type{
-    border-right: none;
-}
-.tbl1 td:last-of-type{
-    border-right: none;
+.notice-tbl tr{
+    border-bottom : 1px solid #ccc;
 }
 
-.tbl1{
-    margin-bottom: 100px;
+.tbl .tr-1 {
+    background-color: white;
+    border-top: 3px solid rgb(255,193,7);
+    border-bottom: 3px solid rgb(255,193,7);
 }
-.manageMemTbl input{
-	text-align: center;
-	outline: none;
+
+.tbl .tr-3 {
+    background-color: rgba(255, 255, 255, 1);
+    font-family: ns-thin;
+}
+
+.tbl.tbl-hover .tr-3:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tr-3>td>a{
+	    font-family: ns-thin;
+}
+
+/*버튼*/
+.manage-btn{
+	width: 50px;
+	height: 30px;
+	background-color: rgb(255,193,7);
+	font-family: ns-thin;
+	color:white;
+	border:none;
+}
+
+.manage-btn:hover{
+	cursor: pointer;
 }

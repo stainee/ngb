@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <link rel="stylesheet" href="/css/reserveManage.css">
+    <link rel="stylesheet" href="/css/notosans.css">
   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   	
    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
@@ -41,6 +42,10 @@
 </head>
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
+	
+	<div class="content-wrap">
+    <div class="title-wrap">예약관리</div>
+    
 	<form id="frm">
 		<input type="hidden" name= 'playDate' id="playDate"/>
 		<input type="hidden" name= 'peopleMax' id="peopleMax"/>
@@ -52,21 +57,11 @@
 		<input type="hidden" name= 'time' id="time"/>
 	</form>
 			
-	<div class="content-wrap">
-		<div>
-		<select id = "selectThema">
-			<option hidden = "" disabled = "disabled" selected = "selected">테마선택</option>
-			<%for(Thema t : list){ %>
-			<option id = "option" value = "<%=t.getThemaCode()%>"><%=t.getThemaName() %>
-			</option>
-			<%} %>
-		</select>
-		</div>
-		<div>
-			<input type="text" class = "input-form" id="datepicker" size="15"/>
+		<div style = "height:50px; line-height:50px; font-weight:900; font-size:15px;">
+			날짜검색 <input type="text" id="datepicker" size="15" style = "border:2px solid black; height:20px; line-height:50px;"/>
 		</div>
 		<table class="tbl1" id ="table">
-		</div>
+
 			<thead>
 					<th>번호</th>
 		        	<th>시간</th>
@@ -85,6 +80,8 @@
 	        </tbody>
 	    </table>
     </div>
+    
+
    	<script>
     	const selectDate = $("#datepicker");
     	const selectThema = $("#selectThema");
@@ -92,7 +89,7 @@
     	function selectDateReserve(select){
     		$.ajax({
     			url : "/selectDateReserve.do",
-    			type : "get",
+    			type : "post",
     			data : {select:select},
     			success : function(data){
     				console.log(data);
@@ -140,7 +137,7 @@
      	function selectThemaReserve(){
      		$.ajax({
      			url : "/selectThemaReserve.do",
-     			type : get,
+     			type : "post",
      			data : {select:select}
 
      		});

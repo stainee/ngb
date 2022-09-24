@@ -16,7 +16,7 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 function updateReserve(){
 	$.ajax({
 		url : "/updateReserve.do",
-		type : "get",
+		type : "post",
 		data : {
 			reserveNo:$("#reserveNo").val(),
 			reserveName:$("#reserveName").val(),

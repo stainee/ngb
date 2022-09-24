@@ -6,15 +6,15 @@ let regCheckMail = 0;
 $(".searchId").on("click", function() {
 	$(".first-content").removeClass("show-hide");
 	$(".second-content").addClass("show-hide");
-	$(".searchId").css("background-color", "gray");
-	$(".searchPw").css("background-color", "rgb(50,50,50)");
+	$(".searchId").css("background-color", "white").css("color","rgb(50,50,50");
+	$(".searchPw").css("background-color", "rgb(50,50,50)").css("color", "white");
 });
 
 $(".searchPw").on("click", function() {
 	$(".second-content").removeClass("show-hide");
 	$(".first-content").addClass("show-hide");
-	$(".searchPw").css("background-color", "gray");
-	$(".searchId").css("background-color", "rgb(50,50,50)");
+	$(".searchPw").css("background-color", "white").css("color", "black").css("font-weight", "700")
+	$(".searchId").css("background-color", "rgb(50,50,50)").css("color","white");
 });
 
 $(".searchId").click();
@@ -103,8 +103,9 @@ $(".second-btn").on("click", function() {
 	});
 });
 
-//인증 메일 관련
 
+//인증 메일 관련
+const auth = $(".search-content>#auth");
 let mailCode;
 function sendMail() {
 	const memberMail = $("#searchMail2").val();
@@ -119,7 +120,11 @@ function sendMail() {
 				mailCode = data;
 				//메일이 전송된 시점
 				//에서 시간이 흐름
+				auth.css("display","flex");
+				$(".modal-wrap").css("display", "none");
+				$(".search-content:last-child").css("margin-top","21px");
 				authTime();
+				
 			}
 		}
 	});
@@ -130,7 +135,7 @@ function authTime() {
 	$("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
 	intervalId = window.setInterval(function() {
 		timeCount();
-	}, 1000);
+	}, 100);
 }
 
 function timeCount() {
@@ -163,8 +168,8 @@ function timeCount() {
 
 $("#authBtn").on("click", function() {
 	const inputValue = $("#authCode").val();
+	$("#authMsg").show();
 	if (mailCode != null) {
-		$("#authMsg").show();
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");
@@ -177,9 +182,9 @@ $("#authBtn").on("click", function() {
 			regCheckMail = 0;
 		}
 	} else {
+		$("#timeZone").hide();
 		$("#authMsg").text("인증시간만료");
 		$("#authMsg").css("color", "red");
 		regCheckMail = 0;
 	}
-
 });

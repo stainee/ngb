@@ -5,8 +5,9 @@ body{
 
 .header a{
     color:white;
-
+    text-decoration:none;
 }
+
 .header-wrap{
     position: fixed;
     top:0;

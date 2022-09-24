@@ -37,7 +37,7 @@ Notice n = (Notice) request.getAttribute("n");
 			</tr>
 			<!-- 로그인 되어있고 작성자랑 세션의 아이디가 같을때 라는 조건 -->
 			<%
-			if (m != null && n.getNoticeWriter().equals(m.getMemberId())) {
+			if (m != null && m.getMemberLevel() == 0) {
 			%>
 			<tr>
 				<th colspan="6">
@@ -50,5 +50,12 @@ Notice n = (Notice) request.getAttribute("n");
 		</table>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
+	<script>
+	function noticeDelete(noticeNo){
+		if(confirm("공지사항을 삭제하시겠습니까?")){
+			location.href="/noticeDelete.do?noticeNo="+noticeNo;
+		}
+	}
+	</script>
 </body>
 </html>

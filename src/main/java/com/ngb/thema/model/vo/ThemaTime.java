@@ -1,20 +1,20 @@
 package com.ngb.thema.model.vo;
 
+import java.util.ArrayList;
+
 public class ThemaTime {
 	private String themaCode;
 	private String themaName;
-	private int timeCode;
-	private String time;
+	private ThemaTimeFrm timeList;
 	public ThemaTime() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ThemaTime(String themaCode, String themaName, int timeCode, String time) {
+	public ThemaTime(String themaCode, String themaName, ThemaTimeFrm timeList) {
 		super();
 		this.themaCode = themaCode;
 		this.themaName = themaName;
-		this.timeCode = timeCode;
-		this.time = time;
+		this.timeList = timeList;
 	}
 	public String getThemaCode() {
 		return themaCode;
@@ -28,17 +28,11 @@ public class ThemaTime {
 	public void setThemaName(String themaName) {
 		this.themaName = themaName;
 	}
-	public int getTimeCode() {
-		return timeCode;
+	public ThemaTimeFrm getTimeList() {
+		return timeList;
 	}
-	public void setTimeCode(int timeCode) {
-		this.timeCode = timeCode;
-	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setTimeList(ThemaTimeFrm timeList) {
+		this.timeList = timeList;
 	}
 	
 }

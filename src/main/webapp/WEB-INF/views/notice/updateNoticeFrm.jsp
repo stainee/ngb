@@ -28,7 +28,10 @@
 					<input type="text" name="noticeTitle" class="input-form" value="<%=n.getNoticeTitle()%>">
 				</td>
 			</tr>
-			
+			<tr>
+				<th></th>
+				<td></td>
+			</tr>
 			<tr>
 				
 				<td colspan="4" style="text-align: left;">

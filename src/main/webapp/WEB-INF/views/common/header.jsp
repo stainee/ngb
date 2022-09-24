@@ -19,8 +19,8 @@
             <li id = "logo-wrap"><a href="/index.jsp"><img src="/img/logo2.png"></a></li>
             <ul class = "notice menuwrap">
                 <div>
-                    <li><a href = "/noticeList.do">공지사항</a></li>
-                    <li><a href = "/noticeList.do">NOTICE</a></li>
+                    <li><a href = "/noticeList.do?reqPage=1">공지사항</a></li>
+                    <li><a href = "/noticeList.do?reqPage=1">NOTICE</a></li>
                 </div>
             </ul>
             <ul class = "thema menuwrap">
@@ -39,7 +39,7 @@
             <div>
                 <div>
                     <li><a href = "/findReserveFrm.do">예약확인</a></li>
-                    <li><a href = "/findReserveFrm.do">SERCH</a></li>
+                    <li><a href = "/findReserveFrm.do">SEARCH</a></li>
                 </div>
             </div>
             </ul>

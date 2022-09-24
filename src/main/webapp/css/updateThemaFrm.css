@@ -5,7 +5,6 @@
 		font-family: ns-bold;
 		font-weight:bold;
 		font-size:16px;	
-		margin-left:370px;
 		padding-bottom:10px;
 		border-bottom: 3px solid rgb(255,193,7);
 	}
@@ -50,13 +49,10 @@
 	
 	.table-wrap{
 	    margin-top: 20px;
-	    margin-left: 250px;
-	    padding-left:100px;
 	}
 	
 	
 	.tbl{
-	    margin-left: 20px;
 	    width: 1200px;
 	    border-spacing: 0px;
 	    border-collapse: collapse;
