@@ -135,7 +135,7 @@ function authTime() {
 	$("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
 	intervalId = window.setInterval(function() {
 		timeCount();
-	}, 1000);
+	}, 100);
 }
 
 function timeCount() {
@@ -168,8 +168,8 @@ function timeCount() {
 
 $("#authBtn").on("click", function() {
 	const inputValue = $("#authCode").val();
+	$("#authMsg").show();
 	if (mailCode != null) {
-		$("#authMsg").show();
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");
@@ -182,9 +182,9 @@ $("#authBtn").on("click", function() {
 			regCheckMail = 0;
 		}
 	} else {
+		$("#timeZone").hide();
 		$("#authMsg").text("인증시간만료");
 		$("#authMsg").css("color", "red");
 		regCheckMail = 0;
 	}
-
 });
