@@ -10,204 +10,21 @@
 <head>
 <meta charset="UTF-8">
 <title>테마 시간 등록</title>
-<style>
-
-.tap-wrap{
-	width:1800px;
-    margin: 30px auto;
-}
-
-.tap-ul{
-	width:1200px;
-	border-bottom: 1px solid rgb(255,193,7);
-	list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    
-}
-
-.tap-ul>li{
-	width:200px;
-	height: 50px;
-	line-height:50px;
-	text-align: center;
-	float:left;
-	background-color:rgb(255,193,7);
-	box-sizing: border-box;
-	font-weight: bold;
-	font-family: ns-bold;
-}
-
-
-.tap-ul>li:hover{
-	cursor:pointer;
-}
-
-
-.btn2{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	box-shadow: 0.5px 0.5px 0.5px 0.5px black;
-	cursor: pointer;
-	font-size:20px;
-}
-
-.btn2:active{
-	width:100px;
-	height:50px;
-	background-color: rgb(255,193,7);
-	border:1px solid black;
-	box-shadow: none;
-}
-.addThemaCode{
-	text-align: center;
-	width: 160px;
-}
-
-/*테이블*/
-.table-wrap{
-	width:1200px;
-    flaot:left;
-}
-
-
-.tbl{
-    width: 1200px;
-    border-spacing: 0px;
-    border-collapse: collapse;
-}
-.tbl th,.tbl td {
-    padding: 0.1rem;
-    text-align: center;
-}
-.tbl td>a {
-    text-decoration: none;
-    color : black;
-}
-
-.notice-tbl a:hover{
-    text-decoration : underline;
-}
-.notice-tbl tr{
-    border-bottom : 1px solid #ccc;
-}
-.notice-tbl tr>td:nth-child(2){
-    text-align : center;
-}
-
-.tbl .tr-1 {
-    background-color: white;
-    border-top: 3px solid rgb(255,193,7);
-    border-bottom: 3px solid rgb(255,193,7);
-}
-.tbl .tr-2 {
-    background-color: rgba(57, 62, 70, 0.1);
-    
-}
-.tbl .tr-3 {
-    background-color: rgba(255, 255, 255, 1);
-    
-}
-.tbl .tr-4 {
-    background-color: #664d02;
-}
-.tbl.tbl-hover .tr-3:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-.timeBtn-wrap{
-	display: flex;
-	margin-left: -20px;
-}
-
-.reserve-btn{
-	display: inline-block;
-    margin-top: 20px;
-    width:80px;
-	height:40px;
-	background-color: rgb(230,230,230);
-	box-shadow: 0px 0.5px 0.5px 0.5px black;
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:20px;
-	text-decoration: none;
-}
-.reserve-btn1{
-	margin-left: 1050px;
-	margin-right:30px;
-}
-.reserve-btn2{
-}
-
-.reserve-btn:link{
-	color:black;
-}
-
-.reserve-btn:visited{
-	color:black;
-}
-
-.tr-3 input{
-	width: 90px;
-	height: 20px;
-	border: none;
-	text-align: center;
-	outline: none;
-}
-
-.timeBtn-wrap>a{
-	width: 80px;
-	height:40px;
-}
-
-.content-wrap{
-	width: 1400px;
-	/*margin-left:20vw;*/
-	margin-top:3vw;
-}
-
-.upload-a{
-	text-decoration: none;
-	width:80px;
-}
-
-.upload-btn{
-    margin-top: 20px;
-    width:80px;
-	height:40px;
-	background-color: rgb(55,55,55);
-	box-shadow: 0px 0.5px 0.5px 0.5px black;
-	color: white;
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:15px;
-	float:right;
-}
-
-.cancel-btn{
-    margin-top: 20px;
-    width:80px;
-	height:40px;
-	background-color: rgb(55,55,55);
-	box-shadow: 0px 0.5px 0.5px 0.5px black;
-	color: white;
-	border-radius: 50px;
-	cursor: pointer;
-	font-size:15px;
-}
-
-</style>
+<link rel = "stylesheet" href = "/css/notosans.css">
+<link rel = "stylesheet" href = "/css/themaTimeAddFrm.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<div class="content-wrap">
+	
     <div class="tap-wrap">
          <ul class="tap-ul">
          	<li>테마관리</li>
          	<li>시간관리</li>
          </ul>
     </div>
+    
+	<div class="title-wrap">테마별 시간 등록</div>
     
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
