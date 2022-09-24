@@ -93,5 +93,8 @@
 		background-color: rgb(66, 64, 64);
 		color:white;
 	}*/
-	
+	#noticeContent{
+		text-align: start;
+		padding-left : 10px;
+	}
 	
