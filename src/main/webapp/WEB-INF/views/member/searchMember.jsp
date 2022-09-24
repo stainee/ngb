@@ -39,6 +39,7 @@
 					<div class="searchId">아이디 찾기</div>
 					<div class="searchPw">비밀번호 찾기</div>
 				</div>
+				
 				<div class="search-content">
 					<span>아이디</span> <input type="text" name="searchId" id="searchId"
 						placeholder="비밀번호를 조회할 아이디 입력">
@@ -57,9 +58,7 @@
 					<div id="auth">
 						<input type="text" id="authCode" placeholder="인증코드입력"
 							class="input-form">
-						<div class="btn-center">
-							<button class="btn2" id="authBtn">인증하기</button>
-						</div>
+							<button id="authBtn">인증하기</button>
 						<div class="span-box">
                             <span id="timeZone"></span>
                             <span id="authMsg"></span>
