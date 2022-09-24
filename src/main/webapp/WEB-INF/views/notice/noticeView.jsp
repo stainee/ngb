@@ -37,7 +37,7 @@ Notice n = (Notice) request.getAttribute("n");
 			</tr>
 			<!-- 로그인 되어있고 작성자랑 세션의 아이디가 같을때 라는 조건 -->
 			<%
-			if (m != null && n.getNoticeWriter().equals(m.getMemberId())) {
+			if (m != null && m.getMemberLevel() == 0) {
 			%>
 			<tr>
 				<th colspan="6">
