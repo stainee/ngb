@@ -20,12 +20,12 @@
 	text-align: center;
 }
 
-.tbl {
+table {
 	padding-top: 100px;
 	border-collapse: collapse;
 }
 
-.tbl th {
+table th {
 	text-align: center;
 	background-color: rgb(66, 64, 64);
 	color: white;
@@ -43,7 +43,7 @@
 	border-bottom: 1px solid rgb(66, 64, 64);
 }
 
-.tbl td {
+table td {
 	text-align: center;
 	background-color: white;
 	color: rgb(66, 64, 64);
@@ -60,17 +60,20 @@
 	text-decoration: underline;
 }
 
+/*
 .notice-tbl tr>td:nth-child(2) {
 	text-align: left;
 	padding-left: 15px;
 }
+*/
+
+
 	
 	table [type=submit]{
 	width:200px;
 	height:50px;
 	
-	background-color: rgb(66, 64, 64);
-	color:white;
+	
 	cursor: pointer;
 	font-size  :17px;
 	font-weight : 700;
@@ -87,5 +90,14 @@
     outline: none;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+#noticeContent{
+	background-color : white;
+	
+}
+
+table tr {
+	border-bottom: 1px solid rgb(66, 64, 64);
 }
 	

@@ -42,7 +42,7 @@ public class SendReserveMail2Servlet extends HttpServlet {
 				ReserveMailSender sender = new ReserveMailSender(); //메일 보내기
 				String randomCode = sender.reserveSendMail2(reserveMail);
 				//System.out.println(randomCode);
-				
+				System.out.println(reserveMail);
 				
 				//4.결과처리
 				

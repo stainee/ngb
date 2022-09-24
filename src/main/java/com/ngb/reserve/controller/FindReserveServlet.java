@@ -1,7 +1,7 @@
 package com.ngb.reserve.controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.ngb.member.model.vo.Member;
 import com.ngb.reserve.model.vo.Reserve;
 import com.ngb.reserve.service.ReserveService;
+
+
 
 /**
  * Servlet implementation class FindReserveServlet
@@ -54,25 +57,36 @@ public class FindReserveServlet extends HttpServlet {
 			Reserve reser = service.findReserve(reserve);
 			// ㄴ위에서 담은 것 넘겨줌
 			// 4.결과처리 (service에서 reser받아옴)
-			// RequestDispatcher view =
-			// request.getRequestDispatcher("/WEB-INF/views/reserve/reserveView.jsp");
-			// request.setAttribute("reserve", reser);
-			// reserveView.jsp로 값 보내주기 //ㄴreserve 타입의 reser 객체
+//			 RequestDispatcher view =
+//			 request.getRequestDispatcher("/WEB-INF/views/reserve/reserveView.jsp");
+//			 request.setAttribute("reserve", reser);
+			 //reserveView.jsp로 값 보내주기 //ㄴreserve 타입의 reser 객체
+			 
+//			 
+//			PrintWriter out = response.getWriter();
+//			Gson gson = new Gson();
+//			gson.toJson(reser,out);
+////			System.out.println(reser);
+						//ㄴ사용자에게 전달하고 싶은 객체
+			//new Gson().toJson(reser,out);
+	
+			
 			if (reser != null) {
-				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveView.jsp");
+				RequestDispatcher view1 = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveView.jsp");
 				request.setAttribute("reserve", reser);
 				// reserveView.jsp로 값 보내주기 //ㄴreserve 타입의 reser 객체
-				view.forward(request, response);
+				view1.forward(request, response);
 			} else {
-				RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+				RequestDispatcher view2 = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 				request.setAttribute("title", "회원찾기 실패");
 				//request.setAttribute("msg", "성함과 전화번호을 확인해주세요");
 				request.setAttribute("msg", "성함과 예약번호을 확인해주세요");
 				request.setAttribute("icon", "error");
 				request.setAttribute("loc", "/findReserveFrm.do");
 				// 최종목적지
-				view.forward(request, response);
+				view2.forward(request, response);
 			}
+			
 		}
 	
 

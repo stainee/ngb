@@ -33,7 +33,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<th>내용</th>
+				
 				<td colspan="4" style="text-align: left;">
 					<textarea name="noticeContent" id="noticeContent"><%=n.getNoticeContent() %></textarea>
 				</td>
