@@ -103,8 +103,9 @@ $(".second-btn").on("click", function() {
 	});
 });
 
-//인증 메일 관련
 
+//인증 메일 관련
+const auth = $(".search-content>#auth");
 let mailCode;
 function sendMail() {
 	const memberMail = $("#searchMail2").val();
@@ -119,7 +120,11 @@ function sendMail() {
 				mailCode = data;
 				//메일이 전송된 시점
 				//에서 시간이 흐름
+				auth.css("display","flex");
+				$(".modal-wrap").css("display", "none");
+				$(".search-content:last-child").css("margin-top","21px");
 				authTime();
+				
 			}
 		}
 	});

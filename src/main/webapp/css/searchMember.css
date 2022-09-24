@@ -57,6 +57,9 @@
 .second-content .search-content:nth-of-type(3){
 	margin-top:8px;
 }
+.second-content .search-content:last-child{
+	margin-top:90px;
+}
 
 
 .content-box>.center-move>.search-wrap{
@@ -85,12 +88,25 @@
 	border-bottom:4px solid white;
 }
 .content-box>.center-move>.search-content{
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .content-box>.center-move>.search-content>span{
+    background-color: #565454;
+    width: 150px;
+    color: white;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-right:4px solid rgb(50,50,50);
+}
+.content-box>.center-move>.search-content>#auth{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.content-box>.center-move>.search-content>#auth>span{
     background-color: #565454;
     width: 150px;
     color: white;
@@ -146,7 +162,9 @@
 .show-hide{
     display: none;
 }
-
+.span-box{
+	display: block;
+}
 
 
 /*모달*/
@@ -225,16 +243,16 @@
    margin: 0 auto;
    display :inline;
    width:100%;
+   border-top: 8px solid rgb(50,50,50);
 }
 
 #authCode{
-   margin-left: 150px;
    width:250px;
    display:inline-block;
 }
 
 #authBtn{
-   width:100px;
+   width:80px;
     height:40px;
     background-color: rgb(255,193,7);
     cursor: pointer;
@@ -254,7 +272,9 @@
 }
 
 .span-box {
-	overflow:hidden;
+	display:block;
+	padding-top : 10px;
+	padding-left : 210px;
 }
 
 

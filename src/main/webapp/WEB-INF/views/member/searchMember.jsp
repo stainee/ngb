@@ -56,16 +56,17 @@
 				<!-- 인증코드 -->
 				<div class="search-content">
 					<div id="auth">
+						<span>인증코드</span>
 						<input type="text" id="authCode" placeholder="인증코드입력"
 							class="input-form">
 							<button id="authBtn">인증하기</button>
-						<div class="span-box">
-                            <span id="timeZone"></span>
-                            <span id="authMsg"></span>
-                        </div>
+						
 					</div>
 				</div>
-				
+				<div class="span-box">
+                            <span id="timeZone"></span>
+                            <span id="authMsg"></span>
+                </div>
 				<!-- 인증코드 -->
 
 				<div class="search-content">
