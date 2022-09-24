@@ -1,0 +1,167 @@
+@charset "UTF-8";
+.content-wrap{
+	width: 1400px;
+	/*margin-left:20vw;*/
+	margin-top:3vw;
+}
+
+.tap-wrap{
+	width:1800px;
+    margin: 30px auto;
+}
+
+.tap-ul{
+	width:1300px;
+	border-bottom: 1px solid rgb(255,193,7);
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+.tap-ul>li{
+	width:200px;
+	height: 50px;
+	line-height:50px;
+	text-align: center;
+	float:left;
+	background-color:rgb(255,193,7);
+	box-sizing: border-box;
+	font-weight: bold;
+	font-family: ns-bold;
+}
+
+
+.tap-ul>li:hover{
+	cursor:pointer;
+}
+
+/*타이틀*/
+	.title-wrap{
+		margin-left:5px;
+		width:1200px;
+		font-family: ns-bold;
+		font-weight:bold;
+		font-size:16px;	
+		padding-bottom:10px;
+	}
+	
+/*테이블*/
+.table-wrap{
+	width:1400px;
+    float:left;
+}
+
+.tbl{
+    width: 1200px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.tbl th,.tbl td {
+    padding: 0.1rem;
+    text-align: center;
+}
+.tbl td>a {
+    text-decoration: none;
+    color : black;
+}
+
+.notice-tbl a:hover{
+    text-decoration : underline;
+}
+.notice-tbl tr{
+    border-bottom : 1px solid #ccc;
+}
+.notice-tbl tr>td:nth-child(2){
+    text-align : center;
+}
+
+.tbl .tr-1 {
+	height:50px;
+    background-color: white;
+    border-top: 3px solid rgb(255,193,7);
+    border-bottom: 3px solid rgb(255,193,7);
+}
+
+.tbl .tr-3 {
+    background-color: rgba(255, 255, 255, 1);
+    height:50px;
+}
+
+.tbl.tbl-hover .tr-3:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.timeBtn-wrap{
+	width:1200px;
+	height: 300px;
+}
+
+.tr-3 input{
+	width: 90px;
+	height: 20px;
+	border: none;
+	text-align: center;
+	outline: none;
+}
+.timeDelBtn{
+	height: 30px;
+	width: 80px;
+	background-color: rgb(255,193,7);
+	border:none;
+	color: white;
+	font-family:ns-thin;
+}
+
+.update-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+	float:right;
+	margin-right:100px;
+}
+
+.cancel-btn{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: rgb(55,55,55);
+	box-shadow: 0px 0.5px 0.5px 0.5px black;
+	color: white;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+	float:right;
+	margin-right:20px;
+}
+
+.update-btn:hover{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+
+.cancel-btn:hover{
+    margin-top: 20px;
+    width:80px;
+	height:40px;
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0.2px 0.2px 0.2px rgb(55,55,55);
+	border-radius: 50px;
+	cursor: pointer;
+	font-size:15px;
+}
+

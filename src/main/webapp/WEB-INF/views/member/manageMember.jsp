@@ -12,10 +12,12 @@
 <title>회원관리</title>
 </head>
 	<link rel="stylesheet" href="/css/memberManage.css">
+	<link rel = "stylesheet" href = "/css/notosans.css">
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<div class="content-wrap">
-		<div>회원목록</div>
+	<div class="title-wrap">회원 목록</div>
+		
 		<%-- 우선순위 나중
 		<div>
 			<select>
@@ -26,8 +28,9 @@
 			</select>
 		</div>
 		--%>
-			<table class="tbl1 tbl91">
-		        <tr>
+	
+			<table class="tbl tbl-hover notice-tbl">
+		        <tr class="tr-1">
 		        	<th>회원번호</th>
 		        	<th>이름</th>
 		            <th>아이디</th>
@@ -39,7 +42,7 @@
 		            <th>관리자모드</th>
 		        </tr>
 			    <%for(Member m : list) {%>
-		        <tr>
+		        <tr class="tr-3">
 		        	<td>
 		        		<%=m.getMemberNo() %>
 		        		<input type = "hidden" name = "memberNo" value = <%=m.getMemberNo() %>>
@@ -78,11 +81,12 @@
 		        		<input type = "hidden" name = "enrollDate" value = <%=m.getEnrollDate() %>>
 		        	</td>
 		        	<td>
-		        		<a href="/editMemberManageFrm.do?memberNo=<%=m.getMemberNo()%>"><button>관리</button></a>
+		        		<a href="/editMemberManageFrm.do?memberNo=<%=m.getMemberNo()%>"><button class="manage-btn">관리</button></a>
 		        	</td>
 	        	</tr>
 	        	<%} %>
 	    	</table>
-    </div>
+	    </div>
+ 
 </body>
 </html>

@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="/css/editMemberManageFrm.css">
+	<link rel = "stylesheet" href = "/css/notosans.css">
 <style>
 </style>
 <script type="text/javascript">
@@ -90,10 +92,11 @@ function deleteMember(){
 <link rel="stylesheet" href="/css/memberManage.css">
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
+
 	<div class="content-wrap">
-	    
-			<table class="tbl1 manageMemTbl">
-		        <tr>
+	 		<div class="title-wrap">테마별 시간 관리</div>   
+			<table class="tbl manageMemTbl">
+		        <tr class="tr-1">
 		        	<th>회원번호</th>
 		        	<th>이름</th>
 		            <th>아이디</th>
@@ -103,7 +106,7 @@ function deleteMember(){
 		            <th>등급</th>
 		            <th>가입일</th>	
 		        </tr>
-		        <tr>
+		        <tr class="tr-3">
 		        	<td class="readonlyTd">
 		        		<input type = "text" id="memberNo" name = "memberNo" value = <%=m.getMemberNo()%> style="background-color:#dcdcdc" readonly>
 		        	</td>
@@ -137,27 +140,12 @@ function deleteMember(){
 		        		<input type = "date" name = "enrollDate" value = <%=m.getEnrollDate()%> style="background-color:#dcdcdc" disabled>
 		        	</td>
 		        </tr>
-		        <tr id="manageBtnWrap">
-		        	<td colspan="4" style="border-right:none; border-bottom: none;">
-						<button onclick="updateMember()"
-								style="width:100px;
-								height:50px;
-								background-color: #fff;
-								box-shadow: 1px 1px gray;
-								cursor: pointer;
-								font-size:20px;">수정완료</button>    	
-		        	</td>
-		        	<td colspan="4" style="border-left:none; border-bottom: none;">
-							<button onclick="deleteMember()" id="delMemBtn" style="width:100px;
-								height:50px;
-								background-color: #fff;
-								box-shadow: 1px 1px gray;
-								cursor: pointer;
-								font-size:20px;">회원탈퇴</button>   	
-		        	</td>
-				</tr>
-			</table>
+		    
+		        </table>	
+				<button class="doneUpdate" onclick="updateMember()">수정완료</button>    	
 		
+				<button class="deleteMember"onclick="deleteMember()" id="delMemBtn">회원탈퇴</button>   	
+		        	
 	</div>
 </body>
 </html>
