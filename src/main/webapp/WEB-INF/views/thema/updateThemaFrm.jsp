@@ -59,7 +59,7 @@
 	                <th class="tr-1">이미지 미리보기</th>
 					<td colspan="3">
 						<div id="img-viewer">
-							<img id="img-view" width="500px">
+							<img id="img-view" width="500px" src="/upload/thema/<%=t.getThemaFilepath() %>">
 						</div>
 					</td>
 	            </tr>
@@ -113,6 +113,7 @@
 			$(".delFile").hide();
 			$(this).next().show();
 			$("[name=status]").val("delete");
+			$("#img-view").attr("src","");
 		});
 		
 		
