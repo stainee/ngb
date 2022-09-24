@@ -28,6 +28,7 @@
                         <span><a href="/signupFrm.do">회원가입</a></span>
                         <%}else{ %>
                         <span><a href="/logout.do">로그아웃</a></span>
+                        <span><a href="/reserveManage.do">관리자</a></span>
                 		<%} %>
                     </div>
                     <div class="sub-menu"></div>
@@ -62,15 +63,16 @@
             </div>
         </div>
         <div class="section" id="section3">
-            <div class = "location-title">LOCATION</div>
+            <div class = "location-title">
+            	<span>LOCATION</span>
+            </div>
             <div class = "location">
             	<div id="map" style="width:1200px; height:500px; margin:0 auto;"></div>
             </div>
 	<%@include file = "/WEB-INF/views/common/footer.jsp" %>
     </div>
     <script>
-    window.onload = function(){
-    	scroll
+    $(document).ready(function(){
 		$.ajax({
 			url: "/mainThemaPrint.do",
 			success: function(data){
@@ -78,7 +80,7 @@
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
-					html += "<a href ='#'>";
+					html += "<a href ='/themaUserView.do?themaCode="+value.themaCode+"'>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";
@@ -97,43 +99,25 @@
     	$.ajax({
     		url:"/mainNotice.do",
     		success:function(data){
+    			console.log(data);
     			var html = "";
     			for(let i=0;i<5;i++){
     			console.log(data.list[i].noticeTitle);
     			html += "<tr>";
     			html += "<td>"+data.list[i].noticeNo+"</td>";
-    			html += "<td><a>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
     			html += "<td>"+data.list[i].regDate+"</td>";
     			html += "</tr>";
     			}
     			$("#tbody").html(html);
     		}
     	});
- 	};
-    /*
-    $(document).ready(function(){
-    	$.ajax({
-    		url:"/mainNotice.do",
-    		success:function(data){
-    			var html = "";
-    			for(let i=0;i<5;i++){
-    			console.log(data.list[i].noticeTitle);
-    			html += "<tr>";
-    			html += "<td>"+data.list[i].noticeNo+"</td>";
-    			html += "<td><a>"+data.list[i].noticeTitle+"</a></td>";
-    			html += "<td>"+data.list[i].regDate+"</td>";
-    			html += "</tr>";
-    			}
-    			$("#tbody").html(html);
-    		}
-    	})
     });
-    */
 		let imgNo = 0;
 
 		$(document).on("click",".prev",function(){
 			var length = $(".thema-info-box").length;
-			const width = 200;
+			const width = 140;
 		    if(imgNo != 0){
 		        imgNo--;
 		        const move = -imgNo*width;
@@ -142,7 +126,7 @@
 		});
 		$(document).on("click",".next",function(){
 			var length = $(".thema-info-box").length;
-			const width = 200;
+			const width = 140;
 		    if(imgNo != length-1){
 		        imgNo++;
 		        const move = -imgNo*width;
@@ -185,6 +169,7 @@
             title.hide(300);
         }
     });
+
 const goLocation = $("#go-location");
 
 goLocation.on("click",function(){
@@ -203,11 +188,14 @@ const map = new naver.maps.Map("map",{
 		style : naver.maps.ZoomControlStyle.SMALL
 	}
 });
-
 const marker = new naver.maps.Marker({
 	position: new naver.maps.LatLng(37.533837,126.896836),
 	map : map 
 });
+window.onload=function(){
+	history.scrollRestoration = "manual"
+}
+
 </script>
 </body>
 </html>

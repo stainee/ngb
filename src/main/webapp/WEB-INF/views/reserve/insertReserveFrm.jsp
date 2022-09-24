@@ -36,7 +36,7 @@ function go_insert(){
 	console.log($("#reserveMail").val());
 	$.ajax({
 		url : "/updateReserve.do",
-		type : "get",
+		type : "post",
 		data : {
 			reserveNo:$("#reserveNo").val(),
 			timeCode:$("#timeCode").val(),

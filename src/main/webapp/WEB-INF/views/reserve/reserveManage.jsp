@@ -57,17 +57,8 @@
 		<input type="hidden" name= 'time' id="time"/>
 	</form>
 			
-		<div>
-			<select id = "selectThema">
-				<option hidden = "" disabled = "disabled" selected = "selected">테마선택</option>
-				<%for(Thema t : list){ %>
-				<option id = "option" value = "<%=t.getThemaCode()%>"><%=t.getThemaName() %>
-				</option>
-				<%} %>
-			</select>
-		</div>
-		<div>
-			<input type="text" class = "input-form" id="datepicker" size="15"/>
+		<div style = "height:50px; line-height:50px; font-weight:900; font-size:15px;">
+			날짜검색 <input type="text" id="datepicker" size="15" style = "border:2px solid black; height:20px; line-height:50px;"/>
 		</div>
 		<table class="tbl1" id ="table">
 
@@ -98,7 +89,7 @@
     	function selectDateReserve(select){
     		$.ajax({
     			url : "/selectDateReserve.do",
-    			type : "get",
+    			type : "post",
     			data : {select:select},
     			success : function(data){
     				console.log(data);
@@ -146,7 +137,7 @@
      	function selectThemaReserve(){
      		$.ajax({
      			url : "/selectThemaReserve.do",
-     			type : get,
+     			type : "post",
      			data : {select:select}
 
      		});
