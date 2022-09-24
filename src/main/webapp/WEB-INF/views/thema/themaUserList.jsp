@@ -19,7 +19,7 @@
 	<div class="content-wrap">
 			
 			<div class="title-wrap">
-				<h2>ABOUT THEMA<h2>
+				<h2>THEMA LIST<h2>
 			</div>
 		
 		        <form action="/searchThema.do" method="post" class="thema-select-wrap" >

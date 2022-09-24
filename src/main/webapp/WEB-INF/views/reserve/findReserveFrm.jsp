@@ -18,8 +18,8 @@
 <%@include file ="/WEB-INF/views/common/header.jsp" %>
 <div class="content-wrap">
 <div class="reserv_find_wrap">
-        <div class="title-box">
-            <h1>예약확인</h1>
+        <div class="title-wrap">
+            <h2>SEARCH</h2>
         </div>
         <div class="input-wrap">
             <form name="findReserveFrm" action="/findReserve.do" method="post" id="reserv_find">

@@ -1,7 +1,22 @@
 @charset "UTF-8";
 
-.title-box h1{
-	color:white;
+.title-wrap{
+	display: flex;
+    justify-content: center;
+   	border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding-top: 80px;
+    color: white;
+    width:60%;
+    margin:0 auto;
+    
+}
+
+.title-wrap h2{
+	margin-bottom:50px;
+	color : white;
+	font-size:2.5rem;
 }
 .reserv_find_wrap{
     width: 60%;

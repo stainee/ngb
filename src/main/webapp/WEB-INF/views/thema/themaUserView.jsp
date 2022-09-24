@@ -18,7 +18,7 @@
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	
 		<div class="title-wrap">
-			<span class="title-span">ABOUT THEMA</span>
+			<h2>THEMA DETAIL</h2>
 		</div>
 	
 	
