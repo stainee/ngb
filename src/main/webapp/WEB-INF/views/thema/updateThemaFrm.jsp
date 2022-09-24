@@ -19,7 +19,7 @@
 	
 	<div class="content-wrap">
 	
-    <div class="title-wrap">테마관리</div>
+    <div class="title-wrap">테마 수정</div>
     
     <div class="table-wrap">
     	<form action="/themaUpdate.do" method="post" enctype="multipart/form-data">
@@ -119,6 +119,7 @@
 		
 		//----------------------------------------- 정규 표현식 --------------------------------------------------
 		
+		
 		//시간제한 
 		$("input[name=themaTime]").on("keyup",function(event){
 			
@@ -126,15 +127,27 @@
 			const themaTimeValue = themaTime.val();
 			const themaTimeReg =  /^[0-9]+$/;
 			if(themaTimeReg.test(themaTimeValue)){
-				console.log("사용 가능");
 				themaTime.css("outline","none");
 				themaTime.css("color","black");
 			
 			}else{
-				console.log("사용 불가");
 				themaTime.css("outline","1px solid red");
 				themaTime.css("color","red");
 				themaTime.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=themaTime]").on("click",function(event){
+			const themaTime = $("input[name=themaTime]");
+			const themaTimeValue = themaTime.val();
+			const themaTimeReg =  /^[0-9]+$/;
+			if(themaTimeReg.test(themaTimeValue)){
+			
+			}else{
+				themaTime.val("");
+				themaTime.css("outline","none");
+				themaTime.css("color","black");
+				
 			}
 		});
 		
@@ -145,14 +158,25 @@
 			const devicePerValue = devicePer.val();
 			const devicePerReg =  /^[0-9]+$/;
 			if(devicePerReg.test(devicePerValue)){
-				console.log("사용 가능");
 				devicePer.css("outline","none");
 				devicePer.css("color","black");
 			}else{
-				console.log("사용 불가");
 				devicePer.css("outline","1px solid red");
 				devicePer.css("color","red");
 				devicePer.val("숫자로 입력해주세요");	
+			}
+		});
+	
+		$("input[name=devicePer]").on("click",function(event){
+			const devicePer = $("input[name=devicePer]");
+			const devicePerValue = devicePer.val();
+			const devicePerReg =  /^[0-9]+$/;
+			if(devicePerReg.test(devicePerValue)){
+			
+			}else{
+				devicePer.val("");
+				devicePer.css("outline","none");
+				devicePer.css("color","black");
 			}
 		});
 		
@@ -162,14 +186,25 @@
 			const lockPerValue = lockPer.val();
 			const lockPerReg =  /^[0-9]+$/;
 			if(lockPerReg.test(lockPerValue)){
-				console.log("사용 가능");
 				lockPer.css("outline","none");
 				lockPer.css("color","black");
 			}else{
-				console.log("사용 불가");
 				lockPer.css("outline","1px solid red");
 				lockPer.css("color","red");
 				lockPer.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=lockPer]").on("click",function(event){
+			const lockPer = $("input[name=lockPer]");
+			const lockPerValue = lockPer.val();
+			const lockPerReg =  /^[0-9]+$/;
+			if(lockPerReg.test(lockPerValue)){
+			
+			}else{
+				lockPer.val("");
+				lockPer.css("outline","none");
+				lockPer.css("color","black");
 			}
 		});
 		
@@ -179,14 +214,25 @@
 			const peopleMinValue = peopleMin.val();
 			const peopleMinReg =  /^[0-9]+$/;
 			if(peopleMinReg.test(peopleMinValue)){
-				console.log("사용 가능");
 				peopleMin.css("outline","none");
 				peopleMin.css("color","black");
 			}else{
-				console.log("사용 불가");
 				peopleMin.css("outline","1px solid red");
 				peopleMin.css("color","red");
 				peopleMin.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=peopleMin]").on("click",function(event){
+			const peopleMin = $("input[name=peopleMin]");
+			const peopleMinValue = peopleMin.val();
+			const peopleMinReg =  /^[0-9]+$/;
+			if(peopleMinReg.test(peopleMinValue)){
+			
+			}else{
+				peopleMin.val("");
+				peopleMin.css("outline","none");
+				peopleMin.css("color","black");
 			}
 		});
 		
@@ -196,14 +242,25 @@
 			const peopleMaxValue = peopleMax.val();
 			const peopleMaxReg =  /^[0-9]+$/;
 			if(peopleMaxReg.test(peopleMaxValue)){
-				console.log("사용 가능");
 				peopleMax.css("outline","none");
 				peopleMax.css("color","black");
 			}else{
-				console.log("사용 불가");
 				peopleMax.css("outline","1px solid red");
 				peopleMax.css("color","red");
 				peopleMax.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=peopleMax]").on("click",function(event){
+			const peopleMax = $("input[name=peopleMax]");
+			const peopleMaxValue = peopleMax.val();
+			const peopleMaxReg =  /^[0-9]+$/;
+			if(peopleMaxReg.test(peopleMaxValue)){
+			
+			}else{
+				peopleMax.val("");
+				peopleMax.css("outline","none");
+				peopleMax.css("color","black");
 			}
 		});
 		
@@ -224,20 +281,44 @@
 			}
 		});
 		
+		$("input[name=themaLevel]").on("click",function(event){
+			const themaLevel = $("input[name=themaLevel]");
+			const themaLevelValue = themaLevel.val();
+			const themaLevelReg =  /^[0-9]+$/;
+			if(themaLevelReg.test(themaLevelValue)){
+			
+			}else{
+				themaLevel.val("");
+				themaLevel.css("outline","none");
+				themaLevel.css("color","black");
+			}
+		});
+		
 		//가격 
 		$("input[name=themaPrice]").on("keyup",function(event){
 			const themaPrice = $("input[name=themaPrice]");
 			const themaPriceValue = themaPrice.val();
 			const themaPriceReg =  /^[0-9]+$/;
 			if(themaPriceReg.test(themaPriceValue)){
-				console.log("사용 가능");
 				themaPrice.css("outline","none");
 				themaPrice.css("color","black");
 			}else{
-				console.log("사용 불가");
 				themaPrice.css("outline","1px solid red");
 				themaPrice.css("color","red");
 				themaPrice.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=themaPrice]").on("click",function(event){
+			const themaPrice = $("input[name=themaPrice]");
+			const themaPriceValue = themaPrice.val();
+			const themaPriceReg =  /^[0-9]+$/;
+			if(themaPriceReg.test(themaPriceValue)){
+			
+			}else{
+				themaPrice.val("");
+				themaPrice.css("outline","none");
+				themaPrice.css("color","black");
 			}
 		});
 		
