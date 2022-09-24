@@ -43,7 +43,7 @@
 
     </div><!--reserv_find_wrap-->
 <%@include file="/WEB-INF/views/common/footer.jsp" %>
-<script src="/js/findReserveFrm.js"></script>
+<script src="/js/findReserveFrm2.js"></script>
 
 
 </body>
