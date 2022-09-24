@@ -1,3 +1,31 @@
+.title-wrap{
+	display: flex;
+    justify-content: center;
+   	border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding-top: 80px;
+    color: white;
+    width:60%;
+    margin:0 auto;
+    
+}
+
+.input-wraps:nth-of-type(2){
+	margin-top:100px;
+}
+
+.input-wraps:nth-of-type(8){
+	margin-bottom:200px;
+}
+.title-wrap h2{
+	margin-bottom:50px;
+	color : white;
+	font-size:2.5rem;
+	font-family:ns-m;
+}
+
+
 .content-wrap{
 	margin: 0 auto;
 }
@@ -8,35 +36,51 @@
 }
 .subjects{
 	display: inline-block;
-	width: 150px;
-	height: 50px;
+	width: 200px;
+	height: 40px;
 	text-align: center;
-	line-height: 50px;
-	background-color: rgb(255,193,7);
-	margin: 3px;
+	line-height: 40px;
+	background-color: #565454;
 	font-weight: bolder;
+	color : white;
+	border-right:4px solid rgb(50,50,50);
 }
 .contentss{
 	display: inline-block;
-	border: 1px solid rgb(255,193,7);
 	width: 300px;
-	height: 50px;
-	margin:3px;
-	box-sizing:border-box;
-}
-.contentss>input{
-	line-height:47px;
-	width: 300px;
-	text-align: center;
-	font-size: 20px;
-	box-sizing:border-box;
+	height: 40px;
+	border-bottom: 8px solid rgb(50,50,50);
 }
 
-.bot-btn{
-	width: 229px;
-	height: 50px;
-	background-color: #fff;
-	margin: 1px;
+.contentss input{
+    width: 100%;
+    height: 40px;
+    display: block;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.tbl tr input:focus{
+    box-shadow: 0 0 0 0.1rem #eee;
+}
+
+
+.btn2{
+    width:250px;
+    height:40px;
+    background-color: rgb(255,193,7);
+    box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+    cursor: pointer;
+    font-size:14px;
+    font-weight:700;
+}
+.btn2:active{
+    
+    height:40px;
+    background-color: rgb(255,193,7);
+    border:1px solid black;
+    box-shadow: none;
 }
 .bot-btn:hover{
 	cursor: pointer;

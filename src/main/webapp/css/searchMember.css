@@ -222,11 +222,24 @@
 
 
 #auth{
-	display :block;
+   margin: 0 auto;
+   display :inline;
+   width:100%;
 }
 
 #authCode{
-	width:250px;
+   margin-left: 150px;
+   width:250px;
+   display:inline-block;
+}
+
+#authBtn{
+   width:100px;
+    height:40px;
+    background-color: rgb(255,193,7);
+    cursor: pointer;
+    font-size:12px;
+    font-weight:700;
 }
 
 .btn-box{

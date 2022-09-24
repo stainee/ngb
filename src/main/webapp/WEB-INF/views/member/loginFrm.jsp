@@ -11,7 +11,7 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
 		<div class="title-wrap">
-			<h2>LOGIN</h2>
+			<h2>로그인</h2>
 		</div>
         <div class="content-box">
             <form action="/login.do" method="post">
