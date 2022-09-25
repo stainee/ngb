@@ -26,9 +26,12 @@
                     <%if(m==null){ %>
                         <span><a href="/loginFrm.do">로그인</a></span>
                         <span><a href="/signupFrm.do">회원가입</a></span>
-                        <%}else{ %>
+                        <%}else if(m.getMemberLevel() == 0){ %>
                         <span><a href="/logout.do">로그아웃</a></span>
                         <span><a href="/reserveManage.do">관리자</a></span>
+                		<%}else if(m.getMemberLevel() != 0){ %>
+                        <span><a href="/logout.do">로그아웃</a></span>
+                        <span><a href="/mypageFrm.do">마이페이지</a></span>
                 		<%} %>
                     </div>
                     <div class="sub-menu"></div>
@@ -44,14 +47,18 @@
 	    	<div id = "thema-info-wrap" class = "thema-info-wrap">
 	    	<!-- 테마목록 들어가는 자리 -->
 	    	</div>
+	    				<div class="title-wrap">
+				<h2>THEMA LIST<h2>
+			</div>
             <div class = "notice-wrap">
-                <a href = "#">
+                <a href = "/noticeList.do?reqPage=1">
                     <div class = "notice-title">NOTICE</div>
                                 </a>    
                                     <div>
+                                    
                     <table class = "main-table">
                         <thead>
-                            <th>공지</th>
+                            <th>번호</th>
                             <th>제목</th>
                             <th>날짜</th>
                         </thead>
@@ -76,11 +83,20 @@
 		$.ajax({
 			url: "/mainThemaPrint.do",
 			success: function(data){
+				console.log(data);
 				var html = "";
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
 					html += "<a href ='/themaUserView.do?themaCode="+value.themaCode+"'>";
+					html += "<div class = 'thema-info'>";
+					html += "<span>"+value.category+"</span>";
+					html += "<div class = 'key-wrap'>";
+					for(let i=0;i<value.themaLevel;i++){
+					html += "<img src ='/img/key.png' class = 'key'>";
+					}
+					html += "</div>";
+					html += "</div>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";
@@ -101,11 +117,11 @@
     		success:function(data){
     			console.log(data);
     			var html = "";
-    			for(let i=0;i<5;i++){
+    			for(let i=0;i<3;i++){
     			console.log(data.list[i].noticeTitle);
     			html += "<tr>";
     			html += "<td>"+data.list[i].noticeNo+"</td>";
-    			html += "<td><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'><td class = 'notice-content'>"+data.list[i].noticeTitle+"</td></a>";
     			html += "<td>"+data.list[i].regDate+"</td>";
     			html += "</tr>";
     			}
@@ -192,6 +208,7 @@ const marker = new naver.maps.Marker({
 	position: new naver.maps.LatLng(37.533837,126.896836),
 	map : map 
 });
+
 window.onload=function(){
 	history.scrollRestoration = "manual"
 }
