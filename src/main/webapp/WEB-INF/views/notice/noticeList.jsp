@@ -19,21 +19,22 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
 		<div class="page-title">공지사항</div>
+<<<<<<< HEAD
 		<div class="btn-box">
 		<%if(m!=null && m.getMemberLevel() == 0) {%>
 		<button><a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a></button>
 		<%} %>
 		</div>
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 
 		<table class="notice-tbl">
 			<tr>
-
 				<th style="width: 10%;">번호</th>
 				<th style="width: 45%;">제목</th>
 				<th style="width: 15%;">작성자</th>
 				<th style="width: 20%;">작성일</th>
 				<th style="width: 10%;">조회수</th>
-
 			</tr>
 
 			<%for(Notice n : list) {%>
@@ -50,7 +51,12 @@
 			</tr>
 
 			<%} %>
-		</table>
+		</table>	
+		<%if(m!=null && m.getMemberLevel() == 0) {%>
+		<div class="btn-box">
+		<button class="btn2 writeBtn"><a href="/noticeWriteFrm.do">글쓰기</a></button>
+		</div>
+		<%} %>
 		<div id="pageNavi"><%=pageNavi %></div>
 	</div>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>

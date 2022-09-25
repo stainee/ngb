@@ -5,127 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.tap-wrap{
-	    margin-top: 30px;
-	    margin-left: 270px;
-	    padding: 0;
-	}
-	
-	
-	.tab-time{
-	    margin-left: 20px;
-	}
-	
-	.btn2{
-		width:100px;
-		height:50px;
-		background-color: rgb(255,193,7);
-		box-shadow: 1px 1px 1px 1px black;
-		cursor: pointer;
-		font-size:20px;
-	}
-	
-	.btn2:active{
-		width:100px;
-		height:50px;
-		background-color: rgb(255,193,7);
-		border:1px solid black;
-		box-shadow: none;
-	}
-	.input-form {
-	    width: 100%;
-	    height: 40px;
-	    display: block;
-	    background-color: #fff;
-	    outline: none;
-	    border: 1px solid #ccc;
-	    box-sizing: border-box;
-	}
-	
-	.input-form {
-	    width: 100%;
-	    height: 40px;
-	    display: block;
-	    background-color: #fff;
-	    outline: none;
-	    border: 1px solid #ccc;
-	    box-sizing: border-box;
-	}
-	
-	.input-form:focus {
-	    box-shadow: 0 0 0 0.1rem #eee;
-	}
-	
-	.textarea-form {
-	    width: 100%;
-	    resize: none;
-	    min-height: 300px;
-	    outline: none;
-	    border: 1px solid #ccc;
-	}
-	
-	.tbl .tr-1 {
-	    background-color: rgba(57, 62, 70, 0.1);
-	}
-	
-	.table-wrap{
-	    margin-top: 20px;
-	    margin-left: 250px;
-	}
-	
-	
-	.tbl{
-	    margin-left: 20px;
-	    width: 1200px;
-	    border-spacing: 0px;
-	    border-collapse: collapse;
-	}
-	.tbl th,.tbl td {
-	    padding: 1rem;
-	    text-align: center;
-	}
-	.tbl td>a {
-	    text-decoration: none;
-	    color : black;
-	}
-	
-	.notice-tbl a:hover{
-	    text-decoration : underline;
-	}
-	.notice-tbl tr{
-	    border-bottom : 1px solid #ccc;
-	}
-	.notice-tbl tr>td:nth-child(2){
-	    text-align : left;
-	}
-	
-	.tbl .tr-1 {
-	   background-color: rgba(57, 62, 70, 0.1);
-	}
-	
-	.reserve-btn{
-	    margin-top: 20px;
-	    width:80px;
-		height:40px;
-		background-color: rgb(230,230,230);
-		box-shadow: 0px 1px 1px 1px black;
-		border-radius: 50px;
-		cursor: pointer;
-		font-size:20px;
-	    margin-left: 1150px;
-	}
+<link rel="stylesheet" href="/css/notosans.css">
+<link rel="stylesheet" href="/css/themaWriteFrm.css">
 
-</style>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
 
-
-    <div class="tap-wrap">
-        <a href="themaManageList.do"><button class="btn2 tab-thema">테마관리</button></a>
-        <a href="themaManageTimeFrm.do"><button class="btn2 tab-time">시간관리</button></a>
-    </div>
+	<div class="content-wrap">
+	
+    <div class="title-wrap">테마 등록</div>
 
     <div class="table-wrap">
     	<form action="/themaWrite.do" method="post" enctype="multipart/form-data">
@@ -185,7 +74,7 @@
         
         </form>
     </div>
-    
+    </div>
     
 	<script>
 		function loadImg(f){
@@ -213,15 +102,27 @@
 			const themaTimeValue = themaTime.val();
 			const themaTimeReg =  /^[0-9]+$/;
 			if(themaTimeReg.test(themaTimeValue)){
-				console.log("사용 가능");
 				themaTime.css("outline","none");
 				themaTime.css("color","black");
 			
 			}else{
-				console.log("사용 불가");
 				themaTime.css("outline","1px solid red");
 				themaTime.css("color","red");
 				themaTime.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=themaTime]").on("click",function(event){
+			const themaTime = $("input[name=themaTime]");
+			const themaTimeValue = themaTime.val();
+			const themaTimeReg =  /^[0-9]+$/;
+			if(themaTimeReg.test(themaTimeValue)){
+			
+			}else{
+				themaTime.val("");
+				themaTime.css("outline","none");
+				themaTime.css("color","black");
+				
 			}
 		});
 		
@@ -232,14 +133,25 @@
 			const devicePerValue = devicePer.val();
 			const devicePerReg =  /^[0-9]+$/;
 			if(devicePerReg.test(devicePerValue)){
-				console.log("사용 가능");
 				devicePer.css("outline","none");
 				devicePer.css("color","black");
 			}else{
-				console.log("사용 불가");
 				devicePer.css("outline","1px solid red");
 				devicePer.css("color","red");
 				devicePer.val("숫자로 입력해주세요");	
+			}
+		});
+	
+		$("input[name=devicePer]").on("click",function(event){
+			const devicePer = $("input[name=devicePer]");
+			const devicePerValue = devicePer.val();
+			const devicePerReg =  /^[0-9]+$/;
+			if(devicePerReg.test(devicePerValue)){
+			
+			}else{
+				devicePer.val("");
+				devicePer.css("outline","none");
+				devicePer.css("color","black");
 			}
 		});
 		
@@ -249,14 +161,25 @@
 			const lockPerValue = lockPer.val();
 			const lockPerReg =  /^[0-9]+$/;
 			if(lockPerReg.test(lockPerValue)){
-				console.log("사용 가능");
 				lockPer.css("outline","none");
 				lockPer.css("color","black");
 			}else{
-				console.log("사용 불가");
 				lockPer.css("outline","1px solid red");
 				lockPer.css("color","red");
 				lockPer.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=lockPer]").on("click",function(event){
+			const lockPer = $("input[name=lockPer]");
+			const lockPerValue = lockPer.val();
+			const lockPerReg =  /^[0-9]+$/;
+			if(lockPerReg.test(lockPerValue)){
+			
+			}else{
+				lockPer.val("");
+				lockPer.css("outline","none");
+				lockPer.css("color","black");
 			}
 		});
 		
@@ -266,14 +189,25 @@
 			const peopleMinValue = peopleMin.val();
 			const peopleMinReg =  /^[0-9]+$/;
 			if(peopleMinReg.test(peopleMinValue)){
-				console.log("사용 가능");
 				peopleMin.css("outline","none");
 				peopleMin.css("color","black");
 			}else{
-				console.log("사용 불가");
 				peopleMin.css("outline","1px solid red");
 				peopleMin.css("color","red");
 				peopleMin.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=peopleMin]").on("click",function(event){
+			const peopleMin = $("input[name=peopleMin]");
+			const peopleMinValue = peopleMin.val();
+			const peopleMinReg =  /^[0-9]+$/;
+			if(peopleMinReg.test(peopleMinValue)){
+			
+			}else{
+				peopleMin.val("");
+				peopleMin.css("outline","none");
+				peopleMin.css("color","black");
 			}
 		});
 		
@@ -283,14 +217,25 @@
 			const peopleMaxValue = peopleMax.val();
 			const peopleMaxReg =  /^[0-9]+$/;
 			if(peopleMaxReg.test(peopleMaxValue)){
-				console.log("사용 가능");
 				peopleMax.css("outline","none");
 				peopleMax.css("color","black");
 			}else{
-				console.log("사용 불가");
 				peopleMax.css("outline","1px solid red");
 				peopleMax.css("color","red");
 				peopleMax.val("숫자로 입력해주세요");	
+			}
+		});
+		
+		$("input[name=peopleMax]").on("click",function(event){
+			const peopleMax = $("input[name=peopleMax]");
+			const peopleMaxValue = peopleMax.val();
+			const peopleMaxReg =  /^[0-9]+$/;
+			if(peopleMaxReg.test(peopleMaxValue)){
+			
+			}else{
+				peopleMax.val("");
+				peopleMax.css("outline","none");
+				peopleMax.css("color","black");
 			}
 		});
 		
@@ -311,27 +256,55 @@
 			}
 		});
 		
+		$("input[name=themaLevel]").on("click",function(event){
+			const themaLevel = $("input[name=themaLevel]");
+			const themaLevelValue = themaLevel.val();
+			const themaLevelReg =  /^[0-9]+$/;
+			if(themaLevelReg.test(themaLevelValue)){
+			
+			}else{
+				themaLevel.val("");
+				themaLevel.css("outline","none");
+				themaLevel.css("color","black");
+			}
+		});
+		
 		//가격 
 		$("input[name=themaPrice]").on("keyup",function(event){
 			const themaPrice = $("input[name=themaPrice]");
 			const themaPriceValue = themaPrice.val();
 			const themaPriceReg =  /^[0-9]+$/;
 			if(themaPriceReg.test(themaPriceValue)){
-				console.log("사용 가능");
 				themaPrice.css("outline","none");
 				themaPrice.css("color","black");
 			}else{
-				console.log("사용 불가");
 				themaPrice.css("outline","1px solid red");
 				themaPrice.css("color","red");
 				themaPrice.val("숫자로 입력해주세요");	
 			}
 		});
 		
+		$("input[name=themaPrice]").on("click",function(event){
+			const themaPrice = $("input[name=themaPrice]");
+			const themaPriceValue = themaPrice.val();
+			const themaPriceReg =  /^[0-9]+$/;
+			if(themaPriceReg.test(themaPriceValue)){
+			
+			}else{
+				themaPrice.val("");
+				themaPrice.css("outline","none");
+				themaPrice.css("color","black");
+			}
+		});
 		
+		//탭
+	    const tabs=$(".tap-ul>li");
+	    tabs.on("click",function(){
+	    	tabs.css("color","black").css("background-color","white");
+	    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
+	    });
+	    tabs.eq(0).click();
 
-		
-		
 	</script>
 </body>
 </html>

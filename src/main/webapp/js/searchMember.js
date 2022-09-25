@@ -66,7 +66,7 @@ $(".first-btn").on("click", function() {
 			if (data == null) {
 				result.append("회원정보를 조회할 수 없습니다.")
 			} else {
-				result.append("아이디 :" + data.memberId);
+				result.append("아이디 : " + data.memberId);
 			}
 		},
 		error: function() {
@@ -94,7 +94,7 @@ $(".second-btn").on("click", function() {
 			if (data == null) {
 				result.append("회원정보를 조회할 수 없습니다.")
 			} else {
-				result.append("비밀번호 :" + data.memberPw);
+				result.append("비밀번호 : " + data.memberPw);
 			}
 		},
 		error: function() {
@@ -135,7 +135,7 @@ function authTime() {
 	$("#timeZone").html("<span id='min'>3</span> : <span id='sec'>00</span>");
 	intervalId = window.setInterval(function() {
 		timeCount();
-	}, 100);
+	}, 1000);
 }
 
 function timeCount() {
