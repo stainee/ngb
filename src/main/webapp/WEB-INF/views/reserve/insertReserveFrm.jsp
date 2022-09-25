@@ -60,11 +60,20 @@ function go_insert(){
 	<input type = "hidden" id = "playDate" value = "<%=result.getPlayDate()%>">
 	<input type = "hidden" id = "themaPrice" value = "<%=result.getThemaPrice() %>">
 	<div class="content-wrap">
+<<<<<<< HEAD
 	 	<div class="title-wrap">예약관리</div>
 		<table class="tbl1">
+=======
+	 	<div class="title-wrap">예약추가</div>
+		<table class="tbl1" style = "width:1000px">
+>>>>>>> refs/remotes/origin/master
 			<thead>
 				<tr>
+<<<<<<< HEAD
 					<th colspan = 2 style ="width:1200px; height:50px;" class="tr-1">예약정보</th>
+=======
+					<th colspan = 2 style ="width:1200px; height:30px;  background-color:#fff; border-color: rgb(255,193,7);">예약정보</th>
+>>>>>>> refs/remotes/origin/master
 				</tr>
 				<tr>
 					<td colspan = 2 style = "border:none;"><%="예약날짜 : "+result.getPlayDate() %></td>
@@ -73,10 +82,14 @@ function go_insert(){
 					<td colspan = 2 style ="width:10%; border:none"><%="예약시간 : "+result.getTime() %></td>
 				</tr>
 				<tr>
+<<<<<<< HEAD
 					<td colspan = 2 style = "width:10%"><%="테마명 : "+result.getThemaName() %></td>
 				</tr>
 				<tr>
 					<th colspan = 2 style = "height:50px;" class="tr-1">회원정보입력</th>
+=======
+					<td colspan = 2 style = "width:10%; border-color: rgb(255,193,7); border-bottom:2px solid rgb(255,193,7);"><%="테마명 : "+result.getThemaName() %></td>
+>>>>>>> refs/remotes/origin/master
 				</tr>
 				<tr style = "height:50px;" class="title">
 					<th>구분</th>

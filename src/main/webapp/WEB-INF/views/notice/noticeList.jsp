@@ -19,14 +19,6 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
 		<div class="page-title">공지사항</div>
-<<<<<<< HEAD
-		<div class="btn-box">
-		<%if(m!=null && m.getMemberLevel() == 0) {%>
-		<button><a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a></button>
-		<%} %>
-		</div>
-=======
->>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 
 		<table class="notice-tbl">
 			<tr>

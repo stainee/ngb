@@ -36,7 +36,7 @@
                     </div>
                     <div class="sub-menu"></div>
                     <div class = "middle-box">
-                        <span><a href = "#">NOTICE</a></span>
+                        <span><a href = "noticeList.do?reqPage=1">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
                         <span><a href = "/themaUserList.do">THEMA</a></span>
                         <span id = "go-location"><a href = "#section3">LOCATION</a></span>
