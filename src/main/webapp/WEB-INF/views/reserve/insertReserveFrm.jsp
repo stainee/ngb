@@ -10,26 +10,48 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/reserveManage.css">
 <style>
 	.title-wrap{
-			width:1000px;
+			width:500px;
 			font-family: ns-bold;
 			font-weight:bold;
 			font-size:16px;	
 			padding-bottom:10px;
-			border-bottom: 3px solid rgb(255,193,7);
 	}
 	
 	.content-wrap{
 	width: 1400px;
-	margin-top:3vw;
 	}	
 
 	.tbl1{
-	margin-top:20px;
+	}
+	thead tr td{
+	text-align:left;
+	font-size:13px;
+	height:30px;
+	}
+	thead{
+	}
+	tbody td{
+	height: 50px;
+	}
+	select{
+	width:50%;
+	height:70%;
+	text-align:center;
+	}
+	input{
+	border:2px solid light-gray;
+	width: 50%;
+	height:70%;
+	text-align:center;
+	}
+	button{
+	cursor: pointer;
+	height:100%;
 	}
 </style>
-<link rel="stylesheet" href="/css/template.css">
 <script type="text/javascript">
 
 function go_insert(){
@@ -78,31 +100,28 @@ function go_insert(){
 	<input type = "hidden" id = "playDate" value = "<%=result.getPlayDate()%>">
 	<input type = "hidden" id = "themaPrice" value = "<%=result.getThemaPrice() %>">
 	<div class="content-wrap">
-	 	<div class="title-wrap">예약추가</div>
-		<table class="tbl1" style = "width:1000px">
+	 	<div class="title-wrap" stlye = "width: 500px;">예약추가</div>
+		<table class = "tbl1" style = "width:500px !important;">
 			<thead>
-				<tr>
-					<th colspan = 2 style ="width:1200px; height:30px;  background-color:#fff; border-color: rgb(255,193,7);">예약정보</th>
-				</tr>
-				<tr>
-					<td colspan = 2 style = "border:none;"><%="예약날짜 : "+result.getPlayDate() %></td>
+				<tr style = "margin-top:10px;">
+					<td colspan = 2 style = "border:none;"><%="예약날짜 : " +result.getPlayDate() %></td>
 				</tr>
 				<tr>
 					<td colspan = 2 style ="width:10%; border:none"><%="예약시간 : "+result.getTime() %></td>
 				</tr>
 				<tr>
-					<td colspan = 2 style = "width:10%; border-color: rgb(255,193,7); border-bottom:2px solid rgb(255,193,7);"><%="테마명 : "+result.getThemaName() %></td>
+					<td colspan = 2 style = "width:10%; border-color: rgb(255,193,7);"><%="테 마 명  : "+result.getThemaName() %></td>
 				</tr>
-				<tr style = "height:50px;">
+				<tr style = "height:50px; width: 200px;">
 					<th>구분</th>
 					<th>입력란</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr>	
 					<td>예약자명</td>
 					<td>
-						<input type ="text" id = "reserveName" value = ""/>
+						<input class = "input-form" type ="text" id = "reserveName" value = ""/>
 					</td>
 				</tr>
 				<tr>
@@ -130,7 +149,7 @@ function go_insert(){
 				</tr>
 				<tr>
 					<td colspan = 2>
-						<button onclick = 'go_insert()'>예약추가</button>
+						<button onclick = 'go_insert()' style = "width: 200px;">예약추가</button>
 					</td>
 				</tr>
 			</body>

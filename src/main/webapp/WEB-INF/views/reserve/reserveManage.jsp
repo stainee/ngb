@@ -104,7 +104,11 @@
     					html += "<td>"+ value.reserveAmount +"</td>";
     					html += "<td>"+ value.reservePay +"</td>";
     					html += "<td>"+ value.reserveDate +"</td>";
-    					html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
+    					if(value.reserveAmount > value.peopleMax){
+    						html += "<td style = 'color:red;'>"+ value.reserveAmount+"/"+ value.peopleMax +"</td>";
+    					}else{
+    						html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
+    					}
     					html += "<td>"+ "-" +"</td>";
     					html += "<td><button onclick='fn_managePage("+value.themaPrice+",\""+select+"\","+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
     					html +="</tr>";
