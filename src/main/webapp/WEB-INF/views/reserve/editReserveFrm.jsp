@@ -10,7 +10,8 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/template.css">
+<link rel = "stylesheet" href = "/css/editReserveFrm.css">
+<link rel = "stylesheet" href = "/css/notosans.css">
 <script type="text/javascript">
 
 function updateReserve(){
@@ -60,20 +61,13 @@ function deleteReserve(){
 </script>
 </head>
 <body>
-	<style>
-		td{
-		text-align:center;
-		}
-		.input-form{
-		text-align:center;
-		}
-	</style>
+
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp"%>
 	<div class="content-wrap">
-	<div>예약수정</div>
-	<hr>
-		<table class="tbl1">
-			<tr>
+	 <div class="title-wrap">예약수정</div>
+	 <div class="table-wrap">
+		<table class="tbl">
+			<tr class="tr-1">
 				<th>시간</th>
 				<th>테마명</th>
 				<th>예약자</th>
@@ -102,6 +96,7 @@ function deleteReserve(){
 					</td>
 				</tr>
 		</table>
+		</div>
 	</div>
 	<script>
 	</script>
