@@ -133,7 +133,7 @@
 
 		$(document).on("click",".prev",function(){
 			var length = $(".thema-info-box").length;
-			const width = 140;
+			const width = 100;
 		    if(imgNo != 0){
 		        imgNo--;
 		        const move = -imgNo*width;

@@ -30,7 +30,7 @@ Notice n = (Notice) request.getAttribute("n");
 			</tr>
 			<tr>
 				<td colspan="6">
-					<div id="noticeContent">
+					<div id="noticeContent" style = "overflow:scroll;">
 						<%=n.getNoticeContentBr()%>
 					</div>
 				</td>
