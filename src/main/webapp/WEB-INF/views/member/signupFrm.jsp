@@ -146,20 +146,19 @@
 								</div>
 								<div id="auth">
 									<div class="input-location input-backColor">
-										
+										<label>인증번호</label>
 									</div>
 									<div class="input-location">
 										<input type="text" id="authCode" placeholder="인증코드입력"
 											class="input-form">
 									</div>
-									<div class="input-location backColor">
-										<button class="btn3 notsubmit" id="authBtn">인증하기</button>
-										<span id="timeZone"></span>
-									</div>
+									<div class="input-location backColor mailBtn">
+										<button class="btn3 notsubmit" id="authBtn">인증하기</button>			
+									</div>						
 								</div>
 							</div>
+							<span id="timeZone"></span>
 							<span id="authMsg"></span>
-
 							<div class="center-move">
 								<button type="submit" class="btn2 nextBtn">회원가입</button>
 							</div>

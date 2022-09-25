@@ -123,7 +123,7 @@
 }
 /* 2번 회원가입창 */
 .input-wrap{
-	width:600px;
+	width:725px;
     overflow: hidden;
 }
 .input-wrap>.input-backColor{
@@ -141,18 +141,21 @@
     overflow: hidden;
 } */
 #idChkMsg,#pwChkMsg,#pwReChkMsg,#phoneChkMsg,#timeZone{
-    line-height: 55px;
+    line-height: 40px;
 }
 #timeZone{
 	color: rgb(255,193,7);
 }
+#timeZone>span{
+	color: rgb(255,193,7);
+}
 #authMsg{
-	padding-left : 130px;
+	padding-left : 160px;
 }
 .input-location{
 	width:300px;
     float: left;
-    background-color: rgb(230,230,230);
+    /*background-color: rgb(230,230,230);*/
 }
 .backColor{
 	background-color: rgb(50,50,50);
@@ -164,10 +167,16 @@
     line-height: 40px;
 }
 #auth>.input-location:first-child{
-	width:100px;
-    height:40px;
-    border-right: 10px solid rgb(50,50,50);
-	background-color: rgb(255,193,7);
+	width: 275px;
+	height:40px;
+    text-align: center;
+    line-height: 40px;
+    border-right: 4px solid rgb(50,50,50);
+	background-color: #565454;
+}
+#auth>.input-location:nth-of-type(2)>#authCode{
+	display : flex;
+    width: 300px
 }
 
 .input-location>input[type=text],input[type=password] {

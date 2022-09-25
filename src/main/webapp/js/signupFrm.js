@@ -205,8 +205,7 @@ function sendMail() {
 		success: function(data) {
 			if (data != null) {
 				mailCode = data;
-				$("#auth").show();
-
+				$("#auth").css("display","flex");
 				//메일이 전송된 시점
 				//에서 시간이 흐름
 				authTime();
