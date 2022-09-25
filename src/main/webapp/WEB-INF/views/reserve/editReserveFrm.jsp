@@ -10,8 +10,13 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="/css/template.css">
 <link rel="stylesheet" href="/css/reserveManage.css">
+=======
+<link rel = "stylesheet" href = "/css/editReserveFrm.css">
+<link rel = "stylesheet" href = "/css/notosans.css">
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <script type="text/javascript">
 
 function updateReserve(){
@@ -61,6 +66,7 @@ function deleteReserve(){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<style>
 		th{
 		height:50px;
@@ -81,12 +87,22 @@ function deleteReserve(){
 					background-color:rgb(255,193,7); color:#fff; height: 30px; width:50px;
 		}
 	</style>
+=======
+
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 	<%@include file="/WEB-INF/views/common/managerTemplate.jsp"%>
 	<div class="content-wrap">
+<<<<<<< HEAD
 	<div class = "title-wrap">예약수정</div>
 		<table class = "tbl1" style = "margin:0;">
 		<thead>
 			<tr style = "background-color:#fff!important;">
+=======
+	 <div class="title-wrap">예약수정</div>
+	 <div class="table-wrap">
+		<table class="tbl">
+			<tr class="tr-1">
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 				<th>시간</th>
 				<th>테마명</th>
 				<th>예약자</th>
@@ -122,6 +138,7 @@ function deleteReserve(){
 				</tr>
 				</tbody>
 		</table>
+<<<<<<< HEAD
 		<div style = "text-align: right; border:none; background-color:white;width:1200px;">
 			<button onclick="location.href='reserveManage.do'" 
 					style = "border:none; background-color:white; cursor: pointer;
@@ -129,6 +146,8 @@ function deleteReserve(){
 					margin-top:10px;">
 					BACK
 			</button>
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 		</div>
 	</div>
 	<script>

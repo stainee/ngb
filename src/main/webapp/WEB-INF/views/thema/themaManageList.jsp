@@ -17,11 +17,11 @@
 <body>
    <%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
    
-
+	<div class="content-wrap">
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li>테마관리</li>
-         	<li>시간관리</li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
+         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
          </ul>
     </div>
 
@@ -58,15 +58,19 @@
         </table>
        <a href="/themaWriteFrm.do"><button class="reserve-btn">등록</button></a>
     </div>
+    </div>
     <script>
    
     const tabs=$(".tap-ul>li");
     tabs.on("click",function(){
-    	console.log("찍힘");
     	tabs.css("color","black").css("background-color","white");
     	$(this).css("color","white").css("background-color","rgb(255,193,7)");
     });
-    tabs.eq(0).click();
+    	tabs.eq(0).click();
+    
+   
+    
+    
     
     </script>
 </body>

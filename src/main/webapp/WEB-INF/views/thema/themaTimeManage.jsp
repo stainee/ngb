@@ -14,8 +14,8 @@
 
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li>테마관리</li>
-         	<li>시간관리</li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
+         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
          </ul>
     </div>
     
@@ -75,7 +75,7 @@
 		tabs.css("color","black").css("background-color","white");
 		$(this).css("color","white").css("background-color","rgb(255,193,7)");
 	});
-	tabs.eq(0).click();
+	tabs.eq(1).click();
 </script>
 </body>
 </html>

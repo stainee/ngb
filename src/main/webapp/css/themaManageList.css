@@ -1,9 +1,13 @@
 @charset "UTF-8";
+.content-wrap{
+	width: 1400px;
+	margin-top:3vw;
+}
+
 /*탭 메뉴*/
 .tap-wrap{
 	width:1800px;
     margin: 30px auto;
-    padding-left: 370px;
 }
 
 .tap-ul{
@@ -39,12 +43,9 @@
 .table-wrap{
 	width:1800px;
     margin: 30px auto;
-    padding-left: 350px;
 }
 
-
 .tbl{
-    margin-left: 20px;
     width: 1200px;
     border-spacing: 0px;
     border-collapse: collapse;
