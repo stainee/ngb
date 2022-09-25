@@ -282,7 +282,8 @@ html, body {
 
 #section2 {
 	background-image: url(/img/main-img2.png);
-	background-position:100px 100px;
+	background-size:150% 45%;
+	background-position:150px 100px;
 	background-repeat:no-repeat;
     background-color: rgb(33,33,33);
 }
