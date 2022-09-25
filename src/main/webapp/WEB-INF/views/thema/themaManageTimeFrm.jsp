@@ -15,8 +15,8 @@
 	
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li>테마관리</li>
-         	<li>시간관리</li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
+         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
          </ul>
     </div>
     
