@@ -61,7 +61,7 @@
 	            </tr>
 	            <tr>
 	                <th class="tr-1">난이도</th>
-	                <td><input type="text" name="themaLevel" class="input-form"></td>
+	                <td><input type="text" name="themaLevel" class="input-form" placeholder="숫자 1~5 사이 입력"></td>
 	                <th class="tr-1">가격(1인당)</th>
 	                <td><input type="text" name="themaPrice" class="input-form"></td>
 	            </tr>
@@ -243,7 +243,7 @@
 		$("input[name=themaLevel]").on("keyup",function(event){
 			const themaLevel = $("input[name=themaLevel]");
 			const themaLevelValue = themaLevel.val();
-			const themaLevelReg =  /^[0-9]+$/;
+			const themaLevelReg =  /^[1-5]{1}$/;
 			if(themaLevelReg.test(themaLevelValue)){
 				console.log("사용 가능");
 				themaLevel.css("outline","none");
@@ -252,7 +252,7 @@
 				console.log("사용 불가");
 				themaLevel.css("outline","1px solid red");
 				themaLevel.css("color","red");
-				themaLevel.val("숫자로 입력해주세요");	
+				themaLevel.val("숫자 1~5 사이 입력해주세요");	
 			}
 		});
 		
