@@ -156,6 +156,7 @@
 }
 
 .notice-wrap{
+	padding-top:2%;
     overflow: hidden;
     height: 30%;
     width: 100%;
@@ -173,7 +174,7 @@
     align-items: center;
 }
 .notice-title{
-    margin-bottom:20px;
+    margin-bottom:10px;
     width:100px;
     height:40px;
     text-align: center;
@@ -280,6 +281,9 @@ html, body {
 }
 
 #section2 {
+	background-image: url(/img/main-img2.png);
+	background-position:100px 100px;
+	background-repeat:no-repeat;
     background-color: rgb(33,33,33);
 }
 
@@ -295,15 +299,15 @@ html, body {
     justify-content: start;
     align-items: center;
     width: 1000px;
-    height: 40%;
+    height: 30%;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
 
 }
 .photo-box{
-    width:180px;
-    height:200px;
+    width:150px;
+    height:175px;
     display:flex;
     align-content:center;
     justify-content:center;
@@ -338,8 +342,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width:450px;
-    height:300px;
+    width:200px;
+    height:100%;
 }
 
 .main-table{
@@ -434,7 +438,7 @@ tbody tr:hover{
 	width:150px;
 	color:black;
 	position: absolute;
-	top:205px;
+	top:180px;
 	left:5px;
 }
 
@@ -467,20 +471,18 @@ tbody tr:hover{
 }
 
 .title-wrap{
-	background-color: aliceblue;
 	background-size:100%;
-	background-size:cover;
 	background-repeat:no-repeat;
-	background-position:center;
+	background-position:right;
 	display: flex;
     justify-content: center;
     align-items:center;
     margin-bottom: 20px;
-    color: rgb(255,193,7);
     margin:0 auto;
-    height:10%;
+    height:8%;
     width:1200px;
-    
+    padding-top:100px;
+    margin-bottom:30px;
     
 }
 
@@ -488,4 +490,9 @@ tbody tr:hover{
 	color: rgb(255,193,7);
 	font-size:2.5rem;
 	font-family:ns-m;
+}
+.notice-content > a{
+	display:inline-block;
+	line-height:50px;
+	width:100%;
 }

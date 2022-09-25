@@ -44,12 +44,12 @@
                 </div>
         </div>
         <div class="section" id="section2">
+	    				<div class="title-wrap">
+				<h2>THEMA & NOTICE<h2>
+			</div>
 	    	<div id = "thema-info-wrap" class = "thema-info-wrap">
 	    	<!-- 테마목록 들어가는 자리 -->
 	    	</div>
-	    				<div class="title-wrap">
-				<h2>THEMA LIST<h2>
-			</div>
             <div class = "notice-wrap">
                 <a href = "/noticeList.do?reqPage=1">
                     <div class = "notice-title">NOTICE</div>
@@ -121,7 +121,7 @@
     			console.log(data.list[i].noticeTitle);
     			html += "<tr>";
     			html += "<td>"+data.list[i].noticeNo+"</td>";
-    			html += "<a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'><td class = 'notice-content'>"+data.list[i].noticeTitle+"</td></a>";
+    			html += "<td class = 'notice-content'><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
     			html += "<td>"+data.list[i].regDate+"</td>";
     			html += "</tr>";
     			}
