@@ -140,7 +140,7 @@
 /* .id-wrap{
     overflow: hidden;
 } */
-#idChkMsg,#pwChkMsg,#pwReChkMsg,#phoneChkMsg,#timeZone{
+#idChkMsg,#pwChkMsg,#pwReChkMsg,#phoneChkMsg,#timeZone,#authMsg{
     line-height: 40px;
 }
 #timeZone{

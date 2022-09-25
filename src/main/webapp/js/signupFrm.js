@@ -257,6 +257,8 @@ $("#authBtn").on("click", function() {
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");
+			$("#authMsg").css("padding-left", "205px");
+			
 			clearInterval(intervalId);
 			$("#timeZone").hide();
 			regCheckMail = 1;
