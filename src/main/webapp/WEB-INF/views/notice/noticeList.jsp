@@ -19,10 +19,11 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
 		<div class="page-title">공지사항</div>
-
+		<div class="btn-box">
 		<%if(m!=null && m.getMemberLevel() == 0) {%>
-		<a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a>
+		<button><a class="btn2 writeBtn" href="/noticeWriteFrm.do">글쓰기</a></button>
 		<%} %>
+		</div>
 
 		<table class="notice-tbl">
 			<tr>

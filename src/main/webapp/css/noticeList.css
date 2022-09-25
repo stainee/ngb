@@ -16,7 +16,7 @@
 	.content-wrap table{
 	width :70%;
 	margin : 0 auto;
-	margin-top : 50px;
+	margin-top : 10px;
 	text-align: center;
 	
 	}
@@ -70,8 +70,24 @@
 	.notice-tbl>.tr-2>td:first-child{
 		border-left: 1px solid rgb(66,64,64);
 	}
+	.btn-box{
+		width:70%;
+		margin:0 auto;
+		margin-top:70px;
+	}
 	
-
+	
+	button{
+	width:150px;
+	height:50px;
+	color:rgb(66, 64, 64);
+	background-color:white;
+	cursor: pointer;
+	font-size  :17px;
+	font-weight : 700;
+	
+		
+	}
 	
 	#pageNavi{
 	margin-top:30px;

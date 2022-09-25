@@ -71,7 +71,8 @@ function deletePayment(reserveNo){
 	})
 }
 //예약 취소
-function deleteReserve(reserveNo){
+function deleteReserve(){
+	const reserveNo = $("[name=reserveNo]").val();
 	$.ajax({
 		url:"/deleteReserve2.do",
         type:"post",
@@ -82,7 +83,7 @@ function deleteReserve(reserveNo){
 				text :"예약이 취소되었습니다",
 				icon:"success"
 			}).then(function(){
-			location.href = "/";
+			//location.href = "/";
 			}
 			)
 		},
@@ -92,7 +93,7 @@ function deleteReserve(reserveNo){
 				text :"관리자에게 문의해주세요",
 				icon:"error"
 			}).then(function(){
-				location.href = "/";
+				//location.href = "/";
 			});
 		}
 	})
