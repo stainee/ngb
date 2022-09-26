@@ -55,7 +55,7 @@
 					     	<th colspan="4"></th>
 					     </tr>
 				 		<tr>
-				 			<th colspan="2"><button id="cancel" class="btn4" onclick="deleteReserve()">예약취소</button></th>
+				 			<th colspan="2"><button id="cancel" class="btn4">예약취소</button></th>
 				 			<th colspan="2"><button id="home" class="btn2" onclick="location.href='index.jsp'">확인</button></th>
 				 		</tr>
 				 	</table>
