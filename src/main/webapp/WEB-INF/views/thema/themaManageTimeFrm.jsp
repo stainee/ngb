@@ -17,7 +17,7 @@
     <div class="tap-wrap">
          <ul class="tap-ul">
          	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
-         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
+         	<li><a href="/themaManageTimeFrm.do" style="text-decoration-line: none;">시간관리</a></li>
          </ul>
     </div>
     
@@ -134,7 +134,16 @@
 	       },
 	    }); //ajax끝
 	 });//문서시작시 시작하는 함수
-
+	 
+	 
+	function update(){
+		alert("쿼리부터하고와라");
+		 
+	 }
+	 
+	 
+	 
+	 
 	function deleteThemaTime(){
 		alert("쿼리부터하고와라");
 	}
