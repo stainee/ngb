@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="/img/logo.png">
 </head>
 <body>
 	<h1><%=token %></h1>

@@ -10,6 +10,7 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="/img/logo.png">
 <link rel="stylesheet" href="/css/reserveManage.css">
 <style>
 	.title-wrap{
@@ -56,7 +57,6 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <script type="text/javascript">
 
 function go_insert(){
-	console.log($("#reserveMail").val());
 	$.ajax({
 		url : "/updateReserve.do",
 		type : "post",

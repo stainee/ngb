@@ -92,7 +92,6 @@
     			type : "post",
     			data : {select:select},
     			success : function(data){
-    				console.log(data);
     				var html ="";
     				$.each(data,function(idx,value){
     					html += "<tr>";
@@ -135,7 +134,6 @@
     	}
      	selectThema.on("change",function(){
      		const select = selectThema.val();
-     		console.log(select);
      		selectThemaReserve(select);
      	});
      	function selectThemaReserve(){
