@@ -27,7 +27,6 @@
         <table class="tbl tbl-hover notice-tbl" id="table">
             
         </table>
-       	<a href="/themaTimeAddFrm.do" class="reserve-a"><button class="reserve-btn">추가</button></a>
     </div>
 </div>
 <script>
@@ -35,7 +34,7 @@
 	    $.ajax({
 	       url : "/selectAllThemaList.do",
 	       success : function(data) {
-	          console.log(data);
+	    	   console.log(data);
 	       var array1 = [];
 	       var arrayTime1 = [];
 	       var array2 = [];
@@ -63,7 +62,6 @@
 	             for (let j = record; j <= data.length; j++) {
 	             	if (j == data.length || themaCodeList[i] != data[j].themaCode) {
 	            		record += roopTime;
-	 	            	console.log(record);
 	 	            	for(let k=roopTime;k<10;k++){
 		 	            	html += "<td><input type ='hidden' style = 'width:20px;' value ='0'>--</td>";	 	            		
 			            	roopTime++;
@@ -83,10 +81,10 @@
 		 	            	
 		         	}            	
 	             	if(roopTime==10){
-	            		html += "<td><a href='/themaTimeManage.do'>"
-       		 		  	html += "<button class='update'>수정</button>"
-    		 		  	html += "</a>"
-         			  	html += "<button onclick='deleteThemaTime();' class='delete'>삭제</button></td>"         				
+	            		html += "<td class='manageBtn'><a href='/themaTimeAddFrm.do?themaCode="+themaCodeList[i]+"&themaName="+themaNameList[i]+"'>";
+       		 		  	html += "<button class='update'>수정</button>";
+    		 		  	html += "</a>";
+         			  	html += "<button onclick='deleteThemaTime();' class='delete'>삭제</button></td>";    				
          			  	break;
 		         	}
 	             	
@@ -98,13 +96,6 @@
 	       },
 	    }); //ajax끝
 	 });//문서시작시 시작하는 함수
-	 
-	 
-	function update(){
-		alert("쿼리부터하고와라");
-		 
-	 }
-	 
 	 
 	 
 	 

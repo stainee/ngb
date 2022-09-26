@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.model.vo.ThemaTime;
 import com.ngb.thema.model.vo.ThemaTimeManage;
 
 import common.JDBCTemplate;
@@ -48,7 +50,7 @@ public class ThemaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Thema> list = new ArrayList<Thema>();
-		String query = "select * from thema";
+		String query = "select * from thema order by 1";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
@@ -302,6 +304,111 @@ public class ThemaDao {
 	      }
 	      return themaList;
 
+	}
+
+	public int addThemaTime(Connection conn, ThemaTime tt) {
+		PreparedStatement pstmt = null;
+		int result = 1;
+		int rtest = 0;
+		String firstQuery = "delete from time where thema_code = ?";
+		String query = "insert into time values(time_seq.nextval, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(firstQuery);
+			pstmt.setString(1, tt.getThemaCode());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime1());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime2());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime3());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime4());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime5());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime6());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime7());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime8());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime9());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, tt.getThemaCode());
+			pstmt.setString(2, tt.getTime10());
+			rtest = pstmt.executeUpdate();
+			result *= rtest;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(result);
+		return result;
+	}
+
+	public ArrayList<ThemaTimeManage> getThemaTime(Connection conn, String themaCode) {
+		PreparedStatement pstmt = null;
+		ResultSet rset= null;
+		ArrayList<ThemaTimeManage> list = new ArrayList<ThemaTimeManage>();
+		System.out.println(list.size());
+		String query = "select thema_code,time from time where thema_code = ? order by 2";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,themaCode);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				ThemaTimeManage t = new ThemaTimeManage();
+				t.setTime(rset.getString("time"));
+				list.add(t); //5
+			}
+			if(list.size() < 10) {
+				for(int i=list.size();i<10;i++) {
+					ThemaTimeManage t = new ThemaTimeManage();
+					t.setTime("");
+					list.add(t);					
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
 	}
 
 

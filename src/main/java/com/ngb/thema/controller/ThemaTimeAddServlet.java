@@ -1,7 +1,7 @@
 package com.ngb.thema.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.thema.model.vo.Thema;
 import com.ngb.thema.model.vo.ThemaTime;
-import com.ngb.thema.model.vo.ThemaTimeManage;
 import com.ngb.thema.service.ThemaService;
 
 /**
- * Servlet implementation class ThemaTimeAddFrmServlet
+ * Servlet implementation class ThemaTimeAddServlet
  */
-@WebServlet(name = "ThemaTimeAddFrm", urlPatterns = { "/themaTimeAddFrm.do" })
-public class ThemaTimeAddFrmServlet extends HttpServlet {
+@WebServlet(name = "ThemaTimeAdd", urlPatterns = { "/themaTimeAdd.do" })
+public class ThemaTimeAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaTimeAddFrmServlet() {
+    public ThemaTimeAddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,28 +35,27 @@ public class ThemaTimeAddFrmServlet extends HttpServlet {
 		//1.
 		request.setCharacterEncoding("utf-8");
 		//2.
+		ThemaTime tt = new ThemaTime();
+		tt.setThemaCode(request.getParameter("themaCode"));
+		tt.setTime1(request.getParameter("tmTime1"));
+		tt.setTime2(request.getParameter("tmTime2"));
+		tt.setTime3(request.getParameter("tmTime3"));
+		tt.setTime4(request.getParameter("tmTime4"));
+		tt.setTime5(request.getParameter("tmTime5"));
+		tt.setTime6(request.getParameter("tmTime6"));
+		tt.setTime7(request.getParameter("tmTime7"));
+		tt.setTime8(request.getParameter("tmTime8"));
+		tt.setTime9(request.getParameter("tmTime9"));
+		tt.setTime10(request.getParameter("tmTime10"));
 		
-		Thema tCodeName = new Thema();
-		String themaCode = request.getParameter("themaCode");
-		String themaName = request.getParameter("themaName");
-		tCodeName.setThemaCode(themaCode);
-		tCodeName.setThemaName(themaName);
-		//3. 비즈니스 로직
+		//3.
 		ThemaService service = new ThemaService();
-		ArrayList<Thema> list = service.selectAllThema();
-		ArrayList<ThemaTimeManage> oneTimeList = service.getThemaTime(themaCode);
-		
-		for(ThemaTimeManage t : oneTimeList) {
-			System.out.println(t.getTime());
-		}
+		int result = service.addThemaTime(tt);
 		
 		//4.
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaTimeAddFrm.jsp");
-		request.setAttribute("list", list);
-		request.setAttribute("tCodeName", tCodeName);
-		request.setAttribute("oneTimeList", oneTimeList);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageTimeFrm.jsp");
+		view.forward(request, response);		
 		
-		view.forward(request, response);
 	}
 
 	/**

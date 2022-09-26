@@ -37,12 +37,6 @@ public class SelectAllThemaListServlet extends HttpServlet {
 	     ThemaService service = new ThemaService();
 	     ArrayList<ThemaTimeManage> themaList = service.selectAllThemaList();
 	      
-	     for(ThemaTimeManage t : themaList){
-	         System.out.println(t.getThemaCode());
-	         System.out.println(t.getThemaName());
-	         System.out.println(t.getTimeCode());
-	         System.out.println(t.getTime());
-	     }
          response.setContentType("application/json");
          response.setCharacterEncoding("utf-8");
          PrintWriter out = response.getWriter();

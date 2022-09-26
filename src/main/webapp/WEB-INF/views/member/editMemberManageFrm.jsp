@@ -27,7 +27,7 @@ function updateMember(){
 	const memberLevel = $("#memberLevel").val();
 	$.ajax({
 		url : "/updateMember.do",
-		type : "get",
+		type : "post",
 		data : {
 			memberNo:memberNo,
 			memberName:memberName,

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.model.vo.ThemaTime;
 import com.ngb.thema.service.ThemaService;
 
 
@@ -41,6 +42,7 @@ public class ThemaManageListServlet extends HttpServlet {
 		//3. 비즈니스 로직
 		ThemaService service = new ThemaService();
 		ArrayList<Thema> list = service.selectAllThema();
+		
 
 		//4. 결과처리
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageList.jsp");

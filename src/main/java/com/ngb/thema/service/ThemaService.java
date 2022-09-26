@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ngb.thema.model.dao.ThemaDao;
 import com.ngb.thema.model.vo.Thema;
+import com.ngb.thema.model.vo.ThemaTime;
 import com.ngb.thema.model.vo.ThemaTimeManage;
 
 import common.JDBCTemplate;
@@ -117,6 +118,27 @@ public class ThemaService {
 		ArrayList<ThemaTimeManage> themaList = dao.selectAllThemaList(conn);      
      	JDBCTemplate.close(conn);      
      	return themaList;
+	}
+
+
+	public int addThemaTime(ThemaTime tt) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.addThemaTime(conn, tt);
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
+	public ArrayList<ThemaTimeManage> getThemaTime(String themaCode) {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<ThemaTimeManage> list = dao.getThemaTime(conn, themaCode);
+		JDBCTemplate.close(conn);
+		return list;
 	}
 
 
