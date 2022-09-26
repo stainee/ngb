@@ -10,6 +10,10 @@
 <head>
 <meta charset="UTF-8">
 <title>나가방</title>
+<<<<<<< HEAD
+<link rel="icon" href="/img/logo2.png">
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/notosans.css">
 <link rel="stylesheet" href="/css/themaUser.css">
 <link rel="icon" href="/img/logo2.png">

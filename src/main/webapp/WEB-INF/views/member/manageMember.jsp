@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관리</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 </head>
 	<link rel="stylesheet" href="/css/memberManage.css">
 	<link rel = "stylesheet" href = "/css/notosans.css">
