@@ -95,7 +95,7 @@ function deleteMember(){
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 
 	<div class="content-wrap">
-	 		<div class="title-wrap">테마별 시간 관리</div>   
+	 		<div class="title-wrap">회원 수정</div>   
 			<table class="tbl manageMemTbl">
 		        <tr class="tr-1">
 		        	<th>회원번호</th>

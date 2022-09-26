@@ -1,30 +1,30 @@
 package com.ngb.thema.controller;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngb.thema.model.vo.Thema;
+import com.google.gson.Gson;
+import com.ngb.thema.model.vo.ThemaTimeManage;
 import com.ngb.thema.service.ThemaService;
 
 /**
- * Servlet implementation class ThemaManageTimeServlet
+ * Servlet implementation class SelectAllThemaListServlet
  */
-@WebServlet(name = "ThemaManageTimeFrm", urlPatterns = { "/themaManageTimeFrm.do" })
-public class ThemaManageTimeFrmServlet extends HttpServlet {
+@WebServlet(name = "SelectAllThemaList", urlPatterns = { "/selectAllThemaList.do" })
+public class SelectAllThemaListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ThemaManageTimeFrmServlet() {
+    public SelectAllThemaListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +33,21 @@ public class ThemaManageTimeFrmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.
-		request.setCharacterEncoding("utf-8");
-		//2.
-		//3.
-		//4.
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageTimeFrm.jsp");
-		view.forward(request, response);
+		
+	     ThemaService service = new ThemaService();
+	     ArrayList<ThemaTimeManage> themaList = service.selectAllThemaList();
+	      
+	     for(ThemaTimeManage t : themaList){
+	         System.out.println(t.getThemaCode());
+	         System.out.println(t.getThemaName());
+	         System.out.println(t.getTimeCode());
+	         System.out.println(t.getTime());
+	     }
+         response.setContentType("application/json");
+         response.setCharacterEncoding("utf-8");
+         PrintWriter out = response.getWriter();
+         new Gson().toJson(themaList,out);
+	      
 	}
 
 	/**
