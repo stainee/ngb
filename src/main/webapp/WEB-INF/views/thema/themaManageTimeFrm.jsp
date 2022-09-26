@@ -82,10 +82,10 @@
 		         	}            	
 	             	if(roopTime==10){
 	            		html += "<td class='manageBtn'><a href='/themaTimeAddFrm.do?themaCode="+themaCodeList[i]+"&themaName="+themaNameList[i]+"'>";
-       		 		  	html += "<button class='update'>수정</button>";
+       		 		  	html += "<button class='update' style = 'cursor:pointer;'>수정</button>";
     		 		  	html += "</a>";
-         			  	html += "<button onclick='deleteThemaTime();' class='delete'>삭제</button></td>";  
-         			  	html += "<input type='hidden' value="+themaCodeList[i]+"id='hiddenTmCode'>";
+         			  	html += "<a href='/deleteThemaTime.do?tmCode="+themaCodeList[i]+"'><button class='delete' style = 'background-color:red; cursor:pointer;'>삭제</button></a></td>";  
+         			  	//html += "<input type='hidden' value='"+themaCodeList[i]+"' class='hiddenTmCode'>";
          			  	break;
 		         	}
 	             	
@@ -97,36 +97,6 @@
 	       },
 	    }); //ajax끝
 	 });//문서시작시 시작하는 함수
-	 
-	 
-	 
-	function deleteThemaTime(){
-		const tmCode = $("#hiddenTmCode").val();
-		if (confirm("정말 삭제하시겠습니까?")) {
-			
-			$.ajax({
-				url : "/deleteThemaTime.do",
-				type : "get",
-				data : {
-					tmCode: tmCode
-				},
-				success : function(data){
-					if(data==1){
-						alert("삭제되었습니다.");
-						location = "/themaManageTimeFrm.do"				
-					}else{
-						alert("삭제에 실패했습니다.");
-						location = "/themaManageTimeFrm.do"	
-					}
-				},
-				error :function(){
-					alert("삭제에 실패했습니다.");
-					location = "/themaManageTimeFrm.do"
-				}
-			});
-		}
-		
-	}
 	
 	const tabs=$(".tap-ul>li");
 	tabs.on("click",function(){

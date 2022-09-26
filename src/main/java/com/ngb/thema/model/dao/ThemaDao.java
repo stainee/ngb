@@ -308,66 +308,43 @@ public class ThemaDao {
 
 	public int addThemaTime(Connection conn, ThemaTime tt) {
 		PreparedStatement pstmt = null;
-		int result = 1;
-		int rtest = 0;
-		String firstQuery = "delete from time where thema_code = ?";
+		ArrayList<String> ttList = new ArrayList<String>();
+		
+		
+		ttList.add(tt.getTime1());
+		ttList.add(tt.getTime2());
+		ttList.add(tt.getTime3());
+		ttList.add(tt.getTime4());
+		ttList.add(tt.getTime5());
+		ttList.add(tt.getTime6());
+		ttList.add(tt.getTime7());
+		ttList.add(tt.getTime8());
+		ttList.add(tt.getTime9());
+		ttList.add(tt.getTime10());
+		
+		System.out.println("안녕하세요"+ttList);
+		
+		int result = 0;
 		String query = "insert into time values(time_seq.nextval, ?, ?)";
 		try {
-			pstmt = conn.prepareStatement(firstQuery);
-			pstmt.setString(1, tt.getThemaCode());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime1());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime2());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime3());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime4());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime5());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime6());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime7());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime8());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime9());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, tt.getThemaCode());
-			pstmt.setString(2, tt.getTime10());
-			rtest = pstmt.executeUpdate();
-			result *= rtest;
-			System.out.println(result);
+			for(int i = 0;i<ttList.size();i++) {
+				if(ttList.get(i) == "") {
+					ttList.remove(i);
+					result++;
+				}
+			}
+			for(int i = 0;i<ttList.size();i++) {
+			if(ttList.get(i)!="") {
+				int rtest = 0;
+				pstmt.setString(1, tt.getThemaCode());
+				pstmt.setString(2, ttList.get(i));
+				rtest = pstmt.executeUpdate();
+				result += rtest;
+			}else{
+				result++;
+			}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -414,8 +391,9 @@ public class ThemaDao {
 
 	public int deleteThamaTime(Connection conn, String tmCode) {
 		PreparedStatement pstmt = null;
+		System.out.println("tmCode넘어오는지확인"+tmCode);
 		int result = 0;
-		String query = "delete from time where time_code = ?";
+		String query = "delete from time where thema_code = ?";
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, tmCode);

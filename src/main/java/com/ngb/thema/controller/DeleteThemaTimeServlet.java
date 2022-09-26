@@ -3,6 +3,7 @@ package com.ngb.thema.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,13 +35,13 @@ public class DeleteThemaTimeServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//2.
 		String tmCode = request.getParameter("tmCode");
+		System.out.println("deleteServlet"+tmCode);
 		//3.
 		ThemaService service = new ThemaService();
 		int result = service.deleteThemaTime(tmCode);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
-		out.print(result);
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/thema/themaManageTimeFrm.jsp");
+		view.forward(request, response);
 	}
 
 	/**

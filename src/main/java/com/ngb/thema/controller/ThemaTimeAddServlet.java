@@ -36,7 +36,7 @@ public class ThemaTimeAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//2.
 		ThemaTime tt = new ThemaTime();
-		tt.setThemaCode(request.getParameter("themaCode"));
+		tt.setThemaCode(request.getParameter("tmCode"));
 		tt.setTime1(request.getParameter("tmTime1"));
 		tt.setTime2(request.getParameter("tmTime2"));
 		tt.setTime3(request.getParameter("tmTime3"));
@@ -48,9 +48,13 @@ public class ThemaTimeAddServlet extends HttpServlet {
 		tt.setTime9(request.getParameter("tmTime9"));
 		tt.setTime10(request.getParameter("tmTime10"));
 		
+		System.out.println("서블릿에서 themaCode 받아오는지 확인"+tt.getThemaCode());
+		System.out.println("서블릿에서 time1 받아오는지 확인"+tt.getTime1());
+		
 		//3.
 		ThemaService service = new ThemaService();
 		int result = service.addThemaTime(tt);
+		
 		if(result>0) {
 			System.out.println("적용완료");
 		}else {
