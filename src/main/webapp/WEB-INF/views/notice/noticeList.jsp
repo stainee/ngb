@@ -24,15 +24,16 @@
 				NOTICE
 			</h2>
 		</div>
-		<form action="noticeSearch.do?reqPage=1" method="post">
-			<select name="searchTag">
-				<option value="notice_title">제목</option>
-				<option value="notice_writer">작성자</option>
-			</select>
-			<input type="text" name="searchInput">
-			<button>검색</button>
-			
-		</form>
+		<div class="form-wrap">
+			<form action="noticeSearch.do?reqPage=1" method="post">
+				<select name="searchTag">
+					<option value="notice_title">제목</option>
+					<option value="notice_writer">작성자</option>
+				</select>
+				<input type="text" name="searchInput">
+				<button class="btn2">검색</button>		
+			</form>
+		</div>
 		<table class="notice-tbl">
 			<tr>
 				<th style="width: 10%;">번호</th>

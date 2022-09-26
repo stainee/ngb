@@ -33,13 +33,13 @@
 	.content-wrap table{
 	width :70%;
 	margin : 0 auto;
-	margin-top : 100px;
+	margin-top : 50px;
 	text-align: center;
 	
 	}
 
 	.notice-tbl{
-	padding-top : 100px;
+	padding-top : 50px;
 	border-collapse : collapse;
 	
 	}
@@ -187,5 +187,21 @@
 	margin : 0 auto;
 	margin-top : 30px;
 	text-align: center;
+}
+
+/*form*/
+.content-wrap>.form-wrap{
+	padding-top: 50px;
+	height : 50px;
+	display:flex;
+	justify-content: center;
+  	align-items: center;
+}
+.content-wrap>.form-wrap>form>select{
+	height : 50px;
+}
+.content-wrap>.form-wrap>form>input{
+	width : 200px;
+	height : 46px;
 }
 	
