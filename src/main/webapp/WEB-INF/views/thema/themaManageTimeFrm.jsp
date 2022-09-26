@@ -21,7 +21,7 @@
          </ul>
     </div>
     
-     <div class="title-wrap">테마별 시간 관리<span style = "color:red; font-size:30px"> ("삭제는 신중히!! 두 번 안물어봄")</span></div>
+     <div class="title-wrap">테마별 시간 관리</div>
     
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl" id="table">
@@ -84,8 +84,7 @@
 	            		html += "<td class='manageBtn'><a href='/themaTimeAddFrm.do?themaCode="+themaCodeList[i]+"&themaName="+themaNameList[i]+"'>";
        		 		  	html += "<button class='update' style = 'cursor:pointer;'>수정</button>";
     		 		  	html += "</a>";
-         			  	html += "<a href='/deleteThemaTime.do?tmCode="+themaCodeList[i]+"'><button class='delete' style = 'background-color:red; cursor:pointer;'>삭제</button></a></td>";  
-         			  	//html += "<input type='hidden' value='"+themaCodeList[i]+"' class='hiddenTmCode'>";
+         			  	html += "<button class='delete' style = 'cursor:pointer; background-color:red;' onclick = 'deleteThemaTime(\""+themaCodeList[i]+"\");'>삭제</button></td>";  
          			  	break;
 		         	}
 	             	
@@ -97,7 +96,13 @@
 	       },
 	    }); //ajax끝
 	 });//문서시작시 시작하는 함수
-	
+	 function deleteThemaTime(themaCodeList){
+		 if(confirm("테마시간을 삭제하시겠습니까?")){
+			 location.href="/deleteThemaTime.do?tmCode="+themaCodeList;
+			 };
+		 };
+	 
+	 
 	const tabs=$(".tap-ul>li");
 	tabs.on("click",function(){
 		tabs.css("color","black").css("background-color","white");
