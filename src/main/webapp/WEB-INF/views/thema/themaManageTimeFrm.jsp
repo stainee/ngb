@@ -25,22 +25,7 @@
     
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl" id="table">
-            <tr class="tr-1">
-                <th>테마코드</th>
-                <th>테마명</th>
-                <th>1타임</th>
-                <th>2타임</th>
-                <th>3타임</th>
-                <th>4타임</th>
-                <th>5타임</th>
-                <th>6타임</th>
-                <th>7타임</th>
-                <th>8타임</th>
-                <th>9타임</th>
-                <th>10타임</th>
-                <th>인원</th>
-                <th>관리</th>
-            </tr>
+            
         </table>
        	<a href="/themaTimeAddFrm.do" class="reserve-a"><button class="reserve-btn">추가</button></a>
     </div>
