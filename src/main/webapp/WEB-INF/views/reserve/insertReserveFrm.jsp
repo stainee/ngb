@@ -161,6 +161,7 @@ function go_insert(){
 		</table>
 	</div>
 	<script>
+	const pageSelector = 1;
 	</script>
 </body>
 </html>

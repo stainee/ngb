@@ -148,5 +148,8 @@ function deleteMember(){
 				<button class="deleteMember"onclick="deleteMember()" id="delMemBtn">회원탈퇴</button>   	
 		        	
 	</div>
+	<script>
+	 const pageSelector = 0;
+	</script>
 </body>
 </html>

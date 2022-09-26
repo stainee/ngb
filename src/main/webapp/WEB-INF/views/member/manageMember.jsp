@@ -88,6 +88,8 @@
 	        	<%} %>
 	    	</table>
 	    </div>
- 
+ <script>
+ 	const pageSelector = 0;
+ </script>
 </body>
 </html>
