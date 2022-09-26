@@ -12,7 +12,7 @@ $(".btn3").on("click",function(event){
 
 	 console.log(reserveNo)	
 	 console.log(noTest); // true/false
-	 console.log(nameReg.test(reserveName));
+	 console.log("이름 테스트 : "+nameReg.test(reserveName));
 	 
 	 if(reserveNo == "" || reserveName == ""){		
 				//alert("전송실패");
@@ -33,9 +33,8 @@ $(".btn3").on("click",function(event){
 	   	event.preventDefault();
 	   }
 	  
-	
 	/*
-	  
+	
 	  if(!nameReg.test(reserveName)){
 		swal({
 		title :'이름 입력오류',
