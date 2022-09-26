@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <th class="thColor">내용</th>
-                        <th colspan="3" class="th-left"><%=t.getThemaContentBr()%></th>
+                        <th colspan="3" class="themaContent"><%=t.getThemaContentBr()%></th>
                     </tr>
                 </table>
                 <button class="reserve-btn" type="submit">예약하기</button>
