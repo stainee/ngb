@@ -20,8 +20,8 @@
 	
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
-         	<li><a href="/themaManageTimeFrm.do" style="text-decoration-line: none;">시간관리</a></li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none; display:block;  width:100%;">테마관리</a></li>
+         	<li><a href="/themaManageTimeFrm.do" style="text-decoration-line: none; display:block;  width:100%;">시간관리</a></li>
          </ul>
     </div>
     
@@ -63,10 +63,8 @@
                 <td><input type="text" value="" name="tmTime8" class="tmTime8" placeholder="00:00"></td>
                 <td><input type="text" value="" name="tmTime9" class="tmTime9" placeholder="00:00"></td>
                 <td><input type="text" value="" name="tmTime10" class="tmTime10" placeholder="00:00"></td>
-                <td><input type="text" value="<%=1%>-<%=3%> 명" readonly></td>
             </tr>
         </table>
-        
 	       	<button onclick="addThemaTime();" class="upload-btn">등록</button>
 	       	<a href="/themaManageTimeFrm.do" class="upload-a"><button class="cancel-btn">취소</button></a>
 
