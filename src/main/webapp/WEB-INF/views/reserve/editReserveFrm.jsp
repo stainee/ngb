@@ -36,7 +36,6 @@ function updateReserve(){
 			}
 		},
 		error :function(data){
-			console.log("2");
 		}
 	});
 }
@@ -135,6 +134,7 @@ function deleteReserve(){
 		</div>
 	</div>
 	<script>
+	const pageSelector = 1;
 	</script>
 </body>
 </html>

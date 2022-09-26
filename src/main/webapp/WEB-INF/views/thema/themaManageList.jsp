@@ -61,18 +61,8 @@
     </div>
     </div>
     <script>
-   
-    const tabs=$(".tap-ul>li");
-    tabs.on("click",function(){
-    	tabs.css("color","black").css("background-color","white");
-    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
-    });
-    	tabs.eq(0).click();
     
-   
-    
-    
-    
+    const pageSelector = 2;
     </script>
 </body>
 </html>
