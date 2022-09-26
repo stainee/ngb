@@ -4,16 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<script src="/summernote/summernote-lite.js"></script>
 	<script src="/summernote/lang/summernote-ko-KR.js"></script>
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
+	<link rel="stylesheet" href="/css/noticeWriteFrm.css">
 	
 	<div class="page-content">
-		<div class="page-title">공지사항 작성(에디터사용)</div>
+		<div class="page-title">공지사항 작성</div>
 		<!-- 첨부파일사용이 가능하게 할시 이 두개는 필수다:  method="post" enctype="multipart/form-data" -->
 		<form action="/noticeWrite.do" method="post"
 			enctype="multipart/form-data">

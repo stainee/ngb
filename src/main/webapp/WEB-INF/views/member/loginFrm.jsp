@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="css/login.css">
 </head>
 <body>

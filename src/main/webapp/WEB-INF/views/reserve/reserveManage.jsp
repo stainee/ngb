@@ -13,11 +13,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
     <link rel="stylesheet" href="/css/reserveManage.css">
     <link rel="stylesheet" href="/css/notosans.css">
   	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  	
+  	<link rel="icon" href="/img/logo2.png">
    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -92,7 +92,6 @@
     			type : "post",
     			data : {select:select},
     			success : function(data){
-    				console.log(data);
     				var html ="";
     				$.each(data,function(idx,value){
     					html += "<tr>";
@@ -104,7 +103,11 @@
     					html += "<td>"+ value.reserveAmount +"</td>";
     					html += "<td>"+ value.reservePay +"</td>";
     					html += "<td>"+ value.reserveDate +"</td>";
-    					html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
+    					if(value.reserveAmount > value.peopleMax){
+    						html += "<td style = 'color:red;'>"+ value.reserveAmount+"/"+ value.peopleMax +"</td>";
+    					}else{
+    						html += "<td>"+ value.reserveAmount+"/"+ value.peopleMax + "</td>";
+    					}
     					html += "<td>"+ "-" +"</td>";
     					html += "<td><button onclick='fn_managePage("+value.themaPrice+",\""+select+"\","+value.peopleMax+",\""+value.themaName+"\",\""+value.time+"\","+value.reserveNo+",\""+value.themaCode+"\","+value.timeCode+");'>관리</button></td>";
     					html +="</tr>";
@@ -131,7 +134,6 @@
     	}
      	selectThema.on("change",function(){
      		const select = selectThema.val();
-     		console.log(select);
      		selectThemaReserve(select);
      	});
      	function selectThemaReserve(){

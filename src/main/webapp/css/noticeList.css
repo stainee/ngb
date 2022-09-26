@@ -16,7 +16,7 @@
 	.content-wrap table{
 	width :70%;
 	margin : 0 auto;
-	margin-top : 50px;
+	margin-top : 10px;
 	text-align: center;
 	
 	}
@@ -70,9 +70,7 @@
 	.notice-tbl>.tr-2>td:first-child{
 		border-left: 1px solid rgb(66,64,64);
 	}
-	
 
-	
 	#pageNavi{
 	margin-top:30px;
 	text-align:center;
@@ -147,3 +145,29 @@
 	
 
 }
+/* 글쓰기 버튼관련 */
+.btn2{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    box-shadow: 0.5px 0.5px 0.5px 0.5px black;
+    cursor: pointer;
+    font-size:20px;
+    font-weight:700;
+}
+.btn2:active{
+    width:100px;
+    height:50px;
+    background-color: rgb(255,193,7);
+    border:1px solid black;
+    box-shadow: none;
+}
+.btn-box{
+	width :70%;
+	display : flex;
+	flex-direction: row-reverse;
+	margin : 0 auto;
+	margin-top : 30px;
+	text-align: center;
+}
+	

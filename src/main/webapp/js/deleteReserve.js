@@ -1,7 +1,8 @@
 payment={};
 //예약취소버튼
-$("#cancle").on("click",function(){
+$("#cancel").on("click",function(){
 	const reserveNo = $("[name=reserveNo]").val();
+	console.log(reserveNo);
 	paymentInfo(reserveNo);
 
 	
@@ -15,13 +16,14 @@ function paymentInfo(reserveNo){
 		dataType:"json",
 		data : {reserveNo:reserveNo},
 		success: function(resp){
+			console.log(resp.tid);
 			//가격과 tid 정보 조회 결과
 			payment.reserveNo = reserveNo;
 			payment.price = resp.price;
 			payment.tid = resp.tid;
 			if(payment.tid ==null){ //무통장결제
 				deleteReserve(reserveNo);
-			}else{
+			}else{ //카카오페이결제
 				paymentCancle(reserveNo);
 			}
 		}
@@ -45,13 +47,12 @@ function paymentCancle(reserveNo){
 			deleteReserve(reserveNo);
 		},
 		error:function(resp){
-			console.log(resp);
 			swal({
 				title :"결제취소실패",
 				text :"관리자에게 문의해주세요",
 				icon:"error"
 			}).then(function(){
-				location.href = "/";
+				location.href = "/index.jsp";
 			});
 		}
 	})
@@ -71,7 +72,8 @@ function deletePayment(reserveNo){
 	})
 }
 //예약 취소
-function deleteReserve(reserveNo){
+function deleteReserve(){
+	const reserveNo = $("[name=reserveNo]").val();
 	$.ajax({
 		url:"/deleteReserve2.do",
         type:"post",
@@ -82,7 +84,7 @@ function deleteReserve(reserveNo){
 				text :"예약이 취소되었습니다",
 				icon:"success"
 			}).then(function(){
-			location.href = "/";
+				location.href = "/";
 			}
 			)
 		},

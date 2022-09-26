@@ -75,6 +75,13 @@ $(".nextBtn").on("click", function() {
 		}
 	}
 })
+$(".center-move>.signUpBtn").on("click",function(){
+	if (regCheckId == 1 && regCheckPw == 1 && regCheckPwRe == 1 && regCheckPhone == 1 && regCheckMail ==1) {
+			
+		} else {
+			event.preventDefault();
+		}
+});
 
 $(".notsubmit").on("click", function(){
 	event.preventDefault();
@@ -205,8 +212,7 @@ function sendMail() {
 		success: function(data) {
 			if (data != null) {
 				mailCode = data;
-				$("#auth").show();
-
+				$("#auth").css("display","flex");
 				//메일이 전송된 시점
 				//에서 시간이 흐름
 				authTime();
@@ -258,6 +264,8 @@ $("#authBtn").on("click", function() {
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");
+			$("#authMsg").css("padding-left", "205px");
+			
 			clearInterval(intervalId);
 			$("#timeZone").hide();
 			regCheckMail = 1;

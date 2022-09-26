@@ -173,6 +173,7 @@
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
     position: fixed;
+
     top: 0;
     left: 0;
     display: none;
@@ -180,7 +181,8 @@
     align-items: center;
 }
 .modal{
-    background-color: #fff;
+    background-color: rgb(50,50,50);
+    border: 4px solid white;
     width: 500px;
     min-width: 300px;
     height: 500px;
@@ -192,6 +194,11 @@
     justify-content: center;
     align-items: center;
 }
+.modal-top>h1{
+	padding-top : 30px;
+	color : white;
+}
+
 .modal-content{
     width: 100%;
     height: 100%;
@@ -203,7 +210,12 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 80px;
+    width : 350px;
+    height : 40px;
+    line-height: 40px;
+    margin-bottom: 80px;
+    color : white;
+    font-size: 20px;
 }
 .modal-content>div>.btn-last{
 	display: flex;

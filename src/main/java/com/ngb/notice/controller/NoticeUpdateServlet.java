@@ -38,7 +38,7 @@ public class NoticeUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//2.값추출
 		String root = getServletContext().getRealPath("/");
-		String saveDirectory = root+"upload/notice";
+		String saveDirectory = root+"upload/editor";
 		//2-2. 파일최대크기 지정
 		int maxSize = 10*1024*1024;
 		//2-3. request -> MultipartRequest 변환(파일 업로드 시점)

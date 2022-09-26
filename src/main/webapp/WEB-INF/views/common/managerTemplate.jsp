@@ -20,13 +20,13 @@
 			<li><a href="#">관리자페이지</a></li>
 		</ul>
 		<ul class="menu">
-			<li><a href="#" class="index">회원관리</a></li>
+			<li><a href="/manageMember.do" class="index">회원관리</a></li>
 		</ul>
 		<ul class="menu">
-			<li><a href="#">예약관리</a></li>
+			<li><a href="/reserveManage.do">예약관리</a></li>
 		</ul>
 		<ul class="menu">
-			<li><a href="#">테마관리</a></li>
+			<li><a href="/themaManageList.do">테마관리</a></li>
 		</ul>
 	</div>
 

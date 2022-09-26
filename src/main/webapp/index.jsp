@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나가방</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/main2.css">
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,14 +26,17 @@
                     <%if(m==null){ %>
                         <span><a href="/loginFrm.do">로그인</a></span>
                         <span><a href="/signupFrm.do">회원가입</a></span>
-                        <%}else{ %>
+                        <%}else if(m.getMemberLevel() == 0){ %>
                         <span><a href="/logout.do">로그아웃</a></span>
                         <span><a href="/reserveManage.do">관리자</a></span>
+                		<%}else if(m.getMemberLevel() != 0){ %>
+                        <span><a href="/logout.do">로그아웃</a></span>
+                        <span><a href="/mypageFrm.do">마이페이지</a></span>
                 		<%} %>
                     </div>
                     <div class="sub-menu"></div>
                     <div class = "middle-box">
-                        <span><a href = "#">NOTICE</a></span>
+                        <span><a href = "noticeList.do?reqPage=1">NOTICE</a></span>
                         <span><a href = "/reserveFrm.do">RESERVATION</a></span>
                         <span><a href = "/themaUserList.do">THEMA</a></span>
                         <span id = "go-location"><a href = "#section3">LOCATION</a></span>
@@ -41,17 +44,21 @@
                 </div>
         </div>
         <div class="section" id="section2">
+	    				<div class="title-wrap">
+				<h2>THEMA & NOTICE<h2>
+			</div>
 	    	<div id = "thema-info-wrap" class = "thema-info-wrap">
 	    	<!-- 테마목록 들어가는 자리 -->
 	    	</div>
             <div class = "notice-wrap">
-                <a href = "#">
+                <a href = "/noticeList.do?reqPage=1">
                     <div class = "notice-title">NOTICE</div>
                                 </a>    
                                     <div>
+                                    
                     <table class = "main-table">
                         <thead>
-                            <th>공지</th>
+                            <th>번호</th>
                             <th>제목</th>
                             <th>날짜</th>
                         </thead>
@@ -81,6 +88,14 @@
 					html += "<div id = 'test' class='thema-info-box'>";
 					html += "<div class='section2-box photo-box left'>";
 					html += "<a href ='/themaUserView.do?themaCode="+value.themaCode+"'>";
+					html += "<div class = 'thema-info'>";
+					html += "<span>"+value.category+"</span>";
+					html += "<div class = 'key-wrap'>";
+					for(let i=0;i<value.themaLevel;i++){
+					html += "<img src ='/img/key.png' class = 'key'>";
+					}
+					html += "</div>";
+					html += "</div>";
 					html += "<img src='/upload/thema/"+value.themaFilepath+"'>";
 					html += "</a>";
 					html += "</div>";
@@ -99,13 +114,11 @@
     	$.ajax({
     		url:"/mainNotice.do",
     		success:function(data){
-    			console.log(data);
     			var html = "";
-    			for(let i=0;i<5;i++){
-    			console.log(data.list[i].noticeTitle);
+    			for(let i=0;i<3;i++){
     			html += "<tr>";
     			html += "<td>"+data.list[i].noticeNo+"</td>";
-    			html += "<td><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
+    			html += "<td class = 'notice-content'><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";
     			html += "<td>"+data.list[i].regDate+"</td>";
     			html += "</tr>";
     			}
@@ -117,7 +130,7 @@
 
 		$(document).on("click",".prev",function(){
 			var length = $(".thema-info-box").length;
-			const width = 140;
+			const width = 100;
 		    if(imgNo != 0){
 		        imgNo--;
 		        const move = -imgNo*width;
@@ -192,6 +205,7 @@ const marker = new naver.maps.Marker({
 	position: new naver.maps.LatLng(37.533837,126.896836),
 	map : map 
 });
+
 window.onload=function(){
 	history.scrollRestoration = "manual"
 }

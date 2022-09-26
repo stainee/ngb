@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/noticeUpdateFrm.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<th>내용</th>
+				
 				<td colspan="4" style="text-align: left;">
 					<textarea name="noticeContent" id="noticeContent"><%=n.getNoticeContent() %></textarea>
 				</td>

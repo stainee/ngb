@@ -9,7 +9,8 @@ Notice n = (Notice) request.getAttribute("n");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/noticeView.css">
 </head>
 <body>
@@ -30,14 +31,14 @@ Notice n = (Notice) request.getAttribute("n");
 			</tr>
 			<tr>
 				<td colspan="6">
-					<div id="noticeContent">
+					<div id="noticeContent" style = "overflow:scroll;">
 						<%=n.getNoticeContentBr()%>
 					</div>
 				</td>
 			</tr>
 			<!-- 로그인 되어있고 작성자랑 세션의 아이디가 같을때 라는 조건 -->
 			<%
-			if (m != null && n.getNoticeWriter().equals(m.getMemberId())) {
+			if (m != null && m.getMemberLevel() == 0) {
 			%>
 			<tr>
 				<th colspan="6">

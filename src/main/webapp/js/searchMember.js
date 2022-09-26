@@ -66,7 +66,7 @@ $(".first-btn").on("click", function() {
 			if (data == null) {
 				result.append("회원정보를 조회할 수 없습니다.")
 			} else {
-				result.append("아이디 :" + data.memberId);
+				result.append("아이디 : " + data.memberId);
 			}
 		},
 		error: function() {
@@ -94,7 +94,7 @@ $(".second-btn").on("click", function() {
 			if (data == null) {
 				result.append("회원정보를 조회할 수 없습니다.")
 			} else {
-				result.append("비밀번호 :" + data.memberPw);
+				result.append("비밀번호 : " + data.memberPw);
 			}
 		},
 		error: function() {
@@ -168,8 +168,8 @@ function timeCount() {
 
 $("#authBtn").on("click", function() {
 	const inputValue = $("#authCode").val();
+	$("#authMsg").show();
 	if (mailCode != null) {
-		$("#authMsg").show();
 		if (inputValue == mailCode) {
 			$("#authMsg").text("인증에 성공하셨습니다.");
 			$("#authMsg").css("color", "rgb(255,193,7)");
@@ -182,9 +182,9 @@ $("#authBtn").on("click", function() {
 			regCheckMail = 0;
 		}
 	} else {
+		$("#timeZone").hide();
 		$("#authMsg").text("인증시간만료");
 		$("#authMsg").css("color", "red");
 		regCheckMail = 0;
 	}
-
 });
