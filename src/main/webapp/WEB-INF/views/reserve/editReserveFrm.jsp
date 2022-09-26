@@ -10,6 +10,7 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="/img/logo.png">
 <link rel="stylesheet" href="/css/template.css">
 <link rel="stylesheet" href="/css/reserveManage.css">
 <link rel = "stylesheet" href = "/css/editReserveFrm.css">

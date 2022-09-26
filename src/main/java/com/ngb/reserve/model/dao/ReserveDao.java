@@ -119,7 +119,6 @@ public class ReserveDao {
 		query += " ORDER BY THEMA_CODE,A.TIME";
 		try {
 			pstmt = conn.prepareStatement(query);
-			System.out.println(query);
 			pstmt.setString(1, strDate);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {

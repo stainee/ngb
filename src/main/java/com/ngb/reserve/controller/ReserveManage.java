@@ -38,7 +38,6 @@ public class ReserveManage extends HttpServlet {
 		Reserve r = new Reserve();
 		ReserveService service = new ReserveService();
 		
-		System.out.println("df");
 		ArrayList<Thema> themaTable = service.themaTable(); //reserveManage.jsp에서 테마별로 정렬하기 위한 테마테이블 조회
 		
 		ArrayList<Reserve> list = service.selectAllReserve();
