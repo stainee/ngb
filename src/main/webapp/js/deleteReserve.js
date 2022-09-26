@@ -94,7 +94,7 @@ function deleteReserve(){
 				text :"관리자에게 문의해주세요",
 				icon:"error"
 			}).then(function(){
-				//location.href = "/";
+				location.href = "/";
 			});
 		}
 	})

@@ -78,7 +78,7 @@ public class FindReserveServlet extends HttpServlet {
 				view1.forward(request, response);
 			} else {
 				RequestDispatcher view2 = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-				request.setAttribute("title", "회원찾기 실패");
+				request.setAttribute("title", "예약찾기 실패");
 				//request.setAttribute("msg", "성함과 전화번호을 확인해주세요");
 				request.setAttribute("msg", "성함과 예약번호을 확인해주세요");
 				request.setAttribute("icon", "error");
