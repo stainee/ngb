@@ -142,6 +142,19 @@ public class ThemaService {
 	}
 
 
+	public int deleteThemaTime(String tmCode) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = dao.deleteThamaTime(conn, tmCode);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+
 
 
 

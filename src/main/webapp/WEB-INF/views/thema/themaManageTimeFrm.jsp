@@ -84,7 +84,8 @@
 	            		html += "<td class='manageBtn'><a href='/themaTimeAddFrm.do?themaCode="+themaCodeList[i]+"&themaName="+themaNameList[i]+"'>";
        		 		  	html += "<button class='update'>수정</button>";
     		 		  	html += "</a>";
-         			  	html += "<button onclick='deleteThemaTime();' class='delete'>삭제</button></td>";    				
+         			  	html += "<button onclick='deleteThemaTime();' class='delete'>삭제</button></td>";  
+         			  	html += "<input type='hidden' value="+themaCodeList[i]+"id='hiddenTmCode'>";
          			  	break;
 		         	}
 	             	
@@ -100,11 +101,30 @@
 	 
 	 
 	function deleteThemaTime(){
-		
-		
-		
-		
-		
+		const tmCode = $("#hiddenTmCode").val();
+		if (confirm("정말 삭제하시겠습니까?")) {
+			
+			$.ajax({
+				url : "/deleteThemaTime.do",
+				type : "get",
+				data : {
+					tmCode: tmCode
+				},
+				success : function(data){
+					if(data==1){
+						alert("삭제되었습니다.");
+						location = "/themaManageTimeFrm.do"				
+					}else{
+						alert("삭제에 실패했습니다.");
+						location = "/themaManageTimeFrm.do"	
+					}
+				},
+				error :function(){
+					alert("삭제에 실패했습니다.");
+					location = "/themaManageTimeFrm.do"
+				}
+			});
+		}
 		
 	}
 	

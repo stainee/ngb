@@ -367,12 +367,13 @@ public class ThemaDao {
 			pstmt.setString(2, tt.getTime10());
 			rtest = pstmt.executeUpdate();
 			result *= rtest;
-			
+			System.out.println(result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
-		
 		System.out.println(result);
 		return result;
 	}
@@ -409,6 +410,23 @@ public class ThemaDao {
 		}
 		
 		return list;
+	}
+
+	public int deleteThamaTime(Connection conn, String tmCode) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from time where time_code = ?";
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, tmCode);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 
