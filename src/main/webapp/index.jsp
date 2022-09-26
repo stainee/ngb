@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나가방</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="icon" href="/img/logo.png">
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/main2.css">
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

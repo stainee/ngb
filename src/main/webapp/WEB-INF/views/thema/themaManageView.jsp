@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나갑ㅇ</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/notosans.css">
 <link rel="stylesheet" href="/css/themaManageView.css">
 </head>

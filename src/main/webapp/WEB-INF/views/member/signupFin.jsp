@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입 완료</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/signupFrm.css">
 </head>
 <body>
