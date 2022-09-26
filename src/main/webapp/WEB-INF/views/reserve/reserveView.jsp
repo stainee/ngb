@@ -52,6 +52,10 @@
 					     	<th>결제금액</th>
 					     	<td colspan="3"><%=reser.getReservePay()*reser.getReserveAmount() %></td>
 					     </tr>
+					     <tr>
+					     	<th>예약번호</th>
+					     	<td colspan="3"><%=reser.getReserveNo() %></td>
+					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>
 					     </tr>

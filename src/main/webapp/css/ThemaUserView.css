@@ -53,13 +53,13 @@
 
 
 .search-btn{
-    margin-left: 40px;
+    margin-left: 10px;
     width:50px;
-	height:30px;
+	height:40px;
 	border:none;
 	background-color: rgb(255,193,7);
 	cursor: pointer;
-	font-size:15px;
+	font-size:12px;
 	margin-top: 15px;
 	font-family: ns-black;
 }

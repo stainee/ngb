@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ngb.thema.model.vo.Thema;
-import com.ngb.thema.model.vo.ThemaTime;
+import com.ngb.thema.model.vo.ThemaTimeManage;
 
 import common.JDBCTemplate;
 
@@ -274,25 +274,34 @@ public class ThemaDao {
 		return list;
 	}
 
-	public ArrayList<ThemaTime> selectAllTmt(Connection conn, ArrayList<Thema> tmCodeList) {
+
+	public ArrayList<ThemaTimeManage> selectAllThemaList(Connection conn) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<ThemaTime> tmt = new ArrayList<ThemaTime>();
-		String query = "select a.thema_code, a.thema_name,b.time_code,b.time from thema a left join time b on(a.thema_code = b.thema_code) where a.thema_code=? order by 1,4";
-		try {
-			pstmt = conn.prepareStatement(query);
-			for(int i=0;i<8;i++) {
-				rset = pstmt.executeQuery();
-//				pstmt.setString(1, list.get(i).thema_code);
-				while(rset.next()) {
-					
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+	    ResultSet rset = null;
+	    ArrayList<ThemaTimeManage> themaList = new ArrayList<ThemaTimeManage>();
+	    String query = "select a.thema_name, a.thema_code, b.time_code, b.time from thema a left join time b on(a.thema_code = b.thema_code) order by 2,4";
+
+	    try {
+	    	pstmt = conn.prepareStatement(query);
+	         rset = pstmt.executeQuery();
+	         while (rset.next()) {
+	            ThemaTimeManage t = new ThemaTimeManage();
+	            t.setThemaCode(rset.getString("thema_code"));
+	            t.setThemaName(rset.getString("thema_name"));
+	            t.setTimeCode(rset.getString("time_code"));
+	            t.setTime(rset.getString("time"));
+	            themaList.add(t);
+	         }
+
+	     } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	     } finally {
+	         JDBCTemplate.close(pstmt);
+	         JDBCTemplate.close(rset);
+	      }
+	      return themaList;
+
 	}
 
 

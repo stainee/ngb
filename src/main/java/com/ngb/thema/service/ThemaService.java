@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.ngb.thema.model.dao.ThemaDao;
 import com.ngb.thema.model.vo.Thema;
-import com.ngb.thema.model.vo.ThemaTime;
+import com.ngb.thema.model.vo.ThemaTimeManage;
 
 import common.JDBCTemplate;
 
@@ -112,11 +112,11 @@ public class ThemaService {
 	}
 
 
-	public ArrayList<ThemaTime> selectAllTmt() {
+	public ArrayList<ThemaTimeManage> selectAllThemaList() {
 		Connection conn = JDBCTemplate.getConnection();
-		ArrayList<Thema> tmCodeList = dao.selectAllThema(conn);
-		ArrayList<ThemaTime> tmt = dao.selectAllTmt(conn, tmCodeList);
-		return null;
+		ArrayList<ThemaTimeManage> themaList = dao.selectAllThemaList(conn);      
+     	JDBCTemplate.close(conn);      
+     	return themaList;
 	}
 
 
