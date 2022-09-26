@@ -19,7 +19,9 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap">
-		<div class="page-title">공지사항</div>
+		<div class="page-title">
+			<h2>NOTICE</h2>
+		</div>
 
 		<table class="notice-tbl">
 			<tr>

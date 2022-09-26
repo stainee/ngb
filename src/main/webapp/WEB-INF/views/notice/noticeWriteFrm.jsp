@@ -15,7 +15,9 @@
 	<link rel="stylesheet" href="/css/noticeWriteFrm.css">
 	
 	<div class="page-content">
-		<div class="page-title">공지사항 작성</div>
+		<div class="page-title">
+			<h2>NOTICE</h2>
+		</div>
 		<!-- 첨부파일사용이 가능하게 할시 이 두개는 필수다:  method="post" enctype="multipart/form-data" -->
 		<form action="/noticeWrite.do" method="post"
 			enctype="multipart/form-data">

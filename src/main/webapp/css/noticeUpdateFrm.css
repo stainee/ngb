@@ -5,12 +5,23 @@
 }
 
 .page-title {
+	/*
 	width: 70%;
 	color: white;
 	font-size: 27px;
 	margin: 0 auto;
 	margin-top: 50px;
 	text-align: center;
+	*/
+	display: flex;
+    justify-content: center;
+   	border-bottom: 2px solid lightgray;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    padding-top: 80px;
+    color: white;
+    width:60%;
+    margin:0 auto;
 }
 
 .page-content table {
@@ -18,6 +29,12 @@
 	margin: 0 auto;
 	margin-top: 50px;
 	text-align: center;
+}
+
+.page-title h2{
+	margin-bottom:50px;
+	color : white;
+	font-size:2.5rem;
 }
 
 table {

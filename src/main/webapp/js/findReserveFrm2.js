@@ -8,11 +8,12 @@ $(".btn3").on("click",function(event){
 	//console.log(reserveEmail);
 	let noReg = /^[0-9]{0,5}$/;
 	let noTest = noReg.test(reserveNo);
-	const nameReg=/^[가-힣][a-z][A-Z]{0,20}$/;
+	const nameReg=/^[가-힣][a-z][A-Z][]{0,20}$/;
 
 	 console.log(reserveNo)	
 	 console.log(noTest); // true/false
 	 console.log("이름 테스트 : "+nameReg.test(reserveName));
+	 
 	 
 	 if(reserveNo == "" || reserveName == ""){		
 				//alert("전송실패");
@@ -22,8 +23,9 @@ $(".btn3").on("click",function(event){
 			icon:'warning'
 		   	})
 		   	event.preventDefault();	
-		}
-		if(!noTest){
+		}else{
+			
+			if(!noReg.test(reserveNo)){
 		//alert("전송실패");
 		swal({
 		title :'예약 번호 입력 오류',
@@ -32,9 +34,11 @@ $(".btn3").on("click",function(event){
 	   	})
 	   	event.preventDefault();
 	   }
-	  
-	/*
-	
+	   }
+	   	
+	  }); 
+	   
+	   /*
 	  if(!nameReg.test(reserveName)){
 		swal({
 		title :'이름 입력오류',
@@ -43,9 +47,55 @@ $(".btn3").on("click",function(event){
 	   	})
 	   	event.preventDefault();
 	   }
+	   
+			
+		}
+		*/
+		
+		/*
+		//이름 유효성 검사
+		if(reserveName=""){
+			swal({
+		title :'이름 입력오류',
+		text :'이름을 입력해주세요'
+	   	})
+	   	event.preventDefault();
+		}
+
+			
+		 if(!nameReg.test(reserveName)){
+		swal({
+		title :'이름 입력오류',
+		text :'이름은 한글, 영문 대문자/소문자만 가능합니다.',
+		icon:'warning'
+	   	})
+	   	event.preventDefault();
+	   }
+	   
+	   // 예약번호 유효성 검사
+	   if(reserveNo=""){
+		swal({
+		title :'예약번호 입력오류',
+		text :'예약번호를 입력해주세요'
+	   	})
+	   	event.preventDefault();
+		}
+		
+		if(!noReg.test(reserveNo)){
+		//alert("전송실패");
+		swal({
+		title :'예약 번호 입력 오류',
+		text :'예약번호는 숫자만 입력가능합니다.',
+		icon:'warning'
+	   	})
+	   	event.preventDefault();
+	   }
+	   
 	   */
+		
+		
 	
-	  }); 
+	
 	  
 	
 	   /*
