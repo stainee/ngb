@@ -24,7 +24,26 @@ $(".btn3").on("click",function(event){
 		   	})
 		   	event.preventDefault();	
 		}else{
-			
+			/*
+			$.ajax({
+			url : "/findReserve.do",
+			data : {reserveNo:reserveNo , reserveName:reserveName},
+			//findReserve 서블렛으로 데이터 넘겨줌
+			dataType :"json",
+			success : function(data){
+				//서블렛에서 객체 타입으로 받아옴(resereNo,reserveName 담겨있음)
+			if(data != "") {
+                    location.href = "/reserveView.do";
+                }else {
+                    swal({
+                    title :'예약찾기 실패',
+                    text :'관리자에게 문의해주세요',
+                    icon:'error'
+                    })
+                 }
+                 }
+			})
+			*/
 			if(!noReg.test(reserveNo)){
 		//alert("전송실패");
 		swal({
@@ -35,9 +54,9 @@ $(".btn3").on("click",function(event){
 	   	event.preventDefault();
 	   }
 	   }
-	   	
-	  }); 
+	 
 	   
+	    }); 
 	   /*
 	  if(!nameReg.test(reserveName)){
 		swal({
@@ -136,9 +155,9 @@ $(".btn3").on("click",function(event){
                     location.href = "/findReserveFrm.do";
                 }else {
                     swal({
-                    title :'무통장 가상계좌 정보 메일 전송 실패',
+                    title :'예약찾기 실패',
                     text :'관리자에게 문의해주세요',
-                    icon:'warning'
+                    icon:'error'
                     })
                 }			
 			}		
