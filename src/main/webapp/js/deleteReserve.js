@@ -52,7 +52,7 @@ function paymentCancle(reserveNo){
 				text :"관리자에게 문의해주세요",
 				icon:"error"
 			}).then(function(){
-				location.href = "/";
+				location.href = "/index.jsp";
 			});
 		}
 	})
@@ -84,7 +84,7 @@ function deleteReserve(){
 				text :"예약이 취소되었습니다",
 				icon:"success"
 			}).then(function(){
-			//location.href = "/";
+				location.href = "/";
 			}
 			)
 		},
