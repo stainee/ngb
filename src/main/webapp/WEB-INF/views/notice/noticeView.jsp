@@ -9,13 +9,17 @@ Notice n = (Notice) request.getAttribute("n");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/noticeView.css">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="page-content">
-		<div class="page-title">공지사항</div>
+		<div class="page-title">
+		<h2>NOTICE</h2>
+		</div>
+
 		<table class="tbl" id="noticeView">
 			<tr class="tr-3">
 				<th colspan="6"><%=n.getNoticeTitle()%></th>

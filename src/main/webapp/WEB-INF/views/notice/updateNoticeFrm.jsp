@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/noticeUpdateFrm.css">
 </head>
 <body>
@@ -18,7 +19,9 @@
 	<link rel="stylesheet" href="/summernote/summernote-lite.css">
 	
 	<div class="page-content">
-		<div class="page-title">공지사항 수정</div>
+		<div class="page-title">
+		<h2>NOTICE</h2>
+		</div>
 		<form action="/noticeUpdate.do" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>

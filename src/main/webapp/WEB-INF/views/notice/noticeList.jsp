@@ -10,7 +10,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/noticeList.css">
 
 
@@ -18,7 +19,11 @@
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<div class="content-wrap"> 
-		<div class="page-title">공지사항</div>
+		<div class="page-title">
+			<h2>
+				NOTICE
+			</h2>
+		</div>
 		<form action="noticeSearch.do?reqPage=1" method="post">
 			<select name="searchTag">
 				<option value="notice_title">제목</option>

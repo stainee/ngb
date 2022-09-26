@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테마 시간 수정</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel = "stylesheet" href = "/css/notosans.css">
 <link rel = "stylesheet" href = "/css/themaTimeManage.css">
 </head>
@@ -14,8 +15,8 @@
 
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
-         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none; display:block;  width:100%;">테마관리</a></li>
+         	<li><a href="/themaManageTimeFrm.do" style="text-decoration-line: none; display:block;  width:100%;">시간관리</a></li>
          </ul>
     </div>
     
@@ -76,6 +77,8 @@
 		$(this).css("color","white").css("background-color","rgb(255,193,7)");
 	});
 	tabs.eq(1).click();
+	
+	const pageSelector = 2;
 </script>
 </body>
 </html>

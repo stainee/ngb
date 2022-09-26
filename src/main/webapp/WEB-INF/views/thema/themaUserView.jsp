@@ -9,9 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<<<<<<< HEAD
+<link rel="icon" href="/img/logo2.png">
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/ngb.git
 <link rel="stylesheet" href="/css/notosans.css">
 <link rel="stylesheet" href="/css/themaUser.css">
+<link rel="icon" href="/img/logo2.png">
 
 </head>
 <body>
@@ -27,7 +32,7 @@
             <div class="img-wrap">
                 <img src="/upload/thema/<%=t.getThemaFilepath() %>" class="img-content">
             </div>
-            <form class="thema-content-wrap">
+            <form class="thema-content-wrap" action="/reserveFrm.do" method="post">
             	<input value="<%=t.getThemaCode()%>" type="hidden">
             	<div class="thema-title">INTRODUCTION</div>
                 <table class="thema-table">
@@ -64,11 +69,12 @@
                     </tr>
                     <tr>
                         <th class="thColor">내용</th>
-                        <th colspan="3" class="th-left"><%=t.getThemaContentBr()%></th>
+                        <th colspan="3" class="themaContent"><%=t.getThemaContentBr()%></th>
                     </tr>
                 </table>
+                <button class="reserve-btn" type="submit">예약하기</button>
             </form>
-            <button class="reserve-btn" type="submit">예약하기</button>
+            
         </div>
         
         <%@include file="/WEB-INF/views/common/footer.jsp" %>

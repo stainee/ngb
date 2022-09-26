@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel = "stylesheet" href = "/css/notosans.css">
 <link rel = "stylesheet" href = "/css/updateThemaFrm.css">
 

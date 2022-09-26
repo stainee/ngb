@@ -9,7 +9,8 @@ ReserveMngr result = (ReserveMngr) request.getAttribute("result");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/template.css">
 <link rel="stylesheet" href="/css/reserveManage.css">
 <link rel = "stylesheet" href = "/css/editReserveFrm.css">
@@ -35,7 +36,6 @@ function updateReserve(){
 			}
 		},
 		error :function(data){
-			console.log("2");
 		}
 	});
 }
@@ -134,6 +134,7 @@ function deleteReserve(){
 		</div>
 	</div>
 	<script>
+	const pageSelector = 1;
 	</script>
 </body>
 </html>

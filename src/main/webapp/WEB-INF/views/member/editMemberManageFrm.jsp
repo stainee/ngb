@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 	<link rel="stylesheet" href="/css/editMemberManageFrm.css">
 	<link rel = "stylesheet" href = "/css/notosans.css">
 <style>
@@ -94,7 +95,7 @@ function deleteMember(){
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 
 	<div class="content-wrap">
-	 		<div class="title-wrap">테마별 시간 관리</div>   
+	 		<div class="title-wrap">회원 수정</div>   
 			<table class="tbl manageMemTbl">
 		        <tr class="tr-1">
 		        	<th>회원번호</th>
@@ -147,5 +148,8 @@ function deleteMember(){
 				<button class="deleteMember"onclick="deleteMember()" id="delMemBtn">회원탈퇴</button>   	
 		        	
 	</div>
+	<script>
+	 const pageSelector = 0;
+	</script>
 </body>
 </html>

@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/delUser.css">
 </head>
 <body>
@@ -68,7 +69,7 @@ function delUser(){
 			success : function(data){
 				if(data==1){
 					alert("탈퇴가 완료되었습니다.");
-					location = "/"				
+					location = "/logout.do"				
 				}else{
 					location = "/mypageFrm.do"	
 				}

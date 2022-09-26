@@ -72,9 +72,10 @@
 	cursor: pointer;
 	font-size:16px;
     margin-right: 20px;
-    margin-top: 10px;
+    margin-top: 60px;
     font-family: ns-bold;
     font-weight:bold;
+    
 }
 
 .thema-table{
@@ -94,7 +95,6 @@
 .thema-table>tbody>tr>th{
     margin-top: 50px;
     width: 150px;
-    font-family: ns-thin;
     font-size: 12px;
     border: 0.5px solid black;
     border-right: 4px solid rgb(33, 33, 33);
@@ -115,4 +115,9 @@
 .key{
 	width:15px;
 	height:15px;
+}
+
+.themaContent{
+	text-align: left;
+	padding-left: 20px;
 }

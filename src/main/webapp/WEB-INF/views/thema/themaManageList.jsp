@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel = "stylesheet" href = "/css/themaManageList.css">
 <link rel = "stylesheet" href = "/css/notosans.css">
 
@@ -20,8 +21,8 @@
 	<div class="content-wrap">
     <div class="tap-wrap">
          <ul class="tap-ul">
-         	<li><a href="/themaManageList.do" style="text-decoration-line: none;">테마관리</a></li>
-         	<li><a href="/themaTimeManage.do" style="text-decoration-line: none;">시간관리</a></li>
+         	<li><a href="/themaManageList.do" style="text-decoration-line: none; display:block;  width:100%;">테마관리</a></li>
+         	<li><a href="/themaManageTimeFrm.do" style="text-decoration-line: none; display:block;  width:100%;">시간관리</a></li>
          </ul>
     </div>
 
@@ -60,18 +61,8 @@
     </div>
     </div>
     <script>
-   
-    const tabs=$(".tap-ul>li");
-    tabs.on("click",function(){
-    	tabs.css("color","black").css("background-color","white");
-    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
-    });
-    	tabs.eq(0).click();
     
-   
-    
-    
-    
+    const pageSelector = 2;
     </script>
 </body>
 </html>

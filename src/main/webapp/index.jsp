@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나가방</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="/css/main2.css">
 <link rel="stylesheet" href = "/css/notosans.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -83,7 +83,6 @@
 		$.ajax({
 			url: "/mainThemaPrint.do",
 			success: function(data){
-				console.log(data);
 				var html = "";
 				$.each(data,function(idx,value){
 					html += "<div id = 'test' class='thema-info-box'>";
@@ -115,10 +114,8 @@
     	$.ajax({
     		url:"/mainNotice.do",
     		success:function(data){
-    			console.log(data);
     			var html = "";
     			for(let i=0;i<3;i++){
-    			console.log(data.list[i].noticeTitle);
     			html += "<tr>";
     			html += "<td>"+data.list[i].noticeNo+"</td>";
     			html += "<td class = 'notice-content'><a href ='noticeView.do?noticeNo="+data.list[i].noticeNo+"'>"+data.list[i].noticeTitle+"</a></td>";

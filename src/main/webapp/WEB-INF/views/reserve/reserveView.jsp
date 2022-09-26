@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -50,6 +51,10 @@
 					     <tr>
 					     	<th>결제금액</th>
 					     	<td colspan="3"><%=reser.getReservePay()*reser.getReserveAmount() %></td>
+					     </tr>
+					     <tr>
+					     	<th>예약번호</th>
+					     	<td colspan="3"><%=reser.getReserveNo() %></td>
 					     </tr>
 				 		<tr>
 					     	<th colspan="4"></th>

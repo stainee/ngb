@@ -9,12 +9,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나가방</title>
+<link rel="icon" href="/img/logo2.png">
+<link rel="stylesheet" href = "css/managerTemplate.css">
 <link rel="stylesheet" href="/css/notosans.css">
 <link rel="stylesheet" href="/css/themaManageView.css">
 </head>
 <body>
-	<%@include file="/WEB-INF/views/common/managerTemplate.jsp" %>
+	<div class="header-wrap">
+		<div class="header">
+			<div id="logo"><a href="/index.jsp"><img src="/img/logo2.png"></a></div>
+		</div>
+	</div>
+	<div class="menu-wrap">
+		<ul>
+			<li><a href="#">관리자페이지</a></li>
+		</ul>
+		<ul class="menu">
+			<li><a href="/manageMember.do" >회원관리</a></li>
+		</ul>
+		<ul class="menu">
+			<li><a href="/reserveManage.do">예약관리</a></li>
+		</ul>
+		<ul class="menu">
+			<li><a href="/themaManageList.do" class="index">테마관리</a></li>
+		</ul>
+	</div>
 	
 	<div class="content-wrap">
     <div class="title-wrap">테마관리</div>
@@ -106,7 +126,7 @@
 	    	$(this).css("color","white").css("background-color","rgb(255,193,7)");
 	    });
 	    tabs.eq(0).click();
-
+	const pageSelector = 1;
 	</script>
 </body>
 
