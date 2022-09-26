@@ -23,11 +23,14 @@
 			enctype="multipart/form-data">
 			<table class="tbl" id="noticeWrite">
 				<tr>
+					
 					<th>제목</th>
-					<td colspan="3"><input type="text" name="noticeTitle"
-						class="input-form"></td>
+					<td colspan="3">
+						<input type="hidden" name="" value="">
+						<input type="text" name="noticeTitle"class="input-form">
+					</td>
 				</tr>
-
+				
 				<tr>
 					<th>작성자</th>
 					<td><%=m.getMemberId()%> <input type="hidden"
@@ -72,6 +75,12 @@
 				}
 			});
 		}
+		//인풋안에서 엔터 사용시 데이터 전송 방지
+		$('input[type="text"]').keydown(function() {
+			  if (event.keyCode === 13) {
+			    event.preventDefault();
+			  };
+		});
 	</script>
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>

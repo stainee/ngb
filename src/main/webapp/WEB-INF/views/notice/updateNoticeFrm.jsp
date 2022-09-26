@@ -73,6 +73,11 @@
 				}
 			});
 		}
+		$('input[type="text"]').keydown(function() {
+			  if (event.keyCode === 13) {
+			    event.preventDefault();
+			  };
+		});
 	</script>
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
