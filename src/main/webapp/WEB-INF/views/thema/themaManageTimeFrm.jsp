@@ -104,6 +104,8 @@
 		$(this).css("color","white").css("background-color","rgb(255,193,7)");
 	});
 	tabs.eq(1).click();
+	
+	const pageSelector = 2;
 </script>
 </body>
 </html>
