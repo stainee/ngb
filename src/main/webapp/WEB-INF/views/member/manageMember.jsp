@@ -17,7 +17,7 @@
 <body>
 	<%@include file ="/WEB-INF/views/common/managerTemplate.jsp" %>
 	<div class="content-wrap">
-	<div class="title-wrap">회원 목록</div>
+	<div class="title-wrap">회원 목록 <span style = "color:red; font-size:30px"> ("검색은 ctrl + F 이용바람")</span></div>
 		
 		<%-- 우선순위 나중
 		<div>

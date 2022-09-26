@@ -21,7 +21,7 @@
          </ul>
     </div>
     
-     <div class="title-wrap">테마별 시간 관리</div>
+     <div class="title-wrap">테마별 시간 관리<span style = "color:red; font-size:30px"> ("삭제는 신중히!! 두 번 안물어봄")</span></div>
     
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl" id="table">
