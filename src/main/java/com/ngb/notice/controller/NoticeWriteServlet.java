@@ -39,7 +39,7 @@ public class NoticeWriteServlet extends HttpServlet {
 		String root = getServletContext().getRealPath("/");
 		String saveDirectory = root+"upload/notice";
 
-		int maxSize = 10*1024*1024;
+		int maxSize = 100*1024*1024;
 		
 		MultipartRequest mRequest = new MultipartRequest(request, saveDirectory,maxSize,"UTF-8", new DefaultFileRenamePolicy());
 		

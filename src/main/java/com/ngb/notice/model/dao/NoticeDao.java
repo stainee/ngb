@@ -175,4 +175,64 @@ public class NoticeDao {
 		return result;
 	}
 
+	public ArrayList<Notice> selectNoticeList(Connection conn, String notice_title, String searchInput, int start,
+			int end) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		String query ="select * from (select rownum as searchnum,n.* from(select * from (select rownum as rnum, n.* from (SELECT * FROM NOTICE order by notice_no desc)n)where "+notice_title+" like ?)n)where searchnum between ? and ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,"%"+searchInput+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice n = new Notice();
+				n.setNoticeNo(rset.getInt("notice_no"));
+				n.setNoticeTitle(rset.getString("notice_title"));
+				n.setNoticeWriter(rset.getString("notice_writer"));
+				n.setNoticeContent(rset.getString("notice_content"));
+				n.setRegDate(rset.getString("reg_date"));
+				n.setReadCount(rset.getInt("read_count"));
+				n.setNoticeFilepath(rset.getString("notice_filepath"));
+				list.add(n);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	public int selectNoticeCount(Connection conn, String notice_title, String searchInput) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int totalCount = 0;
+		//별칭을 지정해서
+		//아래에서 별칭을 이용해서 받는다
+		
+		//게시물이 총 몇개인지 알수있는 쿼리
+		String query = "select count(*) as searchcnt from(select * from (select rownum as searchnum,n.* from(select * from (select rownum as rnum, n.* from (SELECT * FROM NOTICE order by notice_no desc)n)where "+notice_title+" like ?)n))";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,"%"+searchInput+"%");
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				//얻은 총 갯수를 totalCount에 저장
+				totalCount = rset.getInt("searchcnt");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return totalCount;
+	}
+
 }
