@@ -75,6 +75,13 @@ $(".nextBtn").on("click", function() {
 		}
 	}
 })
+$(".center-move>.signUpBtn").on("click",function(){
+	if (regCheckId == 1 && regCheckPw == 1 && regCheckPwRe == 1 && regCheckPhone == 1 && regCheckMail ==1) {
+			
+		} else {
+			event.preventDefault();
+		}
+});
 
 $(".notsubmit").on("click", function(){
 	event.preventDefault();

@@ -160,7 +160,7 @@
 							<span id="timeZone"></span>
 							<span id="authMsg"></span>
 							<div class="center-move">
-								<button type="submit" class="btn2">회원가입</button>
+								<button type="submit" class="btn2 signUpBtn">회원가입</button>
 							</div>
 						</form>
 
