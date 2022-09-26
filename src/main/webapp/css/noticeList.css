@@ -33,13 +33,13 @@
 	.content-wrap table{
 	width :70%;
 	margin : 0 auto;
-	margin-top : 100px;
+	margin-top : 50px;
 	text-align: center;
 	
 	}
 
 	.notice-tbl{
-	padding-top : 100px;
+	padding-top : 50px;
 	border-collapse : collapse;
 	
 	}
@@ -166,19 +166,16 @@
 /* 글쓰기 버튼관련 */
 .btn2{
     width:100px;
-    height:50px;
+    height:52px;
     background-color: rgb(255,193,7);
-    box-shadow: 0.5px 0.5px 0.5px 0.5px black;
     cursor: pointer;
     font-size:20px;
     font-weight:700;
 }
 .btn2:active{
     width:100px;
-    height:50px;
+    height:52px;
     background-color: rgb(255,193,7);
-    border:1px solid black;
-    box-shadow: none;
 }
 .btn-box{
 	width :70%;
@@ -187,5 +184,28 @@
 	margin : 0 auto;
 	margin-top : 30px;
 	text-align: center;
+}
+
+/*form*/
+.content-wrap>.form-wrap{
+	padding-top: 50px;
+	height : 50px;
+	display:flex;
+	justify-content: center;
+  	align-items: center;
+}
+.content-wrap>.form-wrap>form{
+	display:flex;
+	justify-content: center;
+  	align-items: center;
+}
+.content-wrap>.form-wrap>form>select{
+	height : 50px;
+	margin-right : 8px;
+}
+.content-wrap>.form-wrap>form>input{
+	width : 250px;
+	height : 46px;
+	margin-right : 8px;
 }
 	

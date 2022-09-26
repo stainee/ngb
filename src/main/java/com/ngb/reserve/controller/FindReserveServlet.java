@@ -71,6 +71,7 @@ public class FindReserveServlet extends HttpServlet {
 			//new Gson().toJson(reser,out);
 	
 			
+			
 			if (reser != null) {
 				RequestDispatcher view1 = request.getRequestDispatcher("/WEB-INF/views/reserve/reserveView.jsp");
 				request.setAttribute("reserve", reser);
@@ -86,6 +87,7 @@ public class FindReserveServlet extends HttpServlet {
 				// 최종목적지
 				view2.forward(request, response);
 			}
+			
 			
 		}
 	
