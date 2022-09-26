@@ -18,11 +18,21 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<div class="content-wrap">
+	<div class="content-wrap"> 
 		<div class="page-title">
-			<h2>NOTICE</h2>
+			<h2>
+				NOTICE
+			</h2>
 		</div>
-
+		<form action="noticeSearch.do?reqPage=1" method="post">
+			<select name="searchTag">
+				<option value="notice_title">제목</option>
+				<option value="notice_writer">작성자</option>
+			</select>
+			<input type="text" name="searchInput">
+			<button>검색</button>
+			
+		</form>
 		<table class="notice-tbl">
 			<tr>
 				<th style="width: 10%;">번호</th>
