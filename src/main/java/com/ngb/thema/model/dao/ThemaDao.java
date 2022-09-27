@@ -322,8 +322,6 @@ public class ThemaDao {
 		ttList.add(tt.getTime9());
 		ttList.add(tt.getTime10());
 		
-		System.out.println("안녕하세요"+ttList);
-		
 		int result = 0;
 		String query = "insert into time values(time_seq.nextval, ?, ?)";
 		try {
@@ -351,7 +349,6 @@ public class ThemaDao {
 		}finally {
 			JDBCTemplate.close(pstmt);
 		}
-		System.out.println(result);
 		return result;
 	}
 
@@ -359,7 +356,6 @@ public class ThemaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset= null;
 		ArrayList<ThemaTimeManage> list = new ArrayList<ThemaTimeManage>();
-		System.out.println(list.size());
 		String query = "select thema_code,time from time where thema_code = ? order by 2";
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -391,7 +387,6 @@ public class ThemaDao {
 
 	public int deleteThamaTime(Connection conn, String tmCode) {
 		PreparedStatement pstmt = null;
-		System.out.println("tmCode넘어오는지확인"+tmCode);
 		int result = 0;
 		String query = "delete from time where thema_code = ?";
 		try {
