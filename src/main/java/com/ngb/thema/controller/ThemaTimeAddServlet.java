@@ -48,9 +48,6 @@ public class ThemaTimeAddServlet extends HttpServlet {
 		tt.setTime9(request.getParameter("tmTime9"));
 		tt.setTime10(request.getParameter("tmTime10"));
 		
-		System.out.println("서블릿에서 themaCode 받아오는지 확인"+tt.getThemaCode());
-		System.out.println("서블릿에서 time1 받아오는지 확인"+tt.getTime1());
-		
 		//3.
 		ThemaService service = new ThemaService();
 		int result = service.addThemaTime(tt);
