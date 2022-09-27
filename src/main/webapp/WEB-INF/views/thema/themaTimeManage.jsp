@@ -67,9 +67,6 @@
     </div>
 </div>
 <script>
-	function deleteThemaTime(){
-		alert("쿼리부터하고와라");
-	}
 	
 	const tabs=$(".tap-ul>li");
 	tabs.on("click",function(){
