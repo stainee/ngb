@@ -50,7 +50,7 @@
 					     </tr>
 					     <tr>
 					     	<th>결제금액</th>
-					     	<td colspan="3"><%=reser.getReservePay()*reser.getReserveAmount() %></td>
+					     	<td colspan="3"><%=reser.getReservePay() %></td>
 					     </tr>
 					     <tr>
 					     	<th>예약번호</th>
