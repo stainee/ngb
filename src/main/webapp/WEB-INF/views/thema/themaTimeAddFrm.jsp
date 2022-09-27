@@ -30,7 +30,7 @@
          </ul>
     </div>
     
-	<div class="title-wrap">테마별 시간 등록<span style = "color:red; font-size:30px"> ("아래 형식에 맞춰 입력 안할경우 어떻게 될지 모름 ㅋ")</span></div>
+	<div class="title-wrap">테마별 시간 등록</div>
     
     <div class="table-wrap">
         <table class="tbl tbl-hover notice-tbl">
